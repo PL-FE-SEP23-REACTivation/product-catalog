@@ -28,6 +28,7 @@ Implement the catalog with a shopping cart and favorites page according to one o
 1. Create a new React project using [create-react-app](https://create-react-app.dev/docs/getting-started)
    - use an appropriate template if you are going to add `typescript` or `redux`;
 1. Create a new Github repo with `product_catalog` name (or nay other you like)
+
    - if you work in a team the repo MUST belong to the organization;
    - configure `Branch protection rules` for the organization repository using the following tutorial:
 
@@ -47,6 +48,7 @@ Implement the catalog with a shopping cart and favorites page according to one o
 
      More information about all other settings at the [link](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule)
      </details>
+
 1. Connect a repo to a folder with your React project (see the instructions on Github);
 1. Setup deployment to Github Pages as described [here](https://create-react-app.dev/docs/deployment/#github-pages)
 1. To deploy the API use [Render.com](https://dashboard.render.com/select-repo?type=web)

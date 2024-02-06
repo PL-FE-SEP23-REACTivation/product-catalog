@@ -22,8 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write . --ignore-path .gitignore",
-    "lint": "eslint --fix . --ignore-path .gitignore",
-    "format-lint": "npm run lint && npm run format",
+    "lint": "eslint . --ignore-path .gitignore",
+    "format-lint": "npm run lint && npm run format -- --fix",
     "prepare": "husky"
   },
   "husky": {
@@ -33,12 +33,10 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --fix",
-      "prettier --write"
+      "npm run lint"
     ],
     "*.tsx": [
-      "eslint --fix",
-      "prettier --write"
+      "npm run format-lint"
     ]
   },
   "browserslist": {
@@ -54,13 +52,14 @@
     ]
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.62.0",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^9.0.10",
+    "lint-staged": "13.0.2",
     "prettier": "^3.2.5"
   }
 }
