@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 506px;
+  width: 272px;
+  padding: 32px;
+  border: 1px solid rgba(226, 230, 233, 1);
+}
+
+.productCard__img-container {
+  height: 196px;
+}
+
+.productCard__img {
+  width: 100%;
+  height: 100%;
+}
+
+.productCard__title {
+  font-family: 'Mont', sans-serif;
+  font-size: 14px;
+  margin-top: 8px;
+  padding-top: 16px;
+  width: 208px;
+  font-weight: 600;
+  color: rgba(49, 50, 55, 1);
+  line-height: 21px;
+}
+
+.productCard__price {
+  font-family: 'Mont', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  color: rgba(49, 50, 55, 1);
+  margin-top: 8px;
+  width: 100%;
+}
+
+.productCard__price-regular {
+  font-weight: 700;
+  font-size: 22px;
+  color: rgba(49, 50, 55, 1);
+}
+
+.productCard__price-discount {
+  font-weight: 700;
+  font-size: 22px;
+  color: rgba(137, 147, 154, 1);
+  text-decoration: line-through;
+}
+
+.productCard__price-regular:before {
+  content: '$';
+}
+
+.productCard__price-discount:before {
+  content: '$';
+}
+
+.line {
+  border-style: solid;
+  border-color: rgba(226, 230, 233, 1);
+  border-width: 1px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.productCard__properties {
+  font-family: 'Mont', sans-serif;
+  width: 100%;
+  margin-top: 8px;
+  line-height: 25px;
+}
+
+.productCard__spec {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.productCard__spec-name {
+  color: rgba(137, 147, 154, 1);
+}
+
+.productCard__spec-value {
+  color: rgba(49, 50, 55, 1);
+}
+
+.productCard__buttons {
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  /* padding: 8px 0; */
+}
+
+.productCard__buttons-add {
+  font-family: 'Mont', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  color: white;
+  background-color: rgba(49, 50, 55, 1);
+  font-size: 14px;
+  /* font-weight: 700; */
+  line-height: 21px;
+}
+
+.productCard__buttons-favorite {
+  font-family: 'Mont', sans-serif;
+  margin-left: 8px;
+  width: 40px;
+  height: 40px;
+  color: rgba(49, 50, 55, 1);
+  background-color: white;
+}
