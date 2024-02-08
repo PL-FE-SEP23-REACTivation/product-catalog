@@ -1,9 +1,6 @@
 @import '../../../utils/fonts.scss';
 @import '../../../utils/variables.scss';
 
-// font-family: Mont;
-// color: $color-secondary;
-
 .card {
   display: flex;
   flex-direction: column;
@@ -37,7 +34,7 @@
     padding-top: 16px;
     width: 208px;
     font-weight: 600;
-    color: rgba(49, 50, 55, 1);
+    color: $color-primary;
     line-height: 21px;
 
     &:hover {
@@ -50,7 +47,6 @@
     display: flex;
     justify-content: flex-start;
     gap: 8px;
-    color: rgba(49, 50, 55, 1);
     margin-top: 8px;
     width: 100%;
     line-height: 1.4;
@@ -58,7 +54,7 @@
     &-regular {
       font-weight: 700;
       font-size: 22px;
-      color: rgba(49, 50, 55, 1);
+      color: $color-primary;
 
       &:before {
         content: '$';
@@ -66,9 +62,9 @@
     }
 
     &-discount {
-      font-weight: 700;
+      font-weight: 500;
       font-size: 22px;
-      color: rgba(137, 147, 154, 1);
+      color: $color-secondary;
       text-decoration: line-through;
 
       &:before {
@@ -79,7 +75,7 @@
 
   &__line {
     border-style: solid;
-    border-color: rgba(226, 230, 233, 1);
+    border-color: $color-elements;
     border-width: 1px;
     width: 100%;
     margin-top: 8px;
@@ -99,11 +95,11 @@
       font-size: 12px;
 
       &-name {
-        color: rgba(137, 147, 154, 1);
+        color: $color-secondary;
       }
 
       &-value {
-        color: rgba(49, 50, 55, 1);
+        color: $color-primary;
       }
     }
   }
@@ -114,41 +110,28 @@
     margin-top: 8px;
 
     &-add {
-      font-family: 'Mont', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-      width: 100%;
-      margin-right: 8px;
-      color: white;
-      background-color: rgba(49, 50, 55, 1);
-      border: 1px solid rgba(49, 50, 55, 1);
-      font-size: 14px;
-      line-height: 21px;
+      @include cardButton;
+
+      color: $color-white;
+      background-color: $color-primary;
+      border: 1px solid $color-primary;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+        box-shadow: 0px 3px 13px 0px $color-shadow;
         cursor: pointer;
       }
     }
 
     &-added {
-      font-family: 'Mont', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40px;
-      width: 100%;
-      margin-right: 8px;
-      color: rgba(39, 174, 96, 1);
-      background-color: white;
-      border: 1px solid rgba(226, 230, 233, 1);
+      @include cardButton;
+
       font-size: 14px;
-      line-height: 21px;
+      color: $color-green;
+      background-color: white;
+      border: 1px solid $color-elements;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+        box-shadow: 0px 3px 13px 0px $color-shadow;
         cursor: pointer;
       }
     }
@@ -157,8 +140,8 @@
       font-family: 'Mont', sans-serif;
       width: 40px;
       height: 40px;
-      background-color: white;
-      border: 1px solid rgba(180, 189, 195, 1);
+      background-color: $color-white;
+      border: 1px solid $color-elements;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -170,7 +153,7 @@
       }
 
       &:hover {
-        border: 1px solid rgba(49, 50, 55, 1);
+        border: 1px solid $color-secondary;
         cursor: pointer;
       }
     }
