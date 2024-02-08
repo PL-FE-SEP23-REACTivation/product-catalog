@@ -1,0 +1,30 @@
+@import '../../utils/variables.scss';
+@import '../../utils/fonts.scss';
+
+.pagination-button {
+  box-sizing: border-box;
+  font-family: Mont, 'sans-serif';
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+
+  &--dark {
+    border-color: $color-icons;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    border-color: $color-elements;
+    color: $color-elements;
+    background-color: $color-white;
+  }
+}
