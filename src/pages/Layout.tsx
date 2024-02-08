@@ -1,1 +1,1 @@
-// layout aplikacji
+export {};
