@@ -1,5 +1,10 @@
+// layout aplikacji (nie moze byc pusty plik, wyskakuje error)
 import React from 'react';
 
-export const layout: React.FC = () => {
-  return <p>Layout</p>;
+export const Layout: React.FC = () => {
+  return (
+    <>
+      <h2>Layout container</h2>
+    </>
+  );
 };
