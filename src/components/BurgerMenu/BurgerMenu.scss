@@ -1,0 +1,169 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/variables.scss';
+
+.headerMobile {
+  background: $color-white;
+  box-shadow: 0px 1px 0px 0px $color-elements;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_nav {
+    background: $color-white;
+    box-shadow: 0px 1px 0px 0px $color-elements;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 48px;
+    align-self: left;
+  }
+
+  &_buttons {
+    width: 48px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &_link--logo {
+    width: 64px;
+    height: 22px;
+    background: url(../../images/Logo.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 12px;
+  }
+}
+.burger-menu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.burger-icon {
+  width: 48px;
+  height: 48px;
+  background-size: 16px 16px;
+  background: url(../../images/burger.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: -1px 0px 0px 0px $color-elements;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+}
+
+.burger-icon.open {
+  width: 48px;
+  height: 48px;
+  background-size: 16px 16px;
+  background: url(../../images/cross.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: -1px 0px 0px 0px $color-elements;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 49px;
+  right: 0;
+  background-color: $color-white;
+  width: 100%;
+  height: 520px;
+  transition: 0.4s;
+  transform: translateX(100%);
+  z-index: 1;
+
+  &_links {
+    font-family: Mont, Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    margin-top: 24px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  &_link {
+    position: relative;
+    color: $color-secondary;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+
+  &_link:hover {
+    position: relative;
+    color: $color-primary;
+  }
+
+  &_link:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $color-primary;
+  }
+
+  &_footer {
+    border: 1px solid $color-elements;
+    margin-top: 26vh;
+    align-self: flex-end;
+    height: 64px;
+    width: 100%;
+    display: flex;
+  }
+
+  &_heart {
+    height: 64px;
+    width: 50%;
+    background-size: 16px 16px;
+    background: url(../../icons/heart-like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: -1px 0px 0px 0px $color-elements;
+  }
+  &_bag {
+    height: 64px;
+    width: 50%;
+    background-size: 16px 16px;
+    background: url(../../images/bag.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: -1px 0px 0px 0px $color-elements;
+  }
+}
+
+.menu.open {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(0);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: $color-secondary;
+}
