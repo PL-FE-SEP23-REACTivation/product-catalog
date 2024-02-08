@@ -19,6 +19,10 @@ export const CardImgContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -32,6 +36,10 @@ export const CardTitle = styled.div`
   font-weight: 600;
   color: rgba(49, 50, 55, 1);
   line-height: 21px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const CardPrice = styled.div`
@@ -42,6 +50,7 @@ export const CardPrice = styled.div`
   color: rgba(49, 50, 55, 1);
   margin-top: 8px;
   width: 100%;
+  line-height: 1.4;
 `;
 
 export const CardPriceRegular = styled.div`
@@ -118,6 +127,7 @@ export const ButtonAdd = styled.button`
 
   &:hover {
     box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    cursor: pointer;
   }
 `;
 
@@ -137,6 +147,7 @@ export const ButtonAdded = styled.button`
 
   &:hover {
     box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+    cursor: pointer;
   }
 `;
 
@@ -149,8 +160,15 @@ export const ButtonFavorite = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 15px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
 
   &:hover {
     border: 1px solid rgba(49, 50, 55, 1);
+    cursor: pointer;
   }
 `;
