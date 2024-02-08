@@ -1,0 +1,110 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.header {
+  background-color: $color-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+
+  @include for-phone() {
+    height: auto;
+  }
+
+  @include for-tablet() {
+    height: 48px;
+  }
+
+  &__logo {
+    margin: 18px 24px;
+    flex: 1;
+    @include for-phone() {
+      display: none;
+      margin-top: 10px 0;
+    }
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__nav {
+    display: flex;
+
+    &__list {
+      display: flex;
+      gap: 60px;
+      list-style-type: none;
+      @include for-phone() {
+        display: none;
+      }
+
+      &__item {
+        &__link {
+          color: $color-secondary;
+          text-decoration: none;
+          font-family: Mont;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 800;
+          line-height: 11px;
+          letter-spacing: 0.48px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+
+    &__like {
+      background-image: url('../../icons/heart-like.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 64px;
+      height: 64px;
+      background-color: $color-white;
+      box-shadow: -1px 0px 0px 0px $color-elements;
+      border: none;
+
+      @include for-phone() {
+        display: none;
+      }
+
+      @include for-tablet() {
+        height: 48px;
+        width: 48px;
+      }
+    }
+
+    &__cart {
+      background-image: url('../../images/bag.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 64px;
+      height: 64px;
+      background-color: $color-white;
+      box-shadow: -1px 0px 0px 0px $color-elements;
+      border: none;
+
+      @include for-tablet() {
+        height: 48px;
+        width: 48px;
+      }
+      @include for-phone() {
+        display: none;
+      }
+    }
+  }
+}
+
+.burger-menu-container {
+  display: none;
+
+  @include for-phone() {
+    display: block;
+  }
+}
