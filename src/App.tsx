@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import Phones from './pages/Phones';
+
 import PageNotFound from './pages/PageNotFound';
 import { Header } from './components/Header/Header';
 
