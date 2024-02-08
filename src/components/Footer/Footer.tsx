@@ -16,7 +16,6 @@ const Footer: React.FC = () => {
       <div className="footer__return">
         Back to top
         <a href='#top' className='footer__return-button'>
-          {/* <img src={vector} className='footer__return-vector' alt="" /> */}
         </a>
       </div>
     </footer>
