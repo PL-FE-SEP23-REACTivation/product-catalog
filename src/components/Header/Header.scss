@@ -10,7 +10,7 @@
   height: 64px;
 
   @include for-phone() {
-    height: 48px;
+    height: auto;
   }
 
   @include for-tablet() {
@@ -20,6 +20,10 @@
   &__logo {
     margin: 18px 24px;
     flex: 1;
+    @include for-phone() {
+      display: none;
+      margin-top: 10px 0;
+    }
   }
 
   &__container {

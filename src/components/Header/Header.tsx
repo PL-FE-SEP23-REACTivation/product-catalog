@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/Logo.svg';
 import './Header.scss';
+import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 
 export const Header = () => {
   return (
@@ -46,7 +47,9 @@ export const Header = () => {
           <button type="button" className="header__buttons__cart" />
         </div>
       </header>
-      <div className="burger-menu-container">{/* <BurgerMenu /> */}</div>
+      <div className="burger-menu-container">
+        <BurgerMenu />
+      </div>
     </>
   );
 };
