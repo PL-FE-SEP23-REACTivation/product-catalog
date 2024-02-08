@@ -8,6 +8,8 @@
 }
 
 .footer {
+  position: fixed;
+  bottom: 0;
   max-height: 259px;
   width: 100%;
   display: flex;
@@ -61,7 +63,7 @@
     }
   }
 
-    @include for-desktop() {
+  @include for-desktop() {
     align-items: center;
     flex-direction: row;
     &__logo,
