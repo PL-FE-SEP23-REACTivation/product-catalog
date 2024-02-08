@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import Phones from './pages/Phones';
-import PageNotFound from './pages/PageNotFound';
+import PageNotFound from './components/Footer/PageNotFound/PageNotFound';
 
 const App: React.FC = () => {
   return (

@@ -1,11 +1,8 @@
 import React from 'react';
+import PageNotFound from '../components/Footer/PageNotFound/PageNotFound';
 
-const PageNotFound: React.FC = () => {
-  return (
-    <div>
-      <h2>Page Not Found</h2>
-    </div>
-  );
+const Pagenotfound: React.FC = () => {
+  return <PageNotFound />;
 };
 
-export default PageNotFound;
+export default Pagenotfound;
