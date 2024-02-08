@@ -1,4 +1,43 @@
-p {
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #d3d3d3;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__error {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &-title {
+      font-size: 5rem;
+      color: #ff5733;
+    }
+
+    &-paragraph {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    &-link {
+      text-decoration: none;
+      background-color: #ff5733;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 3px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #e6482e;
+      }
+    }
+  }
 }
