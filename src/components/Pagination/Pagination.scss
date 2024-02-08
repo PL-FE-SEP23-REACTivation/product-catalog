@@ -1,0 +1,8 @@
+.pagination {
+  list-style-type: none;
+  display: flex;
+
+  &__next-arrow {
+    transform: scaleX(-1);
+  }
+}
