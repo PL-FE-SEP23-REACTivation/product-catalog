@@ -1,9 +1,9 @@
 import React from 'react';
-import * as style from './index';
 import image1 from './00.webp';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
 import { Product } from '../../../types/protuctType';
+import './ProductCard.scss';
 
 type Props = {
   product: Product;
@@ -34,50 +34,50 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   // end of demo data
 
   return (
-    <style.Card>
-      <style.CardImgContainer>
+    <div className="card">
+      <div className="card__imgContainer">
         <img src={image1} alt="img of phone" />
-      </style.CardImgContainer>
-      <style.CardTitle>{name}</style.CardTitle>
-      <style.CardPrice>
+      </div>
+      <div className="card__title">{name}</div>
+      <div className="card__price">
         {!isProductDiscount ? (
           <>
-            <style.CardPriceRegular>{price}</style.CardPriceRegular>
-            <style.CardPriceDiscount>{fullPrice}</style.CardPriceDiscount>
+            <div className="card__price-regular">{price}</div>
+            <div className="card__price-discount">{fullPrice}</div>
           </>
         ) : (
-          <style.CardPriceRegular>{price}</style.CardPriceRegular>
+          <div className="card__price-regular">{price}</div>
         )}
-      </style.CardPrice>
-      <style.Line />
-      <style.CardProperties>
-        <style.CardSpec>
-          <style.CardSpecValue>Screen</style.CardSpecValue>
-          <style.CardSpecValue>{screen}</style.CardSpecValue>
-        </style.CardSpec>
-        <style.CardSpec>
-          <style.CardSpecValue>Capacity</style.CardSpecValue>
-          <style.CardSpecValue>{capacity}</style.CardSpecValue>
-        </style.CardSpec>
-        <style.CardSpec>
-          <style.CardSpecValue>RAM</style.CardSpecValue>
-          <style.CardSpecValue>{ram}</style.CardSpecValue>
-        </style.CardSpec>
-      </style.CardProperties>
-      <style.Buttons>
+      </div>
+      <hr className="card__line" />
+      <div className="card__properties">
+        <div className="card__properties__spec">
+          <div className="card__properties__spec-name">Screen</div>
+          <div className="card__properties__spec-value">{screen}</div>
+        </div>
+        <div className="card__properties__spec">
+          <div className="card__properties__spec-name">Capacity</div>
+          <div className="card__properties__spec-value">{capacity}</div>
+        </div>
+        <div className="card__properties__spec">
+          <div className="card__properties__spec-name">RAM</div>
+          <div className="card__properties__spec-value">{ram}</div>
+        </div>
+      </div>
+      <div className="card__button">
         {!isAddedToCard ? (
-          <style.ButtonAdd>Add to cart</style.ButtonAdd>
+          <button className="card__button-add">Add to cart</button>
         ) : (
-          <style.ButtonAdded>Added</style.ButtonAdded>
+          <button className="card__button-added">Added</button>
         )}
-        <style.ButtonFavorite>
+        <button className="card__button-favorite">
           {isFavoriteProduct ? (
             <img src={IMGofHeart} alt="IMG of heart" />
           ) : (
             <img src={IMGofWhiteHeart} alt="IMG of heart" />
           )}
-        </style.ButtonFavorite>
-      </style.Buttons>
-    </style.Card>
+        </button>
+      </div>
+    </div>
   );
 };
