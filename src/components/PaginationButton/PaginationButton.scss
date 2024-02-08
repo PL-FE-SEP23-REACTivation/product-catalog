@@ -13,18 +13,36 @@
   height: 32px;
   border: 1px solid $color-elements;
   background-color: $color-white;
+  color: $color-primary;
+  margin: 0 4px;
 
-  &--dark {
+  &--prev {
     border-color: $color-icons;
+    margin-right: 12px;
+  }
+
+  &--next {
+    border-color: $color-icons;
+    margin-left: 12px;
+  }
+
+  &--is-active {
+    color: $color-white;
+    background-color: $color-primary;
+    border-color: $color-primary;
   }
 
   &:hover {
     border-color: $color-primary;
   }
+}
 
-  &:disabled {
-    border-color: $color-elements;
+.disabled {
+  border-color: $color-elements;
+  background-color: $color-white;
+  pointer-events: none;
+
+  > * {
     color: $color-elements;
-    background-color: $color-white;
   }
 }
