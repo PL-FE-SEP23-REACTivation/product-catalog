@@ -3,6 +3,7 @@ import '../styles/phonesPage.scss';
 import { Link } from 'react-router-dom';
 import homeIcon from '../icons/home.svg';
 import rightArrowIcon from '../icons/right-arrow.svg';
+import { Pagination } from '../components/Pagination';
 
 const PhonesPage: React.FC = () => {
   const products = [
@@ -57,6 +58,9 @@ const PhonesPage: React.FC = () => {
             {product.name}
           </div>
         ))}
+      </div>
+      <div className="phones_pagination_container">
+        <Pagination total={30} perPage={6} />
       </div>
     </div>
   );

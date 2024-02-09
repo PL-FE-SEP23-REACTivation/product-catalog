@@ -53,6 +53,13 @@
       background-color: red;
     }
   }
+
+  &_pagination_container {
+    margin-top: 40px;
+    @include for-phone() {
+      margin-top: 24px;
+    }
+  }
 }
 
 .icons {

@@ -2,7 +2,7 @@ import React from 'react';
 import image1 from './00.webp';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-import { Product } from '../../../types/protuctType';
+import { Product } from '../../types/protuctType';
 import './ProductCard.scss';
 
 type Props = {

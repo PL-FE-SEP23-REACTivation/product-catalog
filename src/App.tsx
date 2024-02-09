@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import PhonesPage from './pages/Phones';
-import './styles/_reset.scss';
 import PageNotFound from './pages/PageNotFound';
 import { Header } from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import './styles/_reset.scss';
 import { CatalogLayout } from './pages/CatalogLayout';
+import Footer from './components/Footer/Footer';
 
 const App: React.FC = () => {
   return (
