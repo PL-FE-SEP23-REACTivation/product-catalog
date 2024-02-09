@@ -1,5 +1,5 @@
 import React from 'react';
-import PageNotFound from '../components/Footer/PageNotFound/PageNotFound';
+import PageNotFound from '../components/PageNotFound/PageNotFound';
 
 const Pagenotfound: React.FC = () => {
   return <PageNotFound />;
