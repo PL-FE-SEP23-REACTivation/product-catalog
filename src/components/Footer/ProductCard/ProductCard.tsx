@@ -1,8 +1,7 @@
-import React from 'react';
-import image1 from './00.webp';
+import React, { useState } from 'react';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-import { Product } from '../../../types/protuctType';
+import { Product } from '../../../types/productType';
 import './ProductCard.scss';
 
 type Props = {
@@ -10,33 +9,28 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const {
-    itemId,
-    name,
-    fullPrice,
-    price,
-    // id, category, color, year, image,  <- not used in the creation process
-    screen,
-    capacity,
-    ram,
-  } = product;
+  const { name, itemId, fullPrice, price, screen, capacity, ram, color } =
+    product;
 
-  // demo data
-  const card = ['apple-iphone-7-32gb-black', 'apple-iphone-7-64gb-black'];
+  const isProductDiscount = fullPrice !== price;
 
-  const favorite = ['apple-iphone-7-32gb-black', 'apple-iphone-7-64gb-black'];
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
 
-  const isProductDiscount = fullPrice === price;
+  const handleAddToCart = () => {
+    setIsAddedToCart(true);
+  };
 
-  const isAddedToCard = card.includes(itemId);
+  const handleToggleFavorite = () => {
+    setIsFavoriteProduct((prevState) => !prevState);
+  };
 
-  const isFavoriteProduct = favorite.includes(itemId);
-  // end of demo data
+  const imagePath = `img/phones/${itemId}/${color}/00.webp`;
 
   return (
     <div className="card">
       <div className="card__imgContainer">
-        <img src={image1} alt="img of phone" />
+        <img src={require(`../../../public/${imagePath}`)} alt={`${name}`} />
       </div>
       <div className="card__title">{name}</div>
       <div className="card__price">
@@ -65,12 +59,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className="card__button">
-        {!isAddedToCard ? (
-          <button className="card__button-add">Add to cart</button>
+        {!isAddedToCart ? (
+          <button className="card__button-add" onClick={handleAddToCart}>
+            Add to cart
+          </button>
         ) : (
           <button className="card__button-added">Added</button>
         )}
-        <button className="card__button-favorite">
+        <button
+          className="card__button-favorite"
+          onClick={handleToggleFavorite}
+        >
           {isFavoriteProduct ? (
             <img src={IMGofHeart} alt="IMG of heart" />
           ) : (

@@ -109,12 +109,14 @@
     width: 100%;
     margin-top: 8px;
 
+
     &-add {
       @include cardButton;
 
       color: $color-white;
       background-color: $color-primary;
       border: 1px solid $color-primary;
+      transition: all 0.3s;
 
       &:hover {
         box-shadow: 0px 3px 13px 0px $color-shadow;
@@ -129,6 +131,7 @@
       color: $color-green;
       background-color: white;
       border: 1px solid $color-elements;
+      transition: all 0.3s;
 
       &:hover {
         box-shadow: 0px 3px 13px 0px $color-shadow;
@@ -146,6 +149,7 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
+      transition: all 0.3s;
 
       img {
         width: 16px;
