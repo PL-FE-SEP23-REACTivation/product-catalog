@@ -48,7 +48,7 @@
     font-weight: 700;
 
     :hover {
-      background-image: url('../../public/img/vector-white.png');
+      background-image: url('../../../public/img/vector-white.png');
       background-color: $color-primary;
       transition: all 0.3s ease-in-out;
     }
@@ -57,7 +57,7 @@
       width: 32px;
       height: 32px;
       border: 1px solid $color-secondary;
-      background-image: url('../../public/img/vector.png');
+      background-image: url('../../../public/img/vector.png');
       background-repeat: no-repeat;
       background-position: center;
     }
