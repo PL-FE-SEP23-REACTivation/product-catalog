@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Phones from './pages/Phones';
-
-import Footer from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import { Pagination } from './components/Pagination';
 import PageNotFound from './pages/PageNotFound';
+import { Header } from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import { Cart } from './components/Cart/Cart';
+
 
 const App: React.FC = () => {
   return (
@@ -18,6 +18,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/phones" element={<Phones />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/cart">
+          <Route index element={<Cart />} />
+        </Route>
       </Routes>
       <Pagination total={30} perPage={6} />
       <Footer />
