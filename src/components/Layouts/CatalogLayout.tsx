@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import '../styles/layouts.scss';
+import './layouts.scss';
 
 export const CatalogLayout: React.FC = () => {
   return (
