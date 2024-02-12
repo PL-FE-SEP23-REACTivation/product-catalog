@@ -1,11 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
 import Phones from './pages/Phones';
-
 import PageNotFound from './pages/PageNotFound';
 import { Header } from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { Cart } from './components/Cart/Cart';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +16,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/phones" element={<Phones />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/cart">
+          <Route index element={<Cart />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
