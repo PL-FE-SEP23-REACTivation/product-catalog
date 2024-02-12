@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ProductCard } from '../components/Footer/ProductCard/ProductCard';
+import { ProductCard } from '../components//ProductCard/ProductCard';
 import { Product } from '../types/productType';
 import phonesData from '../public/api/phones.json';
 
@@ -27,10 +27,13 @@ const Phones: React.FC = () => {
 
   return (
     <div>
-      <h2>Phones</h2>
       <div className="product-grid">
         {phones.map((phone) => (
-          <ProductCard key={phone.id} product={phone} />
+          <ProductCard
+            key={phone.id}
+            product={phone}
+            imagePath={`img/phones/${phone.itemId}/${phone.color}/00.webp`}
+          />
         ))}
       </div>
     </div>
