@@ -1,0 +1,163 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/variables.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 506px;
+  width: 272px;
+  padding: 32px;
+  border: 1px solid rgba(226, 230, 233, 1);
+  box-sizing: border-box;
+
+  &__imgContainer {
+    height: 196px;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__title {
+    text-align: left;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 208px;
+    font-weight: 600;
+    color: $color-primary;
+    line-height: 21px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__price {
+    font-family: 'Mont', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
+    line-height: 1.4;
+
+    &-regular {
+      font-weight: 700;
+      font-size: 22px;
+      color: $color-primary;
+
+      &:before {
+        content: '$';
+      }
+    }
+
+    &-discount {
+      font-weight: 500;
+      font-size: 22px;
+      color: $color-secondary;
+      text-decoration: line-through;
+
+      &:before {
+        content: '$';
+      }
+    }
+  }
+
+  &__line {
+    border-style: solid;
+    border-color: $color-elements;
+    border-width: 1px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  &__properties {
+    font-family: 'Mont', sans-serif;
+    width: 100%;
+    margin-top: 8px;
+    line-height: 25px;
+
+    &__spec {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 12px;
+
+      &-name {
+        color: $color-secondary;
+      }
+
+      &-value {
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+    &-add {
+      @include cardButton;
+
+      color: $color-white;
+      background-color: $color-primary;
+      border: 1px solid $color-primary;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px $color-shadow;
+        cursor: pointer;
+      }
+    }
+
+    &-added {
+      @include cardButton;
+
+      font-size: 14px;
+      color: $color-green;
+      background-color: white;
+      border: 1px solid $color-elements;
+      transition: all 0.3s;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px $color-shadow;
+        cursor: pointer;
+      }
+    }
+
+    &-favorite {
+      font-family: 'Mont', sans-serif;
+      width: 40px;
+      height: 40px;
+      background-color: $color-white;
+      border: 1px solid $color-elements;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      transition: all 0.3s;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        border: 1px solid $color-secondary;
+        cursor: pointer;
+      }
+    }
+  }
+}
