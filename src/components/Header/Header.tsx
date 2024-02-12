@@ -44,7 +44,7 @@ export const Header = () => {
 
         <div className="header__buttons">
           <button type="button" className="header__buttons__like" />
-          <button type="button" className="header__buttons__cart" />
+          <Link to="/cart" className="header__buttons__cart" />
         </div>
       </header>
       <div className="burger-menu-container">

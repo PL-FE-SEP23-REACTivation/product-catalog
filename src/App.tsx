@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import Phones from './pages/Phones';
+import Cart from './pages/Cart';
 
 import PageNotFound from './pages/PageNotFound';
 import { Header } from './components/Header/Header';
@@ -16,6 +17,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/phones" element={<Phones />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
