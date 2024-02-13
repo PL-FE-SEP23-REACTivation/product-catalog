@@ -77,7 +77,7 @@
     display: flex;
 
     &__like {
-      background-image: url('../../icons/heart-like.svg');
+      background-image: url('../../../public/icons/heart-like.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 64px;
@@ -97,7 +97,7 @@
     }
 
     &__cart {
-      background-image: url('../../images/bag.svg');
+      background-image: url('../../../public/icons/bag.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 64px;
