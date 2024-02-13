@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 import Phones from './pages/Phones';
 
-import PageNotFound from './pages/PageNotFound';
-import { Header } from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import { Pagination } from './components/Pagination';
+import PageNotFound from './pages/PageNotFound';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/phones" element={<Phones />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Pagination total={30} perPage={6} />
       <Footer />
     </BrowserRouter>
   );
