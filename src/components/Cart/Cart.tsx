@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ArrowLeft from '../../icons/arrow-left.svg';
 import './Cart.scss';
+import { CartItem } from '../CartItem/CartItem';
 
 export const Cart = () => {
   return (
@@ -19,7 +20,11 @@ export const Cart = () => {
           <h1 className="cart__title__text">Cart</h1>
         </section>
         <div className="cart__main">
-          <section className="cart__cartItems">{/* cardplaceholder */}</section>
+          <section className="cart__cartItems">
+            <CartItem />
+            <CartItem />
+            <CartItem />
+          </section>
           <section className="cart__calculator">
             <div className="cart__calculator__price-container">
               <p className="cart__calculator__price">$9999</p>
