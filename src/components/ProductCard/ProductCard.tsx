@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import IMGofHeart from './RedHeart.png';
-import IMGofWhiteHeart from './WhiteHeart.png';
 import { Product } from '../../types/productType';
 import './ProductCard.scss';
+import IMGofHeart from './RedHeart.png';
+import IMGofWhiteHeart from './WhiteHeart.png';
 
 type Props = {
   product: Product;
-  imagePath: string;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, imagePath }) => {
-  const { name, fullPrice, price, screen, capacity, ram } = product;
+export const ProductCard: React.FC<Props> = ({ product }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = product;
 
   const isProductDiscount = fullPrice !== price;
 
@@ -30,7 +29,7 @@ export const ProductCard: React.FC<Props> = ({ product, imagePath }) => {
     <div className="card">
       <div className="card__imgContainer">
         <Link to={`/${product.category}/${product.id}`}>
-          <img src={require(`../../public/${imagePath}`)} alt={`${name}`} />
+          <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`${name}`} />
         </Link>
       </div>
       <Link to={`/${product.category}/${product.id}`}>

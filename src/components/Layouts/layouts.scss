@@ -12,6 +12,8 @@
   }
   @include for-phone() {
     padding: 24px 16px 56px 16px;
+  }
+}
 
 .layout_catalog_container {
   display: flex;

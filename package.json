@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
-    "format-lint": "npm run lint && npm run format -- --fix",
+    "format-lint": "npm run format && npm run lint -- --fix",
     "prepare": "husky"
   },
   "husky": {
