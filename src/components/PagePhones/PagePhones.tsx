@@ -1,10 +1,10 @@
 import React from 'react';
-import './PagePhones.scss';
 import { Link } from 'react-router-dom';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
+import './PagePhones.scss';
 
 const PagePhones: React.FC = () => {
   const products = [
@@ -15,7 +15,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 7 32GB Black',
       fullPrice: 400,
       price: 375,
-      screen: "4.7' IPS",
+      screen: '4.7\' IPS',
       capacity: '32GB',
       color: 'black',
       ram: '2GB',
@@ -29,7 +29,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple-iphone-7-32gb-black',
       fullPrice: 540,
       price: 500,
-      screen: "5.5' IPS",
+      screen: '5.5\' IPS',
       capacity: '32GB',
       color: 'black',
       ram: '3GB',
@@ -43,7 +43,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 8 64GB Gold',
       fullPrice: 600,
       price: 550,
-      screen: "4.7' IPS",
+      screen: '4.7\' IPS',
       capacity: '64GB',
       color: 'gold',
       ram: '2GB',
@@ -57,7 +57,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 11 64GB Black',
       fullPrice: 932,
       price: 880,
-      screen: "6.1' IPS",
+      screen: '6.1\' IPS',
       capacity: '64GB',
       color: 'black',
       ram: '4GB',
@@ -71,7 +71,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 7 32GB Black',
       fullPrice: 400,
       price: 375,
-      screen: "4.7' IPS",
+      screen: '4.7\' IPS',
       capacity: '32GB',
       color: 'black',
       ram: '2GB',
@@ -85,7 +85,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple-iphone-7-32gb-black',
       fullPrice: 540,
       price: 500,
-      screen: "5.5' IPS",
+      screen: '5.5\' IPS',
       capacity: '32GB',
       color: 'black',
       ram: '3GB',
@@ -99,7 +99,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 8 64GB Gold',
       fullPrice: 600,
       price: 550,
-      screen: "4.7' IPS",
+      screen: '4.7\' IPS',
       capacity: '64GB',
       color: 'gold',
       ram: '2GB',
@@ -113,7 +113,7 @@ const PagePhones: React.FC = () => {
       name: 'Apple iPhone 11 64GB Black',
       fullPrice: 932,
       price: 880,
-      screen: "6.1' IPS",
+      screen: '6.1\' IPS',
       capacity: '64GB',
       color: 'black',
       ram: '4GB',

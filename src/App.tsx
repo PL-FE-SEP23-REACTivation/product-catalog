@@ -1,17 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Phones from './pages/Phones';
 import './styles/_reset.scss';
 
-import PageNotFound from './pages/PageNotFound';
-import { Header } from './components/Header/Header';
-import './styles/_reset.scss';
-import { CatalogLayout } from './components/Layouts/CatalogLayout';
-import Footer from './components/Footer/Footer';
-import Productpage from './pages/ProductPage';
-import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import { Cart } from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
+import { Header } from './components/Header/Header';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import PageNotFound from './pages/PageNotFound';
+import Productpage from './pages/ProductPage';
+import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
@@ -22,7 +21,6 @@ const App: React.FC = () => {
         <Route path="/phones" element={<Phones />} />
         <Route element={<ProductPageLayout />}>
           <Route path="/phones/:id" element={<Productpage />} />
-
         </Route>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/cart">

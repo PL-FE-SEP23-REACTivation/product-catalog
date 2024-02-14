@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import phonesData from '../assets/api/products.json';
 import { ProductCard } from '../components//ProductCard/ProductCard';
 import { Product } from '../types/productType';
-import phonesData from '../public/api/phones.json';
 const Phones: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
   useEffect(() => {
-    const mappedPhones = phonesData.map((phone) => ({
-      id: phone.id,
-      category: 'phones',
-      itemId: phone.namespaceId,
-      name: phone.name,
-      fullPrice: phone.priceRegular,
-      price: phone.priceDiscount,
-      screen: phone.screen,
-      capacity: phone.capacity,
-      color: phone.color,
-      ram: phone.ram,
-      year: 0,
-      image: phone.images[0],
-    }));
+    const mappedPhones = phonesData
+      .filter((phone) => phone.category === 'phones')
+      .map((phone) => ({
+        id: phone.id,
+        category: 'phones',
+        name: phone.name,
+        fullPrice: phone.fullPrice,
+        price: phone.price,
+        screen: phone.screen,
+        capacity: phone.capacity,
+        color: phone.color,
+        ram: phone.ram,
+        image: phone.image,
+      }));
 
     setPhones(mappedPhones);
   }, []);
@@ -28,11 +28,7 @@ const Phones: React.FC = () => {
     <div>
       <div className="product-grid">
         {phones.map((phone) => (
-          <ProductCard
-            key={phone.id}
-            product={phone}
-            imagePath={`img/phones/${phone.itemId}/${phone.color}/00.webp`}
-          />
+          <ProductCard key={phone.id} product={phone} />
         ))}
       </div>
     </div>
