@@ -1,5 +1,18 @@
 @import '../../utils/mixins.scss';
 
+.product-page_layout_container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include for-desktop() {
+    padding: 24px 32px 81px 32px;
+  }
+  @include for-tablet() {
+    padding: 24px 24px 64px 24px;
+  }
+  @include for-phone() {
+    padding: 24px 16px 56px 16px;
+
 .layout_catalog_container {
   display: flex;
   justify-content: center;
