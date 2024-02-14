@@ -1,8 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../../images/Logo.svg';
-import './Header.scss';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import './Header.scss';
 
 export const Header = () => {
   return (
@@ -10,7 +8,7 @@ export const Header = () => {
       <header className="header">
         <div className="header__container">
           <Link to="/" className="header__logo">
-            <img src={Logo} alt="logo" />
+            <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
           </Link>
 
           <nav className="header__nav">
@@ -44,7 +42,7 @@ export const Header = () => {
 
         <div className="header__buttons">
           <button type="button" className="header__buttons__like" />
-          <button type="button" className="header__buttons__cart" />
+          <Link to="/cart" className="header__buttons__cart" />
         </div>
       </header>
       <div className="burger-menu-container">

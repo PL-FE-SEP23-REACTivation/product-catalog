@@ -1,12 +1,11 @@
 import React from 'react';
-import logo from '../../public/img/Logo.svg';
 import './Footer.scss';
 
 const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__logo">
-        <img src={logo} alt="dsd" />
+        <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
       </div>
       <div className="footer__links">
         <a href="#github" className="footer__links-link">

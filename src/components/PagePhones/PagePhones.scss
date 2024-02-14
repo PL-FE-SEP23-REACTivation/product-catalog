@@ -1,0 +1,79 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.phones {
+  width: 100%;
+
+  &_title {
+    @include for-desktop() {
+      margin-top: 40px;
+    }
+    @include for-tablet() {
+      margin-top: 40px;
+    }
+    @include for-phone() {
+      margin-top: 24px;
+      font-size: 32px;
+      line-height: 41px;
+    }
+    margin: 0;
+    font-family: Mont;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  &_count {
+    margin-top: 8px;
+    font-family: Mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: $color-secondary;
+  }
+
+  &_cards {
+    display: grid;
+    margin-top: 24px;
+    gap: 40px 16px;
+    @include for-desktop() {
+      grid-template-columns: repeat(4, 272px);
+    }
+    @include for-tablet() {
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    }
+    @include for-phone() {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &_pagination_container {
+    margin-top: 40px;
+    @include for-phone() {
+      margin-top: 24px;
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &_icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_text {
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+}
