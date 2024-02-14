@@ -2,7 +2,7 @@ import React from 'react';
 import Phones from './pages/Phones';
 import TestProductPage from './pages/TestProductPage';
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
 import { Header } from './components/Header/Header';
 import './styles/_reset.scss';
