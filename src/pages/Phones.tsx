@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../components//ProductCard/ProductCard';
 import { Product } from '../types/productType';
 import phonesData from '../public/api/phones.json';
-
 const Phones: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
   useEffect(() => {
     const mappedPhones = phonesData.map((phone) => ({
       id: phone.id,
-      category: '',
+      category: 'phones',
       itemId: phone.namespaceId,
       name: phone.name,
       fullPrice: phone.priceRegular,

@@ -23,6 +23,7 @@
     "max-len": ["error", { "code": 80 }],
     "no-trailing-spaces": "error",
     "no-multi-spaces": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1 }]
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "react/react-in-jsx-scope": "off"
   }
 }

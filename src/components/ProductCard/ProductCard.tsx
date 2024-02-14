@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
 import { Product } from '../../types/productType';
@@ -28,9 +29,13 @@ export const ProductCard: React.FC<Props> = ({ product, imagePath }) => {
   return (
     <div className="card">
       <div className="card__imgContainer">
-        <img src={require(`../../public/${imagePath}`)} alt={`${name}`} />
+        <Link to={`/${product.category}/${product.id}`}>
+          <img src={require(`../../public/${imagePath}`)} alt={`${name}`} />
+        </Link>
       </div>
-      <div className="card__title">{name}</div>
+      <Link to={`/${product.category}/${product.id}`}>
+        <div className="card__title">{name}</div>
+      </Link>
       <div className="card__price">
         {!isProductDiscount ? (
           <>
