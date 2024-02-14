@@ -1,5 +1,6 @@
 import React from 'react';
 import Phones from './pages/Phones';
+import TestProductPage from './pages/TestProductPage';
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 
       <Routes>
         <Route path="/phones" element={<Phones />} />
+        <Route path="/phones/:id" element={<TestProductPage />} />
         <Route element={<CatalogLayout />}>
           <Route path="/phones" element={<PagePhones />} />
         </Route>
