@@ -40,4 +40,4 @@ const Phones: React.FC = () => {
   );
 };
 
-export default Phones;
+export default PhonesPage;
