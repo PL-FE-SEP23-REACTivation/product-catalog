@@ -1,4 +1,5 @@
 import React from 'react';
+import Phones from './pages/Phones';
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/PageNotFound';
@@ -15,6 +16,7 @@ const App: React.FC = () => {
       <Header />
 
       <Routes>
+        <Route path="/phones" element={<Phones />} />
         <Route element={<CatalogLayout />}>
           <Route path="/phones" element={<PagePhones />} />
         </Route>
