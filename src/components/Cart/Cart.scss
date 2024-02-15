@@ -3,10 +3,10 @@
 @import '../../utils/variables.scss';
 
 .cart {
-  padding: 40px 152px 80px 152px;
   background-color: $color-white;
   font-family: Mont;
   align-items: center;
+  width: 100%;
 
   @include for-tablet {
     padding: 40px 24px 64px 24px;

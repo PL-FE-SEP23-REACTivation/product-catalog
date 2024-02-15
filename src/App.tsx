@@ -8,6 +8,7 @@ import { Cart } from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import { CartLayout } from './components/Layouts/CartLayout';
 import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
 import './styles/_reset.scss';
@@ -23,8 +24,8 @@ const App: React.FC = () => {
           <Route path="/phones/:id" element={<Productpage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/cart">
-          <Route index element={<Cart />} />
+        <Route element={<CartLayout />}>
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
       <Footer />
