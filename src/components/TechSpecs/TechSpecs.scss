@@ -1,0 +1,26 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.specs {
+}
+
+.spec {
+  font-family: Mont, 'sans-serif';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 30px;
+
+  &__name {
+    color: $color-secondary;
+  }
+  &__value {
+    color: $color-primary;
+    text-align: right;
+  }
+}
