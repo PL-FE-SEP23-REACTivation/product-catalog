@@ -1,4 +1,4 @@
 export type Description = {
-  title: string,
+  title: string;
   text: string[];
-}
+};
