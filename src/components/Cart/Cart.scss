@@ -3,11 +3,10 @@
 @import '../../utils/variables.scss';
 
 .cart {
-  padding: 40px 152px 80px 152px;
-  background-color: $color-hover-bg;
-
+  background-color: $color-white;
   font-family: Mont;
   align-items: center;
+  width: 100%;
 
   @include for-tablet {
     padding: 40px 24px 64px 24px;
@@ -28,7 +27,6 @@
 
       &__back {
         color: $color-secondary;
-
         font-size: 12px;
         font-style: normal;
         font-weight: 700;
@@ -38,7 +36,6 @@
       &__arrow {
         width: 16px;
         height: 16px;
-        margin-top: 11px;
       }
     }
 
@@ -86,7 +83,6 @@
 
   &__calculator-orders {
     align-self: flex-end;
-    border-radius: 16px;
     border: 1px solid $color-elements;
     display: flex;
     justify-content: center;
@@ -111,7 +107,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
+    width: 368px;
     height: 206px;
 
     @include for-phone {
@@ -179,7 +175,6 @@
       border: none;
       height: 40px;
       width: 160px;
-
       text-align: center;
       color: $color-white;
       font-size: 14px;
@@ -189,7 +184,7 @@
       margin: 24px;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px rgba(16, 20, 27, 0.4);
+        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
       }
 
       @include for-phone {
@@ -205,7 +200,6 @@
 
     &__checkout-orders {
       display: flex;
-      border-radius: 8px;
       background: $color-primary;
       border: none;
       height: 40px;
@@ -223,7 +217,7 @@
       margin: 24px;
 
       &:hover {
-        box-shadow: 0px 3px 13px 0px rgba(17, 21, 27, 0.4);
+        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
       }
 
       @include for-phone {
