@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__logo">
@@ -25,5 +24,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-
-export default Footer;
