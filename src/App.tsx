@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 import Phones from './pages/Phones';
 
@@ -7,15 +7,18 @@ import Footer from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Pagination } from './components/Pagination';
 import PageNotFound from './pages/PageNotFound';
+import HomePage from './pages/Home';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Link to="/">Home</Link>
-      <Link to="/phones">Phones</Link>
+      <Link to="/" />
+      <Link to="/phones" />
 
       <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/phones" element={<Phones />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
