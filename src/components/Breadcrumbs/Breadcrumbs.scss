@@ -1,0 +1,25 @@
+@import '../../utils/variables.scss';
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-family: Mont, 'sans-serif';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+
+  &_icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_text {
+    color: $color-secondary;
+  }
+
+  &_link {
+    color: $color-primary;
+  }
+}

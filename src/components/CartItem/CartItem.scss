@@ -1,0 +1,131 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.cartItem {
+  display: flex;
+  background-color: $color-white;
+  align-items: center;
+  border: 1px solid $color-elements;
+  gap: 24px;
+  height: 128px;
+  width: 100%;
+  padding: 24px;
+  justify-content: space-between;
+
+  @include for-phone {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    height: auto;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+
+    &-wraper {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include for-phone {
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__img {
+      width: 66px;
+      height: 66px;
+    }
+
+    &__close {
+      background-image: url('../../../public/icons/cross.svg');
+      width: 24px;
+      height: 24px;
+      margin-left: 24px;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      background-color: $color-white;
+      cursor: pointer;
+
+      @include for-phone {
+        margin-left: 0;
+      }
+    }
+
+    &__name {
+      color: $color-primary;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__calc {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+
+    &-wraper {
+      display: flex;
+      gap: 16px;
+      color: $color-primary;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include for-phone {
+      margin-left: 0;
+      margin-right: 0;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 22px;
+      width: 100%;
+    }
+
+    &__quantity {
+      width: 32px;
+      height: 32px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $color-white;
+      border: 1px solid $color-elements;
+      cursor: pointer;
+
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+
+    &__price {
+      width: 80px;
+      color: $color-primary;
+      text-align: right;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 140%;
+    }
+  }
+}
+
+.inactive {
+  color: $color-elements;
+}
