@@ -35,3 +35,26 @@
     padding: 24px 16px 64px 16px;
   }
 }
+
+.app__layout {
+  position: relative;
+  min-height: 100vh;
+
+  &-children {
+    padding-bottom: 259px;
+
+    @include for-desktop {
+      padding-bottom: 95px;
+    }
+
+    @include for-tablet {
+      padding-bottom: 64px;
+    }
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
