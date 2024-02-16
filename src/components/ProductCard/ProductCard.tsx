@@ -33,7 +33,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
       </div>
       <Link to={`/${product.category}/${product.id}`}>
-        <div className="card__title">{name}</div>
+        <div className="card__text">
+          <p className="card__title">{name}</p>
+        </div>
       </Link>
       <div className="card__price">
         {!isProductDiscount ? (
