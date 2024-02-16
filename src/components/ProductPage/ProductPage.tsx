@@ -4,6 +4,7 @@ import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
+import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 
@@ -74,10 +75,10 @@ const ProductPage: React.FC = () => {
       <div className="pp_title">
         Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
       </div>
-      <div className="pp_photos">photos</div>
-      <div className="pp_variants">
-        <ProductVariantSelector />
+      <div className="pp_photos">
+        <ProductGallery images={product.images} />
       </div>
+      <div className="pp_variants">variants</div>
       <div className="pp_about">about</div>
       <div className="pp_tech-specs">
         <TechSpec product={product} />
