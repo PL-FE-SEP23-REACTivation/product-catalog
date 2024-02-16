@@ -18,16 +18,15 @@ function request<T>(
     };
   }
 
-  return fetch(BASE_URL + url, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error();
-      }
+  return fetch(BASE_URL + url, options).then((response) => {
+    if (!response.ok) {
+      throw new Error();
+    }
 
-      return response.json();
-    });
+    return response.json();
+  });
 }
 
 export const client = {
-  get: <T>(url: string) => request<T>(url)
+  get: <T>(url: string) => request<T>(url),
 };
