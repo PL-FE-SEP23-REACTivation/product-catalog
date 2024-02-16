@@ -1,11 +1,12 @@
-import { FC, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { capitalize } from '../../utils/helpers';
+import classNames from 'classnames';
+import { FC, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { capitalize, getSearchParams } from '../../utils/helpers';
 import './Dropdown.scss';
 
 type Props = {
   name: string;
-  options: string[] | number[];
+  options: string[];
   paramName: string;
   className?: string;
 };
@@ -16,44 +17,51 @@ export const Dropdown: FC<Props> = ({
   paramName,
   className,
 }) => {
-  const [activeParam, setActiveParam] = useState(String(options[0]));
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchParams] = useSearchParams();
   const param = searchParams.get(paramName) || options[0];
-  const id = name.toLowerCase().replaceAll(' ', '-');
 
-  useEffect(() => {
-    searchParams.set(paramName, activeParam);
-    setSearchParams(searchParams);
-  }, [activeParam]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setActiveParam(event.target.value);
-    const select = document.getElementById(id);
-    select?.blur();
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   return (
-    <div className={`dropdown ${className}`}>
-      <label htmlFor={id} className="dropdown__label">
-        {name}
-      </label>
-      <select
-        name={id}
-        id={id}
-        className="dropdown__select select"
-        onChange={handleChange}
-        value={param}
+    <div
+      className={`dropdown ${className}`}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <p className="dropdown__label">{name}</p>
+      <button
+        className={classNames('dropdown__button', {
+          'dropdown__button--open': isOpen,
+        })}
       >
-        {options.map((option) => (
-          <option
-            key={option}
-            value={String(option).toLowerCase().replaceAll(' ', '-')}
-            className="select__option"
-          >
-            {typeof option === 'number' ? option : capitalize(option)}
-          </option>
-        ))}
-      </select>
+        {capitalize(param)}
+      </button>
+      <div className="dropdown__whitespace" />
+      <div
+        className={classNames('dropdown__options options', {
+          'dropdown__options--open': isOpen,
+        })}
+      >
+        {options.map((option) => {
+          const value = String(option).toLowerCase().replaceAll(' ', '-');
+          const newParams = getSearchParams(searchParams, [paramName, value]);
+          return (
+            <Link
+              key={option}
+              onClick={handleClose}
+              to={`?${newParams}`}
+              className={classNames('options__option', {
+                'options__option--active': value === param,
+              })}
+            >
+              {typeof option === 'number' ? option : capitalize(option)}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
