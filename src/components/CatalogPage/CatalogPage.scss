@@ -61,25 +61,27 @@
   &__dropdowns {
     display: flex;
     gap: 16px;
+  }
+}
 
-    &__sort-by {
-      @include for-tablet {
-        width: 187px;
-      }
-
-      @include for-desktop {
-        width: 176px;
-      }
+.dropdowns {
+  &__sort-by {
+    @include for-tablet {
+      width: 187px;
     }
 
-    &__per-page {
-      @include for-tablet {
-        width: 136px;
-      }
+    @include for-desktop {
+      width: 176px;
+    }
+  }
 
-      @include for-desktop {
-        width: 128px;
-      }
+  &__per-page {
+    @include for-tablet {
+      width: 136px;
+    }
+
+    @include for-desktop {
+      width: 128px;
     }
   }
 }

@@ -19,7 +19,7 @@ export const CatalogPage: FC<Props> = ({ path, products }) => {
         {path === 'Phones' ? 'Mobile Phones' : path}
       </h1>
       <div className="catalog_count">{`${products.length} models`}</div>
-      <div className="catalog__dropdowns">
+      <div className="catalog__dropdowns dropdowns">
         <Dropdown
           name="Sort by"
           options={['newest', 'oldest', 'highest price', 'lowest price']}
