@@ -4,6 +4,7 @@ import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
+import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
 import {
@@ -42,6 +43,7 @@ const ProductPage: React.FC = () => {
     recommended();
   }, []);
 
+
   return (
     <div className="pp">
       <div className="pp_header">
@@ -65,6 +67,7 @@ const ProductPage: React.FC = () => {
       {/* recommended products (12 pieces), ready data to put in recommend component with productCard */}
       <div className="pp_reccomended_goods">
         {recommended?.map((el) => <p key={el.id}>{el.name}</p>)}
+
       </div>
     </div>
   );
