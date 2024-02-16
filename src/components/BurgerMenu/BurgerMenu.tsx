@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './BurgerMenu.scss';
+import { Link } from 'react-router-dom';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -55,12 +58,18 @@ export const BurgerMenu = () => {
           </a>
         </div>
         <div className="menu_footer">
-          <a href="http#" className="menu_heart">
-            <p />
-          </a>
-          <a href="http#" className="menu_bag">
-            <p />
-          </a>
+          <Link to="/favourites" className="menu_footer_buttons">
+            <button type="button" className="menu_heart">
+              <span className="menu_heart-counter">
+                {favoriteProducts.length}
+              </span>
+            </button>
+          </Link>
+          <Link to="/cart" className="menu_footer_buttons">
+            <button type="button" className="menu_bag">
+              <span className="menu_bag-counter">0</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
