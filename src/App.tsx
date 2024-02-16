@@ -16,7 +16,7 @@ const App: React.FC = () => {
         <Route element={<AppLayout />}>
           <Route path="/phones" element={<Phones />} />
           <Route element={<ProductPageLayout />}>
-            <Route path="/phones/:id" element={<Productpage />} />
+            <Route path="/:category/:id" element={<Productpage />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
           <Route path="/cart">
