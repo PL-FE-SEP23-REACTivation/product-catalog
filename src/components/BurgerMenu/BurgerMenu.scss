@@ -130,31 +130,66 @@
     height: 64px;
     display: flex;
     justify-content: space-between;
+
+    &_buttons {
+      width: 100%;
+    }
   }
 
   &_heart {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/heart-like.svg);
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: -1px 0px 0px 0px $color-elements;
+    border: 1px solid $color-elements;
+    border-right: none;
+
+    &-counter {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2.5px solid $color-red;
+      font-size: 9px;
+      font-weight: 700;
+      background-color: $color-red;
+      color: white;
+      position: absolute;
+      left: 50%;
+      top: 30%;
+    }
   }
   &_bag {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/bag.svg);
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: -1px 0px 0px 0px $color-elements;
+    border: 1px solid $color-elements;
+
+    &-counter {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2.5px solid $color-red;
+      font-size: 9px;
+      font-weight: 700;
+      background-color: $color-red;
+      color: white;
+      position: absolute;
+      left: 50%;
+      top: 30%;
+    }
   }
 }
 
