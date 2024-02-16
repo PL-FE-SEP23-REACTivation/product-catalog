@@ -2,12 +2,6 @@
 // eslint-disable-next-line max-len
 const BASE_URL = 'https://reactivation.onrender.com';
 
-function wait(delay: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
 function request<T>(
@@ -24,8 +18,7 @@ function request<T>(
     };
   }
 
-  return wait(100)
-    .then(() => fetch(BASE_URL + url, options))
+  return fetch(BASE_URL + url, options)
     .then((response) => {
       if (!response.ok) {
         throw new Error();
