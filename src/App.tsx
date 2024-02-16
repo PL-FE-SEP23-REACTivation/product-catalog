@@ -11,13 +11,16 @@ import './styles/_reset.scss';
 import AppLayout from './components/Layouts/AppLayout';
 import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
 import FavouritesPage from './components/FavouritesPage/FavouritesPage';
+import { CatalogLayout } from './components/Layouts/CatalogLayout';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/phones" element={<Phones />} />
+          <Route element={<CatalogLayout />}>
+            <Route path="/phones" element={<Phones />} />
+          </Route>
           <Route element={<ProductPageLayout />}>
             <Route path="/phones/:id" element={<Productpage />} />
           </Route>

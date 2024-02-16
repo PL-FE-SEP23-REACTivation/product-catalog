@@ -11,6 +11,7 @@ const Phones: React.FC = () => {
       .map((phone) => ({
         id: phone.id,
         category: 'phones',
+        itemId: phone.itemId,
         name: phone.name,
         fullPrice: phone.fullPrice,
         price: phone.price,
@@ -18,6 +19,7 @@ const Phones: React.FC = () => {
         capacity: phone.capacity,
         color: phone.color,
         ram: phone.ram,
+        year: phone.year,
         image: phone.image,
       }));
 
