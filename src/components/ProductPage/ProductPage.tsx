@@ -78,7 +78,9 @@ const ProductPage: React.FC = () => {
       <div className="pp_photos">
         <ProductGallery images={product.images} />
       </div>
-      <div className="pp_variants">variants</div>
+      <div className="pp_variants">
+        <ProductVariantSelector product={product} />
+      </div>
       <div className="pp_about">about</div>
       <div className="pp_tech-specs">
         <TechSpec product={product} />

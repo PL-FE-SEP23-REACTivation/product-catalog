@@ -113,11 +113,13 @@
     }
   }
   &_variants {
+    margin-top: 40px;
+
     @include for-desktop() {
-      grid-column: 14 / 24;
+      grid-column: 14 / 21;
     }
     @include for-tablet() {
-      grid-column: 8 / 12;
+      grid-column: 8 / 13;
     }
     @include for-phone() {
       grid-column: 1 / 5;
@@ -137,12 +139,15 @@
   }
   &_tech-specs {
     @include for-desktop() {
-      grid-column: 14 / 24;
+      margin-top: 80px;
+      grid-column: 14 / 25;
     }
     @include for-tablet() {
-      grid-column: 1 / 12;
+      margin-top: 64px;
+      grid-column: 1 / 13;
     }
     @include for-phone() {
+      margin-top: 56px;
       grid-column: 1 / 5;
     }
   }

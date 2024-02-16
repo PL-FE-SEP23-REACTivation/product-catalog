@@ -24,6 +24,10 @@
       object-fit: contain;
       border: 1px solid $color-elements;
 
+      &_selected {
+        border: 1px solid $color-primary;
+      }
+
       @include for-desktop() {
         height: 80px;
         width: 80px;

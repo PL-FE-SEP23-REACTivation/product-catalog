@@ -3,6 +3,7 @@
 .product-page_layout_container {
   display: flex;
   max-width: 1200px;
+  justify-content: center;
   margin: 0 auto;
   @include for-desktop() {
     padding: 24px 32px 81px 32px;
