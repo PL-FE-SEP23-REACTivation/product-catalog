@@ -8,12 +8,14 @@ import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
 import './styles/_reset.scss';
 import AppLayout from './components/Layouts/AppLayout';
+import HomePage from './pages/Home';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
+          <Route path="/" element={<HomePage />} />
           <Route path="/phones" element={<Phones />} />
           <Route element={<ProductPageLayout />}>
             <Route path="/phones/:id" element={<Productpage />} />
