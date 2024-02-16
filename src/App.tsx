@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -8,6 +9,8 @@ import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
 import './styles/_reset.scss';
 import AppLayout from './components/Layouts/AppLayout';
+import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
+import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 
 const App: React.FC = () => {
   return (
@@ -21,6 +24,9 @@ const App: React.FC = () => {
           <Route path="*" element={<PageNotFound />} />
           <Route path="/cart">
             <Route index element={<Cart />} />
+          </Route>
+          <Route element={<FavouritesPageLayout />}>
+            <Route path="/favourites" element={<FavouritesPage />} />
           </Route>
         </Route>
       </Routes>
