@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   height: 64px;
+  border-bottom: 1px solid $color-elements;
 
   @include for-phone() {
     height: auto;
@@ -74,17 +75,20 @@
   }
 
   &__buttons {
+    margin-top: -1px;
     display: flex;
 
     &__like {
+      position: relative;
       background-image: url('../../../public/icons/heart-like.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 64px;
       height: 64px;
       background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-      border: none;
+      border: 1px solid $color-elements;
+      border-bottom: none;
+      cursor: pointer;
 
       @include for-phone() {
         display: none;
@@ -93,6 +97,20 @@
       @include for-tablet() {
         height: 48px;
         width: 48px;
+      }
+
+      &-counter {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 2.5px solid $color-red;
+        font-size: 9px;
+        font-weight: 700;
+        background-color: $color-red;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 30%;
       }
     }
 
@@ -103,8 +121,7 @@
       width: 64px;
       height: 64px;
       background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-      border: none;
+      border-left: 1px solid $color-elements;
 
       @include for-tablet() {
         height: 48px;
