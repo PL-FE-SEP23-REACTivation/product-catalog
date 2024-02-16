@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Carousel.scss';
 import image1 from './banner-accessories.png';
+import image2 from './banner-phones.png';
+import image3 from './banner-tablets.png';
 
 const Carousel: React.FC = () => {
   const settings = {
@@ -11,12 +13,7 @@ const Carousel: React.FC = () => {
     infinite: true,
   };
 
-  const images = [
-    image1,
-    'https://tiny.pl/dhghl',
-    'https://tiny.pl/dhgh4',
-    'https://tiny.pl/dhghn',
-  ];
+  const images = [image1, image2, image3];
 
   const [currentImgPosition, setCurrentImgPosition] = useState(0);
   const finalImgPosition = images.length - settings.frameSize;
