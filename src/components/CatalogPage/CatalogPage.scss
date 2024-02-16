@@ -2,7 +2,7 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/variables.scss';
 
-.phones {
+.catalog {
   width: 100%;
 
   &_title {
@@ -23,16 +23,17 @@
     font-weight: 800;
     line-height: 56px;
     letter-spacing: -0.01em;
+    margin-bottom: 8px;
   }
 
   &_count {
-    margin-top: 8px;
     font-family: Mont;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
     letter-spacing: 0em;
     color: $color-secondary;
+    margin-bottom: 32px;
   }
 
   &_cards {
@@ -56,24 +57,29 @@
       margin-top: 24px;
     }
   }
-}
 
-.icons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
 
-  &_icon {
-    width: 16px;
-    height: 16px;
-  }
+    &__sort-by {
+      @include for-tablet {
+        width: 187px;
+      }
 
-  &_text {
-    font-family: Mont;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
-    color: $color-secondary;
+      @include for-desktop {
+        width: 176px;
+      }
+    }
+
+    &__per-page {
+      @include for-tablet {
+        width: 136px;
+      }
+
+      @include for-desktop {
+        width: 128px;
+      }
+    }
   }
 }
