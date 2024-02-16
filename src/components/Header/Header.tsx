@@ -1,8 +1,11 @@
+/* eslint-disable max-len */
 import { Link } from 'react-router-dom';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './Header.scss';
 
 export const Header = () => {
+  const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   return (
     <>
       <header className="header">
@@ -41,7 +44,13 @@ export const Header = () => {
         </div>
 
         <div className="header__buttons">
-          <button type="button" className="header__buttons__like" />
+          <Link to="/favourites" className="header__buttons__like-link">
+            <button type="button" className="header__buttons__like">
+              <span className="header__buttons__like-counter">
+                {favoriteProducts.length}
+              </span>
+            </button>
+          </Link>
           <Link to="/cart" className="header__buttons__cart" />
         </div>
       </header>
