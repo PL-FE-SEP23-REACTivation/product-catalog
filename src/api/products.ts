@@ -30,6 +30,12 @@ export const getProductByIdAndCategory = async (
   return await client.get<DetailedProduct>(`/${category}/${productId}`);
 };
 
+//for /home Brand new models section
 export const getHotProducts = () => {
   return client.get<Product[]>('/products/discount');
+};
+
+//for /home Hot prices section
+export const getNewProducts = () => {
+  return client.get<Product[]>('/products/new');
 };

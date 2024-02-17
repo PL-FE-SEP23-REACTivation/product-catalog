@@ -1,16 +1,24 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import './NewProducts.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
+// import { Product } from '../../../types/productType';
+// import { getNewProducts } from '../../../api/products';
 
 const NewProducts: React.FC = () => {
   //ready to use fetching data from db
-  {
-    /*
+  // const [products, setProducts] = useState<Product[]>([]);
 
-  */
-  }
+  // useEffect(() => {
+  //   const getBrandNewProducts = async () => {
+  //     await getNewProducts()
+  //       .then(data => setProducts(data))
+  //       .catch(e => console.log(e));
+  //   };
 
-  //demo data
+  //   getBrandNewProducts();
+  // }, []);
+
+  //demo data => delete below product after using useEffect
   const product = {
     id: 1,
     category: 'phones',
@@ -29,6 +37,9 @@ const NewProducts: React.FC = () => {
   return (
     <>
       <h2>Brand new models</h2>
+      {/* {products.map(product=>
+        <ProductCard product={product} key={product.id} />
+      )} */}
       <ProductCard product={product} />
     </>
   );
