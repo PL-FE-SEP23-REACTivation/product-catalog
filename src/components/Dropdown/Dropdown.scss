@@ -1,0 +1,80 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.dropdown {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  font-family: Mont, 'sans-serif';
+  width: 50%;
+  position: relative;
+
+  &__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 4px;
+    color: $color-secondary;
+  }
+
+  &__whitespace {
+    height: 4px;
+    position: relative;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    font-family: Mont, 'sans-serif';
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    height: 40px;
+    padding-left: 12px;
+    padding-right: 40px;
+    -moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+    background: url(../../icons/arrow-down.svg) no-repeat;
+    background-position: right 12px top 50%;
+    border: $color-icons 1px solid;
+    outline: none;
+
+    &--open {
+      background-image: url(../../icons/arrow-up.svg);
+      border-color: $color-primary;
+    }
+  }
+
+  &__options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+    backdrop-filter: blur(2px);
+    padding: 8px 0px;
+
+    &--open {
+      display: block;
+    }
+  }
+}
+
+.options {
+  &__option {
+    display: flex;
+    font-weight: 500;
+    color: $color-secondary;
+    background: none;
+    height: 32px;
+    align-items: center;
+    padding-left: 8px;
+
+    &:hover {
+      background-color: $color-hover-bg;
+      color: $color-primary;
+    }
+  }
+}

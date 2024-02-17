@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
+import { useTContext } from '../../store/cartStore';
 import './Header.scss';
 
 export const Header = () => {
+  const { cart } = useTContext();
+
+  // eslint-disable-next-line max-len
+  const cartItemsCount = cart.reduce(
+    (total, item) => total + (item.quantity ?? 0),
+    0
+  );
+
   return (
     <>
       <header className="header">
@@ -42,7 +51,13 @@ export const Header = () => {
 
         <div className="header__buttons">
           <button type="button" className="header__buttons__like" />
-          <Link to="/cart" className="header__buttons__cart" />
+          <Link to="/cart" className="header__buttons__cart">
+            {cartItemsCount > 0 && (
+              <div className="header__buttons__cart__circle">
+                {cartItemsCount}
+              </div>
+            )}
+          </Link>
         </div>
       </header>
       <div className="burger-menu-container">
