@@ -1,9 +1,24 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import './HotPrices.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
+// import { Product } from '../../../types/productType';
+// import { getHotProducts } from '../../../api/products';
 
 const HotPrices: React.FC = () => {
-  //demo data
+  //ready to use fetching data from db
+  // const [products, setProducts] = useState<Product[]>([]);
+
+  // useEffect(() => {
+  //   const getHotPriceProducts = async () => {
+  //     await getHotProducts()
+  //       .then(data => setProducts(data))
+  //       .catch(e => console.log(e));
+  //   };
+
+  //   getHotPriceProducts();
+  // }, []);
+
+  //demo data => delete below product after using useEffect
   const product = {
     id: 1,
     category: 'phones',
@@ -18,10 +33,12 @@ const HotPrices: React.FC = () => {
     year: 2016,
     image: 'img/phones/apple-iphone-7/black/00.webp',
   };
-
   return (
     <>
       <h2>Hot prices</h2>
+      {/* {products.map(product=>
+        <ProductCard product={product} key={product.id} />
+      )} */}
       <ProductCard product={product} />
     </>
   );

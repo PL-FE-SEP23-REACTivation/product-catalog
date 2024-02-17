@@ -3,6 +3,13 @@ import './NewProducts.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
 
 const NewProducts: React.FC = () => {
+  //ready to use fetching data from db
+  {
+    /*
+
+  */
+  }
+
   //demo data
   const product = {
     id: 1,

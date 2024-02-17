@@ -29,3 +29,7 @@ export const getProductByIdAndCategory = async (
 ) => {
   return await client.get<DetailedProduct>(`/${category}/${productId}`);
 };
+
+export const getHotProducts = () => {
+  return client.get<Product[]>('/products/discount');
+};
