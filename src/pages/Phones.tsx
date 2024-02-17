@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import phonesData from '../assets/api/products.json';
-import { ProductCard } from '../components//ProductCard/ProductCard';
+import { CatalogPage } from '../components/CatalogPage/CatalogPage';
 import { Product } from '../types/productType';
+
 const Phones: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
 
@@ -24,15 +25,7 @@ const Phones: React.FC = () => {
     setPhones(mappedPhones);
   }, []);
 
-  return (
-    <div>
-      <div className="product-grid">
-        {phones.map((phone) => (
-          <ProductCard key={phone.id} product={phone} />
-        ))}
-      </div>
-    </div>
-  );
+  return <CatalogPage products={phones} path="Phones" />;
 };
 
 export default Phones;
