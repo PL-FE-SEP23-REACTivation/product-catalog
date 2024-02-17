@@ -44,7 +44,7 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
-        <button type="button" className="header__buttons__like" />
+        <Link to="/favourites" className="header__buttons__like" />
         <Link to="/cart" className="header__buttons__cart">
           {cartItemsCount > 0 && (
             <div className="header__buttons__cart__circle">

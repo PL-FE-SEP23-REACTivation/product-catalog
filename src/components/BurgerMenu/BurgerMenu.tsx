@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
@@ -20,12 +21,9 @@ export const BurgerMenu = () => {
     <div className="burger-menu">
       <header className="headerMobile" id="headerMobile">
         <div className="headerMobile_nav">
-          <a
-            href="index.html"
-            className="headerMobile_link headerMobile_link--logo"
-          >
+          <Link to="/" className="headerMobile_link headerMobile_link--logo">
             <p />
-          </a>
+          </Link>
           <div className="headerMobile_buttons">
             <button
               className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
@@ -47,26 +45,22 @@ export const BurgerMenu = () => {
 
       <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="links menu_links">
-          <a href="http#" className="menu_link">
+          <Link to="/" className="menu_link" onClick={toggleMenu}>
             home
-          </a>
-          <a href="http#" className="menu_link">
+          </Link>
+          <Link to="/phones" className="menu_link" onClick={toggleMenu}>
             PHONES
-          </a>
-          <a href="http#" className="menu_link">
+          </Link>
+          <Link to="/tablets" className="menu_link" onClick={toggleMenu}>
             TABLETS
-          </a>
-          <a href="http#" className="menu_link">
+          </Link>
+          <Link to="/accessories" className="menu_link" onClick={toggleMenu}>
             ACCESSORIES
-          </a>
+          </Link>
         </div>
         <div className="menu_footer">
-          <a href="http#" className="menu_heart">
-            <p />
-          </a>
-          <a href="http#" className="menu_bag">
-            <p />
-          </a>
+          <Link to="/favourites" className="menu_heart" onClick={toggleMenu} />
+          <Link to="/cart" className="menu_bag" onClick={toggleMenu} />
         </div>
       </div>
     </div>
