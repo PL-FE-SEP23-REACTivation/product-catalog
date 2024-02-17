@@ -4,20 +4,20 @@ import { Product } from '../../types/productType';
 import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-
+import { useTContext } from '../../store/cartStore';
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const { name, fullPrice, price, screen, capacity, ram, image } = product;
-
   const isProductDiscount = fullPrice !== price;
-
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
+  const { setCart } = useTContext();
 
   const handleAddToCart = () => {
+    setCart((prevCart) => [...(prevCart as Product[]), product]);
     setIsAddedToCart(true);
   };
 
