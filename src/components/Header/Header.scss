@@ -2,7 +2,15 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/variables.scss';
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .header {
+  @include for-phone {
+    display: none;
+  }
+
   background-color: $color-white;
   display: flex;
   justify-content: space-between;
@@ -13,24 +21,24 @@
   z-index: 1;
   border-bottom: 1px solid $color-elements;
 
-  @include for-phone() {
-    height: auto;
-  }
-
   @include for-tablet() {
     height: 48px;
   }
 
   &__logo {
-    margin: 18px 48px 18px 24px;
     flex: 1;
-    @include for-tablet() {
-      margin: 13px 32px 13px 16px;
+    img {
+      height: 22px;
+      padding-left: 16px;
+      padding-right: 32px;
+
+      @include for-desktop() {
+        height: 28px;
+        padding-left: 24px;
+        padding-right: 48px;
+      }
     }
-    @include for-phone() {
-      display: none;
-      margin-top: 10px 0;
-    }
+
     &__item {
       width: 64px;
       height: 22px;
@@ -43,6 +51,12 @@
 
   &__container {
     display: flex;
+    align-items: center;
+    height: 64px;
+
+    @include for-tablet() {
+      height: 48px;
+    }
   }
 
   &__nav {
@@ -56,22 +70,46 @@
       @include for-tablet() {
         gap: 32px;
       }
-      @include for-phone() {
-        display: none;
-        margin-top: 10px 0;
-      }
 
       &__item {
+        display: flex;
+        height: 100%;
+        align-items: center;
         &__link {
+          box-sizing: content-box;
+          line-height: 48px;
           color: $color-secondary;
           text-decoration: none;
           font-family: Mont;
           font-size: 12px;
           font-style: normal;
           font-weight: 800;
-          line-height: 11px;
           letter-spacing: 0.48px;
           text-transform: uppercase;
+
+          @include for-desktop() {
+            line-height: 64px;
+          }
+
+          &:hover {
+            position: relative;
+            color: $color-primary;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 45px;
+              left: 0;
+              right: 0;
+              height: 3px;
+              width: auto;
+              background-color: $color-primary;
+
+              @include for-desktop() {
+                top: 61px;
+              }
+            }
+          }
         }
       }
     }
@@ -132,13 +170,5 @@
         right: 10px;
       }
     }
-  }
-}
-
-.burger-menu-container {
-  display: none;
-
-  @include for-phone() {
-    display: block;
   }
 }

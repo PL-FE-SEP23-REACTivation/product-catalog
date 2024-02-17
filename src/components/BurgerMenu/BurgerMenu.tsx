@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.querySelector('body')?.classList.add('no-scroll');
+    } else {
+      document.querySelector('body')?.classList.remove('no-scroll');
+    }
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -19,22 +27,20 @@ export const BurgerMenu = () => {
             <p />
           </a>
           <div className="headerMobile_buttons">
-            <a href="#nav" className="header_link">
-              <button
-                className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
-                onClick={toggleMenu}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    toggleMenu();
-                  }
-                }}
-                tabIndex={0}
-                type="button"
-              >
-                <p />
-              </button>
-              <div className="header_burger" />
-            </a>
+            <button
+              className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
+              onClick={toggleMenu}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  toggleMenu();
+                }
+              }}
+              tabIndex={0}
+              type="button"
+            >
+              <p />
+            </button>
+            <div className="header_burger" />
           </div>
         </div>
       </header>
