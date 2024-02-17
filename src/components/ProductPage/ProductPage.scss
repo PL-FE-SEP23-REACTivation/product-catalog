@@ -100,14 +100,16 @@
   }
 
   &_photos {
+    margin-top: 40px;
     @include for-desktop() {
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
     }
     @include for-tablet() {
       grid-column: 1 / 7;
     }
     @include for-phone() {
       grid-column: 1 / 5;
+      margin-top: 32px;
     }
   }
   &_variants {
