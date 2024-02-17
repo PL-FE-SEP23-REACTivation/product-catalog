@@ -43,7 +43,6 @@ const ProductPage: React.FC = () => {
     recommended();
   }, []);
 
-
   return (
     <div className="pp">
       <div className="pp_header">
@@ -67,7 +66,6 @@ const ProductPage: React.FC = () => {
       {/* recommended products (12 pieces), ready data to put in recommend component with productCard */}
       <div className="pp_reccomended_goods">
         {recommended?.map((el) => <p key={el.id}>{el.name}</p>)}
-
       </div>
     </div>
   );
