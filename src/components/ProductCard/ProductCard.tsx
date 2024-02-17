@@ -16,6 +16,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
   const { setCart } = useTContext();
 
+  console.log(product);
+
   const handleAddToCart = () => {
     setCart((prevCart) => [...(prevCart as Product[]), product]);
     setIsAddedToCart(true);
@@ -38,7 +40,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </Link>
       <div className="card__price">
-        {!isProductDiscount ? (
+        {isProductDiscount ? (
           <>
             <div className="card__price-regular">{price}</div>
             <div className="card__price-discount">{fullPrice}</div>

@@ -14,7 +14,7 @@ export const getProductByItemId = (id: string) => {
 
 //for path /:category (need change route)
 export const getProductsByCategorie = (categorie: string) => {
-  return client.get<Product[]>(`/${categorie}`);
+  return client.get<Product[]>(`/products/${categorie}`);
 };
 
 //for /products/:id/recommended (ProductPage)
