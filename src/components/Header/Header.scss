@@ -15,14 +15,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 48px;
   position: sticky;
   top: 0;
   z-index: 1;
   border-bottom: 1px solid $color-elements;
 
-  @include for-tablet() {
-    height: 48px;
+  @include for-desktop() {
+    height: 64px;
   }
 
   &__logo {
@@ -52,10 +52,10 @@
   &__container {
     display: flex;
     align-items: center;
-    height: 64px;
+    height: 48px;
 
-    @include for-tablet() {
-      height: 48px;
+    @include for-desktop() {
+      height: 64px;
     }
   }
 
@@ -64,11 +64,11 @@
 
     &__list {
       display: flex;
-      gap: 64px;
+      gap: 32px;
       list-style-type: none;
       align-items: center;
-      @include for-tablet() {
-        gap: 32px;
+      @include for-desktop() {
+        gap: 64px;
       }
 
       &__item {
@@ -123,8 +123,8 @@
       background-image: url('../../../public/icons/heart-like.svg');
       background-repeat: no-repeat;
       background-position: center;
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       background-color: $color-white;
       box-shadow: -1px 0px 0px 0px $color-elements;
       border: none;
@@ -133,9 +133,9 @@
         display: none;
       }
 
-      @include for-tablet() {
-        height: 48px;
-        width: 48px;
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
       }
     }
 
@@ -143,14 +143,14 @@
       background-image: url('../../../public/icons/bag.svg');
       background-repeat: no-repeat;
       background-position: center;
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       background-color: $color-white;
       box-shadow: -1px 0px 0px 0px $color-elements;
 
-      @include for-tablet() {
-        height: 48px;
-        width: 48px;
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
       }
       @include for-phone() {
         display: none;
