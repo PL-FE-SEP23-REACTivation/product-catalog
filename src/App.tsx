@@ -1,17 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Catalog from './pages/Catalog';
-import './styles/_reset.scss';
-import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
 import { CatalogLayout } from './components/Layouts/CatalogLayout';
 import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import CartPage from './pages/CartPage';
+import Catalog from './pages/Catalog';
 import HomePage from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
-import Phones from './pages/Phones';
 import Productpage from './pages/ProductPage';
 import { CartProvider } from './store/cartStore';
 import './styles/_reset.scss';
