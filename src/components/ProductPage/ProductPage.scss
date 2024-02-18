@@ -128,12 +128,15 @@
 
   &_about {
     @include for-desktop() {
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
+      margin-top: 80px;
     }
     @include for-tablet() {
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
+      margin-top: 64px;
     }
     @include for-phone() {
+      margin-top: 56px;
       grid-column: 1 / 5;
     }
   }

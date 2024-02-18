@@ -8,6 +8,7 @@ import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 import { DetailedProduct } from '../../types/detailedProductType';
+import { About } from '../About/About';
 
 const ProductPage: React.FC = () => {
   const [product, setProduct] = useState<DetailedProduct>({
@@ -94,7 +95,9 @@ const ProductPage: React.FC = () => {
           setSelectedImg={setSelectedImg}
         />
       </div>
-      <div className="pp_about">about</div>
+      <div className="pp_about">
+        <About description={product.description} />
+      </div>
       <div className="pp_tech-specs">
         <TechSpec product={product} />
       </div>

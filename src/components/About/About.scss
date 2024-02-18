@@ -1,0 +1,26 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.about-title {
+  font-family: Mont;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0em;
+  color: $color-primary;
+  margin-bottom: 16px;
+
+  &-1 {
+    margin-top: 32px;
+  }
+}
+
+.about-text {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0em;
+  color: $color-secondary;
+}
