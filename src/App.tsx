@@ -1,5 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Catalog from './pages/Catalog';
+import './styles/_reset.scss';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
 import { CatalogLayout } from './components/Layouts/CatalogLayout';
@@ -22,10 +25,10 @@ const App: React.FC = () => {
           <Route element={<AppLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route element={<CatalogLayout />}>
-              <Route path="/phones" element={<Phones />} />
+              <Route path="/:catalog" element={<Catalog />} />
             </Route>
             <Route element={<ProductPageLayout />}>
-              <Route path="/phones/:id" element={<Productpage />} />
+              <Route path="/:category/:id" element={<Productpage />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
             <Route element={<CartLayout />}>
