@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
@@ -7,9 +7,10 @@ import { TechSpec } from '../TechSpecs/TechSpecs';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
+import { DetailedProduct } from '../../types/detailedProductType';
 
 const ProductPage: React.FC = () => {
-  const product = {
+  const [product, setProduct] = useState<DetailedProduct>({
     id: 'apple-iphone-11-128gb-black',
     namespaceId: 'apple-iphone-11',
     name: 'Apple iPhone 11 128GB Black',
@@ -55,7 +56,11 @@ const ProductPage: React.FC = () => {
     camera: '12 Mp + 12 Mp + 12MP',
     zoom: 'Digital, 5x',
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-  };
+  });
+
+  const [selectedImg, setSelectedImg] = useState<string>(
+    `${process.env.PUBLIC_URL}/${product.images[0]}`
+  );
 
   return (
     <div className="pp">
@@ -76,10 +81,18 @@ const ProductPage: React.FC = () => {
         Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
       </div>
       <div className="pp_photos">
-        <ProductGallery images={product.images} />
+        <ProductGallery
+          images={product.images}
+          selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg}
+        />
       </div>
       <div className="pp_variants">
-        <ProductVariantSelector product={product} />
+        <ProductVariantSelector
+          product={product}
+          setProduct={setProduct}
+          setSelectedImg={setSelectedImg}
+        />
       </div>
       <div className="pp_about">about</div>
       <div className="pp_tech-specs">
