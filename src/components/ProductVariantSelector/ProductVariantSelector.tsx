@@ -42,20 +42,20 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
       <div className="variants_text-1">Avaliable Colors</div>
       <div className="variants_colors">
         {colorsAvailable.map((color, index) => (
-          <div
+          <button
             key={index}
             className={classNames('variants_colors_value', {
               variants_colors_value_picked: color === selectedColor,
             })}
             style={{ backgroundColor: color }}
             onClick={() => handleColorSelect(color)}
-          ></div>
+          ></button>
         ))}
       </div>
       <div className="variants_text-2">Select capacity</div>
       <div className="variants_capacity">
         {capacityAvailable.map((cpc, index) => (
-          <div
+          <button
             key={index}
             className={classNames('variants_capacity_block', {
               'selected-capacity': selectedCapacity === cpc,
@@ -63,7 +63,7 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
             onClick={() => handleCapacityClick(cpc)}
           >
             <p className="variants_capacity_text">{cpc.replace('GB', ' GB')}</p>
-          </div>
+          </button>
         ))}
       </div>
       <div className="variants_price">

@@ -146,6 +146,7 @@
       border: 1px solid $color-icons;
       width: 48px;
       flex-shrink: 0;
+      background: none;
 
       &_selected {
         border: 1px solid $color-elements;

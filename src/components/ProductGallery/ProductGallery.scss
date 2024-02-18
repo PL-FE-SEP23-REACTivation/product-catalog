@@ -23,6 +23,7 @@
     &_item {
       object-fit: contain;
       border: 1px solid $color-elements;
+      cursor: pointer;
 
       &_selected {
         border: 1px solid $color-primary;
