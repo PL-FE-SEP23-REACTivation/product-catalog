@@ -77,7 +77,7 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
           })}
           onClick={handleAddToCart}
         >
-          Add to cart
+          {isAdded ? 'Added' : 'Add to cart'}
         </button>
         <button
           className={classNames('variants_buttons_favourite', {

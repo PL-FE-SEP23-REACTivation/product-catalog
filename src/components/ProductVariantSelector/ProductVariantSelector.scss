@@ -31,7 +31,7 @@
 
       &::after {
         content: '';
-        border: 1px solid transparent;
+        border: 1px solid $color-elements;
         position: absolute;
         top: -3px;
         bottom: -3px;
