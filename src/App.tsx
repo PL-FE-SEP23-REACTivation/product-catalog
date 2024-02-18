@@ -1,25 +1,33 @@
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Phones from './pages/Phones';
+import './styles/_reset.scss';
 
+import { Cart } from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { Pagination } from './components/Pagination';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import { CartLayout } from './components/Layouts/CartLayout';
 import PageNotFound from './pages/PageNotFound';
+import Productpage from './pages/ProductPage';
+import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Link to="/">Home</Link>
-      <Link to="/phones">Phones</Link>
 
       <Routes>
         <Route path="/phones" element={<Phones />} />
+        <Route element={<ProductPageLayout />}>
+          <Route path="/phones/:id" element={<Productpage />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
+        <Route element={<CartLayout />}>
+          <Route path="/cart" element={<Cart />} />
+        </Route>
       </Routes>
-      <Pagination total={30} perPage={6} />
       <Footer />
     </BrowserRouter>
   );

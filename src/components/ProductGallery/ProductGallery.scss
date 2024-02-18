@@ -1,0 +1,66 @@
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.gallery {
+  display: flex;
+  @include for-phone() {
+    flex-direction: column-reverse;
+  }
+
+  &_allImages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 80px;
+
+    @include for-phone() {
+      flex-direction: row;
+      width: 100%;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    &_item {
+      object-fit: contain;
+      border: 1px solid $color-elements;
+      cursor: pointer;
+
+      &_selected {
+        border: 1px solid $color-primary;
+      }
+
+      @include for-desktop() {
+        height: 80px;
+        width: 80px;
+      }
+      @include for-tablet() {
+        height: 35px;
+        width: 35px;
+      }
+      @include for-phone() {
+        height: 49px;
+        width: 52px;
+      }
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+  }
+
+  &_selectedImage {
+    height: 464px;
+    width: 100%;
+    object-fit: contain;
+
+    @include for-desktop() {
+      height: 464px;
+    }
+    @include for-tablet() {
+      height: 287px;
+    }
+    @include for-phone() {
+      height: 288px;
+    }
+  }
+}
