@@ -6,16 +6,20 @@ import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
 import { CatalogLayout } from './components/Layouts/CatalogLayout';
-import PageNotFound from './pages/PageNotFound';
-import Productpage from './pages/ProductPage';
-import './styles/_reset.scss';
-import { CartProvider } from './store/cartStore';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import CartPage from './pages/CartPage';
 import HomePage from './pages/Home';
+import PageNotFound from './pages/PageNotFound';
+import Phones from './pages/Phones';
+import Productpage from './pages/ProductPage';
+import { CartProvider } from './store/cartStore';
+import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <CartProvider>
         <Routes>
           <Route element={<AppLayout />}>
