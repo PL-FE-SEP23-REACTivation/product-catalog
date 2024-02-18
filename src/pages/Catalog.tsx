@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import phonesData from '../assets/api/products.json';
 import { CatalogPage } from '../components/CatalogPage/CatalogPage';
 import { Product } from '../types/productType';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { getProductsByCategorie } from '../api/products';
 
 const Catalog: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const { catalog } = useParams();
+  const [searchParams] = useSearchParams();
+  const sortBy = searchParams.get('sortBy') || 'oldest';
+  const perPage = searchParams.get('perPage') || 16;
+  const page = searchParams.get('page') || 1;
+
+  console.log(sortBy, perPage, page);
 
   let pathName: 'Phones' | 'Tablets' | 'Accessories';
 
@@ -28,14 +34,20 @@ const Catalog: React.FC = () => {
   useEffect(() => {
     const getProducts = async () => {
       if (catalog) {
-        await getProductsByCategorie(catalog)
+        await getProductsByCategorie(
+          `${catalog}?sortBy=${sortBy}&perPage=${perPage}&page=${page}`
+        )
           .then((data) => setProducts(data))
           .catch((e) => console.log(e));
       }
     };
 
     getProducts();
-  }, [catalog]);
+  }, [catalog, sortBy, perPage, page]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
 
   return <CatalogPage products={products} path={pathName} />;
 };

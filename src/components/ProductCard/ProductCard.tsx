@@ -16,8 +16,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
   const { setCart } = useTContext();
 
-  console.log(product);
-
   const handleAddToCart = () => {
     setCart((prevCart) => [...(prevCart as Product[]), product]);
     setIsAddedToCart(true);
