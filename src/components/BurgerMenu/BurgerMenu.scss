@@ -1,5 +1,6 @@
 @import '../../utils/fonts.scss';
 @import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 
 .headerMobile {
   background: $color-white;
@@ -19,7 +20,7 @@
     align-items: center;
     width: 100vw;
     height: 48px;
-    align-self: left;
+    border-bottom: 1px solid $color-elements;
   }
 
   &_buttons {
@@ -43,6 +44,17 @@
   justify-content: space-between;
   background-color: $color-primary;
   color: $color-white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @include for-tablet() {
+    display: none;
+  }
+
+  @include for-desktop() {
+    display: none;
+  }
 }
 
 .burger-icon {
@@ -81,7 +93,7 @@
   right: 0;
   background-color: $color-white;
   width: 100%;
-  height: 95%;
+  height: calc(100vh - 48px);
   transition: 0.4s;
   transform: translateX(-100%);
   z-index: 1;
@@ -130,6 +142,7 @@
     height: 64px;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid $color-elements;
   }
 
   &_heart {
