@@ -10,7 +10,8 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = product;
+  const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
+    product;
   const isProductDiscount = fullPrice !== price;
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
@@ -28,11 +29,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="card">
       <div className="card__imgContainer">
-        <Link to={`/${product.category}/${product.id}`}>
+        <Link to={`/${product.category}/${itemId}`}>
           <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`${name}`} />
         </Link>
       </div>
-      <Link to={`/${product.category}/${product.id}`}>
+      <Link to={`/${product.category}/${itemId}`}>
         <div className="card__text">
           <p className="card__title">{name}</p>
         </div>

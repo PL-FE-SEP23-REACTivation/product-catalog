@@ -29,3 +29,8 @@ export const getProductByIdAndCategory = async (
 ) => {
   return await client.get<DetailedProduct>(`/${category}/${productId}`);
 };
+
+//to enter the number of products in category
+export const getQuantityByCategory = (category: string) => {
+  return client.get<Product[]>(`/${category}/quantity`);
+};
