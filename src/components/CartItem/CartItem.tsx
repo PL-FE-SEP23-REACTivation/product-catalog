@@ -1,9 +1,9 @@
 /* eslint-disable global-require */
 
 import React from 'react';
-import './CartItem.scss';
 import { useTContext } from '../../store/cartStore';
 import { Product } from '../../types/productType';
+import './CartItem.scss';
 
 type Props = {
   name: string;
@@ -79,37 +79,42 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
     <>
       <div className="cartItem">
         <div className="cartItem__info">
-          <button
-            type="button"
-            onClick={removeItemFromCart}
-            className="cartItem__info__close"
-          />
-          <img
-            src={`${publicUrl}/${product.image}`}
-            alt={product.name}
-            className="cartItem__info__img"
-          />
+          <div className="cartItem__info-wrapper">
+            <button
+              type="button"
+              onClick={removeItemFromCart}
+              className="cartItem__info__close"
+            />
+            <img
+              src={`${publicUrl}/${product.image}`}
+              alt={product.name}
+              className="cartItem__info__img"
+            />
+          </div>
           <h2 className="cartItem__info__name">{product.name}</h2>
         </div>
 
         <div className="cartItem__calc">
-          <button
-            type="button"
-            onClick={decreaseQuantity}
-            className={`cartItem__calc__minus cartItem__calc__quantity ${
-              quantity === 1 ? 'inactive' : ''
-            }`}
-          >
-            -
-          </button>
-          <p>{quantity}</p>
-          <button
-            type="button"
-            onClick={increaseQuantity}
-            className="cartItem__calc__plus cartItem__calc__quantity"
-          >
-            +
-          </button>
+          <div className="cartItem__calc__quantity">
+            <button
+              type="button"
+              onClick={decreaseQuantity}
+              className={`cartItem__calc__quantity__button ${
+                quantity === 1 ? 'inactive' : ''
+              }`}
+            >
+              -
+            </button>
+            <p className="cartItem__calc__quantity__number">{quantity}</p>
+            <button
+              type="button"
+              onClick={increaseQuantity}
+              className="cartItem__calc__quantity__button"
+            >
+              +
+            </button>
+          </div>
+
           <p className="cartItem__calc__price">{product.price * quantity}$</p>
         </div>
       </div>

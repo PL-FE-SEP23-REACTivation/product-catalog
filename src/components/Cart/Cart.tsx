@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowLeft from '../../icons/arrow-left.svg';
-import './Cart.scss';
+import { useTContext } from '../../store/cartStore';
 import { Product } from '../../types/productType';
 import { CartItem } from '../CartItem/CartItem';
-import { useTContext } from '../../store/cartStore';
 import { SuccessModal } from '../SuccessModal/SuccessModal';
+import './Cart.scss';
 
 export const Cart = () => {
   const { cart, clearCart } = useTContext();
@@ -71,7 +71,7 @@ export const Cart = () => {
                 {cart.length === 1 ? 'product' : 'products'}
               </p>
             </div>
-
+            <div className="cart__calculator__line" />
             <button
               className="cart__calculator__checkout"
               onClick={handleCheckout}

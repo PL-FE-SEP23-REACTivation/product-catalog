@@ -14,7 +14,7 @@
   @include for-desktop() {
     @include desktop-grid();
   }
-  
+
   &_header {
     display: flex;
     gap: 8px;
@@ -101,7 +101,6 @@
     margin-top: 32px;
     @include for-phone() {
       grid-column: 1 / 5;
-      
     }
     @include for-tablet() {
       margin-top: 40px;
