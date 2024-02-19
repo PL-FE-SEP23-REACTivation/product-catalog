@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import create from 'zustand';
 
 interface Product {
@@ -22,15 +23,19 @@ interface FavoritesStore {
 }
 
 export const useFavoritesStore = create<FavoritesStore>((set) => ({
-  favoriteProducts: [],
+  favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts') || '[]'),
   addToFavorites: (product) =>
-    set((state) => ({
-      favoriteProducts: [...state.favoriteProducts, product],
-    })),
+    set((state) => {
+      const updatedFavoriteProducts = [...state.favoriteProducts, product];
+      localStorage.setItem('favoriteProducts', JSON.stringify(updatedFavoriteProducts));
+      return { favoriteProducts: updatedFavoriteProducts };
+    }),
   removeFromFavorites: (productId) =>
-    set((state) => ({
-      favoriteProducts: state.favoriteProducts.filter(
+    set((state) => {
+      const updatedFavoriteProducts = state.favoriteProducts.filter(
         (product) => product.id !== productId
-      ),
-    })),
+      );
+      localStorage.setItem('favoriteProducts', JSON.stringify(updatedFavoriteProducts));
+      return { favoriteProducts: updatedFavoriteProducts };
+    }),
 }));
