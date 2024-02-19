@@ -51,20 +51,20 @@
 
   &__main {
     display: flex;
-    gap: 16px;
-    width: 1136px;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
     justify-content: space-between;
 
     @include for-tablet {
-      flex-direction: column;
       gap: 32px;
       width: 100%;
     }
 
-    @include for-phone {
-      flex-direction: column;
-      gap: 32px;
-      width: 100%;
+    @include for-desktop {
+      flex-direction: row;
+      gap: 16px;
+    width: 1136px;
     }
 
     &__calculator-container {

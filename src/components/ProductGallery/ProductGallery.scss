@@ -44,18 +44,14 @@
   }
 
   &_selectedImage {
-    height: 464px;
+    height: 288px;
     width: 100%;
     object-fit: contain;
-
+    @include for-tablet() {
+          height: 287px;
+    }
     @include for-desktop() {
       height: 464px;
-    }
-    @include for-tablet() {
-      height: 287px;
-    }
-    @include for-phone() {
-      height: 288px;
     }
   }
 }
