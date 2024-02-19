@@ -1,6 +1,9 @@
 import React from 'react';
 import './Footer.scss';
 export const Footer: React.FC = () => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <footer className="footer">
       <div className="footer__logo">
@@ -19,7 +22,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className="footer__return">
         Back to top
-        <a href="#top" className="footer__return-button"></a>
+        <button onClick={handleClick} className="footer__return-button" />
       </div>
     </footer>
   );
