@@ -21,8 +21,10 @@ export const Footer: React.FC = () => {
         </a>
       </div>
       <div className="footer__return">
-        Back to top
-        <button onClick={handleClick} className="footer__return-button" />
+        <button onClick={handleClick} className="footer__return-content">
+          <p className="footer__return-content-text">Back to top</p>
+          <div className="footer__return-content-button" />
+        </button>
       </div>
     </footer>
   );
