@@ -22,7 +22,7 @@ export const CatalogPage: FC<Props> = ({
   // productsQuantity,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const perPage = Number(searchParams.get('perPage'));
+  const perPage = Number(searchParams.get('perPage')) || 16;
 
   useEffect(() => {
     const currentSort = searchParams.get('sortBy') || SORT_BY_VALUES[0];
@@ -66,7 +66,7 @@ export const CatalogPage: FC<Props> = ({
         ))}
       </div>
       <div className="catalog_pagination_container">
-        <Pagination total={30} perPage={perPage} />
+        <Pagination total={100} perPage={perPage} />
         {/* <Pagination total={productsQuantity} perPage={perPage} /> */}
       </div>
     </div>

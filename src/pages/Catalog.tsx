@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { CatalogPage } from '../components/CatalogPage/CatalogPage';
 import { Product } from '../types/productType';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { getProductsByCategorie, getQuantityByCategory } from '../api/products';
+import { getProductsByCategorie } from '../api/products';
 
 const Catalog: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  //change the default value from 100 to 0
-  //when the getProductsQuantity function starts working
-  const [productsQuantity, setPeroductsQuantity] = useState<number>(100);
+  const [productsQuantity, setPeroductsQuantity] = useState<number>(0);
   const { catalog } = useParams();
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sortBy') || 'oldest';
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
 
-  console.log(sortBy, perPage, page, setPeroductsQuantity);
+  console.log(sortBy, perPage, page, productsQuantity, setPeroductsQuantity);
 
   let pathName: 'Phones' | 'Tablets' | 'Accessories';
 
@@ -60,8 +58,8 @@ const Catalog: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [page]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page, catalog]);
 
   return (
     <CatalogPage
