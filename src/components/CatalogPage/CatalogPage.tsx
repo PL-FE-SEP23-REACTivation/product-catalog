@@ -10,13 +10,19 @@ import './CatalogPage.scss';
 type Props = {
   path: 'Phones' | 'Tablets' | 'Accessories';
   products: Product[];
+  productsQuantity: number | undefined;
 };
 
 const SORT_BY_VALUES = ['newest', 'oldest', 'highest price', 'lowest price'];
 const PER_PAGE_VALUES = ['16', '32', '64'];
 
-export const CatalogPage: FC<Props> = ({ path, products }) => {
+export const CatalogPage: FC<Props> = ({
+  path,
+  products,
+  productsQuantity = 100,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const perPage = Number(searchParams.get('perPage')) || 16;
 
   useEffect(() => {
     const currentSort = searchParams.get('sortBy') || SORT_BY_VALUES[0];
@@ -32,7 +38,7 @@ export const CatalogPage: FC<Props> = ({ path, products }) => {
       <h1 className="catalog_title">
         {path === 'Phones' ? 'Mobile Phones' : path}
       </h1>
-      <div className="catalog_count">{`${products.length} models`}</div>
+      <div className="catalog_count">{`${productsQuantity} models`}</div>
       <div className="catalog__dropdowns dropdowns">
         <Dropdown
           name="Sort by"
@@ -55,7 +61,7 @@ export const CatalogPage: FC<Props> = ({ path, products }) => {
         ))}
       </div>
       <div className="catalog_pagination_container">
-        <Pagination total={30} perPage={6} />
+        <Pagination total={+productsQuantity} perPage={perPage} />
       </div>
     </div>
   );

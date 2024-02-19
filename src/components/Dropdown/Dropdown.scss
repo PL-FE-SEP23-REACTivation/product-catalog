@@ -7,8 +7,12 @@
   flex-wrap: nowrap;
   flex-direction: column;
   font-family: Mont, 'sans-serif';
-  width: 50%;
   position: relative;
+  width: 100%;
+
+  @include for-tablet() {
+    width: auto;
+  }
 
   &__label {
     font-size: 12px;
@@ -16,6 +20,14 @@
     line-height: 16px;
     margin-bottom: 4px;
     color: $color-secondary;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    font-family: Mont, 'sans-serif';
+    position: relative;
   }
 
   &__whitespace {

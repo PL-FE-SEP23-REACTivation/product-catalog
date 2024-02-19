@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './BurgerMenu.scss';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.querySelector('body')?.classList.add('no-scroll');
+    } else {
+      document.querySelector('body')?.classList.remove('no-scroll');
+    }
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -12,55 +23,78 @@ export const BurgerMenu = () => {
     <div className="burger-menu">
       <header className="headerMobile" id="headerMobile">
         <div className="headerMobile_nav">
-          <a
-            href="index.html"
-            className="headerMobile_link headerMobile_link--logo"
-          >
+          <Link to="/" className="headerMobile_link headerMobile_link--logo">
             <p />
-          </a>
+          </Link>
           <div className="headerMobile_buttons">
-            <a href="#nav" className="header_link">
-              <button
-                className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
-                onClick={toggleMenu}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    toggleMenu();
-                  }
-                }}
-                tabIndex={0}
-                type="button"
-              >
-                <p />
-              </button>
-              <div className="header_burger" />
-            </a>
+            <button
+              className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
+              onClick={toggleMenu}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  toggleMenu();
+                }
+              }}
+              tabIndex={0}
+              type="button"
+            >
+              <p />
+            </button>
+            <div className="header_burger" />
           </div>
         </div>
       </header>
 
       <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="links menu_links">
-          <a href="http#" className="menu_link">
+          <NavLink
+            to="/"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             home
-          </a>
-          <a href="http#" className="menu_link">
+          </NavLink>
+          <NavLink
+            to="/phones"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             PHONES
-          </a>
-          <a href="http#" className="menu_link">
+          </NavLink>
+          <NavLink
+            to="/tablets"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             TABLETS
-          </a>
-          <a href="http#" className="menu_link">
+          </NavLink>
+          <NavLink
+            to="/accessories"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             ACCESSORIES
-          </a>
+          </NavLink>
         </div>
         <div className="menu_footer">
-          <a href="http#" className="menu_heart">
-            <p />
-          </a>
-          <a href="http#" className="menu_bag">
-            <p />
-          </a>
+          <NavLink
+            to="/favourites"
+            className="menu_heart burger_link_bottom menu_footer_buttons"
+            onClick={toggleMenu}
+          >
+            <button type="button" className="menu_heart">
+              {favoriteProducts.length > 0 && (
+                <span className="menu_heart-counter">
+                  {favoriteProducts.length}
+                </span>
+              )}
+            </button>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className="menu_bag burger_link_bottom"
+            onClick={toggleMenu}
+          />
         </div>
       </div>
     </div>
