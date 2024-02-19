@@ -1,0 +1,64 @@
+@import '../../utils/variables.scss';
+.loader {
+  margin: 0 auto;
+  position: relative;
+  width: $size;
+  height: $size;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background-color: $color-primary;
+    transform: translate(0%, 0%);
+    animation: $animation-timing-function $animation-duration infinite
+      loader-animation;
+  }
+
+  &::before {
+    opacity: $accent-opacity;
+    animation-delay: calc($animation-duration * 0.125);
+  }
+}
+
+@keyframes loader-animation {
+  0% {
+    transform: translate(0%, 0%);
+  }
+
+  12.5% {
+    transform: translate(100%, 0%);
+  }
+
+  25% {
+    transform: translate(100%, 0%);
+  }
+
+  37.5% {
+    transform: translate(100%, 100%);
+  }
+
+  50% {
+    transform: translate(100%, 100%);
+  }
+
+  62.5% {
+    transform: translate(0%, 100%);
+  }
+
+  75% {
+    transform: translate(0%, 100%);
+  }
+
+  87.5% {
+    transform: translate(0%, 0%);
+  }
+
+  100% {
+    transform: translate(0%, 0%);
+  }
+}

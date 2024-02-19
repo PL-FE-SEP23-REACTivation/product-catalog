@@ -26,9 +26,11 @@ export const ProductVariantSelector: React.FC<Props> = ({
     resolution,
     processor,
   } = product;
-  const [selectedCapacity, setSelectedCapacity] = useState<string>();
+  const [selectedCapacity, setSelectedCapacity] = useState<string>(
+    product.capacity
+  );
   const [isAdded, setIsAdded] = useState<boolean>();
-  const [selectedColor, setSelectedColor] = useState<string>();
+  const [selectedColor, setSelectedColor] = useState<string>(product.color);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
   const handleCapacityClick = (capacity: string) => {
@@ -92,7 +94,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
           })}
           onClick={handleAddToCart}
         >
-          Add to cart
+          {isAdded ? 'Added' : 'Add to cart'}
         </button>
         <button
           className={classNames('variants_buttons_favourite', {
