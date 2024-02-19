@@ -23,18 +23,23 @@
     &_item {
       object-fit: contain;
       border: 1px solid $color-elements;
+      cursor: pointer;
 
-      @include for-desktop() {
-        height: 80px;
-        width: 80px;
+      &_selected {
+        border: 1px solid $color-primary;
+      }
+
+      @include for-phone() {
+        height: 49px;
+        width: 52px;
       }
       @include for-tablet() {
         height: 35px;
         width: 35px;
       }
-      @include for-phone() {
-        height: 49px;
-        width: 52px;
+      @include for-desktop() {
+        height: 80px;
+        width: 80px;
       }
 
       &:hover {

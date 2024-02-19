@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './BurgerMenu.scss';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -77,9 +79,17 @@ export const BurgerMenu = () => {
         <div className="menu_footer">
           <NavLink
             to="/favourites"
-            className="menu_heart burger_link_bottom"
+            className="menu_heart burger_link_bottom menu_footer_buttons"
             onClick={toggleMenu}
-          />
+          >
+            <button type="button" className="menu_heart">
+              {favoriteProducts.length > 0 && (
+                <span className="menu_heart-counter">
+                  {favoriteProducts.length}
+                </span>
+              )}
+            </button>
+          </NavLink>
           <NavLink
             to="/cart"
             className="menu_bag burger_link_bottom"
