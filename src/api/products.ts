@@ -1,5 +1,6 @@
 import { DetailedProduct } from '../types/detailedProductType';
 import { Product } from '../types/productType';
+import { Quantity } from '../types/quantityType';
 import { client } from '../utils/fetchClient';
 
 //for /phones (better to make it universal and use getProductsByCategorie )
@@ -32,5 +33,5 @@ export const getProductByIdAndCategory = async (
 
 //to enter the number of products in category
 export const getQuantityByCategory = (category: string) => {
-  return client.get<Product[]>(`/${category}/quantity`);
+  return client.get<Quantity>(`/products/${category}/quantity`);
 };

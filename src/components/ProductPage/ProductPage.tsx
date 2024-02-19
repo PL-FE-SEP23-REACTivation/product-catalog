@@ -4,7 +4,7 @@ import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
-import { ProductGallery } from '../ProductGallery/ProductGallery';
+// import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
 import {

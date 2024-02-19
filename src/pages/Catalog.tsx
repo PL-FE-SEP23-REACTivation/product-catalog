@@ -2,18 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { CatalogPage } from '../components/CatalogPage/CatalogPage';
 import { Product } from '../types/productType';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { getProductsByCategorie } from '../api/products';
+import { getProductsByCategorie, getQuantityByCategory } from '../api/products';
+import { Quantity } from '../types/quantityType';
 
 const Catalog: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [productsQuantity, setPeroductsQuantity] = useState<number>(0);
+  const [productsQuantity, setProductsQuantity] = useState<Quantity | null>();
   const { catalog } = useParams();
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sortBy') || 'oldest';
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
-
-  console.log(sortBy, perPage, page, productsQuantity, setPeroductsQuantity);
 
   let pathName: 'Phones' | 'Tablets' | 'Accessories';
 
@@ -45,17 +44,18 @@ const Catalog: React.FC = () => {
     getProducts();
   }, [catalog, sortBy, perPage, page]);
 
-  // useEffect(()=> {
-  //   const getProductsQuantity = async () => {
-  //     if (catalog) {
-  //       await getQuantityByCategory(catalog)
-  //         .then((data) => setPeroductsQuantity(+data))
-  //         .catch((e) => console.log(e));
-  //     }
-  //   };
+  useEffect(() => {
+    const getProductsQuantity = async () => {
+      if (catalog) {
+        await getQuantityByCategory(catalog)
+          .then((data) => setProductsQuantity(data))
+          .catch((e) => console.log(e));
+      }
+    };
 
-  //   getProductsQuantity();
-  // }, []);
+    getProductsQuantity();
+  }, []);
+  console.log(productsQuantity);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -65,7 +65,7 @@ const Catalog: React.FC = () => {
     <CatalogPage
       products={products}
       path={pathName}
-      // productsQuantity={+productsQuantity}
+      productsQuantity={productsQuantity?.quantity}
     />
   );
 };
