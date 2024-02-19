@@ -17,8 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { setCart } = useTContext();
 
   const handleAddToCart = () => {
-    const newProduct = { ...product, id: Date.now() };
-    setCart((prevCart) => [...(prevCart as Product[]), newProduct]);
+    setCart((prevCart) => [...(prevCart as Product[]), product]);
     setIsAddedToCart(true);
   };
 
