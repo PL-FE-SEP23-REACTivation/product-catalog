@@ -1,6 +1,8 @@
 import { FC, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types/categoryType';
 import { Product } from '../../types/productType';
+import { capitalize } from '../../utils/helpers';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Pagination } from '../Pagination/Pagination';
@@ -8,7 +10,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import './CatalogPage.scss';
 
 type Props = {
-  path: 'Phones' | 'Tablets' | 'Accessories';
+  path: Category;
   products: Product[];
   productsQuantity: number | undefined;
 };
@@ -36,7 +38,7 @@ export const CatalogPage: FC<Props> = ({
     <div className="catalog">
       <Breadcrumbs path={path} />
       <h1 className="catalog_title">
-        {path === 'Phones' ? 'Mobile Phones' : path}
+        {path === 'phones' ? 'Mobile Phones' : capitalize(path)}
       </h1>
       <div className="catalog_count">{`${productsQuantity} models`}</div>
       <div className="catalog__dropdowns dropdowns">
