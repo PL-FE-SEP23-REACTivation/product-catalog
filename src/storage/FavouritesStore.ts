@@ -23,11 +23,16 @@ interface FavoritesStore {
 }
 
 export const useFavoritesStore = create<FavoritesStore>((set) => ({
-  favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts') || '[]'),
+  favoriteProducts: JSON.parse(
+    localStorage.getItem('favoriteProducts') || '[]'
+  ),
   addToFavorites: (product) =>
     set((state) => {
       const updatedFavoriteProducts = [...state.favoriteProducts, product];
-      localStorage.setItem('favoriteProducts', JSON.stringify(updatedFavoriteProducts));
+      localStorage.setItem(
+        'favoriteProducts',
+        JSON.stringify(updatedFavoriteProducts)
+      );
       return { favoriteProducts: updatedFavoriteProducts };
     }),
   removeFromFavorites: (productId) =>
@@ -35,7 +40,10 @@ export const useFavoritesStore = create<FavoritesStore>((set) => ({
       const updatedFavoriteProducts = state.favoriteProducts.filter(
         (product) => product.id !== productId
       );
-      localStorage.setItem('favoriteProducts', JSON.stringify(updatedFavoriteProducts));
+      localStorage.setItem(
+        'favoriteProducts',
+        JSON.stringify(updatedFavoriteProducts)
+      );
       return { favoriteProducts: updatedFavoriteProducts };
     }),
 }));
