@@ -5,6 +5,7 @@
 .headerMobile {
   background: $color-white;
   width: 100vw;
+  min-width: 320px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -17,6 +18,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    min-width: 320px;
     height: 48px;
     border-bottom: 1px solid $color-elements;
   }
@@ -143,20 +145,6 @@
     background-repeat: no-repeat;
     border: 1px solid $color-elements;
     border-right: none;
-
-    &-counter {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2.5px solid $color-red;
-      font-size: 9px;
-      font-weight: 700;
-      background-color: $color-red;
-      color: white;
-      position: absolute;
-      left: 50%;
-      top: 30%;
-    }
   }
   &_bag {
     position: relative;
@@ -171,6 +159,24 @@
     background-repeat: no-repeat;
     border-left: 1px solid $color-elements;
     border: 1px solid $color-elements;
+  }
+  &-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+    background-color: $color-red;
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
   }
 }
 

@@ -96,7 +96,6 @@
 
   &__buttons {
     display: flex;
-    // border-bottom: 1px solid $color-elements;
     justify-content: center;
     @include for-phone() {
       display: none;
@@ -117,6 +116,7 @@
       height: 48px;
       background-color: $color-white;
       border-left: 1px solid $color-elements;
+      cursor: pointer;
 
       @include for-phone() {
         display: none;
@@ -173,6 +173,7 @@
 .header__buttons__notification {
   font-family: Mont, sans-serif;
   font-weight: 700;
+  line-height: 14px;
   display: flex;
   align-items: center;
   justify-content: center;

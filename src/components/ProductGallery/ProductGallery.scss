@@ -49,13 +49,9 @@
   }
 
   &_selectedImage {
-    height: 464px;
+    height: 288px;
     width: 100%;
     object-fit: contain;
-
-    @include for-phone() {
-      height: 288px;
-    }
     @include for-tablet() {
       height: 287px;
     }
