@@ -48,8 +48,7 @@ const Catalog: React.FC = () => {
     };
 
     getProductsQuantity();
-  }, []);
-  console.log(productsQuantity);
+  }, [category]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
