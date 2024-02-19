@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import phonesData from '../assets/api/products.json';
 import { CatalogPage } from '../components/CatalogPage/CatalogPage';
 import { Product } from '../types/productType';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { getProductsByCategorie, getQuantityByCategory } from '../api/products';
+import { Quantity } from '../types/quantityType';
 
 const Catalog: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [productsQuantity, setProductsQuantity] = useState<Quantity | null>();
   const { catalog } = useParams();
+  const [searchParams] = useSearchParams();
+  const sortBy = searchParams.get('sortBy') || 'oldest';
+  const perPage = searchParams.get('perPage') || 16;
+  const page = searchParams.get('page') || 1;
 
   let pathName: 'Phones' | 'Tablets' | 'Accessories';
 
@@ -25,43 +31,43 @@ const Catalog: React.FC = () => {
   }
 
   useEffect(() => {
-    //ready to fetch from db
-    {
-      /*
     const getProducts = async () => {
       if (catalog) {
-        await getProductsByCategorie(category)
+        await getProductsByCategorie(
+          `${catalog}?sortBy=${sortBy}&perPage=${perPage}&page=${page}`
+        )
           .then((data) => setProducts(data))
           .catch((e) => console.log(e));
       }
-    }
+    };
 
     getProducts();
-  */
-    }
-    // poniższe z useEffect należy usunąć
-    const mappedPhones = phonesData
-      .filter((phone) => phone.category === 'phones')
-      .map((phone) => ({
-        id: phone.id,
-        category: 'phones',
-        itemId: phone.itemId,
-        name: phone.name,
-        fullPrice: phone.fullPrice,
-        price: phone.price,
-        screen: phone.screen,
-        capacity: phone.capacity,
-        color: phone.color,
-        ram: phone.ram,
-        year: phone.year,
-        image: phone.image,
-      }));
+  }, [catalog, sortBy, perPage, page]);
 
-    setProducts(mappedPhones);
-    // usunać aż do tego miejsca :)
+  useEffect(() => {
+    const getProductsQuantity = async () => {
+      if (catalog) {
+        await getQuantityByCategory(catalog)
+          .then((data) => setProductsQuantity(data))
+          .catch((e) => console.log(e));
+      }
+    };
+
+    getProductsQuantity();
   }, []);
+  console.log(productsQuantity);
 
-  return <CatalogPage products={products} path={pathName} />;
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page, catalog]);
+
+  return (
+    <CatalogPage
+      products={products}
+      path={pathName}
+      productsQuantity={productsQuantity?.quantity}
+    />
+  );
 };
 
 export default Catalog;
