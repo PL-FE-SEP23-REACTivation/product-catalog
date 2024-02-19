@@ -10,7 +10,7 @@
   @include for-phone {
     display: none;
   }
-
+  font-family: Mont;
   background-color: $color-white;
   display: flex;
   justify-content: space-between;
@@ -80,7 +80,6 @@
           line-height: 48px;
           color: $color-secondary;
           text-decoration: none;
-          font-family: Mont;
           font-size: 12px;
           font-style: normal;
           font-weight: 800;
@@ -118,6 +117,7 @@
     }
 
     &__cart {
+      position: relative;
       background-image: url('../../../public/icons/bag.svg');
       background-repeat: no-repeat;
       background-position: center;
@@ -137,15 +137,21 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 20px;
-        height: 20px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid $color-white;
         border-radius: 50%;
         background-color: $color-red;
         color: #fff;
-        font-size: 12px;
+        font-size: 9px;
         position: absolute;
         top: 10px;
         right: 10px;
+
+        @include for-desktop() {
+          top: 18px;
+          right: 18px;
+        }
       }
     }
   }
