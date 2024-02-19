@@ -1,45 +1,28 @@
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './HotPrices.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
-// import { Product } from '../../../types/productType';
-// import { getHotProducts } from '../../../api/products';
+import { Product } from '../../../types/productType';
+import { getHotProducts } from '../../../api/products';
 
 const HotPrices: React.FC = () => {
-  //ready to use fetching data from db
-  // const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  // useEffect(() => {
-  //   const getHotPriceProducts = async () => {
-  //     await getHotProducts()
-  //       .then(data => setProducts(data))
-  //       .catch(e => console.log(e));
-  //   };
+  useEffect(() => {
+    const getHotPriceProducts = async () => {
+      await getHotProducts()
+        .then((data) => setProducts(data))
+        .catch((e) => console.log(e));
+    };
 
-  //   getHotPriceProducts();
-  // }, []);
+    getHotPriceProducts();
+  }, []);
 
-  //demo data => delete below product after using useEffect
-  const product = {
-    id: 1,
-    category: 'phones',
-    itemId: 'apple-iphone-7-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    price: 375,
-    screen: '4.7\' IPS',
-    capacity: '32GB',
-    color: 'black',
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.webp',
-  };
   return (
     <>
       <h2>Hot prices</h2>
-      {/* {products.map(product=>
+      {products.map((product) => (
         <ProductCard product={product} key={product.id} />
-      )} */}
-      <ProductCard product={product} />
+      ))}
     </>
   );
 };
