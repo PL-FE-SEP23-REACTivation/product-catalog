@@ -14,6 +14,7 @@ import { Product } from '../../types/productType';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 import { DetailedProduct } from '../../types/detailedProductType';
 import { About } from '../About/About';
+import { ProductGallery } from '../ProductGallery/ProductGallery';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -131,7 +132,9 @@ const ProductPage: React.FC = () => {
       </div>
       {/* recommended products (12 pieces), ready data to put in recommend component with productCard */}
       <div className="pp_reccomended_goods">
-        {recommended?.map((el) => <p key={el.id}>{el.name}</p>)}
+        {recommended?.map((el) => (
+          <p key={el.id}>Object of product name {el.name}</p>
+        ))}
       </div>
     </div>
   );

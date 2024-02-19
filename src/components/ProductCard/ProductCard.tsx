@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
+  const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
     product;
   const isProductDiscount = fullPrice !== price;
   const [isAddedToCart, setIsAddedToCart] = useState(false);
