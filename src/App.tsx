@@ -1,21 +1,25 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Catalog from './pages/Catalog';
-import './styles/_reset.scss';
-import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
 import { CatalogLayout } from './components/Layouts/CatalogLayout';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import CartPage from './pages/CartPage';
+import Catalog from './pages/Catalog';
+import HomePage from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
-import './styles/_reset.scss';
 import { CartProvider } from './store/cartStore';
-import CartPage from './pages/CartPage';
-import HomePage from './pages/Home';
+import './styles/_reset.scss';
+import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
+import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <CartProvider>
         <Routes>
           <Route element={<AppLayout />}>
@@ -29,6 +33,9 @@ const App: React.FC = () => {
             <Route path="*" element={<PageNotFound />} />
             <Route element={<CartLayout />}>
               <Route path="/cart" element={<CartPage />} />
+            </Route>
+            <Route element={<FavouritesPageLayout />}>
+              <Route path="/favourites" element={<FavouritesPage />} />
             </Route>
           </Route>
         </Routes>
