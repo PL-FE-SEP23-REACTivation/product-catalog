@@ -11,9 +11,9 @@ import {
   getProductByIdAndCategory,
   getProductsRecommended,
 } from '../../api/products';
-import { DetailedProduct } from '../../types/detailedProductType';
 import { Product } from '../../types/productType';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
+import { DetailedProduct } from '../../types/detailedProductType';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -68,6 +68,9 @@ const ProductPage: React.FC = () => {
     zoom: 'Digital, 5x',
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   });
+  const [selectedImg, setSelectedImg] = useState<string>(
+    `${process.env.PUBLIC_URL}/${product.images[0]}`
+  );
 
   console.log(recommended);
 
@@ -107,10 +110,18 @@ const ProductPage: React.FC = () => {
       </div>
       <div className="pp_title">{productDetails?.name}</div>
       <div className="pp_photos">
-        {product && <ProductGallery images={product.images} />}
+        <ProductGallery
+          images={product.images}
+          selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg}
+        />
       </div>
       <div className="pp_variants">
-        {product && <ProductVariantSelector product={product} />}
+        <ProductVariantSelector
+          product={product}
+          setProduct={setProduct}
+          setSelectedImg={setSelectedImg}
+        />
       </div>
       <div className="pp_about">about</div>
       <div className="pp_tech-specs">

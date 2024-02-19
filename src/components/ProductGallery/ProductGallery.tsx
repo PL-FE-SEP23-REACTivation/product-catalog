@@ -1,16 +1,18 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
 import './ProductGallery.scss';
 import classNames from 'classnames';
 
 type Props = {
   images: string[];
+  selectedImg: string;
+  setSelectedImg: (selectedImg: string) => void;
 };
 
-export const ProductGallery: React.FC<Props> = ({ images }) => {
-  const defaultSelectedImg = `${process.env.PUBLIC_URL}/${images[0]}`;
-  const [selectedImg, setSelectedImg] = useState(defaultSelectedImg);
-
+export const ProductGallery: React.FC<Props> = ({
+  images,
+  selectedImg,
+  setSelectedImg,
+}) => {
   const handleImageClick = (image: string) => {
     const link = `${process.env.PUBLIC_URL}/${image}`;
     setSelectedImg(link);
@@ -36,3 +38,5 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
     </div>
   );
 };
+
+ProductGallery.propTypes;

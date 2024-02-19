@@ -7,9 +7,15 @@ import { DetailedProduct } from '../../types/detailedProductType';
 
 type Props = {
   product: DetailedProduct;
+  setProduct: (product: DetailedProduct) => void;
+  setSelectedImg: (selectedImg: string) => void;
 };
 
-export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
+export const ProductVariantSelector: React.FC<Props> = ({
+  product,
+  setProduct,
+  setSelectedImg,
+}) => {
   const {
     colorsAvailable,
     capacityAvailable,
@@ -29,6 +35,7 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
 
   const handleCapacityClick = (capacity: string) => {
     setSelectedCapacity(capacity);
+    setProduct({ ...product, capacity });
   };
 
   const handleAddToCart = () => {
@@ -36,7 +43,15 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
   };
 
   const handleColorSelect = (color: string) => {
+    const updatedImgs = product.images.map((img) => {
+      const updated = img.replace(product.color, color);
+
+      return updated;
+    });
+
     setSelectedColor(color);
+    setSelectedImg(`${process.env.PUBLIC_URL}/${updatedImgs[0]}`);
+    setProduct({ ...product, color, images: updatedImgs });
   };
 
   return (
