@@ -1,0 +1,192 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.variants {
+  &_text-1,
+  &_text-2 {
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    color: $color-secondary;
+  }
+
+  &_text-2 {
+    margin-top: 48px;
+  }
+
+  &_colors {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+
+    &_value {
+      width: 30px;
+      height: 30px;
+      border-radius: 36px;
+      border: 2px;
+      position: relative;
+
+      &::after {
+        content: '';
+        border: 1px solid $color-elements;
+        position: absolute;
+        top: -3px;
+        bottom: -3px;
+        left: -3px;
+        right: -3px;
+        border-radius: 36px;
+      }
+
+      &:hover:not(.variants_colors_value_picked)::after {
+        border-color: $color-icons;
+      }
+
+      &_picked::after {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &_capacity {
+    display: flex;
+    margin-top: 8px;
+    gap: 8px;
+
+    &_block {
+      display: flex;
+      box-sizing: content-box;
+      justify-content: center;
+      padding: 7px 8px 4px 8px;
+      border: 1px solid $color-icons;
+      color: $color-primary;
+      background-color: white;
+    }
+
+    &_text {
+      font-family: Mont;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0em;
+      text-align: center;
+    }
+  }
+
+  &_price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 56px;
+
+    &_actual {
+      font-family: Mont;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: $color-primary;
+
+      &::before {
+        content: '$';
+      }
+    }
+
+    &_discount {
+      font-family: Mont;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: 0em;
+      color: $color-secondary;
+      text-decoration: line-through;
+      text-decoration-line: white;
+
+      &::before {
+        content: '$';
+      }
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    height: 48px;
+    width: 100%;
+
+    &_add {
+      flex-grow: 1;
+      background-color: $color-primary;
+      font-family: Mont;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: $color-white;
+      border: 0px;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px $color-shadow;
+      }
+    }
+
+    &_added {
+      background-color: $color-white;
+      color: $color-green;
+    }
+
+    &_favourite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border: 1px solid $color-icons;
+      width: 48px;
+      flex-shrink: 0;
+      background: none;
+
+      &_selected {
+        border: 1px solid $color-elements;
+      }
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &_info {
+    display: flex;
+    justify-content: space-between;
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+
+    &_container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    &_property {
+      color: $color-secondary;
+    }
+
+    &_value {
+      text-align: right;
+    }
+  }
+}
+
+.selected-capacity {
+  background-color: $color-primary;
+  color: white;
+  border-color: $color-primary;
+}
