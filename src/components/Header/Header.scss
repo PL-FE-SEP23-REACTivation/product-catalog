@@ -10,7 +10,7 @@
   @include for-phone {
     display: none;
   }
-
+  font-family: Mont;
   background-color: $color-white;
   display: flex;
   justify-content: space-between;
@@ -80,7 +80,6 @@
           line-height: 48px;
           color: $color-secondary;
           text-decoration: none;
-          font-family: Mont;
           font-size: 12px;
           font-style: normal;
           font-weight: 800;
@@ -89,26 +88,6 @@
 
           @include for-desktop() {
             line-height: 64px;
-          }
-
-          &:hover {
-            position: relative;
-            color: $color-primary;
-
-            &::after {
-              content: '';
-              position: absolute;
-              top: 45px;
-              left: 0;
-              right: 0;
-              height: 3px;
-              width: auto;
-              background-color: $color-primary;
-
-              @include for-desktop() {
-                top: 61px;
-              }
-            }
           }
         }
       }
@@ -124,10 +103,8 @@
       background-repeat: no-repeat;
       background-position: center;
       width: 48px;
-      height: 48px;
       background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-      border: none;
+      border-left: 1px solid $color-elements;
 
       @include for-phone() {
         display: none;
@@ -140,13 +117,14 @@
     }
 
     &__cart {
+      position: relative;
       background-image: url('../../../public/icons/bag.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 48px;
       height: 48px;
       background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
+      border-left: 1px solid $color-elements;
 
       @include for-desktop() {
         height: 64px;
@@ -159,16 +137,39 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 20px;
-        height: 20px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid $color-white;
         border-radius: 50%;
         background-color: $color-red;
         color: #fff;
-        font-size: 12px;
+        font-size: 9px;
         position: absolute;
         top: 10px;
         right: 10px;
+
+        @include for-desktop() {
+          top: 18px;
+          right: 18px;
+        }
       }
     }
+  }
+}
+
+.header__link:hover,
+.header__link.active {
+  position: relative;
+  color: $color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    width: auto;
+    background-color: $color-primary;
   }
 }
