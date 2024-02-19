@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useTContext } from '../../store/cartStore';
 import './Header.scss';
 
@@ -20,38 +20,53 @@ export const Header = () => {
         <nav className="header__nav">
           <ul className="header__nav__list">
             <li className="header__nav__list__item">
-              <Link to="/" className="header__nav__list__item__link">
+              <NavLink
+                to="/"
+                className="header__nav__list__item__link header__link"
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="header__nav__list__item">
-              <Link to="/phones" className="header__nav__list__item__link">
+              <NavLink
+                to="/phones"
+                className="header__nav__list__item__link header__link"
+              >
                 Phones
-              </Link>
+              </NavLink>
             </li>
             <li className="header__nav__list__item">
-              <Link to="/tablets" className="header__nav__list__item__link">
+              <NavLink
+                to="/tablets"
+                className="header__nav__list__item__link header__link"
+              >
                 Tablets
-              </Link>
+              </NavLink>
             </li>
             <li className="header__nav__list__item">
-              <Link to="/accessories" className="header__nav__list__item__link">
+              <NavLink
+                to="/accessories"
+                className="header__nav__list__item__link header__link"
+              >
                 Accessories
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
       </div>
 
       <div className="header__buttons">
-        <Link to="/favourites" className="header__buttons__like" />
-        <Link to="/cart" className="header__buttons__cart">
+        <NavLink
+          to="/favourites"
+          className="header__buttons__like header__link"
+        />
+        <NavLink to="/cart" className="header__buttons__cart header__link">
           {cartItemsCount > 0 && (
             <div className="header__buttons__cart__circle">
               {cartItemsCount}
             </div>
           )}
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
@@ -45,22 +45,46 @@ export const BurgerMenu = () => {
 
       <div className={`menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="links menu_links">
-          <Link to="/" className="menu_link" onClick={toggleMenu}>
+          <NavLink
+            to="/"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             home
-          </Link>
-          <Link to="/phones" className="menu_link" onClick={toggleMenu}>
+          </NavLink>
+          <NavLink
+            to="/phones"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             PHONES
-          </Link>
-          <Link to="/tablets" className="menu_link" onClick={toggleMenu}>
+          </NavLink>
+          <NavLink
+            to="/tablets"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             TABLETS
-          </Link>
-          <Link to="/accessories" className="menu_link" onClick={toggleMenu}>
+          </NavLink>
+          <NavLink
+            to="/accessories"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
             ACCESSORIES
-          </Link>
+          </NavLink>
         </div>
         <div className="menu_footer">
-          <Link to="/favourites" className="menu_heart" onClick={toggleMenu} />
-          <Link to="/cart" className="menu_bag" onClick={toggleMenu} />
+          <NavLink
+            to="/favourites"
+            className="menu_heart burger_link_bottom"
+            onClick={toggleMenu}
+          />
+          <NavLink
+            to="/cart"
+            className="menu_bag burger_link_bottom"
+            onClick={toggleMenu}
+          />
         </div>
       </div>
     </div>
