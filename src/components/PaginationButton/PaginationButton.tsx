@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { FC } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { getSearchParams } from '../../utils/helpers';
 import './PaginationButton.scss';
 
 type Props = {
@@ -17,26 +18,26 @@ export const PaginationButton: FC<Props> = ({
   next,
   prev,
 }) => {
-  let toPage = Number(children);
+  let toPage = String(children);
   const [searchParams] = useSearchParams();
-  const currentPage = Number(searchParams.get('page'));
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   if (next) {
-    toPage = currentPage + 1;
+    toPage = String(currentPage + 1);
   }
 
   if (prev) {
-    toPage = currentPage - 1;
+    toPage = String(currentPage - 1);
   }
 
   return (
     <Link
-      to={{ search: `?page=${toPage}` }}
+      to={{ search: getSearchParams(searchParams, ['page', toPage]) }}
       className={classNames('pagination-button', {
         'pagination-button--prev': prev,
         'pagination-button--next': next,
         disabled: disabled,
-        'pagination-button--is-active': toPage === currentPage,
+        'pagination-button--is-active': toPage === String(currentPage),
       })}
     >
       {children}

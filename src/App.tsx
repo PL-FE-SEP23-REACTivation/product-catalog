@@ -1,34 +1,39 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import Phones from './pages/Phones';
-import './styles/_reset.scss';
-
-import { Cart } from './components/Cart/Cart';
-import Footer from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
+import { CatalogLayout } from './components/Layouts/CatalogLayout';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import CartPage from './pages/CartPage';
+import Catalog from './pages/Catalog';
+import HomePage from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
+import { CartProvider } from './store/cartStore';
 import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Header />
-
-      <Routes>
-        <Route path="/phones" element={<Phones />} />
-        <Route element={<ProductPageLayout />}>
-          <Route path="/phones/:id" element={<Productpage />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-        <Route element={<CartLayout />}>
-          <Route path="/cart" element={<Cart />} />
-        </Route>
-      </Routes>
-      <Footer />
+      <ScrollToTop />
+      <CartProvider>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route element={<CatalogLayout />}>
+              <Route path="/:catalog" element={<Catalog />} />
+            </Route>
+            <Route element={<ProductPageLayout />}>
+              <Route path="/:category/:id" element={<Productpage />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+            <Route element={<CartLayout />}>
+              <Route path="/cart" element={<CartPage />} />
+            </Route>
+          </Route>
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
   );
 };

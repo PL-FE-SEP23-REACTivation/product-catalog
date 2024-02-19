@@ -30,12 +30,17 @@
     }
   }
 
+  &__text {
+    display: flex;
+    padding-top: 16px;
+    height: 58px;
+    align-items: center;
+  }
+
   &__title {
     text-align: left;
     font-family: 'Mont', sans-serif;
     font-size: 14px;
-    margin-top: 8px;
-    padding-top: 16px;
     width: 100%;
     font-weight: 600;
     color: $color-primary;

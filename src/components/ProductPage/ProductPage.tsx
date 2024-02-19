@@ -1,16 +1,27 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import homeIcon from '../../icons/home.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import './ProductPage.scss';
+import { useParams } from 'react-router-dom';
+import {
+  getProductByIdAndCategory,
+  getProductsRecommended,
+} from '../../api/products';
+import { Product } from '../../types/productType';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 import { DetailedProduct } from '../../types/detailedProductType';
 import { About } from '../About/About';
 
 const ProductPage: React.FC = () => {
+  const [productDetails, setproductDetails] =
+    useState<DetailedProduct | null>();
+  const [recommended, setRecommended] = useState<Product[] | null>();
+  const { id, category } = useParams();
+
   const [product, setProduct] = useState<DetailedProduct>({
     id: 'apple-iphone-11-128gb-black',
     namespaceId: 'apple-iphone-11',
@@ -58,29 +69,47 @@ const ProductPage: React.FC = () => {
     zoom: 'Digital, 5x',
     cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
   });
-
   const [selectedImg, setSelectedImg] = useState<string>(
     `${process.env.PUBLIC_URL}/${product.images[0]}`
   );
+
+  console.log(recommended);
+
+  useEffect(() => {
+    const productDetailsData = async () => {
+      if (id && category) {
+        await getProductByIdAndCategory(id, category)
+          .then((data) => setproductDetails(data))
+          .catch((e) => console.log(e));
+      }
+    };
+
+    const recommended = async () => {
+      if (id) {
+        await getProductsRecommended(id)
+          .then((data) => setRecommended(data))
+          .catch((e) => console.log(e));
+      }
+    };
+
+    productDetailsData();
+    recommended();
+  }, []);
 
   return (
     <div className="pp">
       <div className="pp_header">
         <img className="pp_header_icon" src={homeIcon} alt="home" />
         <img className="pp_header_icon" src={rightArrowIcon} alt="arrow" />
-        <div className="pp_header_category">Phones</div>
+        <div className="pp_header_category">{category}</div>
         <img className="pp_header_icon" src={rightArrowIcon} alt="arrow" />
-        <div className="pp_header_name">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </div>
+        <div className="pp_header_name">{productDetails?.name}</div>
       </div>
       <div className="pp_return">
         <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
         <div className="pp_return_text">Back</div>
       </div>
-      <div className="pp_title">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </div>
+      <div className="pp_title">{productDetails?.name}</div>
       <div className="pp_photos">
         <ProductGallery
           images={product.images}
@@ -99,9 +128,12 @@ const ProductPage: React.FC = () => {
         <About description={product.description} />
       </div>
       <div className="pp_tech-specs">
-        <TechSpec product={product} />
+        <TechSpec product={productDetails} />
       </div>
-      <div className="pp_reccomended_goods">rec goods</div>
+      {/* recommended products (12 pieces), ready data to put in recommend component with productCard */}
+      <div className="pp_reccomended_goods">
+        {recommended?.map((el) => <p key={el.id}>{el.name}</p>)}
+      </div>
     </div>
   );
 };

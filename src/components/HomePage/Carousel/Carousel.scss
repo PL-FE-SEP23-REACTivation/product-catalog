@@ -1,0 +1,47 @@
+@import '../../../utils/variables.scss';
+
+.Carousel {
+  display: flex;
+  flex-direction: row;
+  transition: 1000ms;
+
+  &__list {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    border: 1px solid darkgray;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    list-style: none;
+    width: 500px;
+    height: 180px;
+  }
+
+  &__image {
+    display: block;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    cursor: pointer;
+    width: 32px;
+    height: 100%;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    background-color: white;
+    border: 1px solid rgb(187, 187, 187);
+    box-shadow: 0 2px 6px rgba(217, 217, 217, 0.2);
+    margin: 0 10px;
+
+    &--active {
+      &:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &--disable {
+      cursor: no-drop;
+    }
+  }
+}

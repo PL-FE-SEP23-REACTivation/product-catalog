@@ -8,6 +8,9 @@
 }
 
 .footer {
+  display: flex;
+  scroll-behavior: smooth;
+  position: absolute;
   bottom: 0;
   max-height: 259px;
   width: 100%;
@@ -16,6 +19,7 @@
   gap: 32px;
   padding: 32px 16px;
   font-family: 'Mont', sans-serif;
+  border-top: 1px solid $color-elements;
 
   &__logo {
     margin-right: auto;
@@ -42,39 +46,42 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    color: $color-secondary;
-    font-weight: 700;
-
-    :hover {
-      background-image: url('../../../public/img/vector-white.png');
-      background-color: $color-primary;
-      transition: all 0.3s ease-in-out;
-    }
-
-    &-button {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $color-secondary;
-      background-image: url('../../../public/img/vector.png');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-  }
-
-  @include for-desktop() {
-    align-items: center;
-    flex-direction: row;
-    &__logo,
-    &__links,
-    &__return {
-      flex: 1;
-    }
-    &__links {
+    &-content {
+      display: flex;
       flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: $color-secondary;
+      font-weight: 700;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover &-button {
+        background-image: url('../../../public/img/vector-white.png');
+        background-color: $color-primary;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      &-text {
+        font-family: 'Mont', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      &-button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $color-secondary;
+        background-image: url('../../../public/img/vector.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out;
+      }
     }
   }
-
   @include for-tablet() {
     align-items: center;
     flex-direction: row;
@@ -89,6 +96,18 @@
     &__links {
       flex-direction: row;
       gap: 13.5px;
+    }
+  }
+  @include for-desktop() {
+    align-items: center;
+    flex-direction: row;
+    &__logo,
+    &__links,
+    &__return {
+      flex: 1;
+    }
+    &__links {
+      flex-direction: row;
     }
   }
 }
