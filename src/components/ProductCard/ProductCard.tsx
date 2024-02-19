@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/productType';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
@@ -10,10 +11,12 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = product;
+  const { id, name, fullPrice, price, screen, capacity, ram, image } = product;
   const isProductDiscount = fullPrice !== price;
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
+  const isFavoriteProduct = useFavoritesStore((state) =>
+    state.favoriteProducts.some((p) => p.id === id)
+  );
   const { setCart } = useTContext();
 
   const handleAddToCart = () => {
@@ -21,8 +24,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     setIsAddedToCart(true);
   };
 
-  const handleToggleFavorite = () => {
-    setIsFavoriteProduct((prevState) => !prevState);
+  const toggleFavorite = () => {
+    if (isFavoriteProduct) {
+      useFavoritesStore.getState().removeFromFavorites(id);
+    } else {
+      useFavoritesStore.getState().addToFavorites(product);
+    }
   };
 
   return (
@@ -70,10 +77,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         ) : (
           <button className="card__button-added">Added</button>
         )}
-        <button
-          className="card__button-favorite"
-          onClick={handleToggleFavorite}
-        >
+        <button className="card__button-favorite" onClick={toggleFavorite}>
           {isFavoriteProduct ? (
             <img src={IMGofHeart} alt="IMG of heart" />
           ) : (
