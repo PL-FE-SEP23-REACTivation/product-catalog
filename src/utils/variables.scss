@@ -7,6 +7,11 @@ $color-white: #ffffff;
 $color-green: #27ae60;
 $color-red: #eb5757;
 $color-shadow: #17203166;
+$color-catalog: #6d6474;
+$size: 40px;
+$accent-opacity: 0.25;
+$animation-timing-function: linear;
+$animation-duration: 2s;
 
 @mixin cardButton {
   font-family: 'Mont';

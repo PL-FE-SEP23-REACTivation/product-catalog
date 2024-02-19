@@ -5,7 +5,7 @@ import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-
+import { useTContext } from '../../store/cartStore';
 type Props = {
   product: Product;
 };
@@ -17,8 +17,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const isFavoriteProduct = useFavoritesStore((state) =>
     state.favoriteProducts.some((p) => p.id === id)
   );
+  const { setCart } = useTContext();
 
   const handleAddToCart = () => {
+    setCart((prevCart) => [...(prevCart as Product[]), product]);
     setIsAddedToCart(true);
   };
 
@@ -38,7 +40,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
       </div>
       <Link to={`/${product.category}/${product.id}`}>
-        <div className="card__title">{name}</div>
+        <div className="card__text">
+          <p className="card__title">{name}</p>
+        </div>
       </Link>
       <div className="card__price">
         {!isProductDiscount ? (
