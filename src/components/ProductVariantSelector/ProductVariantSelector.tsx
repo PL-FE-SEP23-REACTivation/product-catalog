@@ -20,9 +20,11 @@ export const ProductVariantSelector: React.FC<Props> = ({ product }) => {
     resolution,
     processor,
   } = product;
-  const [selectedCapacity, setSelectedCapacity] = useState<string>();
+  const [selectedCapacity, setSelectedCapacity] = useState<string>(
+    product.capacity
+  );
   const [isAdded, setIsAdded] = useState<boolean>();
-  const [selectedColor, setSelectedColor] = useState<string>();
+  const [selectedColor, setSelectedColor] = useState<string>(product.color);
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
   const handleCapacityClick = (capacity: string) => {
