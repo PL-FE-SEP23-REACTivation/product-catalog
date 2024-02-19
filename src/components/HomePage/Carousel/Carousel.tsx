@@ -1,93 +1,112 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState } from 'react';
 import './Carousel.scss';
-import image1 from './banner-accessories.png';
-import image2 from './banner-phones.png';
-import image3 from './banner-tablets.png';
+import vector from './vector.png';
 
-const Carousel: React.FC = () => {
-  const settings = {
-    step: 1,
-    frameSize: 1,
-    itemWidth: 500,
-    animationDuration: 1000,
-    infinite: true,
+interface Slide {
+  url: string;
+  title: string;
+}
+
+interface ImageSliderProps {
+  slides: Slide[];
+}
+
+// const slideStyles: React.CSSProperties = {
+//   width: '100%',
+//   height: '100%',
+//   borderRadius: '10px',
+//   backgroundSize: 'cover',
+//   backgroundPosition: 'center',
+// };
+
+// const rightArrowStyles: React.CSSProperties = {
+//   position: 'absolute',
+//   top: '50%',
+//   transform: 'translate(0, -50%)',
+//   right: '32px',
+//   fontSize: '45px',
+//   color: '#fff',
+//   zIndex: 1,
+//   cursor: 'pointer',
+// };
+
+// const leftArrowStyles: React.CSSProperties = {
+//   position: 'absolute',
+//   top: '50%',
+//   transform: 'translate(0, -50%)',
+//   left: '32px',
+//   fontSize: '45px',
+//   color: '#fff',
+//   zIndex: 1,
+//   cursor: 'pointer',
+// };
+
+// const sliderStyles: React.CSSProperties = {
+//   position: 'relative',
+//   height: '100%',
+// };
+
+// const dotsContainerStyles: React.CSSProperties = {
+//   display: 'flex',
+//   justifyContent: 'center',
+// };
+
+// const dotStyle: React.CSSProperties = {
+//   margin: '0 3px',
+//   cursor: 'pointer',
+//   fontSize: '20px',
+// };
+
+const Carousel: React.FC<ImageSliderProps> = ({ slides }) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  const goToPrevious = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
   };
 
-  const images = [image1, image2, image3];
-
-  const [currentImgPosition, setCurrentImgPosition] = useState(0);
-  const finalImgPosition = images.length - settings.frameSize;
-
-  const handlePrevImage = () => {
-    if (currentImgPosition > 0) {
-      setCurrentImgPosition((prev) =>
-        prev - settings.step >= 0 ? prev - settings.step : 0
-      );
-    } else {
-      setCurrentImgPosition(finalImgPosition);
-    }
+  const goToNext = () => {
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
   };
 
-  const handleNextImage = () => {
-    if (currentImgPosition < finalImgPosition) {
-      setCurrentImgPosition((prev) =>
-        prev + settings.step <= finalImgPosition
-          ? prev + settings.step
-          : finalImgPosition
-      );
-    } else {
-      setCurrentImgPosition(0);
-    }
+  const goToSlide = (slideIndex: number) => {
+    setCurrentIndex(slideIndex);
   };
 
-  useEffect(() => {
-    const autoPlayInterval = setInterval(handleNextImage, 5000);
-
-    return () => {
-      clearInterval(autoPlayInterval);
-    };
-  }, [handleNextImage]);
+  const slideStylesWidthBackground: React.CSSProperties = {
+    backgroundImage: `url(${slides[currentIndex].url})`,
+  };
 
   return (
-    <div className="Carousel">
-      <div className="Carousel__controls Carousel__controls--next">
-        <button
-          type="button"
-          className="Carousel__button Carousel__button--active"
-          onClick={handlePrevImage}
-        >
-          &#8249;
+    <div className="slider">
+      <div className="slider__buttons">
+        <div className="slider__buttons-left" onClick={goToPrevious}>
+          ❰
+        </div>
+        <button className="slider__buttons-right" onClick={goToNext}>
+          <img
+            className="slider__buttons-right-vector"
+            src={vector}
+            alt="vector"
+          />
+          {/* ❱ */}
         </button>
       </div>
-      <ul className="Carousel__list">
-        {images.map((image, index) => (
-          <li
-            key={image}
-            style={{
-              transform: `translateX(
-                ${-(currentImgPosition * settings.itemWidth)}px)`,
-              transition: `transform ${settings.animationDuration}ms ease`,
-            }}
+      <div className="slider__slides" style={slideStylesWidthBackground}></div>
+      <div className="slider__tabs">
+        {slides.map((slide, slideIndex) => (
+          <div
+            className={`slider__tabs-tab ${currentIndex === slideIndex ? 'tab-active' : ''}`}
+            key={slideIndex}
+            onClick={() => goToSlide(slideIndex)}
           >
-            <img
-              className="Carousel__image"
-              src={image}
-              alt={`${index + 1}`}
-              width={settings.itemWidth}
-            />
-          </li>
+            {/* ● */}
+          </div>
         ))}
-      </ul>
-
-      <div className="Carousel__controls Carousel__controls--next">
-        <button
-          data-cy="next"
-          type="button"
-          className="Carousel__button Carousel__button--active"
-          onClick={handleNextImage}
-        >
-          &#8250;
-        </button>
       </div>
     </div>
   );

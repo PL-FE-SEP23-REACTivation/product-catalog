@@ -1,47 +1,64 @@
+@import '../../../utils/mixins.scss';
 @import '../../../utils/variables.scss';
 
-.Carousel {
-  display: flex;
-  flex-direction: row;
-  transition: 1000ms;
+.slider {
+  position: relative;
+  height: 100%;
 
-  &__list {
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    border: 1px solid darkgray;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-    list-style: none;
-    width: 500px;
-    height: 180px;
-  }
+  &__buttons {
+    &-left {
+      left: 32px;
+      font-size: 45px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(0, -50%);
+      z-index: 1;
+    }
 
-  &__image {
-    display: block;
-    box-sizing: border-box;
-  }
+    &-right {
+      right: 32px;
+      font-size: 45px;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(0, -50%);
+      z-index: 1;
 
-  &__button {
-    cursor: pointer;
-    width: 32px;
-    height: 100%;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    background-color: white;
-    border: 1px solid rgb(187, 187, 187);
-    box-shadow: 0 2px 6px rgba(217, 217, 217, 0.2);
-    margin: 0 10px;
-
-    &--active {
-      &:hover {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      &-vector {
+        rotate: 90deg;
       }
     }
+  }
 
-    &--disable {
-      cursor: no-drop;
+  &__slides {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.4s;
+  }
+
+  &__tabs {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+
+    &-tab {
+      background-color: $color-elements;
+      height: 4px;
+      width: 14px;
+      margin: 0 3px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.4s;
     }
   }
+}
+
+.tab-active {
+  background-color: $color-primary;
 }
