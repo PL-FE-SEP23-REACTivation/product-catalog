@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Category } from '../../types/categoryType';
 import { Product } from '../../types/productType';
@@ -23,16 +23,8 @@ export const CatalogPage: FC<Props> = ({
   products,
   productsQuantity = 100,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const perPage = Number(searchParams.get('perPage')) || 16;
-
-  useEffect(() => {
-    const currentSort = searchParams.get('sortBy') || SORT_BY_VALUES[0];
-    const currentPerPage = searchParams.get('perPage') || PER_PAGE_VALUES[0];
-    searchParams.set('sortBy', currentSort);
-    searchParams.set('perPage', currentPerPage);
-    setSearchParams(searchParams);
-  }, []);
 
   return (
     <div className="catalog">
