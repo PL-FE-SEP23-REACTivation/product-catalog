@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 export const Footer: React.FC = () => {
   const handleClick = () => {
@@ -10,15 +11,19 @@ export const Footer: React.FC = () => {
         <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
       </div>
       <div className="footer__links">
-        <a href="#github" className="footer__links-link">
+        <Link
+          to="https://github.com/PL-FE-SEP23-REACTivation"
+          className="footer__links-link"
+          target="blank"
+        >
           github
-        </a>
-        <a href="#contacts" className="footer__links-link">
+        </Link>
+        <Link to="#contacts" className="footer__links-link">
           contacts
-        </a>
-        <a href="#rights" className="footer__links-link">
+        </Link>
+        <Link to="#rights" className="footer__links-link">
           rights
-        </a>
+        </Link>
       </div>
       <div className="footer__return">
         <button onClick={handleClick} className="footer__return-content">
