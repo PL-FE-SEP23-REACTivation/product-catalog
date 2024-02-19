@@ -32,5 +32,5 @@ export const getProductByIdAndCategory = async (
 
 //to enter the number of products in category
 export const getQuantityByCategory = (category: string) => {
-  return client.get<Product[]>(`/${category}/quantity`);
+  return client.get<Product[]>(`/products/${category}/quantity`);
 };
