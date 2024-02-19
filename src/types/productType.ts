@@ -9,4 +9,5 @@ export type Product = {
   color: string;
   ram: string;
   image: string;
+  quantity?: number;
 };

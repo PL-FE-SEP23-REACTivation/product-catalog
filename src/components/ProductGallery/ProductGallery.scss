@@ -29,17 +29,17 @@
         border: 1px solid $color-primary;
       }
 
-      @include for-desktop() {
-        height: 80px;
-        width: 80px;
+      @include for-phone() {
+        height: 49px;
+        width: 52px;
       }
       @include for-tablet() {
         height: 35px;
         width: 35px;
       }
-      @include for-phone() {
-        height: 49px;
-        width: 52px;
+      @include for-desktop() {
+        height: 80px;
+        width: 80px;
       }
 
       &:hover {
@@ -53,14 +53,14 @@
     width: 100%;
     object-fit: contain;
 
-    @include for-desktop() {
-      height: 464px;
+    @include for-phone() {
+      height: 288px;
     }
     @include for-tablet() {
       height: 287px;
     }
-    @include for-phone() {
-      height: 288px;
+    @include for-desktop() {
+      height: 464px;
     }
   }
 }

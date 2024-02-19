@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import phonesData from '../../public/api/phones.json';
+import phonesData from '../assets/api/phones.json';
 import PageNotFound from '../components/PageNotFound/PageNotFound';
 
 const TestProductPage: React.FC = () => {

@@ -4,7 +4,7 @@ import { ProductSectionTitle } from '../ProductSectionTitle';
 import './TechSpecs.scss';
 
 type Props = {
-  product: DetailedProduct;
+  product: DetailedProduct | null | undefined;
 };
 
 export const TechSpec: FC<Props> = ({ product }) => {
@@ -14,39 +14,39 @@ export const TechSpec: FC<Props> = ({ product }) => {
 
       <div className="spec">
         <div className="spec__name">Screen</div>
-        <div className="spec__value">{product.screen}</div>
+        <div className="spec__value">{product?.screen}</div>
       </div>
       <div className="spec">
         <div className="spec__name">Resolution</div>
-        <div className="spec__value">{product.resolution}</div>
+        <div className="spec__value">{product?.resolution}</div>
       </div>
       <div className="spec">
         <div className="spec__name">Processor</div>
-        <div className="spec__value">{product.processor}</div>
+        <div className="spec__value">{product?.processor}</div>
       </div>
       <div className="spec">
         <div className="spec__name">RAM</div>
-        <div className="spec__value">{product.ram}</div>
+        <div className="spec__value">{product?.ram}</div>
       </div>
       <div className="spec">
         <div className="spec__name">Built in memory</div>
-        <div className="spec__value">{product.capacity}</div>
+        <div className="spec__value">{product?.capacity}</div>
       </div>
-      {product.camera && (
+      {product?.camera && (
         <div className="spec">
           <div className="spec__name">Camera</div>
-          <div className="spec__value">{product.camera}</div>
+          <div className="spec__value">{product?.camera}</div>
         </div>
       )}
-      {product.zoom && (
+      {product?.zoom && (
         <div className="spec">
           <div className="spec__name">Zoom</div>
-          <div className="spec__value">{product.zoom}</div>
+          <div className="spec__value">{product?.zoom}</div>
         </div>
       )}
       <div className="spec">
         <div className="spec__name">Cell</div>
-        <div className="spec__value">{product.cell.join(', ')}</div>
+        <div className="spec__value">{product?.cell.join(', ')}</div>
       </div>
     </div>
   );
