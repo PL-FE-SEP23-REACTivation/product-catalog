@@ -60,15 +60,15 @@ export const BurgerMenu = () => {
         <div className="menu_footer">
           <Link to="/favourites" className="menu_footer_buttons">
             <button type="button" className="menu_heart">
-              <span className="menu_heart-counter">
-                {favoriteProducts.length}
-              </span>
+              {favoriteProducts.length > 0 && (
+                <span className="menu_heart-counter">
+                  {favoriteProducts.length}
+                </span>
+              )}
             </button>
           </Link>
           <Link to="/cart" className="menu_footer_buttons">
-            <button type="button" className="menu_bag">
-              <span className="menu_bag-counter">0</span>
-            </button>
+            <button type="button" className="menu_bag"></button>
           </Link>
         </div>
       </div>

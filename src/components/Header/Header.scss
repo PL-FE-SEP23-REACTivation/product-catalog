@@ -75,8 +75,16 @@
   }
 
   &__buttons {
-    margin-top: -1px;
     display: flex;
+    justify-content: center;
+    height: 65px;
+    @include for-phone() {
+      display: none;
+    }
+
+    @include for-tablet() {
+      height: 49px;
+    }
 
     &__like {
       position: relative;

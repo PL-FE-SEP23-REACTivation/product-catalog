@@ -46,9 +46,11 @@ export const Header = () => {
         <div className="header__buttons">
           <Link to="/favourites" className="header__buttons__like-link">
             <button type="button" className="header__buttons__like">
-              <span className="header__buttons__like-counter">
-                {favoriteProducts.length}
-              </span>
+              {favoriteProducts.length > 0 && (
+                <span className="header__buttons__like-counter">
+                  {favoriteProducts.length}
+                </span>
+              )}
             </button>
           </Link>
           <Link to="/cart" className="header__buttons__cart" />

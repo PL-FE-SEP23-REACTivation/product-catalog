@@ -176,20 +176,6 @@
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid $color-elements;
-
-    &-counter {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2.5px solid $color-red;
-      font-size: 9px;
-      font-weight: 700;
-      background-color: $color-red;
-      color: white;
-      position: absolute;
-      left: 50%;
-      top: 30%;
-    }
   }
 }
 
