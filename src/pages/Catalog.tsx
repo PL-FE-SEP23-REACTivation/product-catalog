@@ -13,6 +13,8 @@ const Catalog: React.FC = () => {
   const sortBy = searchParams.get('sortBy') || 'oldest';
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
+  const search = searchParams.get('search') || '';
+  const quantity = search ? products.length : productsQuantity?.quantity;
 
   let pathName: 'Phones' | 'Tablets' | 'Accessories';
 
@@ -34,7 +36,8 @@ const Catalog: React.FC = () => {
     const getProducts = async () => {
       if (catalog) {
         await getProductsByCategorie(
-          `${catalog}?sortBy=${sortBy}&perPage=${perPage}&page=${page}`
+          // eslint-disable-next-line max-len
+          `${catalog}?sortBy=${sortBy}&perPage=${perPage}&page=${page}&search=${search}`
         )
           .then((data) => setProducts(data))
           .catch((e) => console.log(e));
@@ -42,7 +45,7 @@ const Catalog: React.FC = () => {
     };
 
     getProducts();
-  }, [catalog, sortBy, perPage, page]);
+  }, [catalog, sortBy, perPage, page, search]);
 
   useEffect(() => {
     const getProductsQuantity = async () => {
@@ -54,7 +57,7 @@ const Catalog: React.FC = () => {
     };
 
     getProductsQuantity();
-  }, []);
+  }, [catalog]);
   console.log(productsQuantity);
 
   useEffect(() => {
@@ -65,7 +68,7 @@ const Catalog: React.FC = () => {
     <CatalogPage
       products={products}
       path={pathName}
-      productsQuantity={productsQuantity?.quantity}
+      productsQuantity={quantity}
     />
   );
 };

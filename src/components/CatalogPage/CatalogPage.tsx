@@ -6,6 +6,7 @@ import { Dropdown } from '../Dropdown/Dropdown';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './CatalogPage.scss';
+import { Search } from '../Search/Search';
 
 type Props = {
   path: 'Phones' | 'Tablets' | 'Accessories';
@@ -52,6 +53,7 @@ export const CatalogPage: FC<Props> = ({
           paramName="perPage"
           className="dropdowns__per-page"
         />
+        <Search />
       </div>
       <div className="catalog_cards">
         {products.map((product) => (
