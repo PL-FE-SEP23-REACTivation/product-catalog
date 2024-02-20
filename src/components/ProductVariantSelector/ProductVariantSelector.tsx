@@ -62,6 +62,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
 
   const customColorMap: CustomColors = {
     rosegold: '#E0BFB8',
+    sierrablue: '#9BB5CE',
     spacegray: '#5e5e5e',
     gold: '#FBD8BD',
     midnight: '#191F28',
@@ -71,6 +72,10 @@ export const ProductVariantSelector: React.FC<Props> = ({
     purple: '#B6ADE4',
     white: '#FBF7F4',
     green: '#B4C5B0',
+    graphite: '#615F5B',
+    spaceblack: '#353331',
+    blue: '#215E7C',
+    starlight: '#D9D2C7',
   };
 
   const handleCapacityClick = (capacity: string) => {

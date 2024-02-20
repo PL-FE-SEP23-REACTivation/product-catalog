@@ -101,7 +101,7 @@ export const BurgerMenu = () => {
             onClick={toggleMenu}
           >
             <div className="menu_bag">
-              {favoriteProducts.length > 0 && (
+              {cartItemsCount > 0 && (
                 <span className="menu-counter">{cartItemsCount}</span>
               )}
             </div>

@@ -1,29 +1,78 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './NewProducts.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
+import arrowLeft from '../../../icons/arrow-left.svg';
+import arrowRight from '../../../icons/arrow-right.svg';
+import { Loader } from '../../Loader/Loader';
 import { Product } from '../../../types/productType';
-import { getNewProducts } from '../../../api/products';
 
-const NewProducts: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+interface Props {
+  products: Product[];
+  isLoading: boolean;
+  isError: boolean;
+  title: string;
+}
 
-  useEffect(() => {
-    const getBrandNewProducts = async () => {
-      await getNewProducts()
-        .then((data) => setProducts(data))
-        .catch((e) => console.log(e));
-    };
+const NewProducts: React.FC<Props> = ({
+  products,
+  isLoading,
+  isError,
+  title,
+}) => {
+  const [slideIndex, setSlideIndex] = useState(0);
 
-    getBrandNewProducts();
-  }, []);
+  const handlePrevClick = () => {
+    setSlideIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNextClick = () => {
+    setSlideIndex((prevIndex) => Math.min(prevIndex + 1, products.length - 1));
+  };
 
   return (
-    <>
-      <h2>Brand new models</h2>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
-    </>
+    <section className="newProducts">
+      <div className="newProducts__header">
+        <h1 className="newProducts__header--title">{title}</h1>
+        <div className="newProducts__header--btn">
+          <button
+            className="newProducts__button"
+            type="button"
+            onClick={handlePrevClick}
+            disabled={slideIndex === 0}
+          >
+            <img src={arrowLeft} alt="button-left" />
+          </button>
+          <button
+            className="newProducts__button"
+            type="button"
+            onClick={handleNextClick}
+            disabled={slideIndex === products.length - 4}
+          >
+            <img src={arrowRight} alt="button-left" />
+          </button>
+        </div>
+      </div>
+
+      <div className="newProducts__content">
+        {isLoading && !isError && <Loader />}
+        {!isLoading && isError && (
+          <p>Error: Unable to load data from server!</p>
+        )}
+        {!isLoading && !isError && (
+          <ul
+            className="newProducts__list"
+            // eslint-disable-next-line max-len
+            style={{ transform: `translateX(-${slideIndex * (272 + 16)}px)` }}
+          >
+            {products.map((product) => (
+              <li className="newProducts__item" key={product.id}>
+                <ProductCard product={product} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
   );
 };
 
