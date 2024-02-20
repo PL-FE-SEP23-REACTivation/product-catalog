@@ -1,23 +1,32 @@
 {
   "files": {
-    "main.css": "/product-catalog/static/css/main.e7cd0ab7.css",
-    "main.js": "/product-catalog/static/js/main.b7b9261f.js",
+    "main.css": "/product-catalog/static/css/main.b75bf98d.css",
+    "main.js": "/product-catalog/static/js/main.82103481.js",
     "static/js/592.c416f42d.chunk.js": "/product-catalog/static/js/592.c416f42d.chunk.js",
+    "static/media/banner-phones.png": "/product-catalog/static/media/banner-phones.b4eeda8bd82b712057a2.png",
     "static/media/Logo.svg": "/product-catalog/static/media/Logo.a66ab63b49be786546b5.svg",
+    "static/media/banner-tablets.png": "/product-catalog/static/media/banner-tablets.a962057c1043a08f7737.png",
     "static/media/Mont-Regular.otf": "/product-catalog/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/product-catalog/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/product-catalog/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "static/media/banner-accessories.png": "/product-catalog/static/media/banner-accessories.bdd2e0fca0159e52f41c.png",
     "static/media/bag.svg": "/product-catalog/static/media/bag.0eb8598aad85806cfeca.svg",
     "static/media/heart-like.svg": "/product-catalog/static/media/heart-like.0d839a8001c7a94aaf74.svg",
+    "static/media/home.svg": "/product-catalog/static/media/home.d4c29e4f137b3a79235a5293536d71a0.svg",
     "static/media/cross.svg": "/product-catalog/static/media/cross.871ab082f1878741f848.svg",
     "static/media/burger.svg": "/product-catalog/static/media/burger.743088d2267b584bc8eb.svg",
+    "static/media/arrow-left.svg": "/product-catalog/static/media/arrow-left.b77279ef6c20c6a125a09e0d4325f80a.svg",
+    "static/media/Chevron (Arrow Right).svg": "/product-catalog/static/media/Chevron (Arrow Right).9a0c8a3fc33b90d4dee9ef9b0678bfdc.svg",
+    "static/media/right-arrow.svg": "/product-catalog/static/media/right-arrow.e028d3889646e0b5e56cf54f47bb701a.svg",
+    "static/media/arrow-down.svg": "/product-catalog/static/media/arrow-down.98c9dd6d98b47f2f1977.svg",
+    "static/media/arrow-up.svg": "/product-catalog/static/media/arrow-up.1ea6958a07717117d3d5.svg",
     "index.html": "/product-catalog/index.html",
-    "main.e7cd0ab7.css.map": "/product-catalog/static/css/main.e7cd0ab7.css.map",
-    "main.b7b9261f.js.map": "/product-catalog/static/js/main.b7b9261f.js.map",
+    "main.b75bf98d.css.map": "/product-catalog/static/css/main.b75bf98d.css.map",
+    "main.82103481.js.map": "/product-catalog/static/js/main.82103481.js.map",
     "592.c416f42d.chunk.js.map": "/product-catalog/static/js/592.c416f42d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7cd0ab7.css",
-    "static/js/main.b7b9261f.js"
+    "static/css/main.b75bf98d.css",
+    "static/js/main.82103481.js"
   ]
 }
