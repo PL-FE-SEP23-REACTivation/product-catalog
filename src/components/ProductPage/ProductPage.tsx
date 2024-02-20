@@ -51,7 +51,7 @@ const ProductPage: React.FC = () => {
 
     productDetailsData();
     recommended();
-  }, []);
+  }, [id, category]);
 
   return (
     <div className="pp">
@@ -80,8 +80,7 @@ const ProductPage: React.FC = () => {
         {productDetails && (
           <ProductVariantSelector
             product={productDetails}
-            setProduct={setproductDetails}
-            setSelectedImg={setSelectedImg}
+            category={category}
           />
         )}
       </div>
