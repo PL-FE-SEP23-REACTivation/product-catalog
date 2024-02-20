@@ -1,8 +1,6 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
-import homeIcon from '../../icons/home.svg';
-import rightArrowIcon from '../../icons/right-arrow.svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
@@ -15,12 +13,29 @@ import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariant
 import { DetailedProduct } from '../../types/detailedProductType';
 import { About } from '../About/About';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
     useState<DetailedProduct | null>();
   const [recommended, setRecommended] = useState<Product[] | null>();
   const { id, category } = useParams();
+
+  let pathName: 'Phones' | 'Tablets' | 'Accessories';
+
+  switch (category) {
+  case 'phones':
+    pathName = 'Phones';
+    break;
+  case 'accessories':
+    pathName = 'Accessories';
+    break;
+  case 'tablets':
+    pathName = 'Tablets';
+    break;
+  default:
+    pathName = 'Phones';
+  }
 
   const [product, setProduct] = useState<DetailedProduct>({
     id: 'apple-iphone-11-128gb-black',
@@ -99,11 +114,7 @@ const ProductPage: React.FC = () => {
   return (
     <div className="pp">
       <div className="pp_header">
-        <img className="pp_header_icon" src={homeIcon} alt="home" />
-        <img className="pp_header_icon" src={rightArrowIcon} alt="arrow" />
-        <div className="pp_header_category">{category}</div>
-        <img className="pp_header_icon" src={rightArrowIcon} alt="arrow" />
-        <div className="pp_header_name">{productDetails?.name}</div>
+        <Breadcrumbs path={pathName} productName={productDetails?.name} />
       </div>
       <div className="pp_return">
         <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
