@@ -2,10 +2,85 @@
 @import '../../../utils/variables.scss';
 @import '../../../utils/mixins.scss';
 
-h1 {
-  font-family: Mont, Roboto;
+.newProducts {
+  max-width: 1136px;
+  height: 572px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 80px;
+  font-family: Mont;
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    &--title {
+      color: black;
+      font-weight: 800;
+      font-size: 32px;
+      @include for-tablet {
+        font-size: 32px;
+      }
+      @include for-phone {
+        font-size: 24px;
+        margin-left: 5%;
+      }
+    }
+  }
+
+  &__header--btn {
+    display: flex;
+    gap: 16px;
+    @include for-phone {
+      margin-right: 10px;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid gray;
+    transition: border 0.3s;
+    cursor: pointer;
+    background-color: transparent;
+
+    &:hover {
+      border: 1px solid gray;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__content {
+    margin: 0 auto;
+    height: 100%;
+    overflow: hidden;
+    width: calc((272px + 16px) * 4);
+
+    @include for-tablet {
+      width: calc((220px + 16px) * 3);
+    }
+
+    @include for-phone {
+      width: calc((180px + 16px) * 2);
+    }
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    transition-duration: 1s;
+  }
 }
 
-h2 {
-  font-family: Mont, Roboto;
+.is-added {
+  border: 1px solid gray;
 }
