@@ -60,6 +60,10 @@ export const Header = () => {
 
       <div className="header__buttons">
         <NavLink
+          to="/register"
+          className="header__buttons__register header__link"
+        ></NavLink>
+        <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
         >

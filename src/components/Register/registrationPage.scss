@@ -1,0 +1,68 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.register {
+  display: flex;
+  flex-direction: column;
+  width: 1137px;
+  margin: 50px auto;
+  font-family: Mont;
+  @include for-tablet {
+    font-size: x-large;
+    width: 50%;
+  }
+  @include for-phone {
+    font-size: x-large;
+    width: 50%;
+  }
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    padding-bottom: 50px;
+  }
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    text-align: left;
+    width: 100%;
+  }
+
+  input[type='email'],
+  input[type='password'] {
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: 50%;
+    @include for-tablet {
+      width: 100%;
+    }
+    @include for-phone {
+      width: 100%;
+    }
+  }
+
+  button {
+    font-family: Mont, sans-serif;
+    background: #313237;
+    border: none;
+    height: 48px;
+    width: 25%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 21px;
+    margin-top: 25px;
+    @include for-tablet {
+      font-size: x-large;
+      width: 50%;
+    }
+    @include for-phone {
+      font-size: x-large;
+      width: 100%;
+    }
+  }
+}
