@@ -1,18 +1,8 @@
 @import '../../utils/fonts.scss';
 @import '../../utils/mixins.scss';
 @import '../../utils/variables.scss';
-
 .favourites {
   width: 100%;
-  @include for-desktop() {
-  }
-
-  @include for-tablet() {
-  }
-
-  @include for-phone() {
-  }
-
   &__header {
     display: flex;
     gap: 8px;
@@ -21,16 +11,15 @@
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;
-    @include for-desktop() {
-      grid-column: 1 / 24;
+    @include for-phone() {
+      grid-column: 1 / 5;
     }
     @include for-tablet() {
       grid-column: 1 / 12;
     }
-    @include for-phone() {
-      grid-column: 1 / 5;
+    @include for-desktop() {
+      grid-column: 1 / 24;
     }
-
     &-icon {
       height: 16px;
       width: 16px;
@@ -39,28 +28,26 @@
       color: $color-primary;
     }
   }
-
   &__title {
-    margin-top: 16px;
+    margin-top: 24px;
     font-family: Mont;
     font-size: 32px;
-    font-weight: 800;
     line-height: 41px;
-    letter-spacing: -0.01em;
+    letter-spacing: 0em;
+    font-weight: 800;
+    grid-column: 1 / 5;
+    @include for-tablet() {
+      grid-column: 1 / 12;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      margin-top: 40px;
+    }
     @include for-desktop() {
       grid-column: 1 / 24;
     }
-    @include for-tablet() {
-      grid-column: 1 / 12;
-    }
-    @include for-phone() {
-      font-size: 22px;
-      line-height: 31px;
-      letter-spacing: 0em;
-
-      grid-column: 1 / 5;
-    }
     &-count {
+      margin-top: 8px;
       display: flex;
       font-size: 14px;
       font-weight: 600;
@@ -68,44 +55,33 @@
     }
   }
   &__content {
-    display: grid;
-    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    align-items: center;
+    @include for-tablet() {
+      margin-top: 40px;
+      display: grid;
+      width: 100%;
+      justify-content: center;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    }
     @include for-desktop() {
       grid-template-columns: repeat(4, 272px);
     }
-    @include for-tablet() {
-      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
-    }
-    @include for-phone() {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
     &-items {
-      @include for-desktop() {
-        max-width: 272px;
-        max-height: 506px;
-      }
-
+      max-width: 287px;
+      max-height: 440px;
       @include for-tablet() {
         max-width: 288px;
         max-height: 506px;
       }
-
-      @include for-phone() {
-        max-width: 287px;
-        max-height: 440px;
+      @include for-desktop() {
+        max-width: 272px;
+        max-height: 506px;
       }
     }
   }
 }
-
-// .content {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
