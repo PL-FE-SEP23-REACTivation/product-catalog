@@ -12,7 +12,7 @@ import './CatalogPage.scss';
 type Props = {
   path: Category;
   products: Product[];
-  productsQuantity: number | undefined;
+  productsQuantity: number;
 };
 
 const SORT_BY_VALUES = ['newest', 'oldest', 'highest price', 'lowest price'];
@@ -21,7 +21,7 @@ const PER_PAGE_VALUES = ['16', '32', '64'];
 export const CatalogPage: FC<Props> = ({
   path,
   products,
-  productsQuantity = 100,
+  productsQuantity,
 }) => {
   const [searchParams] = useSearchParams();
   const perPage = Number(searchParams.get('perPage')) || 16;
