@@ -53,6 +53,8 @@ export const CatalogPage: FC<Props> = ({
           paramName="perPage"
           className="dropdowns__per-page"
         />
+      </div>
+      <div className="Catalog__search search">
         <Search />
       </div>
       <div className="catalog_cards">

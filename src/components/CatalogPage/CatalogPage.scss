@@ -79,3 +79,15 @@
     }
   }
 }
+
+.search input {
+  width: 100%;
+
+  @include for-tablet {
+    width: 136px;
+  }
+
+  @include for-desktop {
+    width: 128px;
+  }
+}

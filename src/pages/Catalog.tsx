@@ -58,7 +58,7 @@ const Catalog: React.FC = () => {
 
     getProductsQuantity();
   }, [catalog]);
-  console.log(productsQuantity);
+  console.log(productsQuantity, search);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
