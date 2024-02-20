@@ -46,7 +46,7 @@ const NewProducts: React.FC<Props> = ({
             className="newProducts__button"
             type="button"
             onClick={handleNextClick}
-            disabled={slideIndex === products.length - 1}
+            disabled={slideIndex === products.length - 4}
           >
             <img src={arrowRight} alt="button-left" />
           </button>

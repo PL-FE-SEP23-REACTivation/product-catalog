@@ -5,23 +5,30 @@ import Categories from './Categories/Categories';
 import HotPrices from './HotPrices/HotPrices';
 import { Product } from '../../types/productType';
 import './Home.scss';
+import { getHotProducts, getNewProducts } from '../../api/products';
 
 const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+  const [hotProducts, setHotProducts] = useState<Product[]>([]);
+  const [newProductsLoading, setNewProductsLoading] = useState(true);
+  const [hotProductsLoading, setHotProductsLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    fetch('https://reactivation.onrender.com/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsError(true);
-        setIsLoading(false);
-      });
+    setNewProductsLoading(true);
+    getNewProducts()
+      .then((data) => setNewProducts(data))
+      .catch((e) => console.log(e))
+      .finally(() => setNewProductsLoading(false));
+  }, []);
+
+  useEffect(() => {
+    setHotProductsLoading(true);
+    getHotProducts()
+      .then((data) => setHotProducts(data))
+      .catch((e) => console.log(e))
+      .finally(() => setHotProductsLoading(false));
   }, []);
 
   return (
@@ -35,8 +42,8 @@ const HomePage: React.FC = () => {
 
       <div className="newProducts">
         <NewProducts
-          products={products}
-          isLoading={isLoading}
+          products={newProducts}
+          isLoading={newProductsLoading}
           isError={isError}
           title="Brand New Models"
         />
@@ -45,7 +52,12 @@ const HomePage: React.FC = () => {
         <Categories />
       </div>
       <div className="hotPrices">
-        <HotPrices />
+        <HotPrices
+          products={hotProducts}
+          isLoading={hotProductsLoading}
+          isError={isError}
+          title="Hot Prices"
+        />
       </div>
     </div>
   );

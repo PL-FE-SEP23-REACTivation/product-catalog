@@ -25,12 +25,19 @@
       @include for-tablet {
         font-size: 32px;
       }
+      @include for-phone {
+        font-size: 24px;
+        margin-left: 5%;
+      }
     }
   }
 
   &__header--btn {
     display: flex;
     gap: 16px;
+    @include for-phone {
+      margin-right: 10px;
+    }
   }
 
   &__button {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/productType';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
@@ -10,10 +11,13 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = product;
+  const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
+    product;
   const isProductDiscount = fullPrice !== price;
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isFavoriteProduct, setIsFavoriteProduct] = useState(false);
+  const isFavoriteProduct = useFavoritesStore((state) =>
+    state.favoriteProducts.some((p) => p.id === id)
+  );
   const { setCart } = useTContext();
 
   const handleAddToCart = () => {
@@ -21,24 +25,28 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     setIsAddedToCart(true);
   };
 
-  const handleToggleFavorite = () => {
-    setIsFavoriteProduct((prevState) => !prevState);
+  const toggleFavorite = () => {
+    if (isFavoriteProduct) {
+      useFavoritesStore.getState().removeFromFavorites(id);
+    } else {
+      useFavoritesStore.getState().addToFavorites(product);
+    }
   };
 
   return (
     <div className="card">
       <div className="card__imgContainer">
-        <Link to={`/${product.category}/${product.id}`}>
+        <Link to={`/${product.category}/${itemId}`}>
           <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`${name}`} />
         </Link>
       </div>
-      <Link to={`/${product.category}/${product.id}`}>
+      <Link to={`/${product.category}/${itemId}`}>
         <div className="card__text">
           <p className="card__title">{name}</p>
         </div>
       </Link>
       <div className="card__price">
-        {!isProductDiscount ? (
+        {isProductDiscount ? (
           <>
             <div className="card__price-regular">{price}</div>
             <div className="card__price-discount">{fullPrice}</div>
@@ -70,10 +78,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         ) : (
           <button className="card__button-added">Added</button>
         )}
-        <button
-          className="card__button-favorite"
-          onClick={handleToggleFavorite}
-        >
+        <button className="card__button-favorite" onClick={toggleFavorite}>
           {isFavoriteProduct ? (
             <img src={IMGofHeart} alt="IMG of heart" />
           ) : (

@@ -5,6 +5,7 @@
 .headerMobile {
   background: $color-white;
   width: 100vw;
+  min-width: 320px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -17,6 +18,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    min-width: 320px;
     height: 48px;
     border-bottom: 1px solid $color-elements;
   }
@@ -124,30 +126,57 @@
     display: flex;
     justify-content: space-between;
     border-top: 1px solid $color-elements;
+
+    &_buttons {
+      width: 100%;
+    }
   }
 
   &_heart {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/heart-like.svg);
     background-position: center;
     background-repeat: no-repeat;
+    border: 1px solid $color-elements;
+    border-right: none;
   }
   &_bag {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/bag.svg);
     background-position: center;
     background-repeat: no-repeat;
     border-left: 1px solid $color-elements;
+    border: 1px solid $color-elements;
+  }
+  &-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+    background-color: $color-red;
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
   }
 }
 

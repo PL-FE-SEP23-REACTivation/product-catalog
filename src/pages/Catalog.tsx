@@ -1,65 +1,66 @@
 import React, { useEffect, useState } from 'react';
-import phonesData from '../assets/api/products.json';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { getProductsByCategorie, getQuantityByCategory } from '../api/products';
 import { CatalogPage } from '../components/CatalogPage/CatalogPage';
+import { Category } from '../types/categoryType';
 import { Product } from '../types/productType';
-import { useParams } from 'react-router-dom';
+import { Quantity } from '../types/quantityType';
+import Pagenotfound from './PageNotFound';
 
 const Catalog: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const { catalog } = useParams();
+  const [productsQuantity, setProductsQuantity] = useState<Quantity | null>();
+  const { category } = useParams();
+  const [searchParams] = useSearchParams();
+  const sortBy = searchParams.get('sortBy') || 'oldest';
+  const perPage = searchParams.get('perPage') || 16;
+  const page = searchParams.get('page') || 1;
 
-  let pathName: 'Phones' | 'Tablets' | 'Accessories';
+  let pathName: Category;
 
-  switch (catalog) {
-  case 'phones':
-    pathName = 'Phones';
-    break;
-  case 'accessories':
-    pathName = 'Accessories';
-    break;
-  case 'tablets':
-    pathName = 'Tablets';
-    break;
-  default:
-    pathName = 'Phones';
+  if (
+    category === 'phones' ||
+    category === 'tablets' ||
+    category === 'accessories'
+  ) {
+    pathName = category;
+  } else {
+    return <Pagenotfound />;
   }
 
   useEffect(() => {
-    //ready to fetch from db
-    {
-      /*
     const getProducts = async () => {
-      if (catalog) {
-        await getProductsByCategorie(category)
-          .then((data) => setProducts(data))
-          .catch((e) => console.log(e));
-      }
-    }
+      await getProductsByCategorie(
+        `${category}?sortBy=${sortBy}&perPage=${perPage}&page=${page}`
+      )
+        .then((data) => setProducts(data))
+        .catch((e) => console.log(e));
+    };
 
     getProducts();
-  */
-    }
-    // poniższe z useEffect należy usunąć
-    const mappedPhones = phonesData
-      .filter((phone) => phone.category === 'phones')
-      .map((phone) => ({
-        id: phone.id,
-        category: 'phones',
-        name: phone.name,
-        fullPrice: phone.fullPrice,
-        price: phone.price,
-        screen: phone.screen,
-        capacity: phone.capacity,
-        color: phone.color,
-        ram: phone.ram,
-        image: phone.image,
-      }));
+  }, [category, sortBy, perPage, page]);
 
-    setProducts(mappedPhones);
-    // usunać aż do tego miejsca :)
-  }, []);
+  useEffect(() => {
+    const getProductsQuantity = async () => {
+      await getQuantityByCategory(category)
+        .then((data) => setProductsQuantity(data))
+        .catch((e) => console.log(e));
+    };
 
-  return <CatalogPage products={products} path={pathName} />;
+    getProductsQuantity();
+  }, [category]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page, category]);
+
+  return (
+    <CatalogPage
+      products={products}
+      path={pathName}
+      productsQuantity={productsQuantity?.quantity}
+    />
+  );
 };
 
 export default Catalog;

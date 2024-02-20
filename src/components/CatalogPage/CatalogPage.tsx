@@ -1,6 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types/categoryType';
 import { Product } from '../../types/productType';
+import { capitalize } from '../../utils/helpers';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Pagination } from '../Pagination/Pagination';
@@ -8,31 +10,29 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import './CatalogPage.scss';
 
 type Props = {
-  path: 'Phones' | 'Tablets' | 'Accessories';
+  path: Category;
   products: Product[];
+  productsQuantity: number | undefined;
 };
 
 const SORT_BY_VALUES = ['newest', 'oldest', 'highest price', 'lowest price'];
 const PER_PAGE_VALUES = ['16', '32', '64'];
 
-export const CatalogPage: FC<Props> = ({ path, products }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    const currentSort = searchParams.get('sortBy') || SORT_BY_VALUES[0];
-    const currentPerPage = searchParams.get('perPage') || PER_PAGE_VALUES[0];
-    searchParams.set('sortBy', currentSort);
-    searchParams.set('perPage', currentPerPage);
-    setSearchParams(searchParams);
-  }, []);
+export const CatalogPage: FC<Props> = ({
+  path,
+  products,
+  productsQuantity = 100,
+}) => {
+  const [searchParams] = useSearchParams();
+  const perPage = Number(searchParams.get('perPage')) || 16;
 
   return (
     <div className="catalog">
       <Breadcrumbs path={path} />
       <h1 className="catalog_title">
-        {path === 'Phones' ? 'Mobile Phones' : path}
+        {path === 'phones' ? 'Mobile Phones' : capitalize(path)}
       </h1>
-      <div className="catalog_count">{`${products.length} models`}</div>
+      <div className="catalog_count">{`${productsQuantity} models`}</div>
       <div className="catalog__dropdowns dropdowns">
         <Dropdown
           name="Sort by"
@@ -55,7 +55,7 @@ export const CatalogPage: FC<Props> = ({ path, products }) => {
         ))}
       </div>
       <div className="catalog_pagination_container">
-        <Pagination total={30} perPage={6} />
+        <Pagination total={+productsQuantity} perPage={perPage} />
       </div>
     </div>
   );
