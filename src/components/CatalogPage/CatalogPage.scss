@@ -80,3 +80,28 @@
     }
   }
 }
+
+.search input {
+  width: 100%;
+
+  @include for-tablet {
+    width: 136px;
+  }
+
+  @include for-desktop {
+    width: 128px;
+  }
+}
+
+.filtrSearchBox {
+  display: flex;
+  flex-direction: column;
+
+  @include for-tablet {
+    flex-direction: row;
+  }
+
+  @include for-desktop {
+    flex-direction: row;
+  }
+}

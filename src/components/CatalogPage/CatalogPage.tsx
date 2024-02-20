@@ -14,6 +14,7 @@ import { Loader } from '../Loader/Loader';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './CatalogPage.scss';
+import { Search } from '../Search/Search';
 
 type Props = {
   path: Category;
@@ -33,6 +34,8 @@ export const CatalogPage: FC<Props> = ({ path }) => {
   const sortBy = searchParams.get('sortBy') || 'newest';
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
+  const search = searchParams.get('search') || '';
+  const quantity = search ? products.length : productsQuantity?.quantity;
 
   useEffect(() => {
     setIsProductsLoading(true);
@@ -78,22 +81,25 @@ export const CatalogPage: FC<Props> = ({ path }) => {
         <Loader />
       ) : (
         <>
-          <div className="catalog_count">
-            {`${productsQuantity.quantity} models`}
-          </div>
-          <div className="catalog__dropdowns dropdowns">
-            <Dropdown
-              name="Sort by"
-              options={SORT_BY_VALUES}
-              paramName="sortBy"
-              className="dropdowns__sort-by"
-            />
-            <Dropdown
-              name="Items on page"
-              options={PER_PAGE_VALUES}
-              paramName="perPage"
-              className="dropdowns__per-page"
-            />
+          <div className="catalog_count">{`${quantity} models`}</div>
+          <div className="filtrSearchBox">
+            <div className="catalog__dropdowns dropdowns">
+              <Dropdown
+                name="Sort by"
+                options={SORT_BY_VALUES}
+                paramName="sortBy"
+                className="dropdowns__sort-by"
+              />
+              <Dropdown
+                name="Items on page"
+                options={PER_PAGE_VALUES}
+                paramName="perPage"
+                className="dropdowns__per-page"
+              />
+            </div>
+            <div className="Catalog__search search">
+              <Search />
+            </div>
           </div>
           <div className="catalog_cards">
             {products.map((product) => (
@@ -103,11 +109,8 @@ export const CatalogPage: FC<Props> = ({ path }) => {
             ))}
           </div>
           <div className="catalog_pagination_container">
-            {+productsQuantity.quantity > +perPage && (
-              <Pagination
-                total={+productsQuantity.quantity}
-                perPage={+perPage}
-              />
+            {+quantity > +perPage && (
+              <Pagination total={+quantity} perPage={+perPage} />
             )}
           </div>
         </>
