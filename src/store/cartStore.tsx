@@ -9,7 +9,7 @@ interface TypeContext {
 }
 
 const useCartStore = create<TypeContext>((set) => ({
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   setCart: (newCart) => {
     set((state) => {
       // eslint-disable-next-line max-len
