@@ -91,3 +91,16 @@
     width: 128px;
   }
 }
+
+.filtrSearchBox {
+  display: flex;
+  flex-direction: column;
+
+  @include for-tablet {
+    flex-direction: row;
+  }
+
+  @include for-desktop {
+    flex-direction: row;
+  }
+}

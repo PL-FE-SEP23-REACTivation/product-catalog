@@ -15,6 +15,15 @@
     margin-top: 10px;
     border: $color-icons 1px solid;
 
+    @include for-tablet {
+      width: 100%;
+      // max-width: 300px;
+    }
+
+    @include for-desktop {
+      width: 350px;
+    }
+
     &:hover {
       border-color: $color-primary;
       color: $color-primary;
@@ -26,6 +35,15 @@
       color: $color-primary;
       outline: none;
     }
+  }
+
+  @include for-tablet {
+    padding-left: 8px;
+    padding-top: 5px;
+  }
+
+  @include for-desktop {
+    // padding-left: 12px;
   }
 }
 

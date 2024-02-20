@@ -40,22 +40,24 @@ export const CatalogPage: FC<Props> = ({
         {path === 'Phones' ? 'Mobile Phones' : path}
       </h1>
       <div className="catalog_count">{`${productsQuantity} models`}</div>
-      <div className="catalog__dropdowns dropdowns">
-        <Dropdown
-          name="Sort by"
-          options={SORT_BY_VALUES}
-          paramName="sortBy"
-          className="dropdowns__sort-by"
-        />
-        <Dropdown
-          name="Items on page"
-          options={PER_PAGE_VALUES}
-          paramName="perPage"
-          className="dropdowns__per-page"
-        />
-      </div>
-      <div className="Catalog__search search">
-        <Search />
+      <div className="filtrSearchBox">
+        <div className="catalog__dropdowns dropdowns">
+          <Dropdown
+            name="Sort by"
+            options={SORT_BY_VALUES}
+            paramName="sortBy"
+            className="dropdowns__sort-by"
+          />
+          <Dropdown
+            name="Items on page"
+            options={PER_PAGE_VALUES}
+            paramName="perPage"
+            className="dropdowns__per-page"
+          />
+        </div>
+        <div className="Catalog__search search">
+          <Search />
+        </div>
       </div>
       <div className="catalog_cards">
         {products.map((product) => (
