@@ -82,6 +82,13 @@ export const BurgerMenu = () => {
           >
             ACCESSORIES
           </NavLink>
+          <NavLink
+            to="/register"
+            className="menu_link burger_link"
+            onClick={toggleMenu}
+          >
+            ACCOUNT
+          </NavLink>
         </div>
         <div className="menu_footer">
           <NavLink
