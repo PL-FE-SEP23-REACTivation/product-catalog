@@ -7,7 +7,7 @@ import './Pagination.scss';
 type Props = {
   total: number;
   perPage: number;
-  currentPage?: number;
+  currentPage?: number | null;
 };
 
 export const Pagination: FC<Props> = ({ total, perPage }) => {

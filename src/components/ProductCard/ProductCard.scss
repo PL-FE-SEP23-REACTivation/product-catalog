@@ -1,5 +1,6 @@
-@import '../../../utils/fonts.scss';
-@import '../../../utils/variables.scss';
+@import '../../utils/fonts.scss';
+@import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 
 .card {
   display: flex;
@@ -7,14 +8,17 @@
   align-items: center;
   justify-content: space-between;
   align-content: space-between;
-  height: 506px;
-  width: 272px;
+  height: 440px;
+
   padding: 32px;
   border: 1px solid rgba(226, 230, 233, 1);
   box-sizing: border-box;
+  @include for-tablet() {
+    height: 506px;
+  }
 
   &__imgContainer {
-    height: 196px;
+    min-height: 130px;
 
     img {
       width: 100%;
@@ -26,13 +30,18 @@
     }
   }
 
+  &__text {
+    display: flex;
+    padding-top: 16px;
+    height: 58px;
+    align-items: center;
+  }
+
   &__title {
     text-align: left;
     font-family: 'Mont', sans-serif;
     font-size: 14px;
-    margin-top: 8px;
-    padding-top: 16px;
-    width: 208px;
+    width: 100%;
     font-weight: 600;
     color: $color-primary;
     line-height: 21px;

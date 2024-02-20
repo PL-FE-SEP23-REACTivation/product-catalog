@@ -1,17 +1,48 @@
+@mixin for-phone() {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin for-tablet() {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
 @mixin for-desktop() {
   @media (min-width: 1200px) {
     @content;
   }
 }
 
-@mixin for-tablet() {
-  @media (min-width: 640px) and (max-width: 1199px) {
-    @content;
-  }
+@mixin desktop-grid() {
+  display: grid;
+  grid-template-columns: repeat(24, 32px);
+  column-gap: 16px;
 }
 
-@mixin for-phone() {
-  @media (max-width: 639px) {
-    @content;
-  }
+@mixin grid-tablet() {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 16px;
+}
+
+@mixin grid-phone() {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+}
+
+@mixin visually-hidden() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

@@ -1,0 +1,81 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.catalog {
+  width: 100%;
+
+  &_title {
+    margin-top: 24px;
+    font-size: 32px;
+    line-height: 41px;
+    @include for-tablet() {
+      margin-top: 40px;
+    }
+    font-family: Mont, 'sans-serif';
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  &_count {
+    font-family: Mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: $color-secondary;
+    margin-bottom: 32px;
+  }
+
+  &_cards {
+    display: grid;
+    margin-top: 24px;
+    gap: 40px 16px;
+    grid-template-columns: 1fr;
+
+    @include for-tablet() {
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    }
+
+    @include for-desktop() {
+      grid-template-columns: repeat(4, 272px);
+    }
+  }
+
+  &_pagination_container {
+    margin-top: 40px;
+    @include for-phone() {
+      margin-top: 24px;
+    }
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.dropdowns {
+  &__sort-by {
+    @include for-tablet {
+      width: 187px;
+    }
+
+    @include for-desktop {
+      width: 176px;
+    }
+  }
+
+  &__per-page {
+    @include for-tablet {
+      width: 136px;
+    }
+
+    @include for-desktop {
+      width: 128px;
+    }
+  }
+}

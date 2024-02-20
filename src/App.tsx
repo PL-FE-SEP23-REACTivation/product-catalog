@@ -1,26 +1,45 @@
+/* eslint-disable max-len */
 import React from 'react';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-
-import Phones from './pages/Phones';
-
-import Footer from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import { Pagination } from './components/Pagination';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AppLayout from './components/Layouts/AppLayout';
+import { CartLayout } from './components/Layouts/CartLayout';
+import { CatalogLayout } from './components/Layouts/CatalogLayout';
+import ProductPageLayout from './components/Layouts/ProductPageLayout';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import CartPage from './pages/CartPage';
+import Catalog from './pages/Catalog';
+import HomePage from './pages/Home';
 import PageNotFound from './pages/PageNotFound';
+import Productpage from './pages/ProductPage';
+import { CartProvider } from './store/cartStore';
+import './styles/_reset.scss';
+import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
+import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Link to="/">Home</Link>
-      <Link to="/phones">Phones</Link>
-
-      <Routes>
-        <Route path="/phones" element={<Phones />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-      <Pagination total={30} perPage={6} />
-      <Footer />
+      <ScrollToTop />
+      <CartProvider>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route element={<CatalogLayout />}>
+              <Route path="/:catalog" element={<Catalog />} />
+            </Route>
+            <Route element={<ProductPageLayout />}>
+              <Route path="/:category/:id" element={<Productpage />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+            <Route element={<CartLayout />}>
+              <Route path="/cart" element={<CartPage />} />
+            </Route>
+            <Route element={<FavouritesPageLayout />}>
+              <Route path="/favourites" element={<FavouritesPage />} />
+            </Route>
+          </Route>
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
   );
 };

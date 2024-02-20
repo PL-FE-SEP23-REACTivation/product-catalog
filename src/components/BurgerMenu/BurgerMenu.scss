@@ -1,10 +1,11 @@
 @import '../../utils/fonts.scss';
 @import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 
 .headerMobile {
   background: $color-white;
-  box-shadow: 0px 1px 0px 0px $color-elements;
   width: 100vw;
+  min-width: 320px;
   margin: 0;
   padding: 0;
   display: flex;
@@ -13,13 +14,13 @@
 
   &_nav {
     background: $color-white;
-    box-shadow: 0px 1px 0px 0px $color-elements;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    min-width: 320px;
     height: 48px;
-    align-self: left;
+    border-bottom: 1px solid $color-elements;
   }
 
   &_buttons {
@@ -43,6 +44,17 @@
   justify-content: space-between;
   background-color: $color-primary;
   color: $color-white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @include for-tablet() {
+    display: none;
+  }
+
+  @include for-desktop() {
+    display: none;
+  }
 }
 
 .burger-icon {
@@ -52,7 +64,6 @@
   background: url(../../../public/icons/burger.svg);
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: -1px 0px 0px 0px $color-elements;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,6 +72,7 @@
   padding: 0;
   border: none;
   font: inherit;
+  border-left: 1px solid $color-elements;
 }
 
 .burger-icon.open {
@@ -70,7 +82,6 @@
   background: url(../../../public/icons/cross.svg);
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: -1px 0px 0px 0px $color-elements;
 }
 
 .menu {
@@ -81,9 +92,9 @@
   right: 0;
   background-color: $color-white;
   width: 100%;
-  height: 520px;
+  height: calc(100vh - 48px);
   transition: 0.4s;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   z-index: 1;
 
   &_links {
@@ -102,52 +113,70 @@
   &_link {
     position: relative;
     color: $color-secondary;
-    padding: 8px;
+    padding: 8px 0 8px 0;
     margin-bottom: 16px;
   }
 
-  &_link:hover {
-    position: relative;
-    color: $color-primary;
-  }
-
-  &_link:hover::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    border-radius: 2px;
-    background-color: $color-primary;
-  }
-
   &_footer {
-    border: 1px solid $color-elements;
-    margin-top: 26vh;
-    align-self: flex-end;
-    height: 64px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 64px;
     display: flex;
+    justify-content: space-between;
+    border-top: 1px solid $color-elements;
+
+    &_buttons {
+      width: 100%;
+    }
   }
 
   &_heart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/heart-like.svg);
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: -1px 0px 0px 0px $color-elements;
+    border: 1px solid $color-elements;
+    border-right: none;
   }
   &_bag {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 64px;
-    width: 50%;
+    width: 100%;
     background-size: 16px 16px;
     background: url(../../../public/icons/bag.svg);
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: -1px 0px 0px 0px $color-elements;
+    border-left: 1px solid $color-elements;
+    border: 1px solid $color-elements;
+  }
+  &-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+    background-color: $color-red;
+    color: #fff;
+    font-size: 9px;
+    position: absolute;
+    left: 50%;
+    top: 30%;
   }
 }
 
@@ -163,7 +192,30 @@
   align-items: center;
 }
 
-a {
-  text-decoration: none;
-  color: $color-secondary;
+.burger_link {
+  &.active,
+  &:hover {
+    position: relative;
+    color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $color-primary;
+    }
+  }
+
+  &_bottom {
+    box-sizing: border-box;
+    border-bottom: 4px solid transparent;
+
+    &.active,
+    &:hover {
+      border-bottom: 4px solid $color-primary;
+    }
+  }
 }

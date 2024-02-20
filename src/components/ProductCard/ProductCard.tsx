@@ -1,46 +1,52 @@
-import React from 'react';
-import image1 from './00.webp';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Product } from '../../types/productType';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
+import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-import { Product } from '../../types/protuctType';
-import './ProductCard.scss';
-
+import { useTContext } from '../../store/cartStore';
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const {
-    itemId,
-    name,
-    fullPrice,
-    price,
-    // id, category, color, year, image,  <- not used in the creation process
-    screen,
-    capacity,
-    ram,
-  } = product;
+  const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
+    product;
+  const isProductDiscount = fullPrice !== price;
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const isFavoriteProduct = useFavoritesStore((state) =>
+    state.favoriteProducts.some((p) => p.id === id)
+  );
+  const { setCart } = useTContext();
 
-  // demo data
-  const card = ['apple-iphone-7-32gb-black', 'apple-iphone-7-64gb-black'];
+  const handleAddToCart = () => {
+    setCart((prevCart) => [...(prevCart as Product[]), product]);
+    setIsAddedToCart(true);
+  };
 
-  const favorite = ['apple-iphone-7-32gb-black', 'apple-iphone-7-64gb-black'];
-
-  const isProductDiscount = fullPrice === price;
-
-  const isAddedToCard = card.includes(itemId);
-
-  const isFavoriteProduct = favorite.includes(itemId);
-  // end of demo data
+  const toggleFavorite = () => {
+    if (isFavoriteProduct) {
+      useFavoritesStore.getState().removeFromFavorites(id);
+    } else {
+      useFavoritesStore.getState().addToFavorites(product);
+    }
+  };
 
   return (
     <div className="card">
       <div className="card__imgContainer">
-        <img src={image1} alt="img of phone" />
+        <Link to={`/${product.category}/${itemId}`}>
+          <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`${name}`} />
+        </Link>
       </div>
-      <div className="card__title">{name}</div>
+      <Link to={`/${product.category}/${itemId}`}>
+        <div className="card__text">
+          <p className="card__title">{name}</p>
+        </div>
+      </Link>
       <div className="card__price">
-        {!isProductDiscount ? (
+        {isProductDiscount ? (
           <>
             <div className="card__price-regular">{price}</div>
             <div className="card__price-discount">{fullPrice}</div>
@@ -65,12 +71,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
       <div className="card__button">
-        {!isAddedToCard ? (
-          <button className="card__button-add">Add to cart</button>
+        {!isAddedToCart ? (
+          <button className="card__button-add" onClick={handleAddToCart}>
+            Add to cart
+          </button>
         ) : (
           <button className="card__button-added">Added</button>
         )}
-        <button className="card__button-favorite">
+        <button className="card__button-favorite" onClick={toggleFavorite}>
           {isFavoriteProduct ? (
             <img src={IMGofHeart} alt="IMG of heart" />
           ) : (

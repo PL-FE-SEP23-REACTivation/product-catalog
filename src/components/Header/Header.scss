@@ -2,32 +2,61 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/variables.scss';
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .header {
+  @include for-phone {
+    display: none;
+  }
+  font-family: Mont;
   background-color: $color-white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: 48px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid $color-elements;
 
-  @include for-phone() {
-    height: auto;
-  }
-
-  @include for-tablet() {
-    height: 48px;
+  @include for-desktop() {
+    height: 64px;
   }
 
   &__logo {
-    margin: 18px 24px;
     flex: 1;
-    @include for-phone() {
-      display: none;
-      margin-top: 10px 0;
+    img {
+      height: 22px;
+      padding-left: 16px;
+      padding-right: 32px;
+
+      @include for-desktop() {
+        height: 28px;
+        padding-left: 24px;
+        padding-right: 48px;
+      }
+    }
+
+    &__item {
+      width: 64px;
+      height: 22px;
+      @include for-desktop() {
+        width: 80px;
+        height: 28px;
+      }
     }
   }
 
   &__container {
     display: flex;
+    align-items: center;
+    height: 48px;
+
+    @include for-desktop() {
+      height: 64px;
+    }
   }
 
   &__nav {
@@ -35,23 +64,31 @@
 
     &__list {
       display: flex;
-      gap: 60px;
+      gap: 32px;
       list-style-type: none;
-      @include for-phone() {
-        display: none;
+      align-items: center;
+      @include for-desktop() {
+        gap: 64px;
       }
 
       &__item {
+        display: flex;
+        height: 100%;
+        align-items: center;
         &__link {
+          box-sizing: content-box;
+          line-height: 48px;
           color: $color-secondary;
           text-decoration: none;
-          font-family: Mont;
           font-size: 12px;
           font-style: normal;
           font-weight: 800;
-          line-height: 11px;
           letter-spacing: 0.48px;
           text-transform: uppercase;
+
+          @include for-desktop() {
+            line-height: 64px;
+          }
         }
       }
     }
@@ -59,16 +96,27 @@
 
   &__buttons {
     display: flex;
-
+    justify-content: center;
+    @include for-phone() {
+      display: none;
+    }
+    @include for-tablet() {
+      height: 49px;
+    }
+    @include for-desktop() {
+      height: 65px;
+    }
     &__like {
+      position: relative;
       background-image: url('../../../public/icons/heart-like.svg');
       background-repeat: no-repeat;
       background-position: center;
-      width: 64px;
-      height: 64px;
-      background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
       border: none;
+      width: 48px;
+      height: 48px;
+      background-color: $color-white;
+      border-left: 1px solid $color-elements;
+      cursor: pointer;
 
       @include for-phone() {
         display: none;
@@ -78,21 +126,25 @@
         height: 48px;
         width: 48px;
       }
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
+      }
     }
 
     &__cart {
+      position: relative;
       background-image: url('../../../public/icons/bag.svg');
       background-repeat: no-repeat;
       background-position: center;
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
       background-color: $color-white;
-      box-shadow: -1px 0px 0px 0px $color-elements;
-      border: none;
+      border-left: 1px solid $color-elements;
 
-      @include for-tablet() {
-        height: 48px;
-        width: 48px;
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
       }
       @include for-phone() {
         display: none;
@@ -101,10 +153,43 @@
   }
 }
 
-.burger-menu-container {
-  display: none;
+.header__link:hover,
+.header__link.active {
+  position: relative;
+  color: $color-primary;
 
-  @include for-phone() {
-    display: block;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    width: auto;
+    background-color: $color-primary;
+  }
+}
+
+.header__buttons__notification {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $color-white;
+  border-radius: 50%;
+  background-color: $color-red;
+  color: #fff;
+  font-size: 9px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  @include for-desktop() {
+    top: 18px;
+    right: 18px;
   }
 }
