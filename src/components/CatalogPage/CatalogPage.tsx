@@ -1,6 +1,8 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types/categoryType';
 import { Product } from '../../types/productType';
+import { capitalize } from '../../utils/helpers';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Pagination } from '../Pagination/Pagination';
@@ -8,7 +10,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import './CatalogPage.scss';
 
 type Props = {
-  path: 'Phones' | 'Tablets' | 'Accessories';
+  path: Category;
   products: Product[];
   productsQuantity: number | undefined;
 };
@@ -21,22 +23,14 @@ export const CatalogPage: FC<Props> = ({
   products,
   productsQuantity = 100,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const perPage = Number(searchParams.get('perPage')) || 16;
-
-  useEffect(() => {
-    const currentSort = searchParams.get('sortBy') || SORT_BY_VALUES[0];
-    const currentPerPage = searchParams.get('perPage') || PER_PAGE_VALUES[0];
-    searchParams.set('sortBy', currentSort);
-    searchParams.set('perPage', currentPerPage);
-    setSearchParams(searchParams);
-  }, []);
 
   return (
     <div className="catalog">
       <Breadcrumbs path={path} />
       <h1 className="catalog_title">
-        {path === 'Phones' ? 'Mobile Phones' : path}
+        {path === 'phones' ? 'Mobile Phones' : capitalize(path)}
       </h1>
       <div className="catalog_count">{`${productsQuantity} models`}</div>
       <div className="catalog__dropdowns dropdowns">
