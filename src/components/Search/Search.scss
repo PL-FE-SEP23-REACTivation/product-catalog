@@ -16,12 +16,12 @@
     border: $color-icons 1px solid;
 
     @include for-tablet {
-      width: 100%;
+      width: 222px;
       // max-width: 300px;
     }
 
     @include for-desktop {
-      width: 350px;
+      width: 280px;
     }
 
     &:hover {
