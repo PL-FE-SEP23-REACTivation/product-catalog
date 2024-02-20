@@ -55,7 +55,9 @@ export const CatalogPage: FC<Props> = ({
         ))}
       </div>
       <div className="catalog_pagination_container">
-        <Pagination total={+productsQuantity} perPage={perPage} />
+        {+productsQuantity > perPage && (
+          <Pagination total={+productsQuantity} perPage={perPage} />
+        )}
       </div>
     </div>
   );

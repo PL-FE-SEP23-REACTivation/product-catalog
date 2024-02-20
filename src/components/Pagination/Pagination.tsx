@@ -12,7 +12,7 @@ type Props = {
 
 export const Pagination: FC<Props> = ({ total, perPage }) => {
   const [searchParams] = useSearchParams();
-  const currentPage = Number(searchParams.get('page'));
+  const currentPage = Number(searchParams.get('page')) || 1;
 
   const numberOfPages = Math.ceil(total / perPage);
   const pages = Array.from({ length: numberOfPages }, (_, i) => i + 1);
