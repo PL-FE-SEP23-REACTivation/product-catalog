@@ -15,6 +15,7 @@ import PageNotFound from './pages/PageNotFound';
 import Productpage from './pages/ProductPage';
 import { CartProvider } from './store/cartStore';
 import './styles/_reset.scss';
+import Register from './components/Register/registrationPage';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
             <Route element={<FavouritesPageLayout />}>
               <Route path="/favourites" element={<FavouritesPage />} />
             </Route>
+            <Route path="/register" element={<Register />} />
           </Route>
         </Routes>
       </CartProvider>
