@@ -28,7 +28,8 @@ const ProductPage: React.FC = () => {
   const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
   const { id, category } = useParams();
 
-  let pathName: 'phones' | 'tablets' | 'accessories';
+  type RouteType = 'phones' | 'tablets' | 'accessories';
+  let pathName: RouteType;
 
   switch (category) {
   case 'phones':

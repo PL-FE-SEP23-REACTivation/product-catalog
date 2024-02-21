@@ -10,11 +10,13 @@ const FavouritesPage: React.FC = () => {
 
   return (
     <div className="favourites">
-      <Breadcrumbs path="favourites" />
-      <div className="favourites__title">
-        Favourites
-        <div className="favourites__title-count">
-          {favoriteProducts.length} items
+      <div className="favourites__header">
+        <Breadcrumbs path={'favourites'} />
+        <div className="favourites__title">
+          Favourites
+          <div className="favourites__title-count">
+            {favoriteProducts.length} items
+          </div>
         </div>
       </div>
       <div className="favourites__content">
