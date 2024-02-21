@@ -5,14 +5,15 @@
   max-width: 1200px;
   justify-content: center;
   margin: 0 auto;
-  @include for-desktop() {
-    padding: 24px 32px 81px 32px;
+  width: 100%;
+  @include for-phone() {
+    padding: 24px 16px 56px 16px;
   }
   @include for-tablet() {
     padding: 24px 24px 64px 24px;
   }
-  @include for-phone() {
-    padding: 24px 16px 56px 16px;
+  @include for-desktop() {
+    padding: 24px 32px 81px 32px;
   }
 }
 
@@ -79,15 +80,15 @@
   padding: 32px 0px 32px 0px;
   background-color: white;
 
-  @include for-desktop() {
-    padding: 24px 32px 80px 32px;
+  @include for-phone() {
+    width: 100%;
+    padding: 24px 16px 64px 16px;
   }
   @include for-tablet() {
     padding: 24px 24px 64px 24px;
     width: 100%;
   }
-  @include for-phone() {
-    width: 100%;
-    padding: 24px 16px 64px 16px;
+  @include for-desktop() {
+    padding: 24px 32px 80px 32px;
   }
 }

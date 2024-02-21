@@ -1,6 +1,6 @@
 import { DetailedProduct } from '../types/detailedProductType';
 import { Product } from '../types/productType';
-import { Quantity } from '../types/quantityType';
+import { Quantity, CategoryCount } from '../types/quantityType';
 import { client } from '../utils/fetchClient';
 
 //for /phones (better to make it universal and use getProductsByCategorie )
@@ -9,8 +9,8 @@ export const getPhones = () => {
   return client.get<DetailedProduct[]>('/phones');
 };
 
-export const getProductByItemId = (id: string) => {
-  return client.get<Product>(`/products/${id}`);
+export const getItemById = (itemId: string) => {
+  return client.get<Product[]>(`/products/item/${itemId}`);
 };
 
 //for path /:category (need change route)
@@ -44,4 +44,8 @@ export const getNewProducts = () => {
 //to enter the number of products in category
 export const getQuantityByCategory = (category: string) => {
   return client.get<Quantity>(`/products/${category}/quantity`);
+};
+
+export const getAllQuantity = () => {
+  return client.get<CategoryCount[]>('/products/quantity');
 };

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Categories.scss';
-import { getQuantityByCategory } from '../../../api/products';
+import { getAllQuantity } from '../../../api/products';
+import { AllQuantity } from '../../../types/quantityType';
 
 const Categories: React.FC = () => {
-  const [phones, setPhones] = useState<number>(0);
-  const [tablets, setTablets] = useState<number>(0);
-  const [accessories, setAccessories] = useState<number>(0);
+  const [quantity, setQuantity] = useState<Partial<AllQuantity>>();
 
   const backToTop = () => {
     window.scrollTo(0, 0);
@@ -14,16 +13,17 @@ const Categories: React.FC = () => {
 
   useEffect(() => {
     const getProductsQuantity = async () => {
-      await getQuantityByCategory('phones')
-        .then((data) => setPhones(data.quantity))
-        .catch((e) => console.log(e));
-
-      await getQuantityByCategory('tablets')
-        .then((data) => setTablets(data.quantity))
-        .catch((e) => console.log(e));
-
-      await getQuantityByCategory('accessories')
-        .then((data) => setAccessories(data.quantity))
+      await getAllQuantity()
+        .then((data) => {
+          const result = data.reduce(
+            (acc: { [key: string]: number }, { category, count }) => {
+              acc[category] = +count;
+              return acc;
+            },
+            {}
+          );
+          setQuantity(result);
+        })
         .catch((e) => console.log(e));
     };
 
