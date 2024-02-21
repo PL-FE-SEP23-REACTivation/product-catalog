@@ -54,7 +54,9 @@ const Categories: React.FC = () => {
                 Mobile phones
               </Link>
 
-              <span className="category__amount">{`${phones} models`}</span>
+              <span className="category__amount">
+                {`${quantity?.phones} models`}
+              </span>
             </div>
           </li>
 
@@ -76,7 +78,9 @@ const Categories: React.FC = () => {
                 Tablets
               </Link>
 
-              <span className="category__amount">{`${tablets} models`}</span>
+              <span className="category__amount">
+                {`${quantity?.tablets} models`}
+              </span>
             </div>
           </li>
 
@@ -99,7 +103,7 @@ const Categories: React.FC = () => {
               </Link>
 
               <span className="category__amount">
-                {`${accessories} models`}
+                {`${quantity?.accessories} models`}
               </span>
             </div>
           </li>
