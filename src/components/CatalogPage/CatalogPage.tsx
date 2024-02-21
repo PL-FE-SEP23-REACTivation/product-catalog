@@ -55,7 +55,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       .finally(() => {
         setIsProductsLoading(false);
       });
-  }, [path, sortBy, perPage, page, isError, search]);
+  }, [path, sortBy, perPage, page, search]);
 
   useEffect(() => {
     setIsQuantityLoading(true);
@@ -70,7 +70,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       .finally(() => {
         setIsQuantityLoading(false);
       });
-  }, [path, isError, search]);
+  }, [path, search]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
