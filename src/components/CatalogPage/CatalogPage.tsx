@@ -42,7 +42,8 @@ export const CatalogPage: FC<Props> = ({ path }) => {
   useEffect(() => {
     setIsProductsLoading(true);
     getProductsByCategorie(
-      `${path}?sortBy=${sortBy}&perPage=${perPage}&page=${page}`
+      // eslint-disable-next-line max-len
+      `${path}?sortBy=${sortBy}&perPage=${perPage}&page=${page}&search=${search}`
     )
       .then((data) => {
         setProducts(data);
@@ -54,7 +55,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       .finally(() => {
         setIsProductsLoading(false);
       });
-  }, [path, sortBy, perPage, page, isError]);
+  }, [path, sortBy, perPage, page, isError, search]);
 
   useEffect(() => {
     setIsQuantityLoading(true);
@@ -69,7 +70,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       .finally(() => {
         setIsQuantityLoading(false);
       });
-  }, [path, isError]);
+  }, [path, isError, search]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -79,26 +80,6 @@ export const CatalogPage: FC<Props> = ({ path }) => {
     <ErrorNotification />
   ) : (
     <>
-      <div className="catalog_count">{`${quantity} models`}</div>
-      <div className="filtrSearchBox">
-        <div className="catalog__dropdowns dropdowns">
-          <Dropdown
-            name="Sort by"
-            options={SORT_BY_VALUES}
-            paramName="sortBy"
-            className="dropdowns__sort-by"
-          />
-          <Dropdown
-            name="Items on page"
-            options={PER_PAGE_VALUES}
-            paramName="perPage"
-            className="dropdowns__per-page"
-          />
-        </div>
-        <div className="Catalog__search search">
-          <Search />
-        </div>
-      </div>
       <div className="catalog_cards">
         {products.map((product) => (
           <div className="catalog_cards_item" key={product.id}>
@@ -120,6 +101,26 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       <h1 className="catalog_title">
         {path === 'phones' ? 'Mobile Phones' : capitalize(path)}
       </h1>
+      <div className="catalog_count">{`${quantity} models`}</div>
+      <div className="filtrSearchBox">
+        <div className="catalog__dropdowns dropdowns">
+          <Dropdown
+            name="Sort by"
+            options={SORT_BY_VALUES}
+            paramName="sortBy"
+            className="dropdowns__sort-by"
+          />
+          <Dropdown
+            name="Items on page"
+            options={PER_PAGE_VALUES}
+            paramName="perPage"
+            className="dropdowns__per-page"
+          />
+        </div>
+        <div className="Catalog__search search">
+          <Search />
+        </div>
+      </div>
       {isProductsLoading && isQuantityLoading ? <Loader /> : catalogContent}
     </div>
   );
