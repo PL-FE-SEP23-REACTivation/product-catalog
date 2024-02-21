@@ -1,0 +1,54 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.error {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+
+  @include for-tablet {
+    gap: 40px;
+  }
+
+  &__icon {
+    height: 50px;
+
+    @include for-tablet {
+      height: 75px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+}
+
+.text {
+  font-family: Mont, 'sans-serif';
+
+  &__main {
+    font-size: 16px;
+    font-weight: 700;
+    color: $color-red;
+    @include for-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__small {
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-primary;
+    @include for-tablet {
+      font-size: 16px;
+    }
+  }
+}
