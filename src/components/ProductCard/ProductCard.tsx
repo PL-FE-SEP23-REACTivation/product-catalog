@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/productType';
+import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
+import { Product } from '../../types/productType';
 import './ProductCard.scss';
 import IMGofHeart from './RedHeart.png';
 import IMGofWhiteHeart from './WhiteHeart.png';
-import { useTContext } from '../../store/cartStore';
 
 type Props = {
   product: Product;
@@ -15,25 +15,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
     product;
   const isProductDiscount = fullPrice !== price;
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const isAddedToCart = useCartStore((state) =>
+    state.cart.some((p) => p.product.id === id)
+  );
   const isFavoriteProduct = useFavoritesStore((state) =>
     state.favoriteProducts.some((p) => p.id === id)
   );
-  const { cart, setCart } = useTContext();
-
-  useEffect(() => {
-    const alreadyInCart = cart.find((item) => item.id === product.id);
-    setIsAddedToCart(!!alreadyInCart);
-  }, [cart, product.id]);
 
   const handleAddToCart = () => {
-    setCart((prevCart) => {
-      const alreadyInCart = prevCart.find((item) => item.id === product.id);
-      if (!alreadyInCart) {
-        return [...prevCart, { ...product, quantity: 1 }];
-      }
-      return prevCart;
-    });
+    if (!isAddedToCart) {
+      useCartStore.getState().addToCart(product);
+    }
   };
 
   const toggleFavorite = () => {

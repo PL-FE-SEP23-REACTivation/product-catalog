@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import create from 'zustand';
+import { create } from 'zustand';
 import { Product } from '../types/productType';
 
 interface FavoritesStore {

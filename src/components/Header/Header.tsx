@@ -1,15 +1,12 @@
 /* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
+import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
-import { useTContext } from '../../store/cartStore';
 import './Header.scss';
 
 export const Header = () => {
-  const { cart } = useTContext();
-
-  const cartItemsCount = cart.reduce(
-    (total, item) => total + (item.quantity ?? 0),
-    0
+  const cartItemsCount = useCartStore((state) =>
+    state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
 
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
