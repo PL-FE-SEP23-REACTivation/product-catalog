@@ -24,7 +24,6 @@ const ProductPage: React.FC = () => {
   type RouteType = 'phones' | 'tablets' | 'accessories';
   let pathName: RouteType;
 
-
   switch (category) {
   case 'phones':
     pathName = 'phones';
