@@ -10,6 +10,7 @@ import { Quantity } from '../../types/quantityType';
 import { capitalize } from '../../utils/helpers';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
+import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
 import { Loader } from '../Loader/Loader';
 import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -26,6 +27,7 @@ const PER_PAGE_VALUES = ['16', '32', '64'];
 export const CatalogPage: FC<Props> = ({ path }) => {
   const [isProductsLoading, setIsProductsLoading] = useState(true);
   const [isQuantityLoading, setIsQuantityLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [productsQuantity, setProductsQuantity] = useState<Quantity>({
     quantity: 0,
@@ -48,6 +50,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       })
       .catch((e) => {
         console.log(e);
+        setIsError(true);
       })
       .finally(() => {
         setIsProductsLoading(false);
@@ -62,6 +65,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
       })
       .catch((e) => {
         console.log(e);
+        setIsError(true);
       })
       .finally(() => {
         setIsQuantityLoading(false);
@@ -71,6 +75,25 @@ export const CatalogPage: FC<Props> = ({ path }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page, path]);
+
+  const catalogContent = isError ? (
+    <ErrorNotification />
+  ) : (
+    <>
+      <div className="catalog_cards">
+        {products.map((product) => (
+          <div className="catalog_cards_item" key={product.id}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
+      <div className="catalog_pagination_container">
+        {+quantity > +perPage && (
+          <Pagination total={+quantity} perPage={+perPage} />
+        )}
+      </div>
+    </>
+  );
 
   return (
     <div className="catalog">
@@ -98,24 +121,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
           <Search />
         </div>
       </div>
-      {isProductsLoading && isQuantityLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <div className="catalog_cards">
-            {products.map((product) => (
-              <div className="catalog_cards_item" key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-          <div className="catalog_pagination_container">
-            {+quantity > +perPage && (
-              <Pagination total={+quantity} perPage={+perPage} />
-            )}
-          </div>
-        </>
-      )}
+      {isProductsLoading && isQuantityLoading ? <Loader /> : catalogContent}
     </div>
   );
 };
