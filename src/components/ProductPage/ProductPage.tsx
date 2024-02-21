@@ -14,9 +14,9 @@ import { DetailedProduct } from '../../types/detailedProductType';
 import { About } from '../About/About';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import NewProducts from '../HomePage/NewProducts/NewProducts';
 import { Loader } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
+import { Slider } from '../HomePage/Slider/Slider';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -128,7 +128,7 @@ const ProductPage: React.FC = () => {
             <TechSpec product={productDetails} />
           </div>
           <div className="pp_reccomended_goods">
-            <NewProducts
+            <Slider
               products={recommended || []}
               title="You may also like"
               isLoading={isLoadingRecommended}
