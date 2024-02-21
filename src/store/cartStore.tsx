@@ -12,7 +12,6 @@ const useCartStore = create<TypeContext>((set) => ({
   cart: JSON.parse(localStorage.getItem('cart') || '[]'),
   setCart: (newCart) => {
     set((state) => {
-      // eslint-disable-next-line max-len
       const updatedCart =
         typeof newCart === 'function' ? newCart(state.cart) : newCart;
       const cartWithDefaultQuantity = updatedCart.map((item) => ({
@@ -33,21 +32,10 @@ export function useTContext() {
 }
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { cart, setCart, clearCart } = useCartStore();
+  const { cart } = useCartStore();
 
   useEffect(() => {
-    const savedCartJSON = localStorage.getItem('cart');
-
-    if (savedCartJSON) {
-      const savedCart = JSON.parse(savedCartJSON);
-      setCart(savedCart);
-    }
-  }, [setCart]);
-
-  useEffect(() => {
-    const cartJSON = JSON.stringify(cart);
-    localStorage.setItem('cart', cartJSON);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
   return <>{children}</>;
