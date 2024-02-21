@@ -21,20 +21,20 @@ const ProductPage: React.FC = () => {
   const [recommended, setRecommended] = useState<Product[] | null>();
   const { id, category } = useParams();
 
-  let pathName: 'Phones' | 'Tablets' | 'Accessories';
+  let pathName: 'phones' | 'tablets' | 'accessories';
 
   switch (category) {
   case 'phones':
-    pathName = 'Phones';
+    pathName = 'phones';
     break;
   case 'accessories':
-    pathName = 'Accessories';
+    pathName = 'accessories';
     break;
   case 'tablets':
-    pathName = 'Tablets';
+    pathName = 'tablets';
     break;
   default:
-    pathName = 'Phones';
+    pathName = 'phones';
   }
 
   const [product, setProduct] = useState<DetailedProduct>({
