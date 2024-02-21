@@ -15,17 +15,13 @@ const HomePage: React.FC = () => {
     { url: image2, title: 'phones' },
     { url: image3, title: 'accessories' },
   ];
-  const containerStyles = {
-    width: '500px',
-    height: '280px',
-    margin: '0 auto',
-  };
+
   return (
     <div className="homePage">
       <div className="title">
         <h1>Welcome to Nice Gadgets store!</h1>
       </div>
-      <div className="carousel" style={containerStyles}>
+      <div className="carousel">
         <Carousel slides={slides} />
       </div>
 

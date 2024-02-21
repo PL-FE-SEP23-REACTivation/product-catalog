@@ -4,12 +4,20 @@
 .carousel {
   display: flex;
   position: relative;
-  height: 400px;
-  max-width: 1136px;
+  height: 320px;
+  width: 320px;
   margin-bottom: 40px;
-  gap: 18px;
+
+  @include for-tablet {
+    gap: 18px;
+  }
+
+  @include for-desktop {
+    gap: 18px;
+  }
 
   .carousel__buttons-right {
+    padding: 0;
     width: 32px;
     font-size: 45px;
     color: black;
@@ -18,6 +26,10 @@
     transform: translateY(0, -50%);
     z-index: 1;
     display: none;
+
+    @include for-tablet {
+      display: block;
+    }
 
     &-vector {
       rotate: 90deg;
@@ -25,6 +37,7 @@
   }
 
   .carousel__buttons-left {
+    padding: 0;
     width: 32px;
     font-size: 45px;
     color: black;
@@ -33,28 +46,47 @@
     height: 100%;
     display: none;
 
+    @include for-tablet {
+      display: block;
+    }
+
     &-vector {
       rotate: -90deg;
     }
   }
 
   &__slides {
-    width: 100%;
-    height: auto;
-    background-size: cover;
+    width: 320px;
+    height: 320px;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.4s;
-    border: 10px solid red;
+    // border: 10px solid red;
+
+    @include for-tablet {
+      background-size: cover;
+      height: 189px;
+      width: 490px;
+    }
+
+    @include for-desktop {
+      height: 432px;
+      width: 1136px;
+    }
   }
 
   &__tabs {
     position: absolute;
     transform: translateY(0, -50%);
-    bottom: -18px;
-    right: 43%;
+    bottom: 50px;
+    right: 40%;
     display: flex;
     justify-content: center;
+
+    // @include for-tablet {
+    //   right: 45%;
+    // }
 
     &-tab {
       background-color: $color-elements;
