@@ -1,16 +1,15 @@
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-import './ProductVariantSelector.scss';
 import classNames from 'classnames';
-import whiteHeart from '../ProductCard/WhiteHeart.png';
-import redHeart from '../ProductCard/RedHeart.png';
-import { DetailedProduct } from '../../types/detailedProductType';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CustomColors } from '../../types/customColorsType';
-import { useTContext } from '../../store/cartStore';
-import { Product } from '../../types/productType';
 import { getItemById } from '../../api/products';
+import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
+import { CustomColors } from '../../types/customColorsType';
+import { DetailedProduct } from '../../types/detailedProductType';
+import redHeart from '../ProductCard/RedHeart.png';
+import whiteHeart from '../ProductCard/WhiteHeart.png';
+import './ProductVariantSelector.scss';
 
 type Props = {
   product: DetailedProduct;
@@ -35,20 +34,20 @@ export const ProductVariantSelector: React.FC<Props> = ({
   const [selectedCapacity, setSelectedCapacity] = useState<string>(
     product.capacity
   );
-  const [isAdded, setIsAdded] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string>(product.color);
   const navigate = useNavigate();
-  const { setCart } = useTContext();
   const isFavoriteProduct = useFavoritesStore((state) =>
     state.favoriteProducts.some((p) => p.itemId === id)
   );
+  const isAddedToCart = useCartStore((state) =>
+    state.cart.some((p) => p.product.itemId === id)
+  );
 
   const handleAddToCart = async () => {
-    const searchedProduct = await getItemById(product.id);
-    console.log(searchedProduct);
-    console.log(product.id);
-    setCart((prevCart) => [...(prevCart as Product[]), searchedProduct[0]]);
-    setIsAdded(true);
+    if (!isAddedToCart) {
+      const searchedProduct = await getItemById(product.id);
+      useCartStore.getState().addToCart(searchedProduct[0]);
+    }
   };
 
   const toggleFavorite = async () => {
@@ -90,7 +89,6 @@ export const ProductVariantSelector: React.FC<Props> = ({
     setSelectedCapacity(capacity);
   };
 
-  //  replace methods are needed because of colors difference in apis: spacegray, space gray, space-gray
   const handleColorSelect = (color: string) => {
     if (category) {
       const newPath = `/${category}/${product.id.replace(
@@ -142,15 +140,11 @@ export const ProductVariantSelector: React.FC<Props> = ({
       <div className="variants_buttons">
         <button
           className={classNames('variants_buttons_add', {
-            variants_buttons_added: isAdded,
+            variants_buttons_added: isAddedToCart,
           })}
-          onClick={() => {
-            if (!isAdded) {
-              handleAddToCart();
-            }
-          }}
+          onClick={() => handleAddToCart()}
         >
-          {isAdded ? 'Added' : 'Add to cart'}
+          {isAddedToCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           className={classNames('variants_buttons_favourite', {
