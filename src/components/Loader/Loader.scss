@@ -1,9 +1,17 @@
 @import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 .loader {
   margin: 0 auto;
+  margin-top: 40%;
   position: relative;
   width: $size;
   height: $size;
+  @include for-tablet {
+    margin-top: 30%;
+  }
+  @include for-desktop {
+    margin-top: 20%;
+  }
 
   &::before,
   &::after {

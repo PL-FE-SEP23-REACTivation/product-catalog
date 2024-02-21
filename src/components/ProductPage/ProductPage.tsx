@@ -20,8 +20,10 @@ const ProductPage: React.FC = () => {
     useState<DetailedProduct | null>();
   const [recommended, setRecommended] = useState<Product[] | null>();
   const { id, category } = useParams();
+
   type RouteType = 'phones' | 'tablets' | 'accessories';
   let pathName: RouteType;
+
 
   switch (category) {
   case 'phones':

@@ -9,15 +9,16 @@
     margin-top: 24px;
     font-size: 32px;
     line-height: 41px;
-    @include for-tablet() {
-      margin-top: 40px;
-    }
     font-family: Mont, 'sans-serif';
-    font-size: 48px;
     font-weight: 800;
     line-height: 56px;
     letter-spacing: -0.01em;
     margin-bottom: 8px;
+    @include for-tablet() {
+      margin-top: 40px;
+      font-size: 48px;
+      line-height: 56px;
+    }
   }
 
   &_count {
@@ -77,5 +78,30 @@
     @include for-desktop {
       width: 128px;
     }
+  }
+}
+
+.search input {
+  width: 100%;
+
+  @include for-tablet {
+    width: 136px;
+  }
+
+  @include for-desktop {
+    width: 128px;
+  }
+}
+
+.filtrSearchBox {
+  display: flex;
+  flex-direction: column;
+
+  @include for-tablet {
+    flex-direction: row;
+  }
+
+  @include for-desktop {
+    flex-direction: row;
   }
 }
