@@ -8,10 +8,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .title {
-  grid-area: 1 / 1 / 2 / -1;
   padding: 0;
 
   @include for-phone() {
@@ -46,37 +46,34 @@
 }
 
 .carousel {
-  width: 500px;
-  height: 280px;
-  margin: 0 auto;
-
-  @include for-phone() {
-    margin-top: 24px;
-  }
+  display: flex;
+  align-items: center;
+  width: 392px;
+  height: 350px;
 
   @include for-tablet() {
+    height: 221px;
+    width: 592px;
     margin-top: 32px;
+    margin-bottom: 100px;
   }
 
   @include for-desktop() {
-    margin-top: 56px;
+    height: 432px;
+    width: 1136px;
+    margin-bottom: 150px;
   }
 }
 
 .newProducts {
-  grid-area: 3 / 1 / 4 / -1;
-
   @include for-phone() {
-    margin-top: 56px;
     margin-left: 16px;
   }
 
   @include for-tablet() {
-    margin-top: 64px;
   }
 
   @include for-desktop() {
-    margin-top: 80px;
   }
 }
 

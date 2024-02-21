@@ -3,10 +3,14 @@
 
 .carousel {
   display: flex;
+  flex-direction: column;
   position: relative;
-  height: 320px;
-  width: 320px;
-  margin-bottom: 40px;
+  height: 250px;
+  width: 392px;
+
+  @include for-phone {
+    margin-left: 20px;
+  }
 
   @include for-tablet {
     gap: 18px;
@@ -16,53 +20,34 @@
     gap: 18px;
   }
 
-  .carousel__buttons-right {
-    padding: 0;
-    width: 32px;
-    font-size: 45px;
-    color: black;
-    cursor: pointer;
-    height: 100%;
-    transform: translateY(0, -50%);
-    z-index: 1;
-    display: none;
+  &__container {
+    display: flex;
+    gap: 18px;
 
-    @include for-tablet {
-      display: block;
-    }
+    &-buttons {
+      width: 30px;
+      font-size: 45px;
+      color: black;
+      cursor: pointer;
+      display: none;
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+      background-position: center;
+      background-repeat: no-repeat;
 
-    &-vector {
-      rotate: 90deg;
-    }
-  }
-
-  .carousel__buttons-left {
-    padding: 0;
-    width: 32px;
-    font-size: 45px;
-    color: black;
-    cursor: pointer;
-    z-index: 1;
-    height: 100%;
-    display: none;
-
-    @include for-tablet {
-      display: block;
-    }
-
-    &-vector {
-      rotate: -90deg;
+      @include for-tablet {
+        display: block;
+      }
     }
   }
 
   &__slides {
-    width: 320px;
-    height: 320px;
+    width: 392px;
+    height: 300px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.4s;
-    // border: 10px solid red;
 
     @include for-tablet {
       background-size: cover;
@@ -77,16 +62,9 @@
   }
 
   &__tabs {
-    position: absolute;
     transform: translateY(0, -50%);
-    bottom: 50px;
-    right: 40%;
     display: flex;
     justify-content: center;
-
-    // @include for-tablet {
-    //   right: 45%;
-    // }
 
     &-tab {
       background-color: $color-elements;
@@ -98,6 +76,14 @@
       transition: all 0.4s;
     }
   }
+}
+
+.button-right {
+  background-image: url('./vector-right.png');
+}
+
+.button-left {
+  background-image: url('./vector-left.png');
 }
 
 .tab-active {
