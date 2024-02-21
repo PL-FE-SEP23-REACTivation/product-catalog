@@ -3,16 +3,16 @@
 @import '../../utils/variables.scss';
 
 .pp {
-  @include for-desktop() {
-    @include desktop-grid();
+  width: 100%;
+  @include for-phone() {
+    @include grid-phone();
   }
-
   @include for-tablet() {
     @include grid-tablet();
   }
 
-  @include for-phone() {
-    @include grid-phone();
+  @include for-desktop() {
+    @include desktop-grid();
   }
 
   &_header {
@@ -23,16 +23,15 @@
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;
-    @include for-desktop() {
-      grid-column: 1 / 24;
+    @include for-phone() {
+      grid-column: 1 / 5;
     }
     @include for-tablet() {
       grid-column: 1 / 12;
     }
-    @include for-phone() {
-      grid-column: 1 / 5;
+    @include for-desktop() {
+      grid-column: 1 / 24;
     }
-
     &_icon {
       height: 16px;
       width: 16px;
@@ -51,16 +50,16 @@
   &_return {
     display: flex;
     gap: 4px;
-    margin-top: 40px;
-    @include for-desktop() {
-      grid-column: 1 / 24;
+    margin-top: 24px;
+    @include for-phone() {
+      grid-column: 1 / 5;
     }
     @include for-tablet() {
       grid-column: 1 / 12;
+      margin-top: 40px;
     }
-    @include for-phone() {
-      margin-top: 24px;
-      grid-column: 1 / 5;
+    @include for-desktop() {
+      grid-column: 1 / 24;
     }
 
     &_icon {
@@ -79,83 +78,96 @@
 
   &_title {
     margin-top: 16px;
-    font-family: Mont;
-    font-size: 32px;
+    font-family: Mont, 'sans-serif';
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
-    @include for-desktop() {
-      grid-column: 1 / 24;
-    }
-    @include for-tablet() {
-      grid-column: 1 / 12;
-    }
     @include for-phone() {
       font-size: 22px;
       line-height: 31px;
       letter-spacing: 0em;
-
       grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      grid-column: 1 / 12;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+    @include for-desktop() {
+      grid-column: 1 / 24;
     }
   }
 
   &_photos {
-    margin-top: 40px;
+    margin-top: 32px;
+    @include for-phone() {
+      grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      margin-top: 40px;
+      grid-column: 1 / 7;
+    }
     @include for-desktop() {
       grid-column: 1 / 13;
     }
-    @include for-tablet() {
-      grid-column: 1 / 7;
-    }
-    @include for-phone() {
-      grid-column: 1 / 5;
-      margin-top: 32px;
-    }
   }
   &_variants {
-    @include for-desktop() {
-      grid-column: 14 / 24;
+    @include for-phone() {
+      grid-column: 1 / 5;
     }
     @include for-tablet() {
       grid-column: 8 / 12;
     }
-    @include for-phone() {
-      grid-column: 1 / 5;
-    }
-  }
-
-  &_about {
-    @include for-desktop() {
-      grid-column: 1 / 12;
-    }
-    @include for-tablet() {
-      grid-column: 1 / 12;
-    }
-    @include for-phone() {
-      grid-column: 1 / 5;
-    }
-  }
-  &_tech-specs {
     @include for-desktop() {
       grid-column: 14 / 24;
     }
     @include for-tablet() {
-      grid-column: 1 / 12;
+      grid-column: 8 / 13;
     }
+    @include for-desktop() {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &_about {
+    margin-top: 56px;
     @include for-phone() {
       grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      grid-column: 1 / 13;
+      margin-top: 64px;
+    }
+    @include for-desktop() {
+      grid-column: 1 / 12;
+      margin-top: 80px;
+    }
+  }
+  &_tech-specs {
+    @include for-phone() {
+      margin-top: 56px;
+      grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      margin-top: 64px;
+      grid-column: 1 / 13;
+    }
+    @include for-desktop() {
+      margin-top: 80px;
+      grid-column: 14 / 25;
     }
   }
 
   &_reccomended_goods {
-    @include for-desktop() {
-      grid-column: 1 / 24;
+    @include for-phone() {
+      grid-column: 1 / 5;
     }
     @include for-tablet() {
       grid-column: 1 / 12;
     }
-    @include for-phone() {
-      grid-column: 1 / 5;
+    @include for-desktop() {
+      grid-column: 1 / 24;
     }
   }
 }

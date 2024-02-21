@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
 
-    &-wraper {
+    &-wrapper {
       display: flex;
       gap: 24px;
       align-items: center;
@@ -42,8 +42,8 @@
     }
 
     &__img {
-      width: 66px;
-      height: 66px;
+      padding: 7px;
+      height: 80px;
     }
 
     &__close {
@@ -96,21 +96,31 @@
     }
 
     &__quantity {
-      width: 32px;
-      height: 32px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: $color-white;
-      border: 1px solid $color-elements;
-      cursor: pointer;
-
-      font-size: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
 
+      &__button {
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $color-white;
+        border: 1px solid $color-elements;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
       &:hover {
         border-color: $color-primary;
+      }
+
+      &__number {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 

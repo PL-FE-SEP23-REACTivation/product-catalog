@@ -4,21 +4,10 @@
 @import '../../utils/reset.scss';
 
 .homePage {
-  display: grid;
-
-  @include for-phone() {
-    @include grid-phone();
-  }
-
-  @include for-tablet() {
-    @include grid-tablet();
-    margin: 0 24px;
-  }
-
-  @include for-desktop() {
-    @include desktop-grid();
-    margin: 0 32px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .title {
@@ -84,7 +73,6 @@
 
   @include for-tablet() {
     margin-top: 64px;
-    margin-left: 24px;
   }
 
   @include for-desktop() {

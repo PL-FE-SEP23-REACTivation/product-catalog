@@ -1,4 +1,6 @@
+/* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
+import { useFavoritesStore } from '../../storage/FavouritesStore';
 import { useTContext } from '../../store/cartStore';
 import './Header.scss';
 
@@ -10,6 +12,7 @@ export const Header = () => {
     0
   );
 
+  const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   return (
     <header className="header">
       <div className="header__container">
@@ -59,10 +62,16 @@ export const Header = () => {
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
-        />
+        >
+          {favoriteProducts.length > 0 && (
+            <div className="header__buttons__notification">
+              {favoriteProducts.length}
+            </div>
+          )}
+        </NavLink>
         <NavLink to="/cart" className="header__buttons__cart header__link">
           {cartItemsCount > 0 && (
-            <div className="header__buttons__cart__circle">
+            <div className="header__buttons__notification">
               {cartItemsCount}
             </div>
           )}

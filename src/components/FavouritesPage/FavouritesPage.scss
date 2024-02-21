@@ -1,0 +1,88 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+.favourites {
+  width: 100%;
+  &__header {
+    display: flex;
+    gap: 8px;
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    @include for-phone() {
+      grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      grid-column: 1 / 12;
+    }
+    @include for-desktop() {
+      grid-column: 1 / 24;
+    }
+    &-icon {
+      height: 16px;
+      width: 16px;
+    }
+    &-category {
+      color: $color-primary;
+    }
+  }
+  &__title {
+    margin-top: 24px;
+    font-family: Mont;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: 0em;
+    font-weight: 800;
+    grid-column: 1 / 5;
+    @include for-tablet() {
+      grid-column: 1 / 12;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      margin-top: 40px;
+    }
+    @include for-desktop() {
+      grid-column: 1 / 24;
+    }
+    &-count {
+      margin-top: 8px;
+      display: flex;
+      font-size: 14px;
+      font-weight: 600;
+      color: $color-secondary;
+    }
+  }
+
+  &__content {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include for-tablet() {
+      margin-top: 40px;
+      display: grid;
+      width: 100%;
+      justify-content: center;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    }
+    @include for-desktop() {
+      grid-template-columns: repeat(4, 272px);
+    }
+    &-items {
+      max-width: 287px;
+      max-height: 440px;
+      @include for-tablet() {
+        max-width: 288px;
+        max-height: 506px;
+      }
+      @include for-desktop() {
+        max-width: 272px;
+        max-height: 506px;
+      }
+    }
+  }
+}

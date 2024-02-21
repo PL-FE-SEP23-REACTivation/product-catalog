@@ -3,15 +3,15 @@
 
 .title {
   font-family: Mont, 'sans-serif';
-  font-weight: 800;
-  font-size: 22px;
+  font-weight: 700;
+  font-size: 20px;
   color: $color-primary;
   padding-bottom: 16px;
   border-bottom: $color-elements solid 1px;
   margin-bottom: 30px;
 
-  @include for-phone() {
-    font-weight: 700;
-    font-size: 20px;
+  @include for-tablet() {
+    font-weight: 800;
+    font-size: 22px;
   }
 }
