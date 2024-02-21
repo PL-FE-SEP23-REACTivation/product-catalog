@@ -35,15 +35,19 @@
   &__header--btn {
     display: flex;
     gap: 16px;
-    @include for-phone {
-      margin-right: 10px;
+    margin-right: 16px;
+    @include for-tablet{
+      margin-right: 0px;
+    }
+    @include for-desktop {
+      margin-right: 0px;
     }
   }
 
   &__button {
     width: 32px;
     height: 32px;
-    border: 1px solid gray;
+    border: 1px solid rgb(0, 0, 0);
     transition: border 0.3s;
     cursor: pointer;
     background-color: transparent;
@@ -62,14 +66,14 @@
     margin: 0 auto;
     height: 100%;
     overflow: hidden;
-    width: calc((272px + 16px) * 4);
+    width: calc((180px + 16px) * 2);
 
     @include for-tablet {
-      width: calc((220px + 16px) * 3);
+      width: calc((190px + 16px) * 3);
     }
 
-    @include for-phone {
-      width: calc((180px + 16px) * 2);
+    @include for-desktop {
+      width: calc((272px + 16px) * 4);
     }
   }
 
