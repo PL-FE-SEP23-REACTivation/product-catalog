@@ -2,21 +2,13 @@
 @import '../../../utils/variables.scss';
 @import '../../../utils/mixins.scss';
 
-.newProducts {
-  max-width: 1136px;
-  height: 572px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 80px;
-  font-family: Mont;
-
+.slider {
   &__header {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 24px;
+    font-family: Mont;
 
     &--title {
       color: black;
@@ -36,12 +28,7 @@
     display: flex;
     gap: 16px;
     margin-right: 16px;
-    @include for-tablet{
-      margin-right: 0px;
-    }
-    @include for-desktop {
-      margin-right: 0px;
-    }
+
   }
 
   &__button {
@@ -83,8 +70,4 @@
     gap: 16px;
     transition-duration: 1s;
   }
-}
-
-.is-added {
-  border: 1px solid gray;
 }
