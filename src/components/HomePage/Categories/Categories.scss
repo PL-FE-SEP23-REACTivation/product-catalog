@@ -1,3 +1,93 @@
 @import '../../../utils/fonts.scss';
 @import '../../../utils/variables.scss';
 @import '../../../utils/mixins.scss';
+
+.category {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: Mont;
+  }
+  &__title {
+    font-family: Mont;
+    font-weight: 800;
+    font-size: 32px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    @include for-desktop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__image-link {
+    width: 272px;
+    height: 272px;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @include for-tablet {
+      width: 368px;
+      height: 368px;
+    }
+
+    &--phones {
+      background-color: #fcdbc1;
+    }
+
+    &--tablets {
+      background-color: #8d8d92;
+    }
+
+    &--accessories {
+      background-color: #973d5f;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 272px;
+
+    @include for-tablet {
+      height: 368px;
+    }
+  }
+
+  &__name-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__name {
+    color: $color-primary;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__amount {
+    color: $color-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
