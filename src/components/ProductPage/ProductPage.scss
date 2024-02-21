@@ -15,6 +15,19 @@
     @include desktop-grid();
   }
 
+  &_loader_container {
+    @include for-phone() {
+      grid-column: 1 / 5;
+    }
+    @include for-tablet() {
+      grid-column: 1 / 13;
+    }
+
+    @include for-desktop() {
+      grid-column: 1 / 25;
+    }
+  }
+
   &_header {
     display: flex;
     gap: 8px;
@@ -113,14 +126,9 @@
     }
   }
   &_variants {
+    margin-top: 40px;
     @include for-phone() {
       grid-column: 1 / 5;
-    }
-    @include for-tablet() {
-      grid-column: 8 / 12;
-    }
-    @include for-desktop() {
-      grid-column: 14 / 24;
     }
     @include for-tablet() {
       grid-column: 8 / 13;
@@ -140,7 +148,7 @@
       margin-top: 64px;
     }
     @include for-desktop() {
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
       margin-top: 80px;
     }
   }
@@ -161,13 +169,16 @@
 
   &_reccomended_goods {
     @include for-phone() {
+      margin-top: 56px;
       grid-column: 1 / 5;
     }
     @include for-tablet() {
+      margin-top: 64px;
       grid-column: 1 / 12;
     }
     @include for-desktop() {
-      grid-column: 1 / 24;
+      margin-top: 80px;
+      grid-column: 1 / 25;
     }
   }
 }
