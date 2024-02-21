@@ -15,6 +15,8 @@ import { About } from '../About/About';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import NewProducts from '../HomePage/NewProducts/NewProducts';
+import { Loader } from '../Loader/Loader';
+import { Link } from 'react-router-dom';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -22,6 +24,7 @@ const ProductPage: React.FC = () => {
   const [recommended, setRecommended] = useState<Product[] | null>(null);
   const [isLoadingRecommended, setIsLoadingRecommended] =
     useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
   const { id, category } = useParams();
 
@@ -49,6 +52,7 @@ const ProductPage: React.FC = () => {
 
   useEffect(() => {
     const productDetailsData = async () => {
+      setIsLoading(true);
       if (id && category) {
         try {
           const data = await getProductByIdAndCategory(id, category);
@@ -56,6 +60,8 @@ const ProductPage: React.FC = () => {
           setSelectedImg(`${process.env.PUBLIC_URL}/${data.images[0]}`);
         } catch (e) {
           console.log(e);
+        } finally {
+          setIsLoading(false);
         }
       }
     };
@@ -84,42 +90,52 @@ const ProductPage: React.FC = () => {
       <div className="pp_header">
         <Breadcrumbs path={pathName} productName={productDetails?.name} />
       </div>
-      <div className="pp_return">
+      <Link className="pp_return" to={`/${category}`}>
         <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
         <div className="pp_return_text">Back</div>
-      </div>
+      </Link>
       <div className="pp_title">{productDetails?.name}</div>
-      <div className="pp_photos">
-        {productDetails && (
-          <ProductGallery
-            images={productDetails.images}
-            selectedImg={selectedImg}
-            setSelectedImg={setSelectedImg}
-          />
-        )}
-      </div>
-      <div className="pp_variants">
-        {productDetails && (
-          <ProductVariantSelector
-            product={productDetails}
-            category={category}
-          />
-        )}
-      </div>
-      <div className="pp_about">
-        {productDetails && <About description={productDetails?.description} />}
-      </div>
-      <div className="pp_tech-specs">
-        <TechSpec product={productDetails} />
-      </div>
-      <div className="pp_reccomended_goods">
-        <NewProducts
-          products={recommended || []}
-          title="You may also like"
-          isLoading={isLoadingRecommended}
-          isError={isErrorRecommended}
-        />
-      </div>
+      {isLoading ? (
+        <div className="pp_loader_container">
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <div className="pp_photos">
+            {productDetails && (
+              <ProductGallery
+                images={productDetails.images}
+                selectedImg={selectedImg}
+                setSelectedImg={setSelectedImg}
+              />
+            )}
+          </div>
+          <div className="pp_variants">
+            {productDetails && (
+              <ProductVariantSelector
+                product={productDetails}
+                category={category}
+              />
+            )}
+          </div>
+          <div className="pp_about">
+            {productDetails && (
+              <About description={productDetails?.description} />
+            )}
+          </div>
+          <div className="pp_tech-specs">
+            <TechSpec product={productDetails} />
+          </div>
+          <div className="pp_reccomended_goods">
+            <NewProducts
+              products={recommended || []}
+              title="You may also like"
+              isLoading={isLoadingRecommended}
+              isError={isErrorRecommended}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

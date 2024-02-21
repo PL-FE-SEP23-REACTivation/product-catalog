@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { CustomColors } from '../../types/customColorsType';
 import { useTContext } from '../../store/cartStore';
 import { Product } from '../../types/productType';
-import { getProductByItemId } from '../../api/products';
+import { getItemById } from '../../api/products';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 
 type Props = {
@@ -35,7 +35,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
   const [selectedCapacity, setSelectedCapacity] = useState<string>(
     product.capacity
   );
-  const [isAdded, setIsAdded] = useState<boolean>();
+  const [isAdded, setIsAdded] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string>(product.color);
   const navigate = useNavigate();
   const { setCart } = useTContext();
@@ -44,19 +44,21 @@ export const ProductVariantSelector: React.FC<Props> = ({
   );
 
   const handleAddToCart = async () => {
-    // i think it would work good but something is wrong with getProductsByItemId endpoint
-    const searchedProduct = await getProductByItemId(product.id);
-    setCart((prevCart) => [...(prevCart as Product[]), searchedProduct]);
+    const searchedProduct = await getItemById(product.id);
+    console.log(searchedProduct);
+    console.log(product.id);
+    setCart((prevCart) => [...(prevCart as Product[]), searchedProduct[0]]);
     setIsAdded(true);
   };
 
   const toggleFavorite = async () => {
-    // i think it would work good but something is wrong with getProductsByItemId endpoint
-    const searchedProduct = await getProductByItemId(product.id);
+    const searchedProduct = await getItemById(product.id);
+    console.log(searchedProduct);
+    console.log(product.id);
     if (isFavoriteProduct) {
-      useFavoritesStore.getState().removeFromFavorites(searchedProduct.id);
+      useFavoritesStore.getState().removeFromFavorites(searchedProduct[0].id);
     } else {
-      useFavoritesStore.getState().addToFavorites(searchedProduct);
+      useFavoritesStore.getState().addToFavorites(searchedProduct[0]);
     }
   };
 
@@ -105,7 +107,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
     <div className="variants">
       <div className="variants_text-1">Avaliable Colors</div>
       <div className="variants_colors">
-        {colorsAvailable.map((color, index) => (
+        {colorsAvailable.sort().map((color, index) => (
           <button
             key={index}
             className={classNames('variants_colors_value', {

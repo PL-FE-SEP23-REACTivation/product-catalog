@@ -9,8 +9,8 @@ export const getPhones = () => {
   return client.get<DetailedProduct[]>('/phones');
 };
 
-export const getProductByItemId = (id: string) => {
-  return client.get<Product>(`/products/${id}`);
+export const getItemById = (itemId: string) => {
+  return client.get<Product[]>(`/products/item/${itemId}`);
 };
 
 //for path /:category (need change route)
