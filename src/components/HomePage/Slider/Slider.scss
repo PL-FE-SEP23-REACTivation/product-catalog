@@ -2,21 +2,13 @@
 @import '../../../utils/variables.scss';
 @import '../../../utils/mixins.scss';
 
-.hotPrices {
-  max-width: 1136px;
-  height: 572px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 80px;
-  font-family: Mont;
-
+.slider {
   &__header {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-bottom: 24px;
+    font-family: Mont;
 
     &--title {
       color: black;
@@ -25,18 +17,24 @@
       @include for-tablet {
         font-size: 32px;
       }
+      @include for-phone {
+        font-size: 24px;
+        margin-left: 5%;
+      }
     }
   }
 
   &__header--btn {
     display: flex;
     gap: 16px;
+    margin-right: 16px;
+
   }
 
   &__button {
     width: 32px;
     height: 32px;
-    border: 1px solid gray;
+    border: 1px solid rgb(0, 0, 0);
     transition: border 0.3s;
     cursor: pointer;
     background-color: transparent;
@@ -55,14 +53,14 @@
     margin: 0 auto;
     height: 100%;
     overflow: hidden;
-    width: calc((272px + 16px) * 4);
+    width: calc((180px + 16px) * 2);
 
     @include for-tablet {
-      width: calc((220px + 16px) * 3);
+      width: calc((190px + 16px) * 3);
     }
 
-    @include for-phone {
-      width: calc((180px + 16px) * 2);
+    @include for-desktop {
+      width: calc((272px + 16px) * 4);
     }
   }
 
@@ -72,8 +70,4 @@
     gap: 16px;
     transition-duration: 1s;
   }
-}
-
-.is-added {
-  border: 1px solid gray;
 }
