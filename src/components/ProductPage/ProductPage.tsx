@@ -53,7 +53,6 @@ const ProductPage: React.FC = () => {
 
   useEffect(() => {
     const productDetailsData = async () => {
-      setIsLoading(true);
       if (id && category) {
         try {
           const data = await getProductByIdAndCategory(id, category);
@@ -114,6 +113,7 @@ const ProductPage: React.FC = () => {
           <div className="pp_variants">
             {productDetails && (
               <ProductVariantSelector
+                key={productDetails.id}
                 product={productDetails}
                 category={category}
               />
