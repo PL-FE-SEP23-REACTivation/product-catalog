@@ -8,57 +8,11 @@ interface Slide {
   title: string;
 }
 
-interface ImageSliderProps {
+interface ImagecarouselProps {
   slides: Slide[];
 }
 
-// const slideStyles: React.CSSProperties = {
-//   width: '100%',
-//   height: '100%',
-//   borderRadius: '10px',
-//   backgroundSize: 'cover',
-//   backgroundPosition: 'center',
-// };
-
-// const rightArrowStyles: React.CSSProperties = {
-//   position: 'absolute',
-//   top: '50%',
-//   transform: 'translate(0, -50%)',
-//   right: '32px',
-//   fontSize: '45px',
-//   color: '#fff',
-//   zIndex: 1,
-//   cursor: 'pointer',
-// };
-
-// const leftArrowStyles: React.CSSProperties = {
-//   position: 'absolute',
-//   top: '50%',
-//   transform: 'translate(0, -50%)',
-//   left: '32px',
-//   fontSize: '45px',
-//   color: '#fff',
-//   zIndex: 1,
-//   cursor: 'pointer',
-// };
-
-// const sliderStyles: React.CSSProperties = {
-//   position: 'relative',
-//   height: '100%',
-// };
-
-// const dotsContainerStyles: React.CSSProperties = {
-//   display: 'flex',
-//   justifyContent: 'center',
-// };
-
-// const dotStyle: React.CSSProperties = {
-//   margin: '0 3px',
-//   cursor: 'pointer',
-//   fontSize: '20px',
-// };
-
-const Carousel: React.FC<ImageSliderProps> = ({ slides }) => {
+const Carousel: React.FC<ImagecarouselProps> = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const goToPrevious = () => {
@@ -82,25 +36,33 @@ const Carousel: React.FC<ImageSliderProps> = ({ slides }) => {
   };
 
   return (
-    <div className="slider">
-      <div className="slider__buttons">
-        <div className="slider__buttons-left" onClick={goToPrevious}>
-          ❰
-        </div>
-        <button className="slider__buttons-right" onClick={goToNext}>
+    <div className="carousel">
+      <div className="carousel__buttons">
+        <button className="carousel__buttons-left" onClick={goToPrevious}>
           <img
-            className="slider__buttons-right-vector"
+            className="carousel__buttons-left-vector"
             src={vector}
             alt="vector"
           />
-          {/* ❱ */}
+          {/* ❰ */}
         </button>
       </div>
-      <div className="slider__slides" style={slideStylesWidthBackground}></div>
-      <div className="slider__tabs">
+      <div
+        className="carousel__slides"
+        style={slideStylesWidthBackground}
+      ></div>
+      <button className="carousel__buttons-right" onClick={goToNext}>
+        <img
+          className="carousel__buttons-right-vector"
+          src={vector}
+          alt="vector"
+        />
+        {/* ❱ */}
+      </button>
+      <div className="carousel__tabs">
         {slides.map((slide, slideIndex) => (
           <div
-            className={`slider__tabs-tab ${currentIndex === slideIndex ? 'tab-active' : ''}`}
+            className={`carousel__tabs-tab ${currentIndex === slideIndex ? 'tab-active' : ''}`}
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
           >
