@@ -5,22 +5,16 @@
 .register {
   display: flex;
   flex-direction: column;
-  width: 1137px;
+  width: 90%;
   margin: 50px auto;
   font-family: Mont;
-  @include for-tablet {
-    font-size: x-large;
-    width: 50%;
-  }
-  @include for-phone {
-    font-size: x-large;
-    width: 50%;
-  }
+
   &__title {
     font-weight: 800;
     font-size: 32px;
     padding-bottom: 50px;
   }
+
   & > * {
     margin-bottom: 1rem;
   }
@@ -34,13 +28,7 @@
   input[type='password'] {
     border-radius: 0.25rem;
     padding: 0.5rem;
-    width: 50%;
-    @include for-tablet {
-      width: 100%;
-    }
-    @include for-phone {
-      width: 100%;
-    }
+    width: 100%;
   }
 
   button {
@@ -48,21 +36,32 @@
     background: #313237;
     border: none;
     height: 48px;
-    width: 25%;
+    width: 100%;
     text-align: center;
     color: #ffffff;
-    font-size: 14px;
+    font-size: x-large;
     font-style: normal;
     font-weight: 700;
     line-height: 21px;
     margin-top: 25px;
-    @include for-tablet {
+  }
+
+  @include for-tablet {
+    width: 50%;
+    button {
       font-size: x-large;
       width: 50%;
     }
-    @include for-phone {
-      font-size: x-large;
-      width: 100%;
+  }
+
+  @include for-desktop {
+    width: 1137px;
+    button {
+      width: 25%;
     }
+    input[type='email'],
+  input[type='password']{
+    width: 50%;
+  }
   }
 }
