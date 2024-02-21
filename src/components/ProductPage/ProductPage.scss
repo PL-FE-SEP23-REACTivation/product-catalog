@@ -140,7 +140,7 @@
       margin-top: 64px;
     }
     @include for-desktop() {
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
       margin-top: 80px;
     }
   }
@@ -167,7 +167,7 @@
       grid-column: 1 / 12;
     }
     @include for-desktop() {
-      grid-column: 1 / 24;
+      grid-column: 1 / 25;
     }
   }
 }

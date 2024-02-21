@@ -14,11 +14,15 @@ import { DetailedProduct } from '../../types/detailedProductType';
 import { About } from '../About/About';
 import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import NewProducts from '../HomePage/NewProducts/NewProducts';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
     useState<DetailedProduct | null>();
-  const [recommended, setRecommended] = useState<Product[] | null>();
+  const [recommended, setRecommended] = useState<Product[] | null>(null);
+  const [isLoadingRecommended, setIsLoadingRecommended] =
+    useState<boolean>(false);
+  const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
   const { id, category } = useParams();
 
   let pathName: 'phones' | 'tablets' | 'accessories';
@@ -58,9 +62,16 @@ const ProductPage: React.FC = () => {
 
     const recommended = async () => {
       if (id) {
-        await getProductsRecommended(id)
-          .then((data) => setRecommended(data))
-          .catch((e) => console.log(e));
+        setIsLoadingRecommended(true);
+        try {
+          const data = await getProductsRecommended(id);
+          setRecommended(data);
+          setIsLoadingRecommended(false);
+        } catch (error) {
+          console.log(error);
+          setIsErrorRecommended(true);
+          setIsLoadingRecommended(false);
+        }
       }
     };
 
@@ -101,11 +112,13 @@ const ProductPage: React.FC = () => {
       <div className="pp_tech-specs">
         <TechSpec product={productDetails} />
       </div>
-      {/* recommended products (12 pieces), ready data to put in recommend component with productCard */}
       <div className="pp_reccomended_goods">
-        {recommended?.map((el) => (
-          <p key={el.id}>Object of product name {el.name}</p>
-        ))}
+        <NewProducts
+          products={recommended || []}
+          title="You may also like"
+          isLoading={isLoadingRecommended}
+          isError={isErrorRecommended}
+        />
       </div>
     </div>
   );
