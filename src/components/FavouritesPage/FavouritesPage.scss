@@ -87,3 +87,13 @@
     }
   }
 }
+
+.dark-mode {
+  .favourites__title {
+    color: $color-dark-white;
+
+    &-count {
+      color: $color-dark-secondary;
+    }
+  }
+}

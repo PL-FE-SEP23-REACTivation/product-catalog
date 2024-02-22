@@ -4,12 +4,14 @@ import { useFavoritesStore } from '../../storage/FavouritesStore';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './FavouritesPage.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const FavouritesPage: React.FC = () => {
+  const { darkMode } = useThemeStore();
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
 
   return (
-    <div className="favourites">
+    <div className={`favourites ${darkMode ? 'dark-mode' : ''}`}>
       <div className="favourites__header">
         <Breadcrumbs path={'favourites'} />
         <div className="favourites__title">
