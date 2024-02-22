@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import './Slider.scss';
-import { ProductCard } from '../../ProductCard/ProductCard';
-import { Product } from '../../../types/productType';
-import { Loader } from '../../Loader/Loader';
 import arrowLeft from '../../../icons/arrow-left.svg';
 import arrowRight from '../../../icons/arrow-right.svg';
+import { Product } from '../../../types/productType';
+import { ErrorNotification } from '../../ErrorNotification/ErrorNotification';
+import { Loader } from '../../Loader/Loader';
+import { ProductCard } from '../../ProductCard/ProductCard';
+import './Slider.scss';
 
 interface SliderProps {
   products: Product[];
@@ -59,9 +60,7 @@ export const Slider: React.FC<SliderProps> = ({
 
       <div className="slider__content">
         {isLoading && !isError && <Loader />}
-        {!isLoading && isError && (
-          <p>Error: Unable to load data from server!</p>
-        )}
+        {!isLoading && isError && <ErrorNotification />}
         {!isLoading && !isError && (
           <ul
             className="slider__list"

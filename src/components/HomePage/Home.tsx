@@ -22,13 +22,17 @@ const HomePage: React.FC = () => {
   const [newProductsLoading, setNewProductsLoading] = useState(true);
   const [hotProductsLoading, setHotProductsLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isError, setIsError] = useState(false);
+  const [isNewError, setIsNewError] = useState(false);
+  const [isHotError, setIsHotError] = useState(false);
 
   useEffect(() => {
     setNewProductsLoading(true);
     getNewProducts()
       .then((data) => setNewProducts(data))
-      .catch((e) => console.log(e))
+      .catch((e) => {
+        console.log(e);
+        setIsNewError(true);
+      })
       .finally(() => setNewProductsLoading(false));
   }, []);
 
@@ -36,7 +40,10 @@ const HomePage: React.FC = () => {
     setHotProductsLoading(true);
     getHotProducts()
       .then((data) => setHotProducts(data))
-      .catch((e) => console.log(e))
+      .catch((e) => {
+        console.log(e);
+        setIsHotError(true);
+      })
       .finally(() => setHotProductsLoading(false));
   }, []);
 
@@ -53,7 +60,7 @@ const HomePage: React.FC = () => {
         <NewProducts
           products={newProducts}
           isLoading={newProductsLoading}
-          isError={isError}
+          isError={isNewError}
           title="Brand New Models"
         />
       </section>
@@ -64,7 +71,7 @@ const HomePage: React.FC = () => {
         <HotPrices
           products={hotProducts}
           isLoading={hotProductsLoading}
-          isError={isError}
+          isError={isHotError}
           title="Hot Prices"
         />
       </section>
