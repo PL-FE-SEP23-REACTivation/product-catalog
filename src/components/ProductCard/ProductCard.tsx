@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     product;
   const isProductDiscount = fullPrice !== price;
   const isAddedToCart = useCartStore((state) =>
-    state.cart.some((p) => p.product.id === id)
+    state.cart.some((p) => p.product?.id === id)
   );
   const isFavoriteProduct = useFavoritesStore((state) =>
     state.favoriteProducts.some((p) => p.id === id)
