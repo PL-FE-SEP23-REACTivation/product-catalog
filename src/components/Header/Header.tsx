@@ -15,9 +15,21 @@ export const Header = () => {
   return (
     <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="header__container">
-        <Link to="/" className="header__logo">
-          <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
-        </Link>
+        {darkMode ? (
+          <Link to="/" className="header__logo">
+            <img
+              src={process.env.PUBLIC_URL + '/icons/Logo-white.svg'}
+              alt="logo"
+            />
+          </Link>
+        ) : (
+          <Link to="/" className="header__logo">
+            <img
+              src={process.env.PUBLIC_URL + '/icons/Logo.svg'} // Zmień ścieżkę do obrazka dla trybu jasnego
+              alt="logo"
+            />
+          </Link>
+        )}
         <button className="darkmodebutton" onClick={toggleDarkMode}>
           Zmień tryb
         </button>
