@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import homeIcon from '../../icons/home.svg';
+import homeIconWhite from '../../icons/home-white.svg';
 import rightArrowIcon from '../../icons/right-arrow.svg';
 import { RouteType } from '../../types/routeType';
 import { capitalize } from '../../utils/helpers';
 import './Breadcrumbs.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   path: RouteType;
@@ -12,11 +14,12 @@ type Props = {
 };
 
 export const Breadcrumbs: FC<Props> = ({ path, productName }) => {
+  const { darkMode } = useThemeStore();
   return (
-    <div className="icons">
+    <div className={`icons ${darkMode ? 'dark-mode' : ''}`}>
       <div className="icons_icon">
         <Link to="/">
-          <img src={homeIcon} alt="home" />
+          <img src={darkMode ? homeIconWhite : homeIcon} alt="home" />
         </Link>
       </div>
       <img src={rightArrowIcon} alt="arrow" className="icons_icon" />

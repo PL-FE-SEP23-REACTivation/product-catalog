@@ -23,3 +23,9 @@
     color: $color-primary;
   }
 }
+
+.dark-mode {
+  .icons_text {
+    color: $color-dark-secondary;
+  }
+}
