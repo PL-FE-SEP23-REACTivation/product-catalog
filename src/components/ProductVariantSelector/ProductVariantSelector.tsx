@@ -7,9 +7,8 @@ import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import { CustomColors } from '../../types/customColorsType';
 import { DetailedProduct } from '../../types/detailedProductType';
-import redHeart from '../ProductCard/RedHeart.png';
-import whiteHeart from '../ProductCard/WhiteHeart.png';
 import './ProductVariantSelector.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   product: DetailedProduct;
@@ -20,6 +19,9 @@ export const ProductVariantSelector: React.FC<Props> = ({
   product,
   category,
 }) => {
+  const { darkMode } = useThemeStore();
+  const heartEmptyPath = process.env.PUBLIC_URL + '/icons/heartEmpty.svg';
+  const heartFilledPath = process.env.PUBLIC_URL + '/icons/heartFilled.svg';
   const {
     id,
     colorsAvailable,
@@ -40,7 +42,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
     state.favoriteProducts.some((p) => p.itemId === id)
   );
   const isAddedToCart = useCartStore((state) =>
-    state.cart.some((p) => p.product.itemId === id)
+    state.cart.some((p) => p.product?.itemId === id)
   );
 
   const handleAddToCart = async () => {
@@ -102,7 +104,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
   };
 
   return (
-    <div className="variants">
+    <div className={`variants ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="variants_text-1">Avaliable Colors</div>
       <div className="variants_colors">
         {colorsAvailable.sort().map((color, index) => (
@@ -152,7 +154,10 @@ export const ProductVariantSelector: React.FC<Props> = ({
           })}
           onClick={toggleFavorite}
         >
-          <img src={isFavoriteProduct ? redHeart : whiteHeart} alt="heart" />
+          <img
+            src={isFavoriteProduct ? heartFilledPath : heartEmptyPath}
+            alt="heart"
+          />
         </button>
       </div>
       <div className="variants_info_container">
