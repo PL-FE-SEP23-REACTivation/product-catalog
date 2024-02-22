@@ -1,13 +1,16 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './BurgerMenu.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   const { cart } = useCartStore.getState();
+  const { darkMode, toggleDarkMode } = useThemeStore();
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
@@ -27,12 +30,15 @@ export const BurgerMenu = () => {
   };
 
   return (
-    <div className="burger-menu">
+    <div className={`burger-menu ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="headerMobile" id="headerMobile">
         <div className="headerMobile_nav">
           <Link to="/" className="headerMobile_link headerMobile_link--logo">
             <p />
           </Link>
+          <button className="darkmodebutton" onClick={toggleDarkMode}>
+            Zmień tryb
+          </button>
           <div className="headerMobile_buttons">
             <button
               className={`burger-icon ${isMenuOpen ? 'open' : ''}`}

@@ -219,3 +219,66 @@
     }
   }
 }
+
+.dark-mode .headerMobile,
+.dark-mode .headerMobile_nav,
+.dark-mode .burger-icon,
+.dark-mode .menu {
+  background-color: $color-dark;
+  border: none;
+}
+
+.dark-mode .headerMobile {
+  border-bottom: 1px solid $color-dark-shadow;
+}
+
+.dark-mode .burger-icon {
+  background: url(../../../public/icons/burger-white.svg);
+  border-left: 1px solid $color-dark-shadow;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark-mode .burger-icon.open {
+  background: url(../../../public/icons/cross-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark-mode .burger_link {
+  color: $color-dark-secondary;
+}
+
+.dark-mode .burger_link:hover,
+.dark-mode .burger_link.active {
+  color: $color-dark-white;
+}
+
+.dark-mode .burger_link:hover::after,
+.dark-mode .burger_link.active::after {
+  background-color: $color-dark-white;
+}
+.dark-mode .menu_footer,
+.dark-mode .menu-counter {
+  border-color: $color-dark-shadow;
+}
+.dark-mode .menu_footer,
+.dark-mode .menu_heart,
+.dark-mode .menu_bag {
+  border-color: $color-dark-shadow;
+}
+.dark-mode .menu_bag {
+  background: url(../../../public/icons/bag-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark-mode .menu_heart {
+  background: url(../../../public/icons/heart-like-white.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark-mode .burger_link_bottom:hover {
+  border-bottom: 4px solid $color-dark-white;
+}
