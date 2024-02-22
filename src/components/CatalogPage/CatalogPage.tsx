@@ -1,12 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  getProductsByCategorie,
-  getQuantityByCategory,
-} from '../../api/products';
+import { getProductsByCategorie, getQuantity } from '../../api/products';
 import { Category } from '../../types/categoryType';
 import { Product } from '../../types/productType';
-import { Quantity } from '../../types/quantityType';
+import { AllQuantity } from '../../types/quantityType';
 import { capitalize } from '../../utils/helpers';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Dropdown } from '../Dropdown/Dropdown';
@@ -29,18 +26,19 @@ export const CatalogPage: FC<Props> = ({ path }) => {
   const [isQuantityLoading, setIsQuantityLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [productsQuantity, setProductsQuantity] = useState<Quantity>({
-    quantity: 0,
-  });
+  const [productsQuantity, setProductsQuantity] = useState<
+    Partial<AllQuantity>
+  >({ [path]: 0 });
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sortBy') || 'newest';
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
   const search = searchParams.get('search') || '';
-  const quantity = search ? products.length : productsQuantity?.quantity;
+  const quantity = search ? products.length : productsQuantity[path] || 0;
 
   useEffect(() => {
     setIsProductsLoading(true);
+
     getProductsByCategorie(
       // eslint-disable-next-line max-len
       `${path}?sortBy=${sortBy}&perPage=${perPage}&page=${page}&search=${search}`
@@ -59,9 +57,16 @@ export const CatalogPage: FC<Props> = ({ path }) => {
 
   useEffect(() => {
     setIsQuantityLoading(true);
-    getQuantityByCategory(path)
+    getQuantity(path)
       .then((data) => {
-        setProductsQuantity(data);
+        const result = data.reduce(
+          (acc: { [key: string]: number }, { category, count }) => {
+            acc[category] = +count;
+            return acc;
+          },
+          {}
+        );
+        setProductsQuantity(result);
       })
       .catch((e) => {
         console.log(e);
