@@ -4,6 +4,7 @@ import React from 'react';
 import { useCartStore } from '../../storage/CartStore';
 import { Product } from '../../types/productType';
 import './CartItem.scss';
+import { Link } from 'react-router-dom';
 
 type Props = {
   name: string;
@@ -74,13 +75,17 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
               onClick={removeItemFromCart}
               className="cartItem__info__close"
             />
-            <img
-              src={`${publicUrl}/${product?.image}`}
-              alt={product?.name}
-              className="cartItem__info__img"
-            />
+            <Link to={`/${product.category}/${product.itemId}`}>
+              <img
+                src={`${publicUrl}/${product?.image}`}
+                alt={product?.name}
+                className="cartItem__info__img"
+              />
+            </Link>
           </div>
-          <h2 className="cartItem__info__name">{product?.name}</h2>
+          <Link to={`/${product.category}/${product.itemId}`}>
+            <h2 className="cartItem__info__name">{product?.name}</h2>
+          </Link>
         </div>
 
         <div className="cartItem__calc">
