@@ -141,3 +141,46 @@
     }
   }
 }
+
+.dark-mode {
+  .card {
+    border-color: $color-dark-card;
+    background-color: $color-dark-card;
+  }
+  .card__button-favorite {
+    border-color: $color-dark-shadow;
+    background-color: $color-dark-shadow;
+  }
+  .card__title,
+  .card__properties__spec-value,
+  .card__price-regular {
+    color: $color-dark-white;
+  }
+
+  .card__properties__spec-name,
+  .card__price-discount {
+    color: $color-dark-secondary;
+  }
+
+  .card__line {
+    border-color: $color-dark-element;
+  }
+
+  .card__button-add {
+    background-color: $color-dark-button;
+
+    &:hover {
+      background-color: $color-dark-button-hover;
+    }
+  }
+
+  .card__button-added {
+    border-color: $color-dark-shadow;
+    color: $color-dark-white;
+    background-color: $color-dark-shadow;
+  }
+
+  .dark-fav {
+    background-color: $color-dark-card;
+  }
+}

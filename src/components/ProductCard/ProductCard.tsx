@@ -1,11 +1,14 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import { Product } from '../../types/productType';
 import './ProductCard.scss';
-import IMGofHeart from './RedHeart.png';
-import IMGofWhiteHeart from './WhiteHeart.png';
+import heartFilled from '../../icons/heartFilled.svg';
+import heartEmpty from '../../icons/heartEmpty.svg';
+import heartEmptyWhite from '../../icons/heartEmptyWhite.svg';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   product: Product;
@@ -15,6 +18,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { id, itemId, name, fullPrice, price, screen, capacity, ram, image } =
     product;
   const isProductDiscount = fullPrice !== price;
+  const { darkMode } = useThemeStore();
   const isAddedToCart = useCartStore((state) =>
     state.cart.some((p) => p.product?.id === id)
   );
@@ -37,7 +41,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <div className="card">
+    <div className={`card ${darkMode ? 'dark-mode' : ''}`}>
       <div className="card__imgContainer">
         <Link to={`/${product.category}/${itemId}`}>
           <img src={`${process.env.PUBLIC_URL}/${image}`} alt={`${name}`} />
@@ -81,11 +85,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         ) : (
           <button className="card__button-added">Added</button>
         )}
-        <button className="card__button-favorite" onClick={toggleFavorite}>
+        <button
+          className={`card__button-favorite ${isFavoriteProduct ? 'dark-fav' : ''}`}
+          onClick={toggleFavorite}
+        >
           {isFavoriteProduct ? (
-            <img src={IMGofHeart} alt="IMG of heart" />
+            <img src={heartFilled} alt="IMG of heart" />
           ) : (
-            <img src={IMGofWhiteHeart} alt="IMG of heart" />
+            <img
+              src={darkMode ? heartEmptyWhite : heartEmpty}
+              alt="IMG of heart"
+            />
           )}
         </button>
       </div>
