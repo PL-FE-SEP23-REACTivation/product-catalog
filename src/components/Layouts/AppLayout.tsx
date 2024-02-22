@@ -1,19 +1,26 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import './layouts.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const AppLayout: React.FC = () => {
+  const { darkMode } = useThemeStore();
   return (
-    <div className="app__layout">
+    <div className={`app__layout ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <Header />
       <BurgerMenu />
-      <div className="app__layout-children">
+      <div
+        className={`app__layout-children ${darkMode ? 'dark-mode' : 'light-mode'}`}
+      >
         <Outlet />
       </div>
-      <div className="app__layout-footer">
+      <div
+        className={`app__layout-footer ${darkMode ? 'dark-mode' : 'light-mode'}`}
+      >
         <Footer />
       </div>
     </div>

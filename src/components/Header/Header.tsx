@@ -3,19 +3,24 @@ import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './Header.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 export const Header = () => {
+  const { darkMode, toggleDarkMode } = useThemeStore();
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
-
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
   return (
-    <header className="header">
+    <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
         </Link>
+        <button className="darkmodebutton" onClick={toggleDarkMode}>
+          Zmień tryb
+        </button>
 
         <nav className="header__nav">
           <ul className="header__nav__list">
