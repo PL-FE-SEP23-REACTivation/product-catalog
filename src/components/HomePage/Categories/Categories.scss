@@ -20,7 +20,7 @@
     align-items: center;
     gap: 50px;
 
-    @include for-desktop {
+    @include for-tablet {
       flex-direction: row;
       gap: 16px;
     }
@@ -33,8 +33,6 @@
   }
 
   &__image-link {
-    width: 272px;
-    height: 272px;
     position: relative;
     overflow: hidden;
 
@@ -43,31 +41,14 @@
     }
 
     @include for-tablet {
-      width: 368px;
-      height: 368px;
-    }
-
-    &--phones {
-      background-color: #fcdbc1;
-    }
-
-    &--tablets {
-      background-color: #8d8d92;
-    }
-
-    &--accessories {
-      background-color: #973d5f;
     }
   }
 
   &__image {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 272px;
+    position: relative;
 
     @include for-tablet {
-      height: 368px;
+      max-width: 100%;
     }
   }
 

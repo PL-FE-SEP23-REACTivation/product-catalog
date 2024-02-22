@@ -60,7 +60,7 @@
   }
 
   &__category {
-    grid-area: 4 / 1 / 5 / -1;
+    width: 100%;
 
     @include for-phone() {
     }
