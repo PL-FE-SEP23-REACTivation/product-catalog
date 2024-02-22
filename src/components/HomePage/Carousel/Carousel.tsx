@@ -1,93 +1,69 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable max-len */
+import React, { useState, useEffect, useRef } from 'react';
 import './Carousel.scss';
-import image1 from './banner-accessories.png';
-import image2 from './banner-phones.png';
-import image3 from './banner-tablets.png';
 
-const Carousel: React.FC = () => {
-  const settings = {
-    step: 1,
-    frameSize: 1,
-    itemWidth: 500,
-    animationDuration: 1000,
-    infinite: true,
-  };
+interface Slide {
+  url: string;
+  title: string;
+}
 
-  const images = [image1, image2, image3];
+interface ImagecarouselProps {
+  slides: Slide[];
+}
 
-  const [currentImgPosition, setCurrentImgPosition] = useState(0);
-  const finalImgPosition = images.length - settings.frameSize;
-
-  const handlePrevImage = () => {
-    if (currentImgPosition > 0) {
-      setCurrentImgPosition((prev) =>
-        prev - settings.step >= 0 ? prev - settings.step : 0
-      );
-    } else {
-      setCurrentImgPosition(finalImgPosition);
-    }
-  };
-
-  const handleNextImage = () => {
-    if (currentImgPosition < finalImgPosition) {
-      setCurrentImgPosition((prev) =>
-        prev + settings.step <= finalImgPosition
-          ? prev + settings.step
-          : finalImgPosition
-      );
-    } else {
-      setCurrentImgPosition(0);
-    }
-  };
+const Carousel: React.FC<ImagecarouselProps> = ({ slides }) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const autoPlayInterval = setInterval(handleNextImage, 5000);
+    const intervalId = setInterval(goToNext, 4000);
+    return () => clearInterval(intervalId);
+  }, [currentIndex]);
 
-    return () => {
-      clearInterval(autoPlayInterval);
-    };
-  }, [handleNextImage]);
+  const goToPrevious = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToNext = () => {
+    const isLastSlide = currentIndex === slides.length - 1;
+    const newIndex = isLastSlide ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToSlide = (slideIndex: number) => {
+    setCurrentIndex(slideIndex);
+  };
+
+  const slideStylesWidthBackground: React.CSSProperties = {
+    backgroundImage: `url(${slides[currentIndex].url})`,
+  };
 
   return (
-    <div className="Carousel">
-      <div className="Carousel__controls Carousel__controls--next">
+    <div className="carousel" ref={containerRef}>
+      <div className="carousel__container">
         <button
-          type="button"
-          className="Carousel__button Carousel__button--active"
-          onClick={handlePrevImage}
-        >
-          &#8249;
-        </button>
+          className="carousel__container-buttons button-left"
+          onClick={goToPrevious}
+        ></button>
+        <div
+          className="carousel__slides"
+          style={slideStylesWidthBackground}
+        ></div>
+        <button
+          className="carousel__container-buttons button-right"
+          onClick={goToNext}
+        ></button>
       </div>
-      <ul className="Carousel__list">
-        {images.map((image, index) => (
-          <li
-            key={image}
-            style={{
-              transform: `translateX(
-                ${-(currentImgPosition * settings.itemWidth)}px)`,
-              transition: `transform ${settings.animationDuration}ms ease`,
-            }}
-          >
-            <img
-              className="Carousel__image"
-              src={image}
-              alt={`${index + 1}`}
-              width={settings.itemWidth}
-            />
-          </li>
+      <div className="carousel__tabs">
+        {slides.map((slide, slideIndex) => (
+          <div
+            className={`carousel__tabs-tab ${currentIndex === slideIndex ? 'tab-active' : ''}`}
+            key={slideIndex}
+            onClick={() => goToSlide(slideIndex)}
+          ></div>
         ))}
-      </ul>
-
-      <div className="Carousel__controls Carousel__controls--next">
-        <button
-          data-cy="next"
-          type="button"
-          className="Carousel__button Carousel__button--active"
-          onClick={handleNextImage}
-        >
-          &#8250;
-        </button>
       </div>
     </div>
   );
