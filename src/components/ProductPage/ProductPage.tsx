@@ -17,6 +17,7 @@ import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 import { TechSpec } from '../TechSpecs/TechSpecs';
 import './ProductPage.scss';
+import { RouteType } from '../../types/routeType';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -27,24 +28,7 @@ const ProductPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
-  const { id, category } = useParams();
-
-  type RouteType = 'phones' | 'tablets' | 'accessories';
-  let pathName: RouteType;
-
-  switch (category) {
-  case 'phones':
-    pathName = 'phones';
-    break;
-  case 'accessories':
-    pathName = 'accessories';
-    break;
-  case 'tablets':
-    pathName = 'tablets';
-    break;
-  default:
-    pathName = 'phones';
-  }
+  const { id, category } = useParams<{ id: string; category: RouteType }>();
 
   const [selectedImg, setSelectedImg] = useState<string>(
     `${process.env.PUBLIC_URL}/${productDetails?.images[0]}`
@@ -93,7 +77,10 @@ const ProductPage: React.FC = () => {
       ) : (
         <div className="pp">
           <div className="pp_header">
-            <Breadcrumbs path={pathName} productName={productDetails?.name} />
+            <Breadcrumbs
+              path={category || 'phones'}
+              productName={productDetails?.name}
+            />
           </div>
           <Link className="pp_return" to={`/${category}`}>
             <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
