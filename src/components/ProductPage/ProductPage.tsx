@@ -56,6 +56,7 @@ const ProductPage: React.FC = () => {
   useEffect(() => {
     const productDetailsData = async () => {
       if (id && category) {
+        setIsLoading(true);
         try {
           const data = await getProductByIdAndCategory(id, category);
           setproductDetails(data);
@@ -140,7 +141,6 @@ const ProductPage: React.FC = () => {
                   title="You may also like"
                   isLoading={isLoadingRecommended}
                   isError={isErrorRecommended}
-                  setIsLoadingPp={setIsLoading}
                 />
               </div>
             </>

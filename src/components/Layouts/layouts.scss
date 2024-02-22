@@ -44,6 +44,7 @@
 
   &-children {
     padding-bottom: 259px;
+    padding-right: calc(17px - (100vw - 100%));
 
     @include for-tablet {
       padding-bottom: 64px;
