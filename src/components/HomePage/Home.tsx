@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Carousel from './Carousel/Carousel';
-import NewProducts from './NewProducts/NewProducts';
-import Categories from './Categories/Categories';
-import HotPrices from './HotPrices/HotPrices';
-import image1 from './Carousel/banner-tablets.png';
-import image2 from './Carousel/banner-phones.png';
-import image3 from './Carousel/banner-accessories.png';
-import { Product } from '../../types/productType';
-import './Home.scss';
 import { getHotProducts, getNewProducts } from '../../api/products';
+import { Product } from '../../types/productType';
+import Carousel from './Carousel/Carousel';
+import image3 from './Carousel/banner-accessories.png';
+import image2 from './Carousel/banner-phones.png';
+import image1 from './Carousel/banner-tablets.png';
+import Categories from './Categories/Categories';
+import './Home.scss';
+import HotPrices from './HotPrices/HotPrices';
+import NewProducts from './NewProducts/NewProducts';
 
 const HomePage: React.FC = () => {
   const slides = [
@@ -22,13 +22,17 @@ const HomePage: React.FC = () => {
   const [newProductsLoading, setNewProductsLoading] = useState(true);
   const [hotProductsLoading, setHotProductsLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isError, setIsError] = useState(false);
+  const [isNewError, setIsNewError] = useState(false);
+  const [isHotError, setIsHotError] = useState(false);
 
   useEffect(() => {
     setNewProductsLoading(true);
     getNewProducts()
       .then((data) => setNewProducts(data))
-      .catch((e) => console.log(e))
+      .catch((e) => {
+        console.log(e);
+        setIsNewError(true);
+      })
       .finally(() => setNewProductsLoading(false));
   }, []);
 
@@ -36,38 +40,41 @@ const HomePage: React.FC = () => {
     setHotProductsLoading(true);
     getHotProducts()
       .then((data) => setHotProducts(data))
-      .catch((e) => console.log(e))
+      .catch((e) => {
+        console.log(e);
+        setIsHotError(true);
+      })
       .finally(() => setHotProductsLoading(false));
   }, []);
 
   return (
     <div className="homePage">
-      <div className="title">
+      <section className="homePage__title">
         <h1>Welcome to Nice Gadgets store!</h1>
-      </div>
-      <div className="carousel">
+      </section>
+      <section className="homePage__section homePage__carousel">
         <Carousel slides={slides} />
-      </div>
+      </section>
 
-      <div className="newProducts">
+      <section className="homePage__section homePage__slider">
         <NewProducts
           products={newProducts}
           isLoading={newProductsLoading}
-          isError={isError}
+          isError={isNewError}
           title="Brand New Models"
         />
-      </div>
-      <div className="category">
+      </section>
+      <section className="homePage__section homePage__category">
         <Categories />
-      </div>
-      <div className="hotPrices">
+      </section>
+      <section className="homePage__section homePage__slider">
         <HotPrices
           products={hotProducts}
           isLoading={hotProductsLoading}
-          isError={isError}
+          isError={isHotError}
           title="Hot Prices"
         />
-      </div>
+      </section>
     </div>
   );
 };

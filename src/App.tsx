@@ -6,6 +6,7 @@ import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
 import { CatalogLayout } from './components/Layouts/CatalogLayout';
 import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
+import { HomeLayout } from './components/Layouts/HomeLayout';
 import ProductPageLayout from './components/Layouts/ProductPageLayout';
 import Register from './components/Register/registrationPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
@@ -22,7 +23,9 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<HomePage />} />
+          <Route element={<HomeLayout />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
           <Route element={<CatalogLayout />}>
             <Route path="/:category" element={<Catalog />} />
           </Route>
