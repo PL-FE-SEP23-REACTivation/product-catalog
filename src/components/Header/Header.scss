@@ -218,7 +218,9 @@
   background-color: magenta;
 }
 
-.dark-mode,
+.dark-mode {
+  background-color: $color-dark;
+}
 .dark-mode .header__buttons .header__link {
   background-color: $color-dark;
   box-shadow: -1px 0px 0px 0px $color-dark-shadow;
