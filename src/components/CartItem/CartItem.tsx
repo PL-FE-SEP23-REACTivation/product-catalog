@@ -18,7 +18,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const publicUrl = process.env.PUBLIC_URL;
   const handleIncrease = () => {
     const updatedCart = cart.map((p) => {
-      if (p.product.id === product.id) {
+      if (p.product?.id === product.id) {
         return {
           ...p,
           quantity: quantity + 1,
@@ -33,7 +33,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const handleDecrease = () => {
     if (quantity > 1) {
       const updatedCart = cart.map((p) => {
-        if (p.product.id === product.id) {
+        if (p.product?.id === product.id) {
           return {
             ...p,
             quantity: quantity - 1,
@@ -45,7 +45,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
       setCart([...updatedCart]);
     } else {
-      const updatedCart = cart.filter((p) => p.product.id !== product.id);
+      const updatedCart = cart.filter((p) => p.product?.id !== product.id);
       setCart([...updatedCart]);
     }
   };

@@ -15,8 +15,10 @@ export const Cart = () => {
   const [totalPrice, totalAmount] = cart.reduce(
     (acc, cartItem) => {
       const curr: [number, number] = [...acc];
-      curr[0] = acc[0] + cartItem.product.price * cartItem.quantity;
-      curr[1] += cartItem.quantity;
+      if (cartItem.product) {
+        curr[0] = acc[0] + cartItem.product.price * cartItem.quantity;
+        curr[1] += cartItem.quantity;
+      }
       return curr;
     },
     [0, 0]
@@ -48,16 +50,19 @@ export const Cart = () => {
         </section>
         <div className="cart__main">
           <section className="cart__cartItems">
-            {cart.map((item) => (
-              <CartItem
-                key={item.product?.id}
-                name={item.product?.name}
-                price={item.product?.price}
-                image={item.product?.image}
-                product={item.product}
-                quantity={item.quantity || 0}
-              />
-            ))}
+            {cart.map(
+              (item) =>
+                item.product && (
+                  <CartItem
+                    key={item.product.id}
+                    name={item.product.name}
+                    price={item.product.price}
+                    image={item.product.image}
+                    product={item.product}
+                    quantity={item.quantity || 0}
+                  />
+                )
+            )}
           </section>
           <section className="cart__calculator">
             <div className="cart__calculator__price-container">
