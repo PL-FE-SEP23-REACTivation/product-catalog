@@ -13,6 +13,7 @@ import { Pagination } from '../Pagination/Pagination';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Search } from '../Search/Search';
 import './CatalogPage.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   path: Category;
@@ -22,6 +23,7 @@ const SORT_BY_VALUES = ['newest', 'oldest', 'highest price', 'lowest price'];
 const PER_PAGE_VALUES = ['16', '32', '64'];
 
 export const CatalogPage: FC<Props> = ({ path }) => {
+  const { darkMode } = useThemeStore();
   const [isProductsLoading, setIsProductsLoading] = useState(true);
   const [isQuantityLoading, setIsQuantityLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -85,7 +87,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
     <ErrorNotification />
   ) : (
     <>
-      <div className="catalog_cards">
+      <div className={`catalog_cards ${darkMode ? 'dark-mode' : ''}`}>
         {products.map((product) => (
           <div className="catalog_cards_item" key={product.id}>
             <ProductCard product={product} />
