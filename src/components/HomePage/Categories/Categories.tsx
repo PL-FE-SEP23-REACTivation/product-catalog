@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import './Categories.scss';
 import { getQuantity } from '../../../api/products';
 import { AllQuantity } from '../../../types/quantityType';
+import './Categories.scss';
 
 const Categories: React.FC = () => {
   const [quantity, setQuantity] = useState<Partial<AllQuantity>>();
@@ -33,7 +33,7 @@ const Categories: React.FC = () => {
   }, []);
 
   return (
-    <section className="category">
+    <div className="category">
       <div className="category__content">
         <h1 className="category__title">Shop by category</h1>
 
@@ -111,7 +111,7 @@ const Categories: React.FC = () => {
           </li>
         </ul>
       </div>
-    </section>
+    </div>
   );
 };
 

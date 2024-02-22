@@ -9,7 +9,7 @@
   flex-direction: column;
   overflow: hidden;
 
-  &__section {
+  &__section:not(:last-child) {
     margin: 0 auto;
     margin-bottom: 56px;
     @include for-tablet() {
@@ -54,14 +54,5 @@
 
   &__category {
     width: 100%;
-
-    @include for-phone() {
-    }
-
-    @include for-tablet() {
-    }
-
-    @include for-desktop() {
-    }
   }
 }
