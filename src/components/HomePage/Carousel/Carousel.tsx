@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect, useRef } from 'react';
 import './Carousel.scss';
+import { useThemeStore } from '../../../storage/ThemeStore';
 
 interface Slide {
   url: string;
@@ -14,6 +15,7 @@ interface ImagecarouselProps {
 const Carousel: React.FC<ImagecarouselProps> = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { darkMode } = useThemeStore();
 
   useEffect(() => {
     const intervalId = setInterval(goToNext, 4000);
@@ -41,7 +43,10 @@ const Carousel: React.FC<ImagecarouselProps> = ({ slides }) => {
   };
 
   return (
-    <div className="carousel" ref={containerRef}>
+    <div
+      className={`carousel ${darkMode ? 'dark-mode' : 'light-mode'}`}
+      ref={containerRef}
+    >
       <div className="carousel__container">
         <button
           className="carousel__container-buttons button-left"

@@ -79,13 +79,50 @@
 }
 
 .button-right {
-  background-image: url('../../../icons/vector-right.png');
+  background-image: url('../../../icons/arrow-right.svg');
+
+  @include for-desktop {
+    background-size: 20px;
+  }
 }
 
 .button-left {
-  background-image: url('../../../icons/vector-left.png');
+  background-image: url('../../../icons/arrow-left.svg');
+
+  @include for-desktop {
+    background-size: 20px;
+  }
 }
 
 .tab-active {
   background-color: $color-primary;
+}
+
+.dark-mode .carousel__container-buttons {
+  border-color: $color-dark-shadow;
+  background-color: $color-dark-shadow;
+}
+
+.dark-mode .button-left {
+  background-image: url('../../../icons/arrow-left-white.svg');
+
+  @include for-desktop {
+    background-size: 20px;
+  }
+}
+
+.dark-mode .button-right {
+  background-image: url('../../../icons/arrow-right-white.svg');
+
+  @include for-desktop {
+    background-size: 20px;
+  }
+}
+
+.dark-mode .carousel__tabs-tab {
+  background-color: $color-dark-element;
+}
+
+.dark-mode .tab-active {
+  background-color: $color-dark-white;
 }
