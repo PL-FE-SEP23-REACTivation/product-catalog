@@ -1,8 +1,8 @@
+import classNames from 'classnames';
 import React from 'react';
-import './About.scss';
 import { Description } from '../../types/descriptionType';
 import { ProductSectionTitle } from '../ProductSectionTitle';
-import classNames from 'classnames';
+import './About.scss';
 
 type Props = {
   description: Description[];
@@ -13,9 +13,8 @@ export const About: React.FC<Props> = ({ description }) => {
     <div className="about-section">
       <ProductSectionTitle>About</ProductSectionTitle>
       {description.map((el, index) => (
-        <>
+        <div key={el.title}>
           <h2
-            key={el.title}
             className={classNames('about-title', {
               'about-title-1': index !== 0,
             })}
@@ -35,7 +34,7 @@ export const About: React.FC<Props> = ({ description }) => {
               </React.Fragment>
             ))}
           </p>
-        </>
+        </div>
       ))}
     </div>
   );

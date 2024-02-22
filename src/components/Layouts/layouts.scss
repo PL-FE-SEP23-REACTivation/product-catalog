@@ -1,18 +1,47 @@
+@import '../../utils/reset.scss';
 @import '../../utils/mixins.scss';
+@import '../../utils/fonts.scss';
+
+:root {
+  font-family: Mont, 'sans-serif';
+}
+
+.app__layout {
+  position: relative;
+  min-height: 100vh;
+  min-width: 320px;
+
+  &-children {
+    padding-bottom: 259px;
+    padding-right: calc(17px - (100vw - 100%));
+
+    @include for-tablet {
+      padding-bottom: 96px;
+    }
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
 
 .product-page_layout_container {
   display: flex;
+  min-width: 320px;
   max-width: 1200px;
   justify-content: center;
   margin: 0 auto;
-  @include for-desktop() {
-    padding: 24px 32px 81px 32px;
+  width: 100%;
+  @include for-phone() {
+    padding: 24px 16px 56px 16px;
   }
   @include for-tablet() {
     padding: 24px 24px 64px 24px;
   }
-  @include for-phone() {
-    padding: 24px 16px 56px 16px;
+  @include for-desktop() {
+    padding: 24px 32px 81px 32px;
   }
 }
 
@@ -20,6 +49,7 @@
   display: flex;
   justify-content: center;
   max-width: 1200px;
+  min-width: 320px;
   width: 100%;
   margin: 0 auto;
   padding: 32px 0px 32px 0px;
@@ -36,32 +66,9 @@
   }
 }
 
-.app__layout {
-  position: relative;
-  min-height: 100vh;
-  min-width: 320px;
-
-  &-children {
-    padding-bottom: 259px;
-
-    @include for-tablet {
-      padding-bottom: 64px;
-    }
-
-    @include for-desktop {
-      padding-bottom: 95px;
-    }
-  }
-
-  &-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-}
-
 .layout_cart_container {
   max-width: 1200px;
+  min-width: 320px;
   margin: 0 auto;
   padding: 40px 16px 56px 16px;
   @include for-tablet {
@@ -74,20 +81,36 @@
 
 .layout__favourites {
   display: flex;
+  min-width: 320px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 0px 32px 0px;
   background-color: white;
 
-  @include for-desktop() {
-    padding: 24px 32px 80px 32px;
+  @include for-phone() {
+    width: 100%;
+    padding: 24px 16px 64px 16px;
   }
   @include for-tablet() {
     padding: 24px 24px 64px 24px;
     width: 100%;
   }
-  @include for-phone() {
-    width: 100%;
-    padding: 24px 16px 64px 16px;
+  @include for-desktop() {
+    padding: 24px 32px 80px 32px;
+  }
+}
+
+.layout__home {
+  display: flex;
+  min-width: 320px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px 16px 64px 16px;
+  @include for-tablet() {
+    padding: 32px 24px 64px 24px;
+  }
+  @include for-desktop() {
+    padding: 56px 32px 80px 32px;
   }
 }

@@ -20,6 +20,7 @@
   top: 0;
   z-index: 1;
   border-bottom: 1px solid $color-elements;
+  padding-right: calc(17px - (100vw - 100%));
 
   @include for-desktop() {
     height: 64px;
@@ -135,6 +136,25 @@
     &__cart {
       position: relative;
       background-image: url('../../../public/icons/bag.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 48px;
+      height: 48px;
+      background-color: $color-white;
+      border-left: 1px solid $color-elements;
+      border-right: 1px solid $color-elements;
+
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
+      }
+      @include for-phone() {
+        display: none;
+      }
+    }
+    &__register {
+      position: relative;
+      background-image: url('../../../public/icons/user.svg');
       background-repeat: no-repeat;
       background-position: center;
       width: 48px;

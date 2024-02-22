@@ -6,5 +6,5 @@ type Props = {
 };
 
 export const ProductSectionTitle: FC<Props> = ({ children }) => {
-  return <h2 className="title">{children}</h2>;
+  return <h2 className="section_title">{children}</h2>;
 };

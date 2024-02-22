@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import './HotPrices.scss';
-import { ProductCard } from '../../ProductCard/ProductCard';
+import React from 'react';
 import { Product } from '../../../types/productType';
-import { getHotProducts } from '../../../api/products';
+import { Slider } from '../Slider/Slider';
 
-const HotPrices: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const getHotPriceProducts = async () => {
-      await getHotProducts()
-        .then((data) => setProducts(data))
-        .catch((e) => console.log(e));
-    };
-
-    getHotPriceProducts();
-  }, []);
-
+interface Props {
+  products: Product[];
+  isLoading: boolean;
+  isError: boolean;
+  title: string;
+}
+const HotPrices: React.FC<Props> = ({
+  products,
+  isLoading,
+  isError,
+  title,
+}) => {
   return (
-    <>
-      <h2>Hot prices</h2>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
-    </>
+    <Slider
+      products={products}
+      isLoading={isLoading}
+      isError={isError}
+      title={title}
+      className="hot-prices"
+    />
   );
 };
 

@@ -1,26 +1,28 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ArrowLeft from '../../icons/arrow-left.svg';
-import { useTContext } from '../../store/cartStore';
-import { Product } from '../../types/productType';
+import { useCartStore } from '../../storage/CartStore';
 import { CartItem } from '../CartItem/CartItem';
 import { SuccessModal } from '../SuccessModal/SuccessModal';
 import './Cart.scss';
 
 export const Cart = () => {
-  const { cart, clearCart } = useTContext();
+  const cart = useCartStore((state) => state.cart);
+  const { clearCart } = useCartStore.getState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  const calculateTotalPrice = (itemsInCart: Product[]) => {
-    return itemsInCart.reduce((total, cartItem) => {
-      if (cartItem.quantity !== undefined) {
-        return total + cartItem.price * cartItem.quantity;
+  const [totalPrice, totalAmount] = cart.reduce(
+    (acc, cartItem) => {
+      const curr: [number, number] = [...acc];
+      if (cartItem.product) {
+        curr[0] = acc[0] + cartItem.product.price * cartItem.quantity;
+        curr[1] += cartItem.quantity;
       }
-
-      return total;
-    }, 0);
-  };
+      return curr;
+    },
+    [0, 0]
+  );
 
   const handleCheckout = () => {
     setMessage('Your order has been placed successfully!');
@@ -48,27 +50,30 @@ export const Cart = () => {
         </section>
         <div className="cart__main">
           <section className="cart__cartItems">
-            {cart.map((item) => (
-              <CartItem
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                image={item.image}
-                product={item}
-                quantity={item?.quantity || 0}
-              />
-            ))}
+            {cart.map(
+              (item) =>
+                item.product && (
+                  <CartItem
+                    key={item.product.id}
+                    name={item.product.name}
+                    price={item.product.price}
+                    image={item.product.image}
+                    product={item.product}
+                    quantity={item.quantity || 0}
+                  />
+                )
+            )}
           </section>
           <section className="cart__calculator">
             <div className="cart__calculator__price-container">
               <p className="cart__calculator__price">
                 {`$
-                ${calculateTotalPrice(cart)}
+                ${totalPrice}
                 `}
               </p>
               <p className="cart__calculator__total">
-                Total for {cart.length}{' '}
-                {cart.length === 1 ? 'product' : 'products'}
+                Total for {totalAmount}{' '}
+                {totalAmount === 1 ? 'product' : 'products'}
               </p>
             </div>
             <div className="cart__calculator__line" />

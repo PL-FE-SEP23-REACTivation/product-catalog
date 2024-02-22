@@ -1,0 +1,48 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+@import '../../utils/variables.scss';
+
+.search {
+  width: 100%;
+
+  input {
+    font-family: Mont, 'sans-serif';
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    height: 40px;
+    padding-left: 12px;
+    margin-top: 10px;
+    border: $color-icons 1px solid;
+
+    @include for-tablet {
+      width: 222px;
+    }
+
+    @include for-desktop {
+      width: 280px;
+      padding-left: 12px;
+      margin-top: 10px;
+    }
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+
+    &:focus {
+      border: $color-primary 1px solid;
+      background-color: $color-hover-bg;
+      color: $color-primary;
+      outline: none;
+    }
+  }
+
+  @include for-tablet {
+    padding-left: 8px;
+    padding-top: 5px;
+  }
+
+  @include for-desktop {
+  }
+}

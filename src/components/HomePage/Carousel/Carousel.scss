@@ -1,47 +1,89 @@
+@import '../../../utils/mixins.scss';
 @import '../../../utils/variables.scss';
 
-.Carousel {
+.carousel {
   display: flex;
-  flex-direction: row;
-  transition: 1000ms;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-height: 432px;
 
-  &__list {
-    overflow: hidden;
+  @include for-tablet {
+    max-width: 700px;
+    gap: 18px;
+  }
+
+  @include for-desktop {
+    max-width: 100%;
+    gap: 18px;
+  }
+
+  &__container {
     display: flex;
-    flex-direction: row;
-    padding: 0;
-    border: 1px solid darkgray;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-    list-style: none;
-    width: 500px;
-    height: 180px;
-  }
+    gap: 18px;
 
-  &__image {
-    display: block;
-    box-sizing: border-box;
-  }
+    &-buttons {
+      width: 30px;
+      font-size: 45px;
+      color: black;
+      cursor: pointer;
+      display: none;
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+      background-position: center;
+      background-repeat: no-repeat;
 
-  &__button {
-    cursor: pointer;
-    width: 32px;
-    height: 100%;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    background-color: white;
-    border: 1px solid rgb(187, 187, 187);
-    box-shadow: 0 2px 6px rgba(217, 217, 217, 0.2);
-    margin: 0 10px;
-
-    &--active {
-      &:hover {
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      @include for-tablet {
+        display: block;
       }
     }
+  }
 
-    &--disable {
-      cursor: no-drop;
+  &__slides {
+    padding-bottom: 320px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.4s;
+    width: 100%;
+
+    @include for-tablet {
+      background-size: cover;
+      padding-bottom: 250px;
+    }
+
+    @include for-desktop {
+      padding-bottom: 432px;
     }
   }
+
+  &__tabs {
+    transform: translateY(0, -50%);
+    display: flex;
+    justify-content: center;
+
+    &-tab {
+      background-color: $color-elements;
+      height: 4px;
+      width: 14px;
+      margin: 0 3px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.4s;
+    }
+  }
+}
+
+.button-right {
+  background-image: url('../../../icons/vector-right.png');
+}
+
+.button-left {
+  background-image: url('../../../icons/vector-left.png');
+}
+
+.tab-active {
+  background-color: $color-primary;
 }

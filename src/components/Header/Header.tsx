@@ -1,15 +1,12 @@
 /* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
+import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
-import { useTContext } from '../../store/cartStore';
 import './Header.scss';
 
 export const Header = () => {
-  const { cart } = useTContext();
-
-  const cartItemsCount = cart.reduce(
-    (total, item) => total + (item.quantity ?? 0),
-    0
+  const cartItemsCount = useCartStore((state) =>
+    state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
 
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
@@ -59,6 +56,10 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
+        <NavLink
+          to="/register"
+          className="header__buttons__register header__link"
+        ></NavLink>
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"

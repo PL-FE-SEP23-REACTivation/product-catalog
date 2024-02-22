@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import './NewProducts.scss';
-import { ProductCard } from '../../ProductCard/ProductCard';
+import React from 'react';
 import { Product } from '../../../types/productType';
-import { getNewProducts } from '../../../api/products';
+import { Slider } from '../Slider/Slider';
 
-const NewProducts: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+interface Props {
+  products: Product[];
+  isLoading: boolean;
+  isError: boolean;
+  title: string;
+}
 
-  useEffect(() => {
-    const getBrandNewProducts = async () => {
-      await getNewProducts()
-        .then((data) => setProducts(data))
-        .catch((e) => console.log(e));
-    };
-
-    getBrandNewProducts();
-  }, []);
-
+const NewProducts: React.FC<Props> = ({
+  products,
+  isLoading,
+  isError,
+  title,
+}) => {
   return (
-    <>
-      <h2>Brand new models</h2>
-      {products.map((product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
-    </>
+    <Slider
+      products={products}
+      isLoading={isLoading}
+      isError={isError}
+      title={title}
+      className="new-products"
+    />
   );
 };
 

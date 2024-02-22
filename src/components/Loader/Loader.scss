@@ -1,6 +1,8 @@
 @import '../../utils/variables.scss';
+@import '../../utils/mixins.scss';
 .loader {
   margin: 0 auto;
+  margin-top: 50px;
   position: relative;
   width: $size;
   height: $size;
