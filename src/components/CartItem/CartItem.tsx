@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 
 import React from 'react';
-import { useTContext } from '../../store/cartStore';
+import { useCartStore } from '../../storage/CartStore';
 import { Product } from '../../types/productType';
 import './CartItem.scss';
 
@@ -14,11 +14,11 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product, quantity }) => {
-  const { cart, setCart } = useTContext();
+  const { cart, setCart, removeFromCart } = useCartStore.getState();
   const publicUrl = process.env.PUBLIC_URL;
   const handleIncrease = () => {
     const updatedCart = cart.map((p) => {
-      if (p.id === product.id) {
+      if (p.product.id === product.id) {
         return {
           ...p,
           quantity: quantity + 1,
@@ -33,7 +33,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const handleDecrease = () => {
     if (quantity > 1) {
       const updatedCart = cart.map((p) => {
-        if (p.id === product.id) {
+        if (p.product.id === product.id) {
           return {
             ...p,
             quantity: quantity - 1,
@@ -45,7 +45,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
       setCart([...updatedCart]);
     } else {
-      const updatedCart = cart.filter((p) => p.id !== product.id);
+      const updatedCart = cart.filter((p) => p.product.id !== product.id);
       setCart([...updatedCart]);
     }
   };
@@ -55,18 +55,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   };
 
   const removeItemFromCart = () => {
-    if (cart.length === 1) {
-      setCart([]);
-      const cartJSON = JSON.stringify([]);
-
-      localStorage.setItem('cart', cartJSON);
-    } else {
-      const updatedCart = cart.filter((p) => {
-        return p.id !== product.id;
-      });
-
-      setCart([...updatedCart]);
-    }
+    removeFromCart(product.id);
   };
 
   const decreaseQuantity = () => {
@@ -86,12 +75,12 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
               className="cartItem__info__close"
             />
             <img
-              src={`${publicUrl}/${product.image}`}
-              alt={product.name}
+              src={`${publicUrl}/${product?.image}`}
+              alt={product?.name}
               className="cartItem__info__img"
             />
           </div>
-          <h2 className="cartItem__info__name">{product.name}</h2>
+          <h2 className="cartItem__info__name">{product?.name}</h2>
         </div>
 
         <div className="cartItem__calc">
@@ -115,7 +104,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
             </button>
           </div>
 
-          <p className="cartItem__calc__price">{product.price * quantity}$</p>
+          <p className="cartItem__calc__price">{product?.price * quantity}$</p>
         </div>
       </div>
     </>

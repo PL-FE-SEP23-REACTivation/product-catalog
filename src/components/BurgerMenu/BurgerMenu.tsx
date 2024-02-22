@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
-import { useTContext } from '../../store/cartStore';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
-  const { cart } = useTContext();
+  const { cart } = useCartStore.getState();
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
