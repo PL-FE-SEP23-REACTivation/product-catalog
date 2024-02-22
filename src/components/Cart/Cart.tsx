@@ -4,13 +4,17 @@ import { useCartStore } from '../../storage/CartStore';
 import { CartItem } from '../CartItem/CartItem';
 import { SuccessModal } from '../SuccessModal/SuccessModal';
 import './Cart.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 export const Cart = () => {
   const cart = useCartStore((state) => state.cart);
   const arrowLeftPath = process.env.PUBLIC_URL + '/icons/arrow-left.svg';
+  const arrowLeftWhitePath =
+    process.env.PUBLIC_URL + '/icons/arrow-left-white.svg';
   const { clearCart } = useCartStore.getState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const { darkMode } = useThemeStore();
 
   const [totalPrice, totalAmount] = cart.reduce(
     (acc, cartItem) => {
@@ -36,11 +40,11 @@ export const Cart = () => {
 
   return (
     <>
-      <div className="cart">
+      <div className={`cart ${darkMode ? 'dark-mode' : 'light-mode'}`}>
         <section className="cart__title">
           <Link to="/phones" className="cart__title__link">
             <img
-              src={arrowLeftPath}
+              src={darkMode ? arrowLeftWhitePath : arrowLeftPath}
               alt="arrow right"
               className="cart__title__link__arrow"
             />
