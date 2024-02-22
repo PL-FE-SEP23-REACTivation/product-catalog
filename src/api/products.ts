@@ -34,6 +34,9 @@ export const getNewProducts = () => {
   return client.get<Product[]>('/products/new');
 };
 
-export const getQuantity = (category: string) => {
-  return client.get<CategoryCount[]>(`/products/quantity?category=${category}`);
+export const getQuantity = (category: string, search?: string) => {
+  // eslint-disable-next-line max-len
+  return client.get<CategoryCount[]>(
+    `/products/quantity?category=${category}&search=${search || ''}`
+  );
 };
