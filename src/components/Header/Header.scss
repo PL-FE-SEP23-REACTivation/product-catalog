@@ -228,7 +228,7 @@
 }
 
 .dark-mode .header {
-  box-shadow: 0px 1px 0px 0px $color-dark-shadow;
+  border-bottom: 1px solid $color-dark-shadow;
 }
 
 .dark-mode .header__link.active::after,
