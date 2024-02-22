@@ -35,9 +35,11 @@
   &__image-link {
     position: relative;
     overflow: hidden;
+    transition: scale, 400ms;
 
     &:hover {
       transform: scale(1.05);
+      transition: scale, 400ms;
     }
   }
 
