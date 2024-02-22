@@ -284,3 +284,7 @@
 .dark-mode .burger_link_bottom:hover {
   border-bottom: 4px solid $color-dark-white;
 }
+
+.dark-mode .headerMobile_link--logo {
+  background-image: url('../../../public/icons/Logo-white.svg');
+}
