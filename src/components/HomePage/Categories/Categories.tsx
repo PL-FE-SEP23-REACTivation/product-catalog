@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import './Categories.scss';
-import { getAllQuantity } from '../../../api/products';
+import { getQuantity } from '../../../api/products';
 import { AllQuantity } from '../../../types/quantityType';
 
 const Categories: React.FC = () => {
   const [quantity, setQuantity] = useState<Partial<AllQuantity>>();
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get('category') || '';
 
   const backToTop = () => {
     window.scrollTo(0, 0);
@@ -13,7 +15,7 @@ const Categories: React.FC = () => {
 
   useEffect(() => {
     const getProductsQuantity = async () => {
-      await getAllQuantity()
+      await getQuantity(category)
         .then((data) => {
           const result = data.reduce(
             (acc: { [key: string]: number }, { category, count }) => {
