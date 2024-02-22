@@ -40,7 +40,7 @@ export const ProductVariantSelector: React.FC<Props> = ({
     state.favoriteProducts.some((p) => p.itemId === id)
   );
   const isAddedToCart = useCartStore((state) =>
-    state.cart.some((p) => p.product.itemId === id)
+    state.cart.some((p) => p.product?.itemId === id)
   );
 
   const handleAddToCart = async () => {
