@@ -18,6 +18,7 @@ import { Loader } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { Slider } from '../HomePage/Slider/Slider';
 import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
+import { RouteType } from '../../types/routeType';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -28,30 +29,11 @@ const ProductPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
-  const { id, category } = useParams();
-
-  type RouteType = 'phones' | 'tablets' | 'accessories';
-  let pathName: RouteType;
-
-  switch (category) {
-  case 'phones':
-    pathName = 'phones';
-    break;
-  case 'accessories':
-    pathName = 'accessories';
-    break;
-  case 'tablets':
-    pathName = 'tablets';
-    break;
-  default:
-    pathName = 'phones';
-  }
+  const { id, category } = useParams<{ id: string; category: RouteType }>();
 
   const [selectedImg, setSelectedImg] = useState<string>(
     `${process.env.PUBLIC_URL}/${productDetails?.images[0]}`
   );
-
-  console.log(recommended);
 
   useEffect(() => {
     const productDetailsData = async () => {
@@ -96,7 +78,10 @@ const ProductPage: React.FC = () => {
       ) : (
         <div className="pp">
           <div className="pp_header">
-            <Breadcrumbs path={pathName} productName={productDetails?.name} />
+            <Breadcrumbs
+              path={category || 'phones'}
+              productName={productDetails?.name}
+            />
           </div>
           <Link className="pp_return" to={`/${category}`}>
             <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
