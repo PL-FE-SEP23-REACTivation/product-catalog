@@ -39,17 +39,11 @@
     &:hover {
       transform: scale(1.05);
     }
-
-    @include for-tablet {
-    }
   }
 
   &__image {
     position: relative;
-
-    @include for-tablet {
-      max-width: 100%;
-    }
+    max-width: 100%;
   }
 
   &__name-block {
