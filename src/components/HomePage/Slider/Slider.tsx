@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import './Slider.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { Product } from '../../../types/productType';
 import { Loader } from '../../Loader/Loader';
-import arrowLeft from '../../../icons/arrow-left.svg';
-import arrowRight from '../../../icons/arrow-right.svg';
+import { useThemeStore } from '../../../storage/ThemeStore';
 
 interface SliderProps {
   products: Product[];
@@ -21,6 +21,7 @@ export const Slider: React.FC<SliderProps> = ({
   title,
   className,
 }) => {
+  const { darkMode } = useThemeStore();
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handlePrevClick = () => {
@@ -34,26 +35,24 @@ export const Slider: React.FC<SliderProps> = ({
   const sliderClassName = `slider ${className}`;
 
   return (
-    <div className={sliderClassName}>
+    <div
+      className={`${sliderClassName} ${darkMode ? 'dark-mode' : 'light-mode'}`}
+    >
       <div className="slider__header">
         <h1 className="slider__header--title">{title}</h1>
         <div className="slider__header--btn">
           <button
-            className="slider__button"
+            className="slider__button slider__button-left"
             type="button"
             onClick={handlePrevClick}
             disabled={slideIndex === 0}
-          >
-            <img src={arrowLeft} alt="button-left" />
-          </button>
+          ></button>
           <button
-            className="slider__button"
+            className="slider__button slider__button-right"
             type="button"
             onClick={handleNextClick}
             disabled={slideIndex === products.length - 4}
-          >
-            <img src={arrowRight} alt="button-left" />
-          </button>
+          ></button>
         </div>
       </div>
 

@@ -9,6 +9,7 @@ import image3 from './Carousel/banner-accessories.png';
 import { Product } from '../../types/productType';
 import './Home.scss';
 import { getHotProducts, getNewProducts } from '../../api/products';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const HomePage: React.FC = () => {
   const slides = [
@@ -23,6 +24,7 @@ const HomePage: React.FC = () => {
   const [hotProductsLoading, setHotProductsLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isError, setIsError] = useState(false);
+  const { darkMode } = useThemeStore();
 
   useEffect(() => {
     setNewProductsLoading(true);
@@ -41,7 +43,7 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="homePage">
+    <div className={`homePage ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="title">
         <h1>Welcome to Nice Gadgets store!</h1>
       </div>
