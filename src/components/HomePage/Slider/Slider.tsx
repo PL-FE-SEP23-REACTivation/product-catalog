@@ -1,10 +1,8 @@
-/* eslint-disable max-len */
 import React, { useState } from 'react';
 import './Slider.scss';
 import { ProductCard } from '../../ProductCard/ProductCard';
 import { Product } from '../../../types/productType';
 import { Loader } from '../../Loader/Loader';
-import { useThemeStore } from '../../../storage/ThemeStore';
 
 interface SliderProps {
   products: Product[];
@@ -21,7 +19,6 @@ export const Slider: React.FC<SliderProps> = ({
   title,
   className,
 }) => {
-  const { darkMode } = useThemeStore();
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handlePrevClick = () => {
@@ -35,24 +32,22 @@ export const Slider: React.FC<SliderProps> = ({
   const sliderClassName = `slider ${className}`;
 
   return (
-    <div
-      className={`${sliderClassName} ${darkMode ? 'dark-mode' : 'light-mode'}`}
-    >
+    <div className={sliderClassName}>
       <div className="slider__header">
-        <h1 className="slider__header--title">{title}</h1>
+        <h1 className="slider__header--title slider-title-max">{title}</h1>
         <div className="slider__header--btn">
           <button
             className="slider__button slider__button-left"
             type="button"
             onClick={handlePrevClick}
             disabled={slideIndex === 0}
-          ></button>
+          />
           <button
             className="slider__button slider__button-right"
             type="button"
             onClick={handleNextClick}
             disabled={slideIndex === products.length - 4}
-          ></button>
+          />
         </div>
       </div>
 

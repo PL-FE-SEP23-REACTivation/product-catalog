@@ -3,10 +3,12 @@ import { Link, useSearchParams } from 'react-router-dom';
 import './Categories.scss';
 import { getQuantity } from '../../../api/products';
 import { AllQuantity } from '../../../types/quantityType';
+import { useThemeStore } from '../../../storage/ThemeStore';
 
 const Categories: React.FC = () => {
   const [quantity, setQuantity] = useState<Partial<AllQuantity>>();
   const [searchParams] = useSearchParams();
+  const { darkMode } = useThemeStore();
   const category = searchParams.get('category') || '';
 
   const backToTop = () => {
@@ -33,7 +35,7 @@ const Categories: React.FC = () => {
   }, []);
 
   return (
-    <section className="category">
+    <section className={`category${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="category__content">
         <h1 className="category__title">Shop by category</h1>
 

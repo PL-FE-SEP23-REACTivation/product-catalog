@@ -67,7 +67,6 @@
 
 .newProducts {
   @include for-phone() {
-    margin-left: 16px;
   }
 
   @include for-tablet() {
@@ -117,4 +116,11 @@
 .dark-mode .homePage,
 .dark-mode .homePage .title {
   color: $color-dark-white;
+}
+
+.dark-mode .newProducts .productpage {
+  padding-left: 300px;
+  border: 10px solid red;
+  height: 100px;
+  width: 100px;
 }

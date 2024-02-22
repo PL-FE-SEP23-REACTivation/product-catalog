@@ -91,3 +91,11 @@
     line-height: 21px;
   }
 }
+
+.dark-mode .category__name {
+  color: $color-dark-white;
+}
+
+.dark-mode .category__amount {
+  color: $color-dark-secondary;
+}
