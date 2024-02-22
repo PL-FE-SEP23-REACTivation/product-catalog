@@ -9,6 +9,11 @@ const Register = () => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Password:', password);
+
+    setEmail('');
+    setPassword('');
+
+    window.location.href = '/';
   };
 
   return (
