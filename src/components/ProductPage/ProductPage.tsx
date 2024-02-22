@@ -140,6 +140,7 @@ const ProductPage: React.FC = () => {
                   title="You may also like"
                   isLoading={isLoadingRecommended}
                   isError={isErrorRecommended}
+                  setIsLoadingPp={setIsLoading}
                 />
               </div>
             </>

@@ -12,6 +12,7 @@ interface SliderProps {
   isError: boolean;
   title: string;
   className?: string;
+  setIsLoadingPp?: (arg: boolean) => void;
 }
 
 export const Slider: React.FC<SliderProps> = ({
@@ -20,6 +21,8 @@ export const Slider: React.FC<SliderProps> = ({
   isError,
   title,
   className,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setIsLoadingPp = () => {},
 }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -68,7 +71,11 @@ export const Slider: React.FC<SliderProps> = ({
             style={{ transform: `translateX(-${slideIndex * (272 + 16)}px)` }}
           >
             {products.map((product) => (
-              <li className="slider__item" key={product.id}>
+              <li
+                className="slider__item"
+                onClick={() => setIsLoadingPp(true)}
+                key={product.id}
+              >
                 <ProductCard product={product} />
               </li>
             ))}
