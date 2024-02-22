@@ -12,12 +12,8 @@ const FavouritesPage: React.FC = () => {
     <div className="favourites">
       <div className="favourites__header">
         <Breadcrumbs path={'favourites'} />
-        <div className="favourites__title">
-          Favourites
-          <div className="favourites__title-count">
-            {favoriteProducts.length} items
-          </div>
-        </div>
+        <h1 className="favourites__title">Favourites</h1>
+        <div className="favourites__count">{favoriteProducts.length} items</div>
       </div>
       <div className="favourites__content">
         {favoriteProducts.map((product) => (

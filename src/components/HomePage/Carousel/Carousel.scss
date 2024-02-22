@@ -4,19 +4,19 @@
 .carousel {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
   position: relative;
-  height: 250px;
-  width: 392px;
-
-  @include for-phone {
-    margin-left: 20px;
-  }
+  width: 100%;
+  max-height: 432px;
 
   @include for-tablet {
+    max-width: 700px;
     gap: 18px;
   }
 
   @include for-desktop {
+    max-width: 100%;
     gap: 18px;
   }
 
@@ -42,22 +42,20 @@
   }
 
   &__slides {
-    width: 392px;
-    height: 300px;
+    padding-bottom: 320px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transition: all 0.4s;
+    width: 100%;
 
     @include for-tablet {
       background-size: cover;
-      height: 189px;
-      width: 490px;
+      padding-bottom: 250px;
     }
 
     @include for-desktop {
-      height: 432px;
-      width: 1136px;
+      padding-bottom: 432px;
     }
   }
 
