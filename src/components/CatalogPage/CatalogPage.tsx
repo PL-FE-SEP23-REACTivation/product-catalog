@@ -123,7 +123,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
           />
         </div>
         <div className="Catalog__search search">
-          <Search />
+          <Search path={path} />
         </div>
       </div>
       {isProductsLoading && isQuantityLoading ? <Loader /> : catalogContent}
