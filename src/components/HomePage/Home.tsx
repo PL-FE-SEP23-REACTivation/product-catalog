@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Carousel from './Carousel/Carousel';
-import NewProducts from './NewProducts/NewProducts';
-import Categories from './Categories/Categories';
-import HotPrices from './HotPrices/HotPrices';
-import image1 from './Carousel/banner-tablets.png';
-import image2 from './Carousel/banner-phones.png';
-import image3 from './Carousel/banner-accessories.png';
-import { Product } from '../../types/productType';
-import './Home.scss';
 import { getHotProducts, getNewProducts } from '../../api/products';
+import { Product } from '../../types/productType';
+import Carousel from './Carousel/Carousel';
+import image3 from './Carousel/banner-accessories.png';
+import image2 from './Carousel/banner-phones.png';
+import image1 from './Carousel/banner-tablets.png';
+import Categories from './Categories/Categories';
+import './Home.scss';
+import HotPrices from './HotPrices/HotPrices';
+import NewProducts from './NewProducts/NewProducts';
 
 const HomePage: React.FC = () => {
   const slides = [
@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
         <Carousel slides={slides} />
       </div>
 
-      <div className="newProducts">
+      <div className="homePage__slider">
         <NewProducts
           products={newProducts}
           isLoading={newProductsLoading}
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
       <div className="category">
         <Categories />
       </div>
-      <div className="hotPrices">
+      <div className="homePage__slider">
         <HotPrices
           products={hotProducts}
           isLoading={hotProductsLoading}

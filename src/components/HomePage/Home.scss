@@ -9,24 +9,20 @@
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+
+  &__slider {
+    width: 100%;
+  }
 }
 
 .title {
-  padding: 0;
-
-  @include for-phone() {
-    margin: 24px 16px 0;
-    font-size: 32px;
-
-    & h1 {
-      font-size: 32px;
-      font-weight: 800;
-      font-family: Mont;
-      line-height: 41px;
-      margin: 0;
-      color: $color-primary;
-    }
-  }
+  font-size: 32px;
+  font-weight: 800;
+  font-family: Mont;
+  line-height: 41px;
+  color: $color-primary;
+  margin: 24px 16px 0;
+  font-size: 32px;
 
   @include for-tablet() {
     margin-top: 32px;
@@ -65,25 +61,11 @@
   }
 }
 
-.newProducts {
-  @include for-phone() {
-    margin-left: 16px;
-  }
-
-  @include for-tablet() {
-  }
-
-  @include for-desktop() {
-  }
-}
-
 .category {
   grid-area: 4 / 1 / 5 / -1;
 
   @include for-phone() {
     margin-top: 56px;
-    margin-left: 16px;
-    margin-right: 16px;
   }
 
   @include for-tablet() {
@@ -96,11 +78,9 @@
 }
 
 .hotPrices {
-  grid-area: 5 / 1 / 6 / -1;
-
+  width: 100%;
   @include for-phone() {
     margin-top: 56px;
-    margin-left: 16px;
     margin-bottom: 64px;
   }
 
