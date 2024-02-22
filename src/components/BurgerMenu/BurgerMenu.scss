@@ -227,7 +227,9 @@
   background-color: $color-dark;
   border: none;
 }
-
+.dark-mode .headerMobile_nav {
+  border-bottom: 1px solid $color-dark-shadow;
+}
 .dark-mode .headerMobile {
   border-bottom: 1px solid $color-dark-shadow;
 }
