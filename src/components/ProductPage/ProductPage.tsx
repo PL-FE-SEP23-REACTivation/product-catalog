@@ -17,6 +17,7 @@ import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 import { Loader } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { Slider } from '../HomePage/Slider/Slider';
+import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -25,6 +26,7 @@ const ProductPage: React.FC = () => {
   const [isLoadingRecommended, setIsLoadingRecommended] =
     useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [isErrorRecommended, setIsErrorRecommended] = useState<boolean>(false);
   const { id, category } = useParams();
 
@@ -60,6 +62,7 @@ const ProductPage: React.FC = () => {
           setSelectedImg(`${process.env.PUBLIC_URL}/${data.images[0]}`);
         } catch (e) {
           console.log(e);
+          setIsError(true);
         } finally {
           setIsLoading(false);
         }
@@ -86,58 +89,64 @@ const ProductPage: React.FC = () => {
   }, [id, category]);
 
   return (
-    <div className="pp">
-      <div className="pp_header">
-        <Breadcrumbs path={pathName} productName={productDetails?.name} />
-      </div>
-      <Link className="pp_return" to={`/${category}`}>
-        <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
-        <div className="pp_return_text">Back</div>
-      </Link>
-      <div className="pp_title">{productDetails?.name}</div>
-      {isLoading ? (
-        <div className="pp_loader_container">
-          <Loader />
-        </div>
+    <>
+      {isError ? (
+        <ErrorNotification />
       ) : (
-        <>
-          <div className="pp_photos">
-            {productDetails && (
-              <ProductGallery
-                images={productDetails.images}
-                selectedImg={selectedImg}
-                setSelectedImg={setSelectedImg}
-              />
-            )}
+        <div className="pp">
+          <div className="pp_header">
+            <Breadcrumbs path={pathName} productName={productDetails?.name} />
           </div>
-          <div className="pp_variants">
-            {productDetails && (
-              <ProductVariantSelector
-                key={productDetails.id}
-                product={productDetails}
-                category={category}
-              />
-            )}
-          </div>
-          <div className="pp_about">
-            {productDetails && (
-              <About description={productDetails?.description} />
-            )}
-          </div>
-          <div className="pp_tech-specs">
-            <TechSpec product={productDetails} />
-          </div>
-          <div className="pp_reccomended_goods">
-            <Slider
-              products={recommended || []}
-              title="You may also like"
-              isLoading={isLoadingRecommended}
-              isError={isErrorRecommended}
-            />
-          </div>
-        </>
+          <Link className="pp_return" to={`/${category}`}>
+            <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
+            <div className="pp_return_text">Back</div>
+          </Link>
+          <div className="pp_title">{productDetails?.name}</div>
+          {isLoading ? (
+            <div className="pp_loader_container">
+              <Loader />
+            </div>
+          ) : (
+            <>
+              <div className="pp_photos">
+                {productDetails && (
+                  <ProductGallery
+                    images={productDetails.images}
+                    selectedImg={selectedImg}
+                    setSelectedImg={setSelectedImg}
+                  />
+                )}
+              </div>
+              <div className="pp_variants">
+                {productDetails && (
+                  <ProductVariantSelector
+                    key={productDetails.id}
+                    product={productDetails}
+                    category={category}
+                  />
+                )}
+              </div>
+              <div className="pp_about">
+                {productDetails && (
+                  <About description={productDetails?.description} />
+                )}
+              </div>
+              <div className="pp_tech-specs">
+                <TechSpec product={productDetails} />
+              </div>
+              <div className="pp_reccomended_goods">
+                <Slider
+                  products={recommended || []}
+                  title="You may also like"
+                  isLoading={isLoadingRecommended}
+                  isError={isErrorRecommended}
+                />
+              </div>
+            </>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
