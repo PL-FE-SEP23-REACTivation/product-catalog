@@ -10,86 +10,56 @@
   flex-direction: column;
   overflow: hidden;
 
+  &__section {
+    margin-bottom: 56px;
+    @include for-tablet() {
+      margin-bottom: 80px;
+    }
+  }
+
   &__slider {
     width: 100%;
   }
-}
 
-.title {
-  font-size: 32px;
-  font-weight: 800;
-  font-family: Mont;
-  line-height: 41px;
-  color: $color-primary;
-  margin: 24px 16px 0;
-  font-size: 32px;
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    font-family: Mont;
+    line-height: 41px;
+    color: $color-primary;
+    font-size: 32px;
 
-  @include for-tablet() {
-    margin-top: 32px;
-    margin-bottom: 0;
+    @include for-tablet() {
+    }
 
-    & h1 {
-      font-size: 48px;
+    @include for-desktop() {
     }
   }
 
-  @include for-desktop() {
-    margin-top: 56px;
-    & h1 {
-      font-size: 48px;
+  &__carousel {
+    display: flex;
+    align-items: center;
+    width: 392px;
+
+    @include for-tablet() {
+      width: 592px;
+    }
+
+    @include for-desktop() {
+      width: 1136px;
     }
   }
-}
 
-.carousel {
-  display: flex;
-  align-items: center;
-  width: 392px;
-  height: 350px;
+  &__category {
+    grid-area: 4 / 1 / 5 / -1;
 
-  @include for-tablet() {
-    height: 221px;
-    width: 592px;
-    margin-top: 32px;
-    margin-bottom: 100px;
-  }
+    @include for-phone() {
+    }
 
-  @include for-desktop() {
-    height: 432px;
-    width: 1136px;
-    margin-bottom: 150px;
-  }
-}
+    @include for-tablet() {
+    }
 
-.category {
-  grid-area: 4 / 1 / 5 / -1;
-
-  @include for-phone() {
-    margin-top: 56px;
-  }
-
-  @include for-tablet() {
-    margin-top: 64px;
-  }
-
-  @include for-desktop() {
-    margin-top: 80px;
-  }
-}
-
-.hotPrices {
-  width: 100%;
-  @include for-phone() {
-    margin-top: 56px;
-    margin-bottom: 64px;
-  }
-
-  @include for-tablet() {
-    margin-top: 64px;
-    margin-bottom: 64px;
-  }
-
-  @include for-desktop() {
-    margin: 80px 0;
+    @include for-desktop() {
+    }
   }
 }

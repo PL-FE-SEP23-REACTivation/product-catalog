@@ -42,32 +42,32 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="homePage">
-      <div className="title">
+      <section className="homePage__title">
         <h1>Welcome to Nice Gadgets store!</h1>
-      </div>
-      <div className="carousel">
+      </section>
+      <section className="homePage__section homePage__carousel">
         <Carousel slides={slides} />
-      </div>
+      </section>
 
-      <div className="homePage__slider">
+      <section className="homePage__section homePage__slider">
         <NewProducts
           products={newProducts}
           isLoading={newProductsLoading}
           isError={isError}
           title="Brand New Models"
         />
-      </div>
-      <div className="category">
+      </section>
+      <section className="homePage__section homePage__category">
         <Categories />
-      </div>
-      <div className="homePage__slider">
+      </section>
+      <section className="homePage__section homePage__slider">
         <HotPrices
           products={hotProducts}
           isLoading={hotProductsLoading}
           isError={isError}
           title="Hot Prices"
         />
-      </div>
+      </section>
     </div>
   );
 };
