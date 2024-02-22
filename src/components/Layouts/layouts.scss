@@ -1,4 +1,10 @@
 @import '../../utils/mixins.scss';
+@import '../../utils/fonts.scss';
+
+:root {
+  font-family: Mont, 'sans-serif';
+}
+
 .product-page_layout_container {
   display: flex;
   min-width: 320px;
