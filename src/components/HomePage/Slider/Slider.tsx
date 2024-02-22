@@ -43,7 +43,7 @@ export const Slider: React.FC<SliderProps> = ({
             className="slider__button"
             type="button"
             onClick={handlePrevClick}
-            disabled={slideIndex === 0}
+            disabled={slideIndex === 0 || isError}
           >
             <img src={arrowLeft} alt="button-left" />
           </button>
@@ -51,7 +51,7 @@ export const Slider: React.FC<SliderProps> = ({
             className="slider__button"
             type="button"
             onClick={handleNextClick}
-            disabled={slideIndex === products.length - 4}
+            disabled={slideIndex === products.length - 4 || isError}
           >
             <img src={arrowRight} alt="button-left" />
           </button>
