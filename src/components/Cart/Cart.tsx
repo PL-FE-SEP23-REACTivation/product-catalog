@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ArrowLeft from '../../icons/arrow-left.svg';
 import { useCartStore } from '../../storage/CartStore';
 import { CartItem } from '../CartItem/CartItem';
 import { SuccessModal } from '../SuccessModal/SuccessModal';
@@ -8,6 +7,7 @@ import './Cart.scss';
 
 export const Cart = () => {
   const cart = useCartStore((state) => state.cart);
+  const arrowLeftPath = process.env.PUBLIC_URL + '/icons/arrow-left.svg';
   const { clearCart } = useCartStore.getState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
@@ -40,7 +40,7 @@ export const Cart = () => {
         <section className="cart__title">
           <Link to="/phones" className="cart__title__link">
             <img
-              src={ArrowLeft}
+              src={arrowLeftPath}
               alt="arrow right"
               className="cart__title__link__arrow"
             />

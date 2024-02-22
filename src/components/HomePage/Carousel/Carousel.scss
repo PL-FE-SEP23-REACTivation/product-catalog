@@ -79,7 +79,7 @@
 }
 
 .button-right {
-  background-image: url('../../../icons/arrow-right.svg');
+  background-image: url(../../../../public/icons/arrow-right.svg);
 
   @include for-desktop {
     background-size: 20px;
@@ -87,7 +87,7 @@
 }
 
 .button-left {
-  background-image: url('../../../icons/arrow-left.svg');
+  background-image: url(../../../../public/icons/arrow-left.svg);
 
   @include for-desktop {
     background-size: 20px;
@@ -104,7 +104,7 @@
 }
 
 .dark-mode .button-left {
-  background-image: url('../../../icons/arrow-left-white.svg');
+  background-image: url(../../../../public/icons/arrow-left-white.svg);
 
   @include for-desktop {
     background-size: 20px;
@@ -112,7 +112,7 @@
 }
 
 .dark-mode .button-right {
-  background-image: url('../../../icons/arrow-right-white.svg');
+  background-image: url(../../../../public/icons/arrow-right-white.svg);
 
   @include for-desktop {
     background-size: 20px;

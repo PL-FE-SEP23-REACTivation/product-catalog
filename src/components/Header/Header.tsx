@@ -24,10 +24,7 @@ export const Header = () => {
           </Link>
         ) : (
           <Link to="/" className="header__logo">
-            <img
-              src={process.env.PUBLIC_URL + '/icons/Logo.svg'} // Zmień ścieżkę do obrazka dla trybu jasnego
-              alt="logo"
-            />
+            <img src={process.env.PUBLIC_URL + '/icons/Logo.svg'} alt="logo" />
           </Link>
         )}
         <button className="darkmodebutton" onClick={toggleDarkMode}>

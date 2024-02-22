@@ -220,39 +220,40 @@
 
 .dark-mode {
   background-color: $color-dark;
-}
-.dark-mode .header__buttons .header__link {
-  background-color: $color-dark;
-  box-shadow: -1px 0px 0px 0px $color-dark-shadow;
-  border: none;
-}
 
-.dark-mode .header {
-  border-bottom: 1px solid $color-dark-shadow;
-}
+  .header__buttons .header__link {
+    background-color: $color-dark;
+    box-shadow: -1px 0px 0px 0px $color-dark-shadow;
+    border: none;
+  }
 
-.dark-mode .header__link.active::after,
-.dark-mode .header__link:hover::after {
-  background-color: $color-dark-white;
-}
+  .header {
+    border-bottom: 1px solid $color-dark-shadow;
+  }
 
-.dark-mode .header__link:hover,
-.dark-mode .header__link.active {
-  color: $color-dark-white;
-}
+  .header__link.active::after,
+  .header__link:hover::after {
+    background-color: $color-dark-white;
+  }
 
-.dark-mode .header__buttons__cart {
-  background-image: url('../../../public/icons/bag-white.svg');
-}
+  .dark-mode .header__link:hover,
+  .dark-mode .header__link.active {
+    color: $color-dark-white;
+  }
 
-.dark-mode .header__buttons__like {
-  background-image: url('../../../public/icons/heart-like-white.svg');
-}
+  .dark-mode .header__buttons__cart {
+    background-image: url('../../../public/icons/bag-white.svg');
+  }
 
-.dark-mode .header__buttons__register {
-  background-image: url('../../../public/icons/user-white.svg');
-}
+  .dark-mode .header__buttons__like {
+    background-image: url('../../../public/icons/heart-like-white.svg');
+  }
 
-.dark-mode .header__buttons__notification {
-  border: 1px solid $color-dark;
+  .dark-mode .header__buttons__register {
+    background-image: url('../../../public/icons/user-white.svg');
+  }
+
+  .dark-mode .header__buttons__notification {
+    border: 1px solid $color-dark;
+  }
 }

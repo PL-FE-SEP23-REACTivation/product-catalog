@@ -47,13 +47,13 @@
     -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
-    background: url(../../icons/arrow-down.svg) no-repeat;
+    background: url(../../../public/icons/arrow-down.svg) no-repeat;
     background-position: right 12px top 50%;
     border: $color-icons 1px solid;
     outline: none;
 
     &--open {
-      background-image: url(../../icons/arrow-up.svg);
+      background-image: url(../../../public/icons/arrow-up.svg);
       border-color: $color-primary;
     }
   }

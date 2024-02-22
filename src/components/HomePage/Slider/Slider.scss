@@ -39,13 +39,13 @@
     background-color: transparent;
 
     &-left {
-      background-image: url('../../../icons/arrow-left.svg');
+      background-image: url(../../../../public/icons/arrow-left.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
 
     &-right {
-      background-image: url('../../../icons/arrow-right.svg');
+      background-image: url(../../../../public/icons/arrow-right.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -94,7 +94,7 @@
   border-color: $color-dark-shadow;
 
   &-left {
-    background-image: url('../../../icons/arrow-left-white.svg');
+    background-image: url(../../../../public/icons/arrow-left-white.svg);
     background-color: $color-dark-shadow;
     background-repeat: no-repeat;
     background-position: center;
@@ -107,7 +107,7 @@
   }
 
   &-right {
-    background-image: url('../../../icons/arrow-right-white.svg');
+    background-image: url(../../../../public/icons/arrow-right-white.svg);
     background-color: $color-dark-shadow;
     background-repeat: no-repeat;
     background-position: center;

@@ -150,6 +150,11 @@
   .card__button-favorite {
     border-color: $color-dark-shadow;
     background-color: $color-dark-shadow;
+
+    &:hover {
+      border-color: $color-dark-icons;
+      background-color: $color-dark-icons;
+    }
   }
   .card__title,
   .card__properties__spec-value,

@@ -5,9 +5,6 @@ import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import { Product } from '../../types/productType';
 import './ProductCard.scss';
-import heartFilled from '../../icons/heartFilled.svg';
-import heartEmpty from '../../icons/heartEmpty.svg';
-import heartEmptyWhite from '../../icons/heartEmptyWhite.svg';
 import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
@@ -19,6 +16,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     product;
   const isProductDiscount = fullPrice !== price;
   const { darkMode } = useThemeStore();
+  const heartEmptyPath = process.env.PUBLIC_URL + '/icons/heartEmpty.svg';
+  const heartEmptyWhitePath =
+    process.env.PUBLIC_URL + '/icons/heartEmptyWhite.svg';
+  const heartFilledPath = process.env.PUBLIC_URL + '/icons/heartFilled.svg';
   const isAddedToCart = useCartStore((state) =>
     state.cart.some((p) => p.product?.id === id)
   );
@@ -90,10 +91,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           onClick={toggleFavorite}
         >
           {isFavoriteProduct ? (
-            <img src={heartFilled} alt="IMG of heart" />
+            <img src={heartFilledPath} alt="IMG of heart" />
           ) : (
             <img
-              src={darkMode ? heartEmptyWhite : heartEmpty}
+              src={darkMode ? heartEmptyWhitePath : heartEmptyPath}
               alt="IMG of heart"
             />
           )}
