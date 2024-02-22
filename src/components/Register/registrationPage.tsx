@@ -35,7 +35,9 @@ const Register = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit">Sign up</button>
+      <button type="submit" disabled={!email || !password}>
+        Sign up
+      </button>
     </form>
   );
 };
