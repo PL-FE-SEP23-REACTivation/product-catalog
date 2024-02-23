@@ -39,8 +39,9 @@
 
 .disabled {
   border-color: $color-dark-element;
-  background-color: $color-dark-card;
+  background-color: $color-white;
   pointer-events: none;
+  opacity: 0.5;
 
   > * {
     color: $color-dark-element;
