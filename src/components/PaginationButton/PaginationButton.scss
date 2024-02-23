@@ -15,6 +15,7 @@
   background-color: $color-dark-card;
   color: $color-dark-white;
   margin: 0 4px;
+  transition: all 0.3s;
 
   &--prev {
     border-color: $color-dark-shadow;

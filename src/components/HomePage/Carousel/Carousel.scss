@@ -7,6 +7,7 @@
   position: relative;
   height: 250px;
   width: 392px;
+  transition: all 0.3s;
 
   @include for-phone {
     margin-left: 20px;
@@ -34,6 +35,7 @@
       border: 1px solid $color-icons;
       background-position: center;
       background-repeat: no-repeat;
+      transition: all 0.3s;
 
       @include for-tablet {
         display: block;
@@ -98,31 +100,36 @@
   background-color: $color-primary;
 }
 
-.dark-mode .carousel__container-buttons {
-  border-color: $color-dark-shadow;
-  background-color: $color-dark-shadow;
-}
-
-.dark-mode .button-left {
-  background-image: url(../../../../public/icons/arrow-left-white.svg);
-
-  @include for-desktop {
-    background-size: 20px;
+.dark-mode {
+  .carousel__container-buttons {
+    border-color: $color-dark-shadow;
+    background-color: $color-dark-shadow;
   }
-}
-
-.dark-mode .button-right {
-  background-image: url(../../../../public/icons/arrow-right-white.svg);
-
-  @include for-desktop {
-    background-size: 20px;
+  .carousel__container-buttons:hover {
+    background-color: $color-dark-icons;
   }
-}
 
-.dark-mode .carousel__tabs-tab {
-  background-color: $color-dark-element;
-}
+  .button-left {
+    background-image: url(../../../../public/icons/arrow-left-white.svg);
 
-.dark-mode .tab-active {
-  background-color: $color-dark-white;
+    @include for-desktop {
+      background-size: 20px;
+    }
+  }
+
+  .button-right {
+    background-image: url(../../../../public/icons/arrow-right-white.svg);
+
+    @include for-desktop {
+      background-size: 20px;
+    }
+  }
+
+  .carousel__tabs-tab {
+    background-color: $color-dark-element;
+  }
+
+  .tab-active {
+    background-color: $color-dark-white;
+  }
 }

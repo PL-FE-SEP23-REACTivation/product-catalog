@@ -7,6 +7,7 @@
 }
 
 .header {
+  transition: all 0.3s;
   @include for-phone {
     display: none;
   }

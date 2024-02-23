@@ -1,15 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
+
 export const Footer: React.FC = () => {
+  const { darkMode } = useThemeStore();
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
     <footer className="footer">
-      <div className="footer__logo">
-        <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
-      </div>
+      {darkMode ? (
+        <div className="footer__logo">
+          <img
+            src={process.env.PUBLIC_URL + '/icons/Logo-white.svg'}
+            alt="logo"
+          />
+        </div>
+      ) : (
+        <div className="footer__logo">
+          <img src={process.env.PUBLIC_URL + '/icons/Logo.svg'} alt="logo" />
+        </div>
+      )}
       <div className="footer__links">
         <Link
           to="https://github.com/PL-FE-SEP23-REACTivation"

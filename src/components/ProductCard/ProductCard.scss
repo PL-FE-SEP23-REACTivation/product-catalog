@@ -12,6 +12,7 @@
   padding: 32px;
   border: 1px solid rgba(226, 230, 233, 1);
   box-sizing: border-box;
+  transition: all 0.3s;
   @include for-tablet() {
     height: 506px;
   }
@@ -99,11 +100,13 @@
     display: flex;
     width: 100%;
     margin-top: 8px;
+    transition: all 0.3s;
     &-add {
       @include cardButton;
       color: $color-white;
       background-color: $color-primary;
       border: 1px solid $color-primary;
+      transition: all 0.3s;
       &:hover {
         box-shadow: 0px 3px 13px 0px $color-shadow;
         cursor: pointer;
@@ -115,6 +118,7 @@
       color: $color-green;
       background-color: white;
       border: 1px solid $color-elements;
+      transition: all 0.3s;
       &:hover {
         box-shadow: 0px 3px 13px 0px $color-shadow;
         cursor: pointer;
@@ -129,6 +133,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: all 0.3s;
       padding: 15px;
       img {
         width: 16px;

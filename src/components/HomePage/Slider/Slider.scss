@@ -3,6 +3,7 @@
 @import '../../../utils/mixins.scss';
 
 .slider {
+  transition: all 0.3s;
   &__header {
     display: flex;
     width: 100%;
@@ -36,6 +37,7 @@
     border: 1px solid rgb(0, 0, 0);
     transition: border 0.3s;
     cursor: pointer;
+    transition: all 0.3s;
     background-color: transparent;
 
     &-left {
@@ -86,43 +88,45 @@
   }
 }
 
-.dark-mode .slider__header--title {
-  color: $color-dark-white;
-}
-
-.dark-mode .slider__button {
-  border-color: $color-dark-shadow;
-
-  &-left {
-    background-image: url(../../../../public/icons/arrow-left-white.svg);
-    background-color: $color-dark-shadow;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-
-    &:hover {
-      background-color: $color-dark-icons;
-      border: none;
-    }
+.dark-mode {
+  .slider__header--title {
+    color: $color-dark-white;
   }
 
-  &-right {
-    background-image: url(../../../../public/icons/arrow-right-white.svg);
-    background-color: $color-dark-shadow;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
+  .slider__button {
+    border-color: $color-dark-shadow;
 
-    &:hover {
-      background-color: $color-dark-icons;
+    &-left {
+      background-image: url(../../../../public/icons/arrow-left-white.svg);
+      background-color: $color-dark-shadow;
+      background-repeat: no-repeat;
+      background-position: center;
       border: none;
-    }
-  }
 
-  &:disabled {
-    border: 1px solid gray;
-    cursor: not-allowed;
-    opacity: 0.5;
-    background-color: transparent;
+      &:hover {
+        background-color: $color-dark-icons;
+        border: none;
+      }
+    }
+
+    &-right {
+      background-image: url(../../../../public/icons/arrow-right-white.svg);
+      background-color: $color-dark-shadow;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+
+      &:hover {
+        background-color: $color-dark-icons;
+        border: none;
+      }
+    }
+
+    &:disabled {
+      border: 1px solid gray;
+      cursor: not-allowed;
+      opacity: 0.5;
+      background-color: transparent;
+    }
   }
 }

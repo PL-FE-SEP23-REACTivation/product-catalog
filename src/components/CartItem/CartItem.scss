@@ -113,6 +113,7 @@
         border: 1px solid $color-elements;
         cursor: pointer;
         font-size: 24px;
+        transition: all 0.3s;
       }
 
       &:hover {
@@ -139,12 +140,7 @@
     }
   }
 }
-// .buttonPositive {
-//   background-image: url(../../../public/icons/plus.svg);
-// }
-// .buttonNegative {
-//   background-image: url(../../../public/icons/minus.svg);
-// }
+
 .inactive {
   color: $color-elements;
 }
@@ -169,15 +165,12 @@
   .cartItem__calc__quantity__button {
     border-color: $color-dark-shadow;
     background-color: $color-dark-shadow;
+
+    &:hover {
+      border-color: $color-dark-icons;
+      background-color: $color-dark-icons;
+    }
   }
-
-  // .buttonNegative {
-  //   background-image: url(../../../public/icons/minus-white.svg);
-  // }
-
-  // .buttonPositive {
-  //   background-image: url(../../../public/icons/plus-white.svg);
-  // }
 
   .inactive {
     background-color: $color-dark-card;
