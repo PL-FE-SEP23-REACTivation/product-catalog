@@ -6,7 +6,6 @@
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     font-family: Mont;
     font-size: 12px;
     font-weight: 600;
@@ -31,59 +30,44 @@
   }
   &__title {
     margin-top: 24px;
-    font-family: Mont;
     font-size: 32px;
     line-height: 41px;
-    letter-spacing: 0em;
+    font-family: Mont, 'sans-serif';
     font-weight: 800;
-    grid-column: 1 / 5;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
     @include for-tablet() {
-      grid-column: 1 / 12;
+      margin-top: 40px;
       font-size: 48px;
       line-height: 56px;
-      letter-spacing: -0.01em;
-      margin-top: 40px;
     }
-    @include for-desktop() {
-      grid-column: 1 / 24;
-    }
-    &-count {
-      margin-top: 8px;
-      display: flex;
-      font-size: 14px;
-      font-weight: 600;
-      color: $color-secondary;
+  }
+
+  &__count {
+    font-family: Mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: $color-secondary;
+    margin-bottom: 32px;
+    @include for-tablet {
+      margin-bottom: 40px;
     }
   }
 
   &__content {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    gap: 40px 16px;
+    grid-template-columns: 1fr;
+
     @include for-tablet() {
-      margin-top: 40px;
-      display: grid;
-      width: 100%;
-      justify-content: center;
-      gap: 16px;
-      grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
     }
+
     @include for-desktop() {
       grid-template-columns: repeat(4, 272px);
-    }
-    &-items {
-      max-width: 287px;
-      max-height: 440px;
-      @include for-tablet() {
-        max-width: 288px;
-        max-height: 506px;
-      }
-      @include for-desktop() {
-        max-width: 272px;
-        max-height: 506px;
-      }
     }
   }
 }

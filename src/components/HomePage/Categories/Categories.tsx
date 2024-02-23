@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import './Categories.scss';
 import { getQuantity } from '../../../api/products';
 import { AllQuantity } from '../../../types/quantityType';
 import { useThemeStore } from '../../../storage/ThemeStore';
+import './Categories.scss';
 
 const Categories: React.FC = () => {
   const [quantity, setQuantity] = useState<Partial<AllQuantity>>();

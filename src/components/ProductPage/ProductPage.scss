@@ -144,7 +144,7 @@
       grid-column: 1 / 5;
     }
     @include for-tablet() {
-      grid-column: 1 / 13;
+      grid-column: 1 / 7;
       margin-top: 64px;
     }
     @include for-desktop() {
@@ -159,7 +159,7 @@
     }
     @include for-tablet() {
       margin-top: 64px;
-      grid-column: 1 / 13;
+      grid-column: 7 / 13;
     }
     @include for-desktop() {
       margin-top: 80px;
@@ -174,7 +174,7 @@
     }
     @include for-tablet() {
       margin-top: 64px;
-      grid-column: 1 / 12;
+      grid-column: 1 / 13;
     }
     @include for-desktop() {
       margin-top: 80px;

@@ -36,7 +36,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
   const perPage = searchParams.get('perPage') || 16;
   const page = searchParams.get('page') || 1;
   const search = searchParams.get('search') || '';
-  const quantity = search ? products.length : productsQuantity[path] || 0;
+  const quantity = productsQuantity[path] || 0;
 
   useEffect(() => {
     setIsProductsLoading(true);
@@ -59,7 +59,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
 
   useEffect(() => {
     setIsQuantityLoading(true);
-    getQuantity(path)
+    getQuantity(path, search)
       .then((data) => {
         const result = data.reduce(
           (acc: { [key: string]: number }, { category, count }) => {
@@ -125,7 +125,7 @@ export const CatalogPage: FC<Props> = ({ path }) => {
           />
         </div>
         <div className="Catalog__search search">
-          <Search />
+          <Search path={path} />
         </div>
       </div>
       {isProductsLoading && isQuantityLoading ? <Loader /> : catalogContent}

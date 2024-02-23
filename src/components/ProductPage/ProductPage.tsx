@@ -1,6 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { TechSpec } from '../TechSpecs/TechSpecs';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
@@ -8,17 +9,17 @@ import {
   getProductByIdAndCategory,
   getProductsRecommended,
 } from '../../api/products';
-import { Product } from '../../types/productType';
-import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
 import { DetailedProduct } from '../../types/detailedProductType';
+import { Product } from '../../types/productType';
 import { About } from '../About/About';
-import { ProductGallery } from '../ProductGallery/ProductGallery';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import { Loader } from '../Loader/Loader';
-import { Link } from 'react-router-dom';
-import { Slider } from '../HomePage/Slider/Slider';
 import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
 import { useThemeStore } from '../../storage/ThemeStore';
+import { Slider } from '../HomePage/Slider/Slider';
+import { Loader } from '../Loader/Loader';
+import { ProductGallery } from '../ProductGallery/ProductGallery';
+import { ProductVariantSelector } from '../ProductVariantSelector/ProductVariantSelector';
+import './ProductPage.scss';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
@@ -53,11 +54,10 @@ const ProductPage: React.FC = () => {
     `${process.env.PUBLIC_URL}/${productDetails?.images[0]}`
   );
 
-  console.log(recommended);
-
   useEffect(() => {
     const productDetailsData = async () => {
       if (id && category) {
+        setIsLoading(true);
         try {
           const data = await getProductByIdAndCategory(id, category);
           setproductDetails(data);

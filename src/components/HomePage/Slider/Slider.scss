@@ -69,14 +69,11 @@
     margin: 0 auto;
     height: 100%;
     overflow: hidden;
-    width: calc((180px + 16px) * 2);
 
     @include for-tablet {
-      width: calc((190px + 16px) * 3);
     }
 
     @include for-desktop {
-      width: calc((272px + 16px) * 4);
     }
   }
 

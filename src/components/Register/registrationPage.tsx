@@ -11,6 +11,11 @@ const Register = () => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Password:', password);
+
+    setEmail('');
+    setPassword('');
+
+    window.location.href = '/';
   };
 
   return (
@@ -35,7 +40,9 @@ const Register = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit">Sign up</button>
+      <button type="submit" disabled={!email || !password}>
+        Sign up
+      </button>
     </form>
   );
 };

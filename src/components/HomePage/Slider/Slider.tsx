@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './Slider.scss';
-import { ProductCard } from '../../ProductCard/ProductCard';
 import { Product } from '../../../types/productType';
+import { ErrorNotification } from '../../ErrorNotification/ErrorNotification';
 import { Loader } from '../../Loader/Loader';
+import { ProductCard } from '../../ProductCard/ProductCard';
+import './Slider.scss';
 
 interface SliderProps {
   products: Product[];
@@ -40,22 +41,20 @@ export const Slider: React.FC<SliderProps> = ({
             className="slider__button slider__button-left"
             type="button"
             onClick={handlePrevClick}
-            disabled={slideIndex === 0}
+            disabled={slideIndex === 0 || isError}
           />
           <button
             className="slider__button slider__button-right"
             type="button"
             onClick={handleNextClick}
-            disabled={slideIndex === products.length - 4}
+            disabled={slideIndex === products.length - 4 || isError}
           />
         </div>
       </div>
 
       <div className="slider__content">
         {isLoading && !isError && <Loader />}
-        {!isLoading && isError && (
-          <p>Error: Unable to load data from server!</p>
-        )}
+        {!isLoading && isError && <ErrorNotification />}
         {!isLoading && !isError && (
           <ul
             className="slider__list"
