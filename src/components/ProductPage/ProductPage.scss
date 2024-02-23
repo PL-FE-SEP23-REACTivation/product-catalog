@@ -182,3 +182,10 @@
     }
   }
 }
+
+.dark-mode {
+  .pp_return_text,
+  .pp_title {
+    color: $color-dark-white;
+  }
+}

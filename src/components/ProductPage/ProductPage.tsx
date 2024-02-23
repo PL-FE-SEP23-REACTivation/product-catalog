@@ -1,6 +1,6 @@
+/* eslint-disable indent */
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import leftArrowIcon from '../../icons/Chevron (Arrow Right).svg';
 import { TechSpec } from '../TechSpecs/TechSpecs';
 import './ProductPage.scss';
 import { useParams } from 'react-router-dom';
@@ -18,11 +18,13 @@ import { Loader } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { Slider } from '../HomePage/Slider/Slider';
 import { ErrorNotification } from '../ErrorNotification/ErrorNotification';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const ProductPage: React.FC = () => {
   const [productDetails, setproductDetails] =
     useState<DetailedProduct | null>();
   const [recommended, setRecommended] = useState<Product[] | null>(null);
+  const { darkMode } = useThemeStore();
   const [isLoadingRecommended, setIsLoadingRecommended] =
     useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,17 +36,17 @@ const ProductPage: React.FC = () => {
   let pathName: RouteType;
 
   switch (category) {
-  case 'phones':
-    pathName = 'phones';
-    break;
-  case 'accessories':
-    pathName = 'accessories';
-    break;
-  case 'tablets':
-    pathName = 'tablets';
-    break;
-  default:
-    pathName = 'phones';
+    case 'phones':
+      pathName = 'phones';
+      break;
+    case 'accessories':
+      pathName = 'accessories';
+      break;
+    case 'tablets':
+      pathName = 'tablets';
+      break;
+    default:
+      pathName = 'phones';
   }
 
   const [selectedImg, setSelectedImg] = useState<string>(
@@ -93,13 +95,12 @@ const ProductPage: React.FC = () => {
       {isError ? (
         <ErrorNotification />
       ) : (
-        <div className="pp">
+        <div className={`pp ${darkMode ? 'dark-mode' : ''}`}>
           <div className="pp_header">
             <Breadcrumbs path={pathName} productName={productDetails?.name} />
           </div>
           <Link className="pp_return" to={`/${category}`}>
-            <img className="pp_return_icon" src={leftArrowIcon} alt="arrow" />
-            <div className="pp_return_text">Back</div>
+            <div className="pp_return_text">&lt;&nbsp;&nbsp;&nbsp;Back</div>
           </Link>
           <div className="pp_title">{productDetails?.name}</div>
           {isLoading ? (
