@@ -11,33 +11,29 @@
   align-items: center;
   width: 32px;
   height: 32px;
-  border: 1px solid $color-dark-card;
-  background-color: $color-dark-card;
-  color: $color-dark-white;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  color: $color-primary;
   margin: 0 4px;
-  transition: all 0.3s;
 
   &--prev {
-    border-color: $color-dark-shadow;
-    background-color: $color-dark-shadow;
+    border-color: $color-icons;
     margin-right: 12px;
   }
 
   &--next {
-    border-color: $color-dark-shadow;
-    background-color: $color-dark-shadow;
+    border-color: $color-icons;
     margin-left: 12px;
   }
 
   &--is-active {
     color: $color-white;
-    background-color: $color-dark-button;
-    border-color: $color-dark-button;
+    background-color: $color-primary;
+    border-color: $color-primary;
   }
 
   &:hover {
-    border-color: $color-dark-element;
-    background-color: $color-dark-element;
+    border-color: $color-primary;
   }
 }
 
@@ -48,5 +44,35 @@
 
   > * {
     color: $color-dark-element;
+  }
+}
+
+.dark-mode {
+  .pagination-button {
+    border-color: $color-dark-card;
+    background-color: $color-dark-card;
+    color: $color-dark-white;
+    transition: all 0.3s;
+  
+    &--prev {
+      border-color: $color-dark-shadow;
+      background-color: $color-dark-shadow;
+    }
+  
+    &--next {
+      border-color: $color-dark-shadow;
+      background-color: $color-dark-shadow;
+    }
+  
+    &--is-active {
+      color: $color-white;
+      background-color: $color-dark-button;
+      border-color: $color-dark-button;
+    }
+  
+    &:hover {
+      border-color: $color-dark-element;
+      background-color: $color-dark-element;
+    }
   }
 }
