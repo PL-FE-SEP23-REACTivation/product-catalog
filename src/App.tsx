@@ -19,7 +19,7 @@ import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/product-catalog">
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
