@@ -5,12 +5,14 @@ import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './BurgerMenu.scss';
 import { useThemeStore } from '../../storage/ThemeStore';
+import ToggleButton from '../Toggle/Toggle';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   const { cart } = useCartStore.getState();
-  const { darkMode, toggleDarkMode } = useThemeStore();
+  const { darkMode } = useThemeStore();
+  const className = 'burger_link_bottom menu_footer_buttons toggler_bottom';
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
@@ -36,9 +38,6 @@ export const BurgerMenu = () => {
           <Link to="/" className="headerMobile_link headerMobile_link--logo">
             <p />
           </Link>
-          <button className="darkmodebutton" onClick={toggleDarkMode}>
-            Zmień tryb
-          </button>
           <div className="headerMobile_buttons">
             <button
               className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
@@ -97,6 +96,7 @@ export const BurgerMenu = () => {
           </NavLink>
         </div>
         <div className="menu_footer">
+          <ToggleButton className={className} />
           <NavLink
             to="/favourites"
             className="burger_link_bottom menu_footer_buttons"
