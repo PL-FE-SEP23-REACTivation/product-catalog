@@ -13,9 +13,26 @@
       "default",
       {
         "ignore": [
-          "position: sticky"
+          "position: sticky",
+          "backdrop-filter",
+          "user-select"
         ]
       }
+    ],
+    "no-inline-styles": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
     ]
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 122",
+    "not firefox <= 122",
+    "not ios_saf <= 17.3",
+    "not safari <= 17.2"
+  ]
 }

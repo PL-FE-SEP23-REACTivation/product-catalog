@@ -38,11 +38,42 @@
 }
 
 .disabled {
-  border-color: $color-elements;
+  border-color: $color-dark-element;
   background-color: $color-white;
   pointer-events: none;
+  opacity: 0.5;
 
   > * {
-    color: $color-elements;
+    color: $color-dark-element;
+  }
+}
+
+.dark-mode {
+  .pagination-button {
+    border-color: $color-dark-card;
+    background-color: $color-dark-card;
+    color: $color-dark-white;
+    transition: all 0.3s;
+
+    &--prev {
+      border-color: $color-dark-shadow;
+      background-color: $color-dark-shadow;
+    }
+
+    &--next {
+      border-color: $color-dark-shadow;
+      background-color: $color-dark-shadow;
+    }
+
+    &--is-active {
+      color: $color-white;
+      background-color: $color-dark-button;
+      border-color: $color-dark-button;
+    }
+
+    &:hover {
+      border-color: $color-dark-element;
+      background-color: $color-dark-element;
+    }
   }
 }

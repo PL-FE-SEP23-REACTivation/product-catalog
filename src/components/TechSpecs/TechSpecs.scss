@@ -21,3 +21,12 @@
     text-align: right;
   }
 }
+
+.dark-mode {
+  .spec__name {
+    color: $color-dark-secondary;
+  }
+  .spec__value {
+    color: $color-dark-white;
+  }
+}

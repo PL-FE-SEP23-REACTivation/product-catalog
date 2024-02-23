@@ -3,14 +3,16 @@ import React from 'react';
 import { Description } from '../../types/descriptionType';
 import { ProductSectionTitle } from '../ProductSectionTitle';
 import './About.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   description: Description[];
 };
 
 export const About: React.FC<Props> = ({ description }) => {
+  const { darkMode } = useThemeStore();
   return (
-    <div className="about-section">
+    <div className={`about-section ${darkMode ? 'dark-mode' : ''}`}>
       <ProductSectionTitle>About</ProductSectionTitle>
       {description.map((el, index) => (
         <div key={el.title}>

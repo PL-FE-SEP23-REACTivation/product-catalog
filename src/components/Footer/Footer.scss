@@ -115,3 +115,22 @@
     }
   }
 }
+
+.dark-mode {
+  .footer {
+    border-color: $color-dark-secondary;
+  }
+  .footer__links-link {
+    color: $color-dark-white;
+  }
+
+  .footer__return-content-button {
+    border-color: $color-dark-shadow;
+    background-color: $color-dark-shadow;
+    background-image: url(../../../public/img/vector-white.png);
+  }
+
+  .footer__return-content-button:hover {
+    background-color: $color-dark-icons;
+  }
+}

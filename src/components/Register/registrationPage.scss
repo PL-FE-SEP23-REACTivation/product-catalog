@@ -72,3 +72,20 @@
     }
   }
 }
+
+.dark-mode {
+  .register {
+    color: $color-dark-white;
+  }
+  .register__title {
+    color: $color-dark-white;
+  }
+
+  .register button {
+    background-color: $color-dark-button;
+
+    &:hover {
+      background-color: $color-dark-button-hover;
+    }
+  }
+}

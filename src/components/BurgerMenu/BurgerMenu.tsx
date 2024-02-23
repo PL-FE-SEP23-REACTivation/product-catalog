@@ -1,13 +1,18 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './BurgerMenu.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
+import ToggleButton from '../Toggle/Toggle';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   const { cart } = useCartStore.getState();
+  const { darkMode } = useThemeStore();
+  const className = 'burger_link_bottom menu_footer_buttons toggler_bottom';
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
@@ -27,7 +32,7 @@ export const BurgerMenu = () => {
   };
 
   return (
-    <div className="burger-menu">
+    <div className={`burger-menu ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="headerMobile" id="headerMobile">
         <div className="headerMobile_nav">
           <Link to="/" className="headerMobile_link headerMobile_link--logo">
@@ -91,6 +96,7 @@ export const BurgerMenu = () => {
           </NavLink>
         </div>
         <div className="menu_footer">
+          <ToggleButton className={className} />
           <NavLink
             to="/favourites"
             className="burger_link_bottom menu_footer_buttons"

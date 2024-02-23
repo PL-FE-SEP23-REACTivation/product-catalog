@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import arrowLeft from '../../../icons/arrow-left.svg';
-import arrowRight from '../../../icons/arrow-right.svg';
 import { Product } from '../../../types/productType';
 import { ErrorNotification } from '../../ErrorNotification/ErrorNotification';
 import { Loader } from '../../Loader/Loader';
@@ -37,24 +35,20 @@ export const Slider: React.FC<SliderProps> = ({
   return (
     <div className={sliderClassName}>
       <div className="slider__header">
-        <h1 className="slider__header--title">{title}</h1>
+        <h1 className="slider__header--title slider-title-max">{title}</h1>
         <div className="slider__header--btn">
           <button
-            className="slider__button"
+            className="slider__button slider__button-left"
             type="button"
             onClick={handlePrevClick}
             disabled={slideIndex === 0 || isError}
-          >
-            <img src={arrowLeft} alt="button-left" />
-          </button>
+          />
           <button
-            className="slider__button"
+            className="slider__button slider__button-right"
             type="button"
             onClick={handleNextClick}
             disabled={slideIndex === products.length - 4 || isError}
-          >
-            <img src={arrowRight} alt="button-left" />
-          </button>
+          />
         </div>
       </div>
 

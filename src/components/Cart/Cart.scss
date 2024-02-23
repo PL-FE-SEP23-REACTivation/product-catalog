@@ -27,11 +27,6 @@
         font-weight: 700;
         line-height: normal;
       }
-
-      &__arrow {
-        width: 16px;
-        height: 16px;
-      }
     }
 
     &__text {
@@ -163,6 +158,8 @@
       font-style: normal;
       font-weight: 700;
       line-height: 21px;
+      cursor: pointer;
+      transition: all 0.3s;
 
       &:hover {
         box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
@@ -200,6 +197,39 @@
         min-width: 100%;
         margin: 24px auto;
       }
+    }
+  }
+}
+
+.dark-mode {
+  .cart {
+    background-color: $color-dark;
+  }
+
+  .cart__title__text,
+  .cart__title__link__back,
+  .cart__calculator__price {
+    color: $color-dark-white;
+  }
+
+  .cart__title__link__back:hover {
+    color: $color-dark-button-hover;
+  }
+
+  .cart__calculator__total {
+    color: $color-dark-secondary;
+  }
+
+  .cart__calculator__line,
+  .cart__calculator {
+    border-color: $color-dark-element;
+  }
+
+  .cart__calculator__checkout {
+    background-color: $color-dark-button;
+
+    &:hover {
+      background-color: $color-dark-button-hover;
     }
   }
 }

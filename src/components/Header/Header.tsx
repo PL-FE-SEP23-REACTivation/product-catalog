@@ -2,20 +2,33 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
+import ToggleButton from '../Toggle/Toggle';
 import './Header.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 export const Header = () => {
+  const { darkMode } = useThemeStore();
+  const className = 'header__buttons header__toggler';
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
-
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
   return (
-    <header className="header">
+    <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="header__container">
-        <Link to="/" className="header__logo">
-          <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
-        </Link>
+        {darkMode ? (
+          <Link to="/" className="header__logo">
+            <img
+              src={process.env.PUBLIC_URL + '/icons/Logo-white.svg'}
+              alt="logo"
+            />
+          </Link>
+        ) : (
+          <Link to="/" className="header__logo">
+            <img src={process.env.PUBLIC_URL + '/icons/Logo.svg'} alt="logo" />
+          </Link>
+        )}
 
         <nav className="header__nav">
           <ul className="header__nav__list">
@@ -56,6 +69,7 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
+        <ToggleButton className={className} />
         <NavLink
           to="/register"
           className="header__buttons__register header__link"
