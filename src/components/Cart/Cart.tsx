@@ -30,7 +30,7 @@ export const Cart = () => {
     clearCart();
 
     setTimeout(() => {
-      window.location.href = '/product-catalog/phones';
+      setIsModalOpen(false);
     }, 3000);
   };
 
