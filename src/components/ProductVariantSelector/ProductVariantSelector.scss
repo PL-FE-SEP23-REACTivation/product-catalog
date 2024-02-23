@@ -199,6 +199,12 @@
     color: $color-dark-secondary;
   }
 
+  .variants_capacity_block {
+    background-color: $color-dark-card;
+    border-color: $color-dark-element;
+    color: $color-dark-white;
+  }
+
   .variants_price_actual,
   .variants_info_value {
     color: $color-dark-white;
@@ -212,6 +218,10 @@
     border: 1px solid $color-dark-shadow;
   }
 
+  .variants_buttons_favourite:hover {
+    background-color: $color-dark-icons;
+  }
+
   .variants_buttons_favourite_selected {
     background-color: $color-dark-shadow;
   }
@@ -222,5 +232,10 @@
 
   .pp_return_text:hover {
     color: $color-dark-button-hover;
+  }
+
+  .selected-capacity {
+    background-color: $color-dark-white;
+    color: $color-dark-secondary;
   }
 }
