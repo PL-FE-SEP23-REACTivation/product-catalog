@@ -8,9 +8,6 @@ import { useThemeStore } from '../../storage/ThemeStore';
 
 export const Cart = () => {
   const cart = useCartStore((state) => state.cart);
-  const arrowLeftPath = process.env.PUBLIC_URL + '/icons/arrow-left.svg';
-  const arrowLeftWhitePath =
-    process.env.PUBLIC_URL + '/icons/arrow-left-white.svg';
   const { clearCart } = useCartStore.getState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
@@ -43,12 +40,9 @@ export const Cart = () => {
       <div className={`cart ${darkMode ? 'dark-mode' : 'light-mode'}`}>
         <section className="cart__title">
           <Link to="/phones" className="cart__title__link">
-            <img
-              src={darkMode ? arrowLeftWhitePath : arrowLeftPath}
-              alt="arrow right"
-              className="cart__title__link__arrow"
-            />
-            <p className="cart__title__link__back">Back</p>
+            <p className="cart__title__link__back">
+              &lt;&nbsp;&nbsp;&nbsp;Back
+            </p>
           </Link>
           <h1 className="cart__title__text">Cart</h1>
         </section>

@@ -27,11 +27,6 @@
         font-weight: 700;
         line-height: normal;
       }
-
-      &__arrow {
-        width: 16px;
-        height: 16px;
-      }
     }
 
     &__text {
@@ -214,6 +209,10 @@
   .cart__title__link__back,
   .cart__calculator__price {
     color: $color-dark-white;
+  }
+
+  .cart__title__link__back:hover {
+    color: $color-dark-button-hover;
   }
 
   .cart__calculator__total {
