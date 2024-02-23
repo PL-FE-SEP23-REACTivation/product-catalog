@@ -8,7 +8,7 @@ import { CatalogLayout } from './components/Layouts/CatalogLayout';
 import { FavouritesPageLayout } from './components/Layouts/FavouritesPageLayout';
 import { HomeLayout } from './components/Layouts/HomeLayout';
 import ProductPageLayout from './components/Layouts/ProductPageLayout';
-import Register from './components/Register/registrationPage';
+// import Register from './components/Register/registrationPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import CartPage from './pages/CartPage';
 import Catalog from './pages/Catalog';
@@ -39,7 +39,7 @@ const App: React.FC = () => {
           <Route element={<FavouritesPageLayout />}>
             <Route path="/favourites" element={<FavouritesPage />} />
           </Route>
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/register" element={<Register />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

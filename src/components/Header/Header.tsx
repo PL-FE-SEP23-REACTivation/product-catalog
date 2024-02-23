@@ -5,10 +5,13 @@ import { useFavoritesStore } from '../../storage/FavouritesStore';
 import ToggleButton from '../Toggle/Toggle';
 import './Header.scss';
 import { useThemeStore } from '../../storage/ThemeStore';
+import { UserPanel } from '../UserPanel/UserPanel';
+import { useState } from 'react';
 
 export const Header = () => {
   const { darkMode } = useThemeStore();
-  const className = 'header__buttons header__toggler';
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const classNameButton = 'header__buttons header__toggler';
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
@@ -69,11 +72,13 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
-        <ToggleButton className={className} />
-        <NavLink
-          to="/register"
+        <ToggleButton className={classNameButton} />
+        <div
           className="header__buttons__register header__link"
-        ></NavLink>
+          onClick={() => setIsModalOpen(true)}
+        >
+          {isModalOpen && <UserPanel onClose={() => setIsModalOpen(false)} />}
+        </div>
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
