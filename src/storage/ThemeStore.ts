@@ -11,10 +11,11 @@ export const useThemeStore = create<ThemeStore>((set) => {
 
   return {
     darkMode: initialDarkMode,
-    toggleDarkMode: () => set((state) => {
-      const newDarkMode = !state.darkMode;
-      localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
-      return { darkMode: newDarkMode };
-    }),
+    toggleDarkMode: () =>
+      set((state) => {
+        const newDarkMode = !state.darkMode;
+        localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
+        return { darkMode: newDarkMode };
+      }),
   };
 });
