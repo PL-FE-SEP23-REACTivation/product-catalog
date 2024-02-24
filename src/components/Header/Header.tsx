@@ -10,12 +10,16 @@ import { useState } from 'react';
 
 export const Header = () => {
   const { darkMode } = useThemeStore();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const classNameButton = 'header__buttons header__toggler';
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
+  const handleClose = () => {
+    setIsUserOpen(true);
+  };
 
   return (
     <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -75,10 +79,8 @@ export const Header = () => {
         <ToggleButton className={classNameButton} />
         <div
           className="header__buttons__register header__link"
-          onClick={() => setIsModalOpen(true)}
-        >
-          {isModalOpen && <UserPanel onClose={() => setIsModalOpen(false)} />}
-        </div>
+          onClick={() => setIsUserOpen(true)}
+        ></div>
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
@@ -97,6 +99,7 @@ export const Header = () => {
           )}
         </NavLink>
       </div>
+      {isUserOpen && <UserPanel onClose={() => setIsUserOpen(false)} />}
     </header>
   );
 };

@@ -13,9 +13,12 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
   };
 
   return (
-    <div className="success-modal">
-      <div className="success-modal__content">
+    <div className="modal-user">
+      <div className="modal-user__content">
         <div className={`user ${isFlipped ? 'flipped' : ''}`}>
+          <button className="modal-user__button" onClick={onClose}>
+            Close
+          </button>
           <div className="user__inner">
             <div className="user__front">
               <div className="user__title">Welcome back!</div>
@@ -57,9 +60,6 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
             </div>
           </div>
         </div>
-        <button className="success-modal__button" onClick={onClose}>
-          Close
-        </button>
       </div>
     </div>
   );

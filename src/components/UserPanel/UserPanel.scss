@@ -2,9 +2,12 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/variables.scss';
 
-.success-modal {
+.modal-user {
   font-family: Mont;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,14 +16,11 @@
   justify-content: center;
   backdrop-filter: blur(4px);
   z-index: 1000;
-
   &__content {
     color: $color-primary;
-    border-radius: 0.25rem;
     font-size: 1.5rem;
     text-align: center;
-    background-color: rgb(79, 79, 99) !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: none;
   }
 
   &__message {
@@ -28,8 +28,11 @@
   }
 
   &__button {
+    position: absolute;
     background-color: $color-primary;
     border: none;
+    top: 0;
+    left: 0;
     width: 50%;
     height: 50px;
     color: $color-white;
