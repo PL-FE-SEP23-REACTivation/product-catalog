@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './UserPanel.scss';
 
 interface Props {
@@ -6,44 +6,60 @@ interface Props {
 }
 
 export const UserPanel: React.FC<Props> = ({ onClose }) => {
+  const [isFlipped, setFlipped] = useState<boolean>(false);
+
+  const handleFlip = () => {
+    setFlipped(!isFlipped);
+  };
+
   return (
     <div className="success-modal">
       <div className="success-modal__content">
-        <div className="user">
-          <p className="user__title">Welcome back</p>
-          <form className="user__form">
-            <div className="user__form-box">
-              <input
-                type="text"
-                name=""
-                required
-                className="user__form-box-input"
-              />
-              <label className="user__form-box-label">E-mail</label>
+        <div className={`user ${isFlipped ? 'flipped' : ''}`}>
+          <div className="user__inner">
+            <div className="user__front">
+              <div className="user__title">Welcome back!</div>
+              <div className="user__form-box">
+                <input
+                  type="text"
+                  name=""
+                  required
+                  className="user__form-box-input"
+                />
+                <label className="user__form-box-label">E-mail</label>
+              </div>
+              <div className="user__form-box">
+                <input
+                  type="password"
+                  name=""
+                  required
+                  className="user__form-box-input"
+                />
+                <label className="user__form-box-label">Password</label>
+              </div>
+              <button className="user__links-button">Sign in</button>
+              <p>
+                Don&apos;t have an account?{' '}
+                <button
+                  type="button"
+                  className="user__links-signup"
+                  onClick={handleFlip}
+                >
+                  Sign up!
+                </button>
+              </p>
             </div>
-            <div className="user__form-box">
-              <input
-                type="password"
-                name=""
-                required
-                className="user__form-box-input"
-              />
-              <label className="user__form-box-label">Password</label>
+            <div className="user__back">
+              <div className="card-content">back card</div>
+              <button className="flip-button" onClick={handleFlip}>
+                Flip
+              </button>
             </div>
-            <a className="user__links-button" href="#">
-              Sign in
-            </a>
-          </form>
-          <p>
-            Don&apost have an account?{' '}
-            <a href="#" className="user__links-signup">
-              Sign up!
-            </a>
-          </p>
+          </div>
         </div>
-        {/* <button className="success-modal__button" onClick={onClose}>
+        <button className="success-modal__button" onClick={onClose}>
           Close
-        </button> */}
+        </button>
       </div>
     </div>
   );
