@@ -18,7 +18,7 @@ export const Header = () => {
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
 
   const handleClose = () => {
-    setIsUserOpen(true);
+    setIsUserOpen(false);
   };
 
   return (
@@ -99,7 +99,7 @@ export const Header = () => {
           )}
         </NavLink>
       </div>
-      {isUserOpen && <UserPanel onClose={() => setIsUserOpen(false)} />}
+      {isUserOpen && <UserPanel onClose={handleClose} />}
     </header>
   );
 };

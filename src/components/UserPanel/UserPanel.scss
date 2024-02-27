@@ -16,6 +16,7 @@
   justify-content: center;
   backdrop-filter: blur(4px);
   z-index: 1000;
+  transition: 0.3s;
   &__content {
     color: $color-primary;
     font-size: 1.5rem;
@@ -29,33 +30,65 @@
 
   &__button {
     position: absolute;
-    background-color: $color-primary;
+    background-color: rgb(79, 79, 99);
     border: none;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 50px;
+    width: 25px;
+    height: 25px;
+    background-image: url('../../../public/icons/cross-white.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
     color: $color-white;
     font-size: 1.25rem;
     cursor: pointer;
+    top: -20px;
+    left: -20px;
   }
 }
 
 .user {
   perspective: 1000px;
-  width: 400px;
-  height: 500px;
+  width: 450px;
+  height: 550px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.5s;
-  background-color: rgb(79, 79, 99) !important;
-  box-sizing: border-box;
+  transition: all 0.5s;
+  background-color: rgb(79, 79, 99);
   padding: 40px;
-  margin: 20px auto;
+  border-radius: 20px;
+
+  &__links-button {
+    margin-top: 20px;
+    align-self: flex-end;
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 16px;
+    max-width: 150px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 10px !important;
+    border: 1px solid white;
+    letter-spacing: 3px;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    border-radius: inherit;
+    inset: 0px;
+    opacity: 1;
+    transition: all 0.4s;
+
+    &:hover {
+      background: #fff;
+      color: #272727;
+    }
+  }
 
   &__title {
-    margin-top: 40px;
-    padding: 0;
+    padding-bottom: 40px;
     color: #ffff;
     text-align: center;
     font-size: 2rem;
@@ -105,7 +138,7 @@
       padding: 10px 0;
       font-size: 16px;
       color: #fff;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       border: none;
       border-bottom: 1px solid #fff;
       outline: none;
@@ -133,6 +166,12 @@
   }
 }
 
+.register__redirect {
+  margin-top: 50px;
+  color: white;
+  font-size: 14px;
+}
+
 .card-content {
   text-align: center;
 }
@@ -142,8 +181,9 @@
   padding: 10px;
   font-size: 16px;
   margin-top: 10px;
+  margin-left: 10px;
   background-color: #f5d9fa;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
