@@ -48,8 +48,8 @@
 
 .user {
   perspective: 1000px;
-  width: 450px;
-  height: 550px;
+  width: 500px;
+  height: 600px;
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.5s;
@@ -58,32 +58,62 @@
   border-radius: 20px;
 
   &__links-button {
-    margin-top: 20px;
-    align-self: flex-end;
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    font-weight: bold;
-    font-size: 16px;
-    max-width: 150px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: 0.5s;
-    border-radius: 10px !important;
-    border: 1px solid white;
-    letter-spacing: 3px;
-    background-color: transparent;
-    cursor: pointer;
-    color: white;
-    border-radius: inherit;
-    inset: 0px;
-    opacity: 1;
-    transition: all 0.4s;
+    &-login {
+      margin-top: 20px;
+      align-self: flex-end;
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      max-width: 150px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.5s;
+      border-radius: 10px !important;
+      border: 1px solid white;
+      letter-spacing: 3px;
+      background-color: transparent;
+      cursor: pointer;
+      color: white;
+      border-radius: inherit;
+      inset: 0px;
+      opacity: 1;
+      transition: all 0.4s;
 
-    &:hover {
-      background: #fff;
-      color: #272727;
+      &:hover {
+        background: #fff;
+        color: #272727;
+      }
+    }
+    &-register {
+      align-self: flex-end;
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      max-width: 150px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.5s;
+      border-radius: 10px !important;
+      border: 1px solid white;
+      letter-spacing: 3px;
+      background-color: transparent;
+      cursor: pointer;
+      color: white;
+      border-radius: inherit;
+      inset: 0px;
+      opacity: 1;
+      transition: all 0.4s;
+
+      &:hover {
+        background: #fff;
+        color: #272727;
+      }
     }
   }
 
@@ -166,8 +196,14 @@
   }
 }
 
-.redirect__link {
+.redirect__link-login {
   margin-top: 50px;
+  color: white;
+  font-size: 14px;
+}
+
+.redirect__link-register {
+  margin-top: 20px;
   color: white;
   font-size: 14px;
 }
@@ -185,6 +221,14 @@
   &:hover {
     color: rgb(212, 212, 212);
   }
+}
+
+.front-title {
+  margin-bottom: 50px;
+}
+
+.box-front {
+  margin-top: 40px;
 }
 
 .card-content {

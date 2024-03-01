@@ -21,8 +21,8 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
             <div className="user__front">
               {' '}
               <button className="modal-user__button" onClick={onClose}></button>
-              <div className="user__title">Welcome back!</div>
-              <div className="user__form-box">
+              <div className="user__title front-title">Welcome back!</div>
+              <div className="user__form-box box-front">
                 <input
                   type="text"
                   name=""
@@ -31,7 +31,7 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                 />
                 <label className="user__form-box-label">E-mail</label>
               </div>
-              <div className="user__form-box">
+              <div className="user__form-box box-front">
                 <input
                   type="password"
                   name=""
@@ -40,8 +40,8 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
-              <button className="user__links-button">Sign in</button>
-              <p className="redirect__link">
+              <button className="user__links-button-login">Sign in</button>
+              <p className="redirect__link-login">
                 Don&apos;t have an account?{' '}
                 <button
                   type="button"
@@ -91,7 +91,8 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
-              <p className="redirect__link">
+              <button className="user__links-button-login">Sign up</button>
+              <p className="redirect__link-register">
                 Do you have an account?
                 <button className="redirect__button" onClick={handleFlip}>
                   Sign in!
