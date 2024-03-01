@@ -166,10 +166,25 @@
   }
 }
 
-.register__redirect {
+.redirect__link {
   margin-top: 50px;
   color: white;
   font-size: 14px;
+}
+
+.redirect__button {
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+
+  &:hover {
+    color: rgb(212, 212, 212);
+  }
 }
 
 .card-content {

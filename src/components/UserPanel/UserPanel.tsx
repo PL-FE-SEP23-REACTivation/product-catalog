@@ -41,11 +41,11 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                 <label className="user__form-box-label">Password</label>
               </div>
               <button className="user__links-button">Sign in</button>
-              <p className="register__redirect">
+              <p className="redirect__link">
                 Don&apos;t have an account?{' '}
                 <button
                   type="button"
-                  className="user__links-signup"
+                  className="redirect__button"
                   onClick={handleFlip}
                 >
                   Sign up!
@@ -91,9 +91,9 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
-              <p className="register__redirect">
+              <p className="redirect__link">
                 Do you have an account?
-                <button className="flip-button" onClick={handleFlip}>
+                <button className="redirect__button" onClick={handleFlip}>
                   Sign in!
                 </button>
               </p>
