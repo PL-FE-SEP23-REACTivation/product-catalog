@@ -7,7 +7,6 @@
 }
 
 .header {
-  transition: all 0.3s;
   @include for-phone {
     display: none;
   }
@@ -107,6 +106,19 @@
     }
     @include for-desktop() {
       height: 65px;
+    }
+    &__theme {
+      position: relative;
+      background-image: url(../../../public/icons/sun.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      border: none;
+      width: 48px;
+      height: 48px;
+      background-color: $color-white;
+      border-left: 1px solid $color-elements;
+      cursor: pointer;
     }
     &__like {
       position: relative;
@@ -214,6 +226,7 @@
     right: 18px;
   }
 }
+
 .header__toggler {
   border-left: 1px solid $color-elements;
   border-top: 1px solid $color-elements;
@@ -239,6 +252,10 @@
   .header__link:hover,
   .header__link.active {
     color: $color-dark-white;
+  }
+
+  .header__buttons__theme {
+    background-image: url(../../../public/icons/sun-yellow.svg);
   }
 
   .header__buttons__cart {
