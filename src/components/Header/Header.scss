@@ -119,6 +119,19 @@
       background-color: $color-white;
       border-left: 1px solid $color-elements;
       cursor: pointer;
+      
+      @include for-phone() {
+        display: none;
+      }
+
+      @include for-tablet() {
+        height: 48px;
+        width: 48px;
+      }
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
+      }
     }
     &__like {
       position: relative;
