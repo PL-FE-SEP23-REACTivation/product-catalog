@@ -119,7 +119,7 @@
       background-color: $color-white;
       border-left: 1px solid $color-elements;
       cursor: pointer;
-      
+
       @include for-phone() {
         display: none;
       }
