@@ -8,9 +8,15 @@ import { useThemeStore } from '../../storage/ThemeStore';
 
 export const BurgerMenu = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   const { cart } = useCartStore.getState();
   const { darkMode, toggleDarkMode } = useThemeStore();
+
+  const handleThemeAnimation = () => {
+    setIsThemeAnimating(true);
+    setTimeout(() => setIsThemeAnimating(false), 700);
+  };
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
@@ -95,10 +101,13 @@ export const BurgerMenu = () => {
         </div>
         <div className="menu_footer">
           <div
-            className="burger_link_bottom menu_footer_buttons"
+            className="burger_link_bottom menu_footer_buttons menu-theme-button"
             onClick={toggleDarkMode}
           >
-            <div className="menu_theme"></div>
+            <div
+              className={`menu_theme ${isThemeAnimating ? 'animate-theme' : ''}`}
+              onClick={handleThemeAnimation}
+            ></div>
           </div>
           <NavLink
             to="/favourites"
