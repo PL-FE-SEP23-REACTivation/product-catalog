@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import FavouritesPage from './components/FavouritesPage/FavouritesPage';
 import AppLayout from './components/Layouts/AppLayout';
 import { CartLayout } from './components/Layouts/CartLayout';
@@ -19,7 +19,7 @@ import './styles/_reset.scss';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
@@ -42,7 +42,7 @@ const App: React.FC = () => {
           {/* <Route path="/register" element={<Register />} /> */}
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

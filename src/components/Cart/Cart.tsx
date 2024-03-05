@@ -31,7 +31,7 @@ export const Cart = () => {
     clearCart();
 
     setTimeout(() => {
-      window.location.href = '/phones';
+      setIsModalOpen(false);
     }, 3000);
   };
 

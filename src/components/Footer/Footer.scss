@@ -117,8 +117,8 @@
 }
 
 .dark-mode {
-  .footer {
-    border-color: $color-dark-secondary;
+  .footer-container {
+    border-color: $color-dark-shadow;
   }
   .footer__links-link {
     color: $color-dark-white;

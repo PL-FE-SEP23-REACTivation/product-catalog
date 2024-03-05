@@ -2,16 +2,15 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
-import ToggleButton from '../Toggle/Toggle';
 import './Header.scss';
 import { useThemeStore } from '../../storage/ThemeStore';
 import { UserPanel } from '../UserPanel/UserPanel';
 import { useState } from 'react';
 
 export const Header = () => {
-  const { darkMode } = useThemeStore();
   const [isUserOpen, setIsUserOpen] = useState(false);
   const classNameButton = 'header__buttons header__toggler';
+  const { darkMode, toggleDarkMode } = useThemeStore();
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
@@ -76,7 +75,10 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
-        <ToggleButton className={classNameButton} />
+        <div
+          className="header__buttons__theme header__link"
+          onClick={toggleDarkMode}
+        ></div>
         <div
           className="header__buttons__register header__link"
           onClick={() => setIsUserOpen(true)}

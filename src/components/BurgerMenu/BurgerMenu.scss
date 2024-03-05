@@ -146,11 +146,23 @@
     border: 1px solid $color-elements;
     border-right: none;
   }
-  &_bag {
+  &_theme {
+    background-image: url(../../../public/icons/sun.svg);
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 64px;
+    width: 100%;
+    background-size: 20px 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid $color-elements;
+    border-right: none;
+  }
+  &_bag {
+    position: relative;
+    display: flex;
     height: 64px;
     width: 100%;
     background-size: 16px 16px;
@@ -190,13 +202,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.toggler_bottom {
-  align-items: center;
-  height: 64px;
-  width: 100%;
-  border-right: none;
-  border-bottom: 4px solid transparent;
 }
 
 .burger_link {
@@ -274,7 +279,8 @@
   }
   .menu_footer,
   .menu_heart,
-  .menu_bag {
+  .menu_bag,
+  .menu_theme {
     border-color: $color-dark-shadow;
   }
   .menu_bag {
@@ -287,6 +293,13 @@
     background: url(../../../public/icons/heart-like-white.svg);
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .menu_theme {
+    background: url(../../../public/icons/sun-yellow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
   }
 
   .burger_link_bottom:hover {
