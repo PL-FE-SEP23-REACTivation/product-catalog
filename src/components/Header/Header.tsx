@@ -4,13 +4,21 @@ import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './Header.scss';
 import { useThemeStore } from '../../storage/ThemeStore';
+import { UserPanel } from '../UserPanel/UserPanel';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const classNameButton = 'header__buttons header__toggler';
   const { darkMode, toggleDarkMode } = useThemeStore();
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
+  const handleClose = () => {
+    setIsUserOpen(false);
+  };
 
   return (
     <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -71,10 +79,10 @@ export const Header = () => {
           className="header__buttons__theme header__link"
           onClick={toggleDarkMode}
         ></div>
-        <NavLink
-          to="/register"
+        <div
           className="header__buttons__register header__link"
-        ></NavLink>
+          onClick={() => setIsUserOpen(true)}
+        ></div>
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
@@ -93,6 +101,7 @@ export const Header = () => {
           )}
         </NavLink>
       </div>
+      {isUserOpen && <UserPanel onClose={handleClose} />}
     </header>
   );
 };
