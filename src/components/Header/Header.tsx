@@ -9,12 +9,17 @@ import { useState } from 'react';
 
 export const Header = () => {
   const [isUserOpen, setIsUserOpen] = useState(false);
-  const classNameButton = 'header__buttons header__toggler';
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
   const { darkMode, toggleDarkMode } = useThemeStore();
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
+  const handleThemeAnimation = () => {
+    setIsThemeAnimating(true);
+    setTimeout(() => setIsThemeAnimating(false), 700);
+  };
 
   const handleClose = () => {
     setIsUserOpen(false);
@@ -78,7 +83,12 @@ export const Header = () => {
         <div
           className="header__buttons__theme header__link"
           onClick={toggleDarkMode}
-        ></div>
+        >
+          <div
+            className={`theme-icon ${isThemeAnimating ? 'animate-theme' : ''}`}
+            onClick={handleThemeAnimation}
+          ></div>
+        </div>
         <div
           className="header__buttons__register header__link"
           onClick={() => setIsUserOpen(true)}
