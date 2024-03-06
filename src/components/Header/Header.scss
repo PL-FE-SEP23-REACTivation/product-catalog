@@ -109,10 +109,6 @@
     }
     &__theme {
       position: relative;
-      background-image: url(../../../public/icons/sun.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 18px 18px;
       border: none;
       width: 48px;
       height: 48px;
@@ -199,6 +195,28 @@
   }
 }
 
+.theme-icon {
+  background-image: url(../../../public/icons/sun.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  border: none;
+  width: 48px;
+  height: 48px;
+
+  @include for-phone() {
+    display: none;
+  }
+
+  @include for-tablet() {
+    height: 48px;
+    width: 48px;
+  }
+  @include for-desktop() {
+    height: 64px;
+    width: 64px;
+  }
+}
 .header__buttons__register {
   position: relative;
   background-image: url('../../../public/icons/user.svg');
@@ -263,6 +281,7 @@
   border-left: 1px solid $color-elements;
   border-top: 1px solid $color-elements;
 }
+
 .dark-mode {
   background-color: $color-dark;
 
@@ -286,7 +305,7 @@
     color: $color-dark-white;
   }
 
-  .header__buttons__theme {
+  .theme-icon {
     background-image: url(../../../public/icons/sun-yellow.svg);
   }
 
@@ -307,5 +326,66 @@
   }
   .header__toggler {
     border-color: $color-dark-element;
+  }
+}
+
+.animate-theme {
+  @include for-phone() {
+  }
+
+  @include for-tablet() {
+    animation: ThemeAnimation 700ms ease-in;
+  }
+
+  @include for-desktop() {
+    animation: ThemeAnimationDesktop 700ms ease-in;
+  }
+}
+
+@keyframes ThemeAnimation {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes ThemeAnimationDesktop {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-20px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
   }
 }

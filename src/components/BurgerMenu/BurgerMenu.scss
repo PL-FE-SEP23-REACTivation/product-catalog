@@ -157,7 +157,6 @@
     background-size: 20px 20px;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid $color-elements;
     border-right: none;
   }
   &_bag {
@@ -202,6 +201,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.menu-theme-button {
+  border: 1px solid $color-elements;
+  border-right: none;
 }
 
 .burger_link {
@@ -280,7 +284,7 @@
   .menu_footer,
   .menu_heart,
   .menu_bag,
-  .menu_theme {
+  .menu-theme-button {
     border-color: $color-dark-shadow;
   }
   .menu_bag {
@@ -312,5 +316,33 @@
 
   .toggler_bottom {
     border: 1px solid $color-dark-element;
+  }
+}
+
+.animate-theme {
+  animation: ThemeAnimation 700ms ease-in;
+}
+
+@keyframes ThemeAnimation {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
   }
 }
