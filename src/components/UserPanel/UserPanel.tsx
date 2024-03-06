@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import './UserPanel.scss';
 
@@ -7,9 +8,26 @@ interface Props {
 
 export const UserPanel: React.FC<Props> = ({ onClose }) => {
   const [isFlipped, setFlipped] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [passwordLoginType, setPasswordLoginType] = useState<
+    'password' | 'text'
+  >('password');
+  const [passwordRegisterType, setPasswordRegisterType] = useState<
+    'password' | 'text'
+  >('password');
 
   const handleFlip = () => {
     setFlipped(!isFlipped);
+  };
+
+  const handleShowLoginPassword = () => {
+    setIsVisible(!isVisible);
+    setPasswordLoginType(isVisible ? 'text' : 'password');
+  };
+
+  const handleShowRegisterPassword = () => {
+    setIsVisible(!isVisible);
+    setPasswordRegisterType(isVisible ? 'text' : 'password');
   };
 
   return (
@@ -33,10 +51,15 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
               </div>
               <div className="user__form-box box-front">
                 <input
-                  type="password"
+                  type={passwordLoginType}
                   name=""
                   required
                   className="user__form-box-input"
+                />
+                <input
+                  type="checkbox"
+                  onClick={handleShowLoginPassword}
+                  className="user__form-box-checkbox"
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
@@ -84,10 +107,15 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
               </div>
               <div className="user__form-box">
                 <input
-                  type="password"
+                  type={passwordRegisterType}
                   name=""
                   required
                   className="user__form-box-input"
+                />
+                <input
+                  type="checkbox"
+                  onClick={handleShowRegisterPassword}
+                  className="user__form-box-checkbox"
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
