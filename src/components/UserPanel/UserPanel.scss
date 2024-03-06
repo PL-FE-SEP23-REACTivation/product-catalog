@@ -30,7 +30,7 @@
 
   &__button {
     position: absolute;
-    background-color: rgb(79, 79, 99);
+    background-color: transparent;
     border: none;
     width: 25px;
     height: 25px;
@@ -53,7 +53,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.5s;
-  background-color: rgb(79, 79, 99);
+  background-color: rgba(79, 79, 99, 0.932);
   padding: 40px;
   border-radius: 20px;
 
