@@ -16,6 +16,14 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
     'password' | 'text'
   >('password');
 
+  const [isRegistrationSuccess, setIsRegistrationSuccess] =
+    useState<boolean>(false);
+
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   const handleFlip = () => {
     setFlipped(!isFlipped);
   };
@@ -30,13 +38,21 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
     setPasswordRegisterType(isVisible ? 'text' : 'password');
   };
 
+  const handleRegister = () => {
+    if (firstName && lastName && email && password) {
+      setIsRegistrationSuccess(!isRegistrationSuccess);
+    } else {
+      alert('Please fill in all fields before registering.');
+    }
+  };
+
   return (
     <div className="modal-user">
       <div className="modal-user__content">
         <div className={`user ${isFlipped ? 'flipped' : ''}`}>
           <div className="user__inner">
             {' '}
-            <div className="user__front">
+            <form className="user__front">
               {' '}
               <button className="modal-user__button" onClick={onClose}></button>
               <div className="user__title front-title">Welcome back!</div>
@@ -74,59 +90,82 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   Sign up!
                 </button>
               </p>
-            </div>
-            <div className="user__back">
-              <button className="modal-user__button" onClick={onClose}></button>
-              <div className="user__title">Register now!</div>
-              <div className="user__form-box">
-                <input
-                  type="text"
-                  name=""
-                  required
-                  className="user__form-box-input"
-                />
-                <label className="user__form-box-label">First Name</label>
-              </div>
-              <div className="user__form-box">
-                <input
-                  type="text"
-                  name=""
-                  required
-                  className="user__form-box-input"
-                />
-                <label className="user__form-box-label">Last Name</label>
-              </div>
-              <div className="user__form-box">
-                <input
-                  type="text"
-                  name=""
-                  required
-                  className="user__form-box-input"
-                />
-                <label className="user__form-box-label">E-mail</label>
-              </div>
-              <div className="user__form-box">
-                <input
-                  type={passwordRegisterType}
-                  name=""
-                  required
-                  className="user__form-box-input"
-                />
-                <input
-                  type="checkbox"
-                  onClick={handleShowRegisterPassword}
-                  className="user__form-box-checkbox"
-                />
-                <label className="user__form-box-label">Password</label>
-              </div>
-              <button className="user__links-button-login">Sign up</button>
-              <p className="redirect__link-register">
-                Do you have an account?
-                <button className="redirect__button" onClick={handleFlip}>
-                  Sign in!
+            </form>
+            {!isRegistrationSuccess ? (
+              <form className="user__back">
+                <button
+                  className="modal-user__button"
+                  onClick={onClose}
+                ></button>
+                <div className="user__title">Register now!</div>
+                <div className="user__form-box">
+                  <input
+                    type="text"
+                    name=""
+                    required
+                    className="user__form-box-input"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <label className="user__form-box-label">First Name</label>
+                </div>
+                <div className="user__form-box">
+                  <input
+                    type="text"
+                    name=""
+                    required
+                    className="user__form-box-input"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                  <label className="user__form-box-label">Last Name</label>
+                </div>
+                <div className="user__form-box">
+                  <input
+                    type="text"
+                    name=""
+                    required
+                    className="user__form-box-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label className="user__form-box-label">E-mail</label>
+                </div>
+                <div className="user__form-box">
+                  <input
+                    type={passwordRegisterType}
+                    name=""
+                    required
+                    className="user__form-box-input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <input
+                    type="checkbox"
+                    onClick={handleShowRegisterPassword}
+                    className="user__form-box-checkbox"
+                  />
+                  <label className="user__form-box-label">Password</label>
+                </div>
+                <button
+                  type="submit"
+                  className="user__links-button-login"
+                  onClick={handleRegister}
+                >
+                  Sign up
                 </button>
-              </p>
-            </div>
+                <p className="redirect__link-register">
+                  Do you have an account?
+                  <button className="redirect__button" onClick={handleFlip}>
+                    Sign in!
+                  </button>
+                </p>
+              </form>
+            ) : (
+              <div className="user__back">
+                <p>Done! Please check your e-mail</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
