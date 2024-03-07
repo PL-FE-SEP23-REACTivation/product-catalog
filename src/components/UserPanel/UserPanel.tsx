@@ -16,9 +16,6 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
     'password' | 'text'
   >('password');
 
-  // const [isRegistrationSuccess, setIsRegistrationSuccess] =
-  //   useState<boolean>(false);
-
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -38,14 +35,6 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
     setPasswordRegisterType(isVisible ? 'text' : 'password');
   };
 
-  // const handleRegister = () => {
-  //   if (firstName && lastName && email && password) {
-  //     setIsRegistrationSuccess(!isRegistrationSuccess);
-  //   } else {
-  //     alert('Please fill in all fields before registering.');
-  //   }
-  // };
-
   const handleInvalidInput = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
   };
@@ -53,16 +42,9 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
   return (
     <div className="modal-user">
       <div className="modal-user__content">
-        {/* {(!firstName || !lastName || !email || !password) && (
-          <div className="registration-message">
-          Please fill in all fields before registering.
-          </div>
-        )} */}
         <div className={`user ${isFlipped ? 'flipped' : ''}`}>
           <div className="user__inner">
-            {' '}
             <form className="user__front">
-              {' '}
               <button className="modal-user__button" onClick={onClose}></button>
               <div className="user__title front-title">Welcome back!</div>
               <div className="user__form-box box-front">

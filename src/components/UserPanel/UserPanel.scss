@@ -15,7 +15,6 @@
   display: flex;
   justify-content: center;
   backdrop-filter: blur(4px);
-  z-index: 1000;
   transition: 0.3s;
   &__content {
     color: $color-primary;
@@ -60,9 +59,7 @@
   &__links-button {
     &-login {
       margin-top: 20px;
-      align-self: flex-end;
-      position: relative;
-      display: inline-block;
+      align-self: center;
       padding: 10px 20px;
       font-weight: bold;
       font-size: 16px;
@@ -70,48 +67,16 @@
       text-decoration: none;
       text-transform: uppercase;
       overflow: hidden;
-      transition: 0.5s;
-      border-radius: 10px !important;
-      border: 1px solid white;
+      transition: all 0.5s;
+      border-radius: 10px;
+      border: 1px solid $color-white;
       letter-spacing: 3px;
       background-color: transparent;
       cursor: pointer;
-      color: white;
-      border-radius: inherit;
-      inset: 0px;
-      opacity: 1;
-      transition: all 0.4s;
+      color: $color-white;
 
       &:hover {
-        background: #fff;
-        color: #272727;
-      }
-    }
-    &-register {
-      align-self: flex-end;
-      position: relative;
-      display: inline-block;
-      padding: 10px 20px;
-      font-weight: bold;
-      font-size: 16px;
-      max-width: 150px;
-      text-decoration: none;
-      text-transform: uppercase;
-      overflow: hidden;
-      transition: 0.5s;
-      border-radius: 10px !important;
-      border: 1px solid white;
-      letter-spacing: 3px;
-      background-color: transparent;
-      cursor: pointer;
-      color: white;
-      border-radius: inherit;
-      inset: 0px;
-      opacity: 1;
-      transition: all 0.4s;
-
-      &:hover {
-        background: #fff;
+        background: $color-white;
         color: #272727;
       }
     }
@@ -119,7 +84,7 @@
 
   &__title {
     padding-bottom: 40px;
-    color: #ffff;
+    color: $color-white;
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
@@ -167,10 +132,10 @@
       width: 100%;
       padding: 10px 0;
       font-size: 16px;
-      color: #fff;
+      color: $color-white;
       margin-bottom: 40px;
       border: none;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid $color-white;
       outline: none;
       background: transparent;
 
@@ -178,7 +143,7 @@
       &:valid ~ .user__form-box-label {
         top: -20px;
         left: 0;
-        color: #fff;
+        color: $color-white;
         font-size: 12px;
       }
     }
@@ -189,7 +154,7 @@
       left: 0;
       padding: 10px 0;
       font-size: 16px;
-      color: #fff;
+      color: $color-white;
       pointer-events: none;
       transition: 0.5s;
     }
@@ -232,20 +197,20 @@
 
 .redirect__link-login {
   margin-top: 50px;
-  color: white;
+  color: $color-white;
   font-size: 14px;
 }
 
 .redirect__link-register {
   margin-top: 20px;
-  color: white;
+  color: $color-white;
   font-size: 14px;
 }
 
 .redirect__button {
   font-size: 16px;
   cursor: pointer;
-  color: white;
+  color: $color-white;
   border-radius: 5px;
   box-shadow: none;
   border: none;
@@ -262,21 +227,10 @@
 }
 
 .box-front {
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .card-content {
   text-align: center;
-}
-
-.flip-button {
-  width: 100px;
-  padding: 10px;
-  font-size: 16px;
-  margin-top: 10px;
-  margin-left: 10px;
-  background-color: #f5d9fa;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
 }
