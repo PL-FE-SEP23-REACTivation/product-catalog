@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import './UserPanel.scss';
 
@@ -7,9 +8,35 @@ interface Props {
 
 export const UserPanel: React.FC<Props> = ({ onClose }) => {
   const [isFlipped, setFlipped] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [passwordLoginType, setPasswordLoginType] = useState<
+    'password' | 'text'
+  >('password');
+  const [passwordRegisterType, setPasswordRegisterType] = useState<
+    'password' | 'text'
+  >('password');
+
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleFlip = () => {
     setFlipped(!isFlipped);
+  };
+
+  const handleShowLoginPassword = () => {
+    setIsVisible(!isVisible);
+    setPasswordLoginType(isVisible ? 'text' : 'password');
+  };
+
+  const handleShowRegisterPassword = () => {
+    setIsVisible(!isVisible);
+    setPasswordRegisterType(isVisible ? 'text' : 'password');
+  };
+
+  const handleInvalidInput = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault();
   };
 
   return (
@@ -17,9 +44,7 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
       <div className="modal-user__content">
         <div className={`user ${isFlipped ? 'flipped' : ''}`}>
           <div className="user__inner">
-            {' '}
-            <div className="user__front">
-              {' '}
+            <form className="user__front">
               <button className="modal-user__button" onClick={onClose}></button>
               <div className="user__title front-title">Welcome back!</div>
               <div className="user__form-box box-front">
@@ -27,16 +52,23 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   type="text"
                   name=""
                   required
+                  onInvalid={handleInvalidInput}
                   className="user__form-box-input"
                 />
                 <label className="user__form-box-label">E-mail</label>
               </div>
               <div className="user__form-box box-front">
                 <input
-                  type="password"
+                  type={passwordLoginType}
                   name=""
                   required
+                  onInvalid={handleInvalidInput}
                   className="user__form-box-input"
+                />
+                <input
+                  type="checkbox"
+                  onClick={handleShowLoginPassword}
+                  className="user__form-box-checkbox"
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
@@ -51,8 +83,8 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   Sign up!
                 </button>
               </p>
-            </div>
-            <div className="user__back">
+            </form>
+            <form className="user__back">
               <button className="modal-user__button" onClick={onClose}></button>
               <div className="user__title">Register now!</div>
               <div className="user__form-box">
@@ -61,6 +93,9 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   name=""
                   required
                   className="user__form-box-input"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  onInvalid={handleInvalidInput}
                 />
                 <label className="user__form-box-label">First Name</label>
               </div>
@@ -70,6 +105,9 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   name=""
                   required
                   className="user__form-box-input"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  onInvalid={handleInvalidInput}
                 />
                 <label className="user__form-box-label">Last Name</label>
               </div>
@@ -79,26 +117,42 @@ export const UserPanel: React.FC<Props> = ({ onClose }) => {
                   name=""
                   required
                   className="user__form-box-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onInvalid={handleInvalidInput}
                 />
                 <label className="user__form-box-label">E-mail</label>
               </div>
               <div className="user__form-box">
                 <input
-                  type="password"
+                  type={passwordRegisterType}
                   name=""
                   required
                   className="user__form-box-input"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onInvalid={handleInvalidInput}
+                />
+                <input
+                  type="checkbox"
+                  onClick={handleShowRegisterPassword}
+                  className="user__form-box-checkbox"
                 />
                 <label className="user__form-box-label">Password</label>
               </div>
-              <button className="user__links-button-login">Sign up</button>
+              <button
+                // type="submit"
+                className="user__links-button-login"
+              >
+                Sign up
+              </button>
               <p className="redirect__link-register">
                 Do you have an account?
                 <button className="redirect__button" onClick={handleFlip}>
                   Sign in!
                 </button>
               </p>
-            </div>
+            </form>
           </div>
         </div>
       </div>
