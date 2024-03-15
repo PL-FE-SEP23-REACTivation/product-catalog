@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './registrationPage.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const Register = () => {
+  const { darkMode } = useThemeStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,12 +14,13 @@ const Register = () => {
 
     setEmail('');
     setPassword('');
-
-    window.location.href = '/';
   };
 
   return (
-    <form onSubmit={handleSubmit} className="register">
+    <form
+      onSubmit={handleSubmit}
+      className={`register ${darkMode ? 'dark-mode' : ''}`}
+    >
       <h1 className="register__title">Sign Up</h1>
       <label htmlFor="email">Email:</label>
       <input

@@ -107,6 +107,28 @@
     @include for-desktop() {
       height: 65px;
     }
+    &__theme {
+      position: relative;
+      border: none;
+      width: 48px;
+      height: 48px;
+      background-color: $color-white;
+      border-left: 1px solid $color-elements;
+      cursor: pointer;
+
+      @include for-phone() {
+        display: none;
+      }
+
+      @include for-tablet() {
+        height: 48px;
+        width: 48px;
+      }
+      @include for-desktop() {
+        height: 64px;
+        width: 64px;
+      }
+    }
     &__like {
       position: relative;
       background-image: url('../../../public/icons/heart-like.svg');
@@ -161,6 +183,7 @@
       height: 48px;
       background-color: $color-white;
       border-left: 1px solid $color-elements;
+      cursor: pointer;
 
       @include for-desktop() {
         height: 64px;
@@ -170,6 +193,47 @@
         display: none;
       }
     }
+  }
+}
+
+.theme-icon {
+  background-image: url(../../../public/icons/sun.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  border: none;
+  width: 48px;
+  height: 48px;
+
+  @include for-phone() {
+    display: none;
+  }
+
+  @include for-tablet() {
+    height: 48px;
+    width: 48px;
+  }
+  @include for-desktop() {
+    height: 64px;
+    width: 64px;
+  }
+}
+.header__buttons__register {
+  position: relative;
+  background-image: url('../../../public/icons/user.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 48px;
+  height: 48px;
+  background-color: $color-white;
+  border-left: 1px solid $color-elements;
+
+  @include for-desktop() {
+    height: 64px;
+    width: 64px;
+  }
+  @include for-phone() {
+    display: none;
   }
 }
 
@@ -211,5 +275,118 @@
   @include for-desktop() {
     top: 18px;
     right: 18px;
+  }
+}
+
+.header__toggler {
+  border-left: 1px solid $color-elements;
+  border-top: 1px solid $color-elements;
+}
+
+.dark-mode {
+  background-color: $color-dark;
+
+  .header__buttons .header__link {
+    background-color: $color-dark;
+    box-shadow: -1px 0px 0px 0px $color-dark-shadow;
+    border: none;
+  }
+
+  .header {
+    border-bottom: 1px solid $color-dark-shadow;
+  }
+
+  .header__link.active::after,
+  .header__link:hover::after {
+    background-color: $color-dark-white;
+  }
+
+  .header__link:hover,
+  .header__link.active {
+    color: $color-dark-white;
+  }
+
+  .theme-icon {
+    background-image: url(../../../public/icons/sun-yellow.svg);
+  }
+
+  .header__buttons__cart {
+    background-image: url('../../../public/icons/bag-white.svg');
+  }
+
+  .header__buttons__like {
+    background-image: url('../../../public/icons/heart-like-white.svg');
+  }
+
+  .header__buttons__register {
+    background-image: url('../../../public/icons/user-white.svg');
+  }
+
+  .header__buttons__notification {
+    border: 1px solid $color-dark;
+  }
+  .header__toggler {
+    border-color: $color-dark-element;
+  }
+}
+
+.animate-theme {
+  @include for-phone() {
+  }
+
+  @include for-tablet() {
+    animation: ThemeAnimation 700ms ease-in;
+  }
+
+  @include for-desktop() {
+    animation: ThemeAnimationDesktop 700ms ease-in;
+  }
+}
+
+@keyframes ThemeAnimation {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-10px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+@keyframes ThemeAnimationDesktop {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0);
+  }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-20px);
+  }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(-7px);
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
   }
 }

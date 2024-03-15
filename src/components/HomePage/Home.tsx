@@ -9,6 +9,7 @@ import Categories from './Categories/Categories';
 import './Home.scss';
 import HotPrices from './HotPrices/HotPrices';
 import NewProducts from './NewProducts/NewProducts';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 const HomePage: React.FC = () => {
   const slides = [
@@ -24,6 +25,7 @@ const HomePage: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isNewError, setIsNewError] = useState(false);
   const [isHotError, setIsHotError] = useState(false);
+  const { darkMode } = useThemeStore();
 
   useEffect(() => {
     setNewProductsLoading(true);
@@ -48,7 +50,7 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <div className="homePage">
+    <div className={`homePage ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <section className="homePage__title">
         <h1>Welcome to Nice Gadgets store!</h1>
       </section>

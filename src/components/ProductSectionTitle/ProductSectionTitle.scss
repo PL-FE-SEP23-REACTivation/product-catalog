@@ -19,3 +19,10 @@
     line-height: 26px;
   }
 }
+
+.dark-mode {
+  .section_title {
+    color: $color-dark-white;
+    border-color: $color-dark-element;
+  }
+}

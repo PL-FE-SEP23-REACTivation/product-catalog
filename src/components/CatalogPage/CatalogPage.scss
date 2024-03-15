@@ -105,3 +105,13 @@
     flex-direction: row;
   }
 }
+
+.dark-mode {
+  .catalog_title {
+    color: $color-dark-white;
+  }
+
+  .catalog_count {
+    color: $color-dark-secondary;
+  }
+}

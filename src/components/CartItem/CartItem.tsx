@@ -5,6 +5,7 @@ import { useCartStore } from '../../storage/CartStore';
 import { Product } from '../../types/productType';
 import './CartItem.scss';
 import { Link } from 'react-router-dom';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 type Props = {
   name: string;
@@ -15,6 +16,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product, quantity }) => {
+  const { darkMode } = useThemeStore();
   const { cart, setCart, removeFromCart } = useCartStore.getState();
   const publicUrl = process.env.PUBLIC_URL;
   const handleIncrease = () => {
@@ -67,7 +69,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
   return (
     <>
-      <div className="cartItem">
+      <div className={`cartItem ${darkMode ? 'dark-mode' : 'light-mode'}`}>
         <div className="cartItem__info">
           <div className="cartItem__info-wrapper">
             <button
@@ -93,7 +95,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
             <button
               type="button"
               onClick={decreaseQuantity}
-              className={`cartItem__calc__quantity__button ${
+              className={`cartItem__calc__quantity__button buttonNegative ${
                 quantity === 1 ? 'inactive' : ''
               }`}
             >
@@ -103,7 +105,7 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
             <button
               type="button"
               onClick={increaseQuantity}
-              className="cartItem__calc__quantity__button"
+              className="cartItem__calc__quantity__button buttonPositive"
             >
               +
             </button>

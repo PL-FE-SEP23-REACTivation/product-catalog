@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ArrowLeft from '../../icons/arrow-left.svg';
 import { useCartStore } from '../../storage/CartStore';
 import { CartItem } from '../CartItem/CartItem';
 import { SuccessModal } from '../SuccessModal/SuccessModal';
 import './Cart.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
 
 export const Cart = () => {
   const cart = useCartStore((state) => state.cart);
   const { clearCart } = useCartStore.getState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [message, setMessage] = useState('');
+  const { darkMode } = useThemeStore();
 
   const [totalPrice, totalAmount] = cart.reduce(
     (acc, cartItem) => {
@@ -30,21 +31,18 @@ export const Cart = () => {
     clearCart();
 
     setTimeout(() => {
-      window.location.href = '/phones';
+      setIsModalOpen(false);
     }, 3000);
   };
 
   return (
     <>
-      <div className="cart">
+      <div className={`cart ${darkMode ? 'dark-mode' : 'light-mode'}`}>
         <section className="cart__title">
           <Link to="/phones" className="cart__title__link">
-            <img
-              src={ArrowLeft}
-              alt="arrow right"
-              className="cart__title__link__arrow"
-            />
-            <p className="cart__title__link__back">Back</p>
+            <p className="cart__title__link__back">
+              &lt;&nbsp;&nbsp;&nbsp;Back
+            </p>
           </Link>
           <h1 className="cart__title__text">Cart</h1>
         </section>

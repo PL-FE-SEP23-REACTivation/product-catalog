@@ -3,19 +3,43 @@ import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
 import './Header.scss';
+import { useThemeStore } from '../../storage/ThemeStore';
+import { UserPanel } from '../UserPanel/UserPanel';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [isUserOpen, setIsUserOpen] = useState(false);
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
+  const { darkMode, toggleDarkMode } = useThemeStore();
   const cartItemsCount = useCartStore((state) =>
     state.cart.reduce((total, item) => total + (item.quantity ?? 0), 0)
   );
-
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
+
+  const handleThemeAnimation = () => {
+    setIsThemeAnimating(true);
+    setTimeout(() => setIsThemeAnimating(false), 700);
+  };
+
+  const handleClose = () => {
+    setIsUserOpen(false);
+  };
+
   return (
-    <header className="header">
+    <header className={`header ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <div className="header__container">
-        <Link to="/" className="header__logo">
-          <img src={process.env.PUBLIC_URL + '/img/Logo.svg'} alt="logo" />
-        </Link>
+        {darkMode ? (
+          <Link to="/" className="header__logo">
+            <img
+              src={process.env.PUBLIC_URL + '/icons/Logo-white.svg'}
+              alt="logo"
+            />
+          </Link>
+        ) : (
+          <Link to="/" className="header__logo">
+            <img src={process.env.PUBLIC_URL + '/icons/Logo.svg'} alt="logo" />
+          </Link>
+        )}
 
         <nav className="header__nav">
           <ul className="header__nav__list">
@@ -56,10 +80,19 @@ export const Header = () => {
       </div>
 
       <div className="header__buttons">
-        <NavLink
-          to="/register"
+        <div
+          className="header__buttons__theme header__link"
+          onClick={toggleDarkMode}
+        >
+          <div
+            className={`theme-icon ${isThemeAnimating ? 'animate-theme' : ''}`}
+            onClick={handleThemeAnimation}
+          ></div>
+        </div>
+        <div
           className="header__buttons__register header__link"
-        ></NavLink>
+          onClick={() => setIsUserOpen(true)}
+        ></div>
         <NavLink
           to="/favourites"
           className="header__buttons__like header__link"
@@ -78,6 +111,7 @@ export const Header = () => {
           )}
         </NavLink>
       </div>
+      {isUserOpen && <UserPanel onClose={handleClose} />}
     </header>
   );
 };

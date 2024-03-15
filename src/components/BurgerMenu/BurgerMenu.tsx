@@ -1,13 +1,24 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
+import { useThemeStore } from '../../storage/ThemeStore';
+import { UserPanel } from '../UserPanel/UserPanel';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isThemeAnimating, setIsThemeAnimating] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
   const { cart } = useCartStore.getState();
+  const { darkMode, toggleDarkMode } = useThemeStore();
+
+  const handleThemeAnimation = () => {
+    setIsThemeAnimating(true);
+    setTimeout(() => setIsThemeAnimating(false), 700);
+  };
 
   const cartItemsCount = cart.reduce(
     (total, item) => total + (item.quantity ?? 0),
@@ -26,14 +37,27 @@ export const BurgerMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const handleClose = () => {
+    setIsUserOpen(false);
+  };
+
+  const handleOpenUser = () => {
+    setIsUserOpen(true);
+    setMenuOpen(false);
+  };
+
   return (
-    <div className="burger-menu">
+    <div className={`burger-menu ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="headerMobile" id="headerMobile">
         <div className="headerMobile_nav">
           <Link to="/" className="headerMobile_link headerMobile_link--logo">
             <p />
           </Link>
           <div className="headerMobile_buttons">
+            <div
+              className="headerMobile_buttons__register"
+              onClick={handleOpenUser}
+            ></div>
             <button
               className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
               onClick={toggleMenu}
@@ -82,15 +106,17 @@ export const BurgerMenu = () => {
           >
             ACCESSORIES
           </NavLink>
-          <NavLink
-            to="/register"
-            className="menu_link burger_link"
-            onClick={toggleMenu}
-          >
-            ACCOUNT
-          </NavLink>
         </div>
         <div className="menu_footer">
+          <div
+            className="burger_link_bottom menu_footer_buttons menu-theme-button"
+            onClick={toggleDarkMode}
+          >
+            <div
+              className={`menu_theme ${isThemeAnimating ? 'animate-theme' : ''}`}
+              onClick={handleThemeAnimation}
+            ></div>
+          </div>
           <NavLink
             to="/favourites"
             className="burger_link_bottom menu_footer_buttons"
@@ -115,6 +141,7 @@ export const BurgerMenu = () => {
           </NavLink>
         </div>
       </div>
+      {isUserOpen && <UserPanel onClose={handleClose} />}
     </div>
   );
 };

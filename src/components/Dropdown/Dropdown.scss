@@ -47,13 +47,13 @@
     -moz-appearance: none; /* Firefox */
     -webkit-appearance: none; /* Safari and Chrome */
     appearance: none;
-    background: url(../../icons/arrow-down.svg) no-repeat;
+    background: url(../../../public/icons/arrow-down.svg) no-repeat;
     background-position: right 12px top 50%;
     border: $color-icons 1px solid;
     outline: none;
 
     &--open {
-      background-image: url(../../icons/arrow-up.svg);
+      background-image: url(../../../public/icons/arrow-up.svg);
       border-color: $color-primary;
     }
   }
@@ -66,7 +66,6 @@
     background-color: $color-white;
     border: 1px solid $color-elements;
     backdrop-filter: blur(2px);
-    padding: 8px 0px;
 
     &--open {
       display: block;
@@ -87,6 +86,31 @@
     &:hover {
       background-color: $color-hover-bg;
       color: $color-primary;
+    }
+  }
+}
+
+.dark-mode {
+  .dropdown__label {
+    color: $color-dark-secondary;
+  }
+  .dropdown__button {
+    color: $color-dark-white;
+    background-color: $color-dark-shadow;
+    border-color: $color-dark-shadow;
+  }
+
+  .options {
+    font-weight: 700;
+    color: $color-dark-white;
+    background-color: $color-dark;
+  }
+  .options__option {
+    font-weight: 600;
+
+    &:hover {
+      color: $color-dark-white;
+      background-color: $color-dark-shadow;
     }
   }
 }
