@@ -24,9 +24,21 @@
   }
 
   &_buttons {
-    width: 48px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid $color-elements;
+
+    &__register {
+      position: relative;
+      background-image: url('../../../public/icons/user.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 48px;
+      height: 48px;
+      background-color: $color-white;
+      border-left: 1px solid $color-elements;
+      cursor: pointer;
+    }
   }
   &_link--logo {
     width: 64px;

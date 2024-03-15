@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useCartStore } from '../../storage/CartStore';
 import { useFavoritesStore } from '../../storage/FavouritesStore';
-import './BurgerMenu.scss';
 import { useThemeStore } from '../../storage/ThemeStore';
+import { UserPanel } from '../UserPanel/UserPanel';
+import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
+  const [isUserOpen, setIsUserOpen] = useState(false);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isThemeAnimating, setIsThemeAnimating] = useState(false);
   const favoriteProducts = useFavoritesStore((state) => state.favoriteProducts);
@@ -35,6 +37,15 @@ export const BurgerMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
+  const handleClose = () => {
+    setIsUserOpen(false);
+  };
+
+  const handleOpenUser = () => {
+    setIsUserOpen(true);
+    setMenuOpen(false);
+  };
+
   return (
     <div className={`burger-menu ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="headerMobile" id="headerMobile">
@@ -43,6 +54,10 @@ export const BurgerMenu = () => {
             <p />
           </Link>
           <div className="headerMobile_buttons">
+            <div
+              className="headerMobile_buttons__register"
+              onClick={handleOpenUser}
+            ></div>
             <button
               className={`burger-icon ${isMenuOpen ? 'open' : ''}`}
               onClick={toggleMenu}
@@ -91,13 +106,6 @@ export const BurgerMenu = () => {
           >
             ACCESSORIES
           </NavLink>
-          <NavLink
-            to="/register"
-            className="menu_link burger_link"
-            onClick={toggleMenu}
-          >
-            ACCOUNT
-          </NavLink>
         </div>
         <div className="menu_footer">
           <div
@@ -133,6 +141,7 @@ export const BurgerMenu = () => {
           </NavLink>
         </div>
       </div>
+      {isUserOpen && <UserPanel onClose={handleClose} />}
     </div>
   );
 };
