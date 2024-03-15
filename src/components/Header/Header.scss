@@ -183,6 +183,7 @@
       height: 48px;
       background-color: $color-white;
       border-left: 1px solid $color-elements;
+      cursor: pointer;
 
       @include for-desktop() {
         height: 64px;
