@@ -47,8 +47,8 @@
 
 .user {
   perspective: 1000px;
-  width: 500px;
-  height: 600px;
+  width: 80vw;
+  height: 80vh;
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.5s;
@@ -56,13 +56,18 @@
   padding: 40px;
   border-radius: 20px;
 
+  @include for-tablet {
+    width: 500px;
+    height: 600px;
+  }
+
   &__links-button {
     &-login {
       margin-top: 20px;
       align-self: center;
-      padding: 10px 20px;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 12px;
+      padding: 5px 10px;
       max-width: 150px;
       text-decoration: none;
       text-transform: uppercase;
@@ -74,6 +79,11 @@
       background-color: transparent;
       cursor: pointer;
       color: $color-white;
+
+      @include for-tablet {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
 
       &:hover {
         background: $color-white;
@@ -109,9 +119,12 @@
     position: absolute;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    justify-content: space-evenly;
   }
 
   &__back {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -119,6 +132,7 @@
     transform: rotateY(180deg);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    justify-content: space-evenly;
   }
 }
 .user__form {
@@ -133,7 +147,6 @@
       padding: 10px 0;
       font-size: 16px;
       color: $color-white;
-      margin-bottom: 40px;
       border: none;
       border-bottom: 1px solid $color-white;
       outline: none;
@@ -198,7 +211,10 @@
 .redirect__link-login {
   margin-top: 50px;
   color: $color-white;
-  font-size: 14px;
+  font-size: 12px;
+  @include for-tablet {
+    font-size: 14px;
+  }
 }
 
 .redirect__link-register {
@@ -208,7 +224,7 @@
 }
 
 .redirect__button {
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   color: $color-white;
   border-radius: 5px;
@@ -216,14 +232,13 @@
   border: none;
   background-color: transparent;
   text-decoration: underline;
+  @include for-tablet {
+    font-size: 16px;
+  }
 
   &:hover {
     color: rgb(212, 212, 212);
   }
-}
-
-.front-title {
-  margin-bottom: 50px;
 }
 
 .box-front {
