@@ -263,6 +263,16 @@
     border-bottom: 1px solid $color-dark-shadow;
   }
 
+  .headerMobile_buttons {
+    border-color: $color-dark-shadow;
+  }
+
+  .headerMobile_buttons__register {
+    background-image: url(../../../public/icons/user-white.svg);
+    background-color: $color-dark;
+    border-color: $color-dark-shadow;
+  }
+
   .burger-icon {
     background: url(../../../public/icons/burger-white.svg);
     border-left: 1px solid $color-dark-shadow;
